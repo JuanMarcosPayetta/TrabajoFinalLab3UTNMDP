@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import excepciones.CadenaInvalidaException;
+import excepciones.DatoNumeroException;
+
 public class Arbol extends PlantaTerrestre{
 
 	private int diametroDelTronco;

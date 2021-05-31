@@ -1,4 +1,4 @@
-package model;
+package excepciones;
 
 public class CadenaInvalidaException extends Exception{
 	

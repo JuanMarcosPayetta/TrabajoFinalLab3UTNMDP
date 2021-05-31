@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import excepciones.CadenaInvalidaException;
+import excepciones.DatoNumeroException;
+
 public abstract class Planta extends Producto{
 
 	private int mesesDeVida; 

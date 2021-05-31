@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import excepciones.CadenaInvalidaException;
+
 public class Arbusto extends PlantaTerrestre{
 	
 	private String tipoDeHoja;

@@ -5,6 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.function.LongToIntFunction;
 
+import excepciones.CadenaInvalidaException;
+import excepciones.DatoNumeroException;
+
 public abstract class Producto {
 
 	private String codigo;

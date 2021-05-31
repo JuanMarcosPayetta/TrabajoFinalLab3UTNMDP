@@ -1,4 +1,4 @@
-package model;
+package excepciones;
 
 public class DatoNumeroException extends Exception{
 

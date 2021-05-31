@@ -2,6 +2,8 @@ package model;
 
 import java.util.InputMismatchException;
 
+import excepciones.CadenaInvalidaException;
+
 public abstract class PlantaTerrestre extends Planta{
 
 	private boolean fruto;
