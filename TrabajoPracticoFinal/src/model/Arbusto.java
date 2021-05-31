@@ -89,46 +89,6 @@ public class Arbusto extends PlantaTerrestre{
     }
 
 	
-	/*
-	 * Valida si es un arbusto trepador o no, llamada main
-	 */
-	/*
-	public static String validarTrepadoraLlamada(boolean tipo)
-	{
-		String mensaje=null;
-		try {
-			validarTrepadora(tipo);
-		} catch (InputMismatchException e) {
-			mensaje=e.getMessage();
-		} catch (NullPointerException e) {
-			mensaje=e.getMessage();
-		} catch (CadenaInvalidaException e) {
-			mensaje=e.getMessage();
-		}
-		return mensaje;
-	}
-	
-	public static void validarTrepadora(boolean tipo)throws NullPointerException, CadenaInvalidaException, InputMismatchException
-	{
-		if(String.valueOf(tipo)==null)
-		{
-			throw new NullPointerException("Error, ingrese true or false");
-		}
-		else if(String.valueOf(tipo).isBlank())
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		}
-		else if(String.valueOf(tipo).matches("[a-zA-Z]*\\D{4}"))
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 4 letras");
-		}
-		else if(String.valueOf(tipo)!="false" || String.valueOf(tipo)!="true")
-		{
-			throw new InputMismatchException("Ingrese un dato valido (true o false)");
-		}
-	}
-	*/
-
 	public String getTipoDeHoja() {
 		return tipoDeHoja;
 	}

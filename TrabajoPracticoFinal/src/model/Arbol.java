@@ -107,19 +107,26 @@ public class Arbol extends PlantaTerrestre{
 
 	/*
 	 * Valida el diametro del tronco, llamada main
+	 * ("Se espera un dato entero entre los 2cm y 130cm")
+	 * - en validacion del main: ver ingreso String (aunq lo convierta a  Integer) 
 	 */
-	public static String validarDiametroTroncoLlamada(int diametro) {
+	public static String validarDiametroTroncoLlamada(Integer diametro) {
 		String mensaje=null;
 		try {
 			validarDiametroTronco(diametro);
 		} catch (DatoNumeroException e){
 			mensaje = e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
 	
-	public static void validarDiametroTronco(int diametro) throws DatoNumeroException
+	public static void validarDiametroTronco(Integer diametro) throws DatoNumeroException, NullPointerException
 	{
+		if(diametro==null) {
+    		throw new NullPointerException("Error");
+    	}
 		if(diametro<2 && diametro>130) {
 			throw new DatoNumeroException(DatoNumeroException.VALORFUERADELRANGOEXCEPTION+": entre 2cm y 130cm");
 		}

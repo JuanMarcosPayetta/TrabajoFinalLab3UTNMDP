@@ -65,29 +65,27 @@ public abstract class Planta extends Producto{
 	}
 
 	public abstract void establecerCantidadFertilizante(); //ESTABLECER EN CLASE FINAL
-
-	
 	
 	
 	/*
 	 * Validacion Meses de vida/Altura, llamada main
 	 */
-	public static String validarDatosNumericosLlamada(int numero) {
+	public static String validarDatosNumericosLlamada(Integer numero) {
 		String mensaje = null; // si el retorno es null es correcto
-
 		try {
 			validarDatosNumericos(numero);
-			
 		} catch (DatoNumeroException e) {
 			mensaje = e.getMessage();
 		}
-		
 		return mensaje;
 	}
 	
-	public static void validarDatosNumericos(int numero) throws DatoNumeroException {
-
-		if (numero<=0) {
+	public static void validarDatosNumericos(Integer numero) throws DatoNumeroException, NullPointerException 
+	{
+		if (numero==null) {
+			throw new NullPointerException("Error D:");
+		}
+		else if (numero<=0) {
 			throw new DatoNumeroException("Ingrese un numero superior a 0");
 		}
 

@@ -88,21 +88,30 @@ public abstract class PlantaAcuatica extends Planta{
 	
 	/*
 	 * Validacion temperatura del agua, llamada main
-	 */
-	public static String validarTempAguaLlamada(int temperatura) {
+	 * ("Se espera un dato entero entre los 20°C y los 27°C inclusive")
+	 * - en validacion del main: ver ingreso String (aunq lo convierta a  Integer) 
+	 */ 
+	public static String validarTempAguaLlamada(Integer temperatura) {
         String mensaje=null; //si devuelve "null" es correcto
         try {
             validarTempAgua(temperatura);
-        }catch(DatoNumeroException e){
+        } catch(DatoNumeroException e){
             mensaje = e.getMessage();
+        } catch(NullPointerException e) {
+        	mensaje = e.getMessage();
+        } catch(NumberFormatException e) {
+        	mensaje = e.getMessage();
         }
         return mensaje;
     }
 	
-	//ver si le agregamos las otras excepciones despues de preguntar al profesor(null pointer, string)
-    public static void validarTempAgua(int temperatura) throws DatoNumeroException
+	
+    public static void validarTempAgua(Integer temperatura) throws DatoNumeroException, InputMismatchException, NullPointerException, NumberFormatException
     {
-        if(temperatura<0) {
+    	if(temperatura==null) {
+    		throw new NullPointerException("Error");
+    	}
+    	else if(temperatura<0) {
             throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + " y debe ser mayor a los 20°C");
         }
         else if(temperatura>=20 && temperatura<=27) {
