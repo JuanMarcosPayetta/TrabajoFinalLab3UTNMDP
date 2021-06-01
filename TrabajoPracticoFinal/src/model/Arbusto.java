@@ -62,7 +62,7 @@ public class Arbusto extends PlantaTerrestre{
 		return mensaje;
 	}
 	
-	public static void validarTipoHoja(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTipoHoja(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
         ArrayList<String>tipos=new ArrayList<String>();
 		tipos.add("caduca");

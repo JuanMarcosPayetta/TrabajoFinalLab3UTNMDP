@@ -80,7 +80,7 @@ public abstract class Planta extends Producto{
 		return mensaje;
 	}
 	
-	public static void validarDatosNumericos(Integer numero) throws DatoNumeroException, NullPointerException 
+	private static void validarDatosNumericos(Integer numero) throws DatoNumeroException, NullPointerException 
 	{
 		if (numero==null) {
 			throw new NullPointerException("Error");
@@ -88,17 +88,6 @@ public abstract class Planta extends Producto{
 		else if (numero<=0) {
 			throw new DatoNumeroException("Ingrese un numero superior a 0");
 		}
-
-		/*
-		 * PREGUNTAR SI ES NULL O SON CARACTERES SE VERFICA EN EL MAIN LUEGO DE QUE
-		 * ENTRE POR TECLADO CON INPUT MISMACHT EXPETION
-		 * 
-		 * Scanner scan; scan=new Scanner(System.in); try {
-		 * System.out.println("Ingrese un dato numerico"); int dato=scan.nextInt();
-		 * System.out.println("Dato: "+dato); } catch(InputMismatchException e) {
-		 * System.out.println("Ingrese un dato numerico valido"); }
-		 * 
-		 */
 	}
 
 	
@@ -121,7 +110,7 @@ public abstract class Planta extends Producto{
 		return mensaje;
 	}
 
-	public static void validarTipoRaiz(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTipoRaiz(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>tipos=new ArrayList<String>();
 		tipos.add("axonomorfa");
@@ -168,7 +157,7 @@ public abstract class Planta extends Producto{
 		return mensaje;
 	}
 	
-	public static void validarEstacion(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarEstacion(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>tipos=new ArrayList<String>();
 		tipos.add("verano");
@@ -215,7 +204,7 @@ public abstract class Planta extends Producto{
 		return mensaje;
 	}
 
-	public static void validarHabitat(String opcion, String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarHabitat(String opcion, String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>opciones=new ArrayList<String>();
 		opciones.add("terrestre");
@@ -305,7 +294,7 @@ public abstract class Planta extends Producto{
 		return mensaje;
 	}
 	
-	public static void validarExpSolar(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarExpSolar(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
         ArrayList<String>tipos=new ArrayList<String>();
 		tipos.add("sombra");

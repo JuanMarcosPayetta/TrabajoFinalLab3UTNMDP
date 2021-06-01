@@ -65,7 +65,7 @@ public abstract class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 	
-	public static void validarTipoDeAgua(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTipoDeAgua(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("dulce");
@@ -106,7 +106,7 @@ public abstract class PlantaAcuatica extends Planta{
     }
 	
 	
-    public static void validarTempAgua(Integer temperatura) throws DatoNumeroException, InputMismatchException, NullPointerException, NumberFormatException
+    private static void validarTempAgua(Integer temperatura) throws DatoNumeroException, InputMismatchException, NullPointerException, NumberFormatException
     {
     	if(temperatura==null) {
     		throw new NullPointerException("Error");
@@ -138,7 +138,7 @@ public abstract class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
     
-	public static void validarDurezaAgua(String durezaAgua) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarDurezaAgua(String durezaAgua) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>dureza=new ArrayList<String>();
 		dureza.add("blanda");
@@ -183,7 +183,7 @@ public abstract class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 	
-	public static void validarTipoPlanta (String tipoPlanta) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTipoPlanta (String tipoPlanta) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>tipos=new ArrayList<String>();
 		tipos.add("flotante");

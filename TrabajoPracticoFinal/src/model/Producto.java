@@ -132,7 +132,7 @@ public abstract class Producto {
 	}
 	
 	
-	public static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException
+	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException
 	{
 		if(cadena==null)
 		{
@@ -168,7 +168,7 @@ public abstract class Producto {
 	}
 	
 	
-	public static <T extends Number> void validarValorNumerico(T valor) throws DatoNumeroException, NullPointerException
+	private static <T extends Number> void validarValorNumerico(T valor) throws DatoNumeroException, NullPointerException
 	{
 		if(valor==null)
 		{
@@ -208,7 +208,7 @@ public abstract class Producto {
 	}
 	
 
-	public static void validarBoolean(Boolean tipo)throws NullPointerException, InputMismatchException
+	private static void validarBoolean(Boolean tipo)throws NullPointerException, InputMismatchException
 	{
 		if(tipo==null)
 		{
@@ -216,12 +216,10 @@ public abstract class Producto {
 		}
 		else if(!Boolean.FALSE && !Boolean.TRUE)
 		{
-			throw new InputMismatchException("Ingrese un dato valido, true o false 1");
+			throw new InputMismatchException("Ingrese un dato valido, true o false");
 		}
-
+ 
 	}
-	
-	
 	
 	
 	

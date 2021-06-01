@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
+
 public class Semilla extends ProductoOrganico{
 
 	private String destino;
@@ -20,6 +25,50 @@ public class Semilla extends ProductoOrganico{
 			String destino) {
 		super(nombre, marca, precio, stock, descripcion, gramos);
 		this.destino = destino;
+	}
+	
+	/*
+	 * Valida el destino de la semilla, llamada main
+	 */
+	public static String validarDestinoSemillaLlamada(String destino)
+	{
+		String mensaje=null;
+		try {
+			validarDestinoSemilla(destino);
+		} catch (InputMismatchException e) {
+			mensaje=e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarDestinoSemilla(String destino) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	{
+		ArrayList<String>destinosValidos=new ArrayList<String>();
+		destinosValidos.add("huerta");
+		destinosValidos.add("floral");
+		destinosValidos.add("cesped");
+		
+		if(destino==null)
+		{
+			throw new NullPointerException("Error, ingrese un destino valido (huerta, floral, cesped)");
+		}
+		else if(destino.isBlank())
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!destino.matches("[a-zA-Z]*\\D{6}"))
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 6 letras");
+		}
+		else if(!destinosValidos.contains(destino))
+		{
+			throw new InputMismatchException("Ingrese un destino valido (huerta, floral, cesped)");
+		}
+	
 	}
 
 	public String getDestino() {

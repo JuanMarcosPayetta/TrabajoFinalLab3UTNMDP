@@ -72,7 +72,7 @@ public abstract class PlantaTerrestre extends Planta{
 		return mensaje;
 	}
 	
-	public static void validarEspecie(String especie)throws NullPointerException, CadenaInvalidaException
+	private static void validarEspecie(String especie)throws NullPointerException, CadenaInvalidaException
 	{
 		if(especie==null)
 		{

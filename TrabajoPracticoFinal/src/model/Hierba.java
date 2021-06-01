@@ -62,7 +62,7 @@ public class Hierba extends PlantaTerrestre{
 		return mensaje;
 	}
 	
-	public static void validarTipoTallo(String tipo) throws CadenaInvalidaException, NullPointerException, InputMismatchException
+	private static void validarTipoTallo(String tipo) throws CadenaInvalidaException, NullPointerException, InputMismatchException
 	{
 		boolean existe=existeTipoTallo(tipo);
 		if(tipo==null) {
@@ -79,7 +79,7 @@ public class Hierba extends PlantaTerrestre{
 		}
 	}
 	
-	public static boolean existeTipoTallo(String tipo){
+	private static boolean existeTipoTallo(String tipo){
 		boolean existe=false;
 		ArrayList<String> tipos = new ArrayList<String>();
 		

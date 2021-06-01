@@ -69,7 +69,7 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 
-	public static void validarTipoCorteza(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTipoCorteza(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		boolean existe=existeTipoCorteza(tipo);
 		if(tipo==null) {
@@ -86,7 +86,7 @@ public class Arbol extends PlantaTerrestre{
 		}
 	}
 	
-	public static boolean existeTipoCorteza(String tipo){
+	private static boolean existeTipoCorteza(String tipo){
 		boolean existe=false;
 		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("laminada"); 
@@ -122,7 +122,7 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 	
-	public static void validarDiametroTronco(Integer diametro) throws DatoNumeroException, NullPointerException
+	private static void validarDiametroTronco(Integer diametro) throws DatoNumeroException, NullPointerException
 	{
 		if(diametro==null) {
     		throw new NullPointerException("Error");

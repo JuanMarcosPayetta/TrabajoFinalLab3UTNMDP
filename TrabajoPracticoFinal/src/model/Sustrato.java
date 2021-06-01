@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
+
 public class Sustrato extends ProductoOrganico{
 
 	private boolean abonada;
@@ -26,6 +31,53 @@ public class Sustrato extends ProductoOrganico{
 		this.tipoDeSuelo = tipoDeSuelo;
 	}
 
+	
+	//Validar tipo de suelo, llamada main
+	public static String validarTipoSueloLlamada(String suelo)
+	{
+		String mensaje=null;
+		try {
+			validarTipoSuelo(suelo);
+		} catch (InputMismatchException e) {
+			mensaje=e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarTipoSuelo(String suelo) throws NullPointerException, CadenaInvalidaException, InputMismatchException 
+	{
+		ArrayList<String>suelosValidos=new ArrayList<String>();
+		suelosValidos.add("arenoso");
+		suelosValidos.add("calizo");
+		suelosValidos.add("humifero");
+		suelosValidos.add("arcilloso");
+		suelosValidos.add("pedregoso");
+		suelosValidos.add("mixto");
+		
+		if(suelo==null)
+		{
+			throw new NullPointerException("Error, ingrese un tipo de suelo valido");
+		}
+		else if(suelo.isBlank())
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!suelo.matches("[a-zA-Z]*\\D{5}"))
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 5 letras");
+		}
+		else if(!suelosValidos.contains(suelo))
+		{
+			throw new InputMismatchException("Error, ingrese un tipo de suelo valido (arenoso, calizo, humifero, arcilloso, pedregoso, mixto)");
+		}
+
+	}
+	
+	
 	public boolean isAbonada() {
 		return abonada;
 	}
@@ -41,6 +93,8 @@ public class Sustrato extends ProductoOrganico{
 	public void setTipoDeSuelo(String tipoDeSuelo) {
 		this.tipoDeSuelo = tipoDeSuelo;
 	}
+	
+	
 
 	@Override
 	public String toString() {
