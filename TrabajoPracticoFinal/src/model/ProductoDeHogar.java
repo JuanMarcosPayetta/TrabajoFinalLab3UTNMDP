@@ -4,8 +4,7 @@ public abstract class ProductoDeHogar extends Producto{
 
 	private String material;
 	
-	public ProductoDeHogar()
-	{
+	public ProductoDeHogar(){
 		super();
 		this.material=null;
 	}
@@ -31,7 +30,7 @@ public abstract class ProductoDeHogar extends Producto{
 
 	@Override
 	public String toString() {
-		return super.toString()+", material=" + material;
+		return super.toString()+", material:" + material;
 	}
 	
 	
