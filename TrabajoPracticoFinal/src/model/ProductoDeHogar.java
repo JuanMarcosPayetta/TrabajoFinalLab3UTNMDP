@@ -1,8 +1,8 @@
 package model;
 
-public class ProductoDeHogar extends Producto{
+public abstract class ProductoDeHogar extends Producto{
 
-	String material;
+	private String material;
 	
 	public ProductoDeHogar()
 	{

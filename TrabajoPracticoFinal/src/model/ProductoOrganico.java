@@ -2,7 +2,7 @@ package model;
 
 public abstract class ProductoOrganico extends Producto{
 
-	int gramos;
+	private int gramos;
 	
 	public ProductoOrganico()
 	{

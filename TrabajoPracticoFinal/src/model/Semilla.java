@@ -2,7 +2,7 @@ package model;
 
 public class Semilla extends ProductoOrganico{
 
-	String destino;
+	private String destino;
 	
 	public Semilla()
 	{

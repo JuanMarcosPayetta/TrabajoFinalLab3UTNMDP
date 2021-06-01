@@ -2,8 +2,8 @@ package model;
 
 public class Sustrato extends ProductoOrganico{
 
-	boolean abonada;
-	String tipoDeSuelo;
+	private boolean abonada;
+	private String tipoDeSuelo;
 	
 	public Sustrato()
 	{

@@ -2,7 +2,7 @@ package model;
 
 public class Lombriz extends ProductoOrganico{
 
-	String especie;
+	private String especie;
 	
 	public Lombriz()
 	{
