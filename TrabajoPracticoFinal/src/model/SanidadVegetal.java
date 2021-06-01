@@ -2,8 +2,8 @@ package model;
 
 public class SanidadVegetal extends Producto{
 
-	String funcion;
-	int centimetroCubico;
+	private String funcion;
+	private int centimetroCubico;
 	
 	public SanidadVegetal()
 	{

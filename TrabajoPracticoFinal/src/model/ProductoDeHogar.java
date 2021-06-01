@@ -2,7 +2,7 @@ package model;
 
 public abstract class ProductoDeHogar extends Producto{
 
-	String material;
+	private String material;
 	
 	public ProductoDeHogar(){
 		super();
