@@ -44,7 +44,7 @@ public abstract class Maceta extends ProductoDeHogar{
 
 	@Override
 	public String toString() {
-		return super.toString()+", forma=" + forma + ", volumen=" + volumen;
+		return super.toString()+", forma:" + forma + ", volumen:" + volumen;
 	}
 	
 	
