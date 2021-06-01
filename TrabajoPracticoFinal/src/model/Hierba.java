@@ -114,16 +114,30 @@ public class Hierba extends PlantaTerrestre{
 		return comestible;
 	}
 
-	public void setComestible(boolean comestible) {
-		this.comestible = comestible;
+	public String setComestible(boolean comestible) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(comestible);
+		if(mensaje==null)
+		{
+			this.comestible = comestible;
+		}
+		
+	   return mensaje;
 	}
 
 	public boolean isMedicinal() {
 		return medicinal;
 	}
 
-	public void setMedicinal(boolean medicinal) {
-		this.medicinal = medicinal;
+	public String setMedicinal(boolean medicinal) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(medicinal);
+		if(mensaje==null)
+		{
+			this.medicinal = medicinal;
+		}
+		
+	   return mensaje;
 	}
 
 	@Override

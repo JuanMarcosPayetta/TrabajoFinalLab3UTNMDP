@@ -83,7 +83,7 @@ public abstract class Planta extends Producto{
 	public static void validarDatosNumericos(Integer numero) throws DatoNumeroException, NullPointerException 
 	{
 		if (numero==null) {
-			throw new NullPointerException("Error D:");
+			throw new NullPointerException("Error");
 		}
 		else if (numero<=0) {
 			throw new DatoNumeroException("Ingrese un numero superior a 0");
@@ -397,8 +397,14 @@ public abstract class Planta extends Producto{
 		return flor;
 	}
 
-	public void setFlor(boolean flor) {
-		this.flor = flor;
+	public String setFlor(boolean flor) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(flor);
+		if(mensaje==null)
+		{
+			this.flor = flor;
+		}
+	   return mensaje;
 	}
 
 	public String getNivelExposicionSolar() {
@@ -433,8 +439,14 @@ public abstract class Planta extends Producto{
 		return aromatica;
 	}
 
-	public void setAromatica(boolean aromatica) {
-		this.aromatica = aromatica;
+	public String setAromatica(boolean aromatica) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(aromatica);
+		if(mensaje==null)
+		{
+			this.aromatica = aromatica;
+		}
+	   return mensaje;
 	}
 	
 	public void setCantidadFertilizante(int cantidadFertilizante) {

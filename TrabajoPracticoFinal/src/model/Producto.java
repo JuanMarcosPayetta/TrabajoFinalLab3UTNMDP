@@ -92,6 +92,7 @@ public abstract class Producto {
 		return codigoGenerado;
 	}
 
+	
 	/*
 	 * Busca si un codigo existe o no actualmente en algun producto
 	 */
@@ -130,6 +131,7 @@ public abstract class Producto {
 			return mensaje;
 	}
 	
+	
 	public static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException
 	{
 		if(cadena==null)
@@ -159,13 +161,20 @@ public abstract class Producto {
 		} catch (DatoNumeroException e) {
 			mensaje=e.getMessage();
 		}
+	    catch (NullPointerException e) {
+		    mensaje=e.getMessage();
+	    }
 		return mensaje;
 	}
 	
 	
-	public static <T extends Number> void validarValorNumerico(T valor) throws DatoNumeroException
+	public static <T extends Number> void validarValorNumerico(T valor) throws DatoNumeroException, NullPointerException
 	{
-	    if(valor instanceof Integer)
+		if(valor==null)
+		{
+			throw new NullPointerException("Error, ingrese un dato numerico valido");
+		}
+		else if(valor instanceof Integer)
 	    {
 	       if(valor.intValue()<0)
 	       {
@@ -180,6 +189,39 @@ public abstract class Producto {
 		    }
 	    }
 	}
+	
+	
+	/*
+	 * Valida si es un boolean, llamada main
+	 */
+	public static String validarBooleanLlamada(Boolean tipo)
+	{
+		String mensaje=null;
+		try {
+			validarBoolean(tipo);
+		} catch (InputMismatchException e) {
+			mensaje=e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+
+	public static void validarBoolean(Boolean tipo)throws NullPointerException, InputMismatchException
+	{
+		if(tipo==null)
+		{
+			throw new NullPointerException("Error, ingrese true or false");
+		}
+		else if(!Boolean.FALSE && !Boolean.TRUE)
+		{
+			throw new InputMismatchException("Ingrese un dato valido, true o false 1");
+		}
+
+	}
+	
+	
 	
 	
 	

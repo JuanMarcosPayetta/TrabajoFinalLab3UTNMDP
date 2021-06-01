@@ -108,9 +108,16 @@ public class Arbusto extends PlantaTerrestre{
 		return trepador;
 	}
 
-	public void setTrepador(boolean trepador) {
-
-		this.trepador=trepador;
+	public String setTrepador(boolean trepador) {
+        
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(trepador);
+		if(mensaje==null)
+		{
+			this.trepador=trepador;
+		}
+		
+	   return mensaje;
 	}
 
 	@Override
@@ -200,7 +207,6 @@ public class Arbusto extends PlantaTerrestre{
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Arbusto");
-		
 	}
 
 	

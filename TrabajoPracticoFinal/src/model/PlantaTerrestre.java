@@ -93,24 +93,43 @@ public abstract class PlantaTerrestre extends Planta{
 		return fruto;
 	}
 
-	public void setFruto(boolean fruto) {
-		this.fruto = fruto;
+	public String setFruto(boolean fruto) {
+		
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(fruto);
+		if(mensaje==null)
+		{
+			this.fruto = fruto;
+		}
+	   return mensaje;
 	}
 
 	public boolean isSemilla() {
 		return semilla;
 	}
 
-	public void setSemilla(boolean semilla) {
-		this.semilla = semilla;
+	public String setSemilla(boolean semilla) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(semilla);
+		if(mensaje==null)
+		{
+		   this.semilla=semilla;
+		}
+	   return mensaje;
 	}
 
 	public boolean isInterior() {
 		return interior;
 	}
 
-	public void setInterior(boolean interior) {
-		this.interior = interior;
+	public String setInterior(boolean interior) {
+		String mensaje=null;
+		mensaje=validarBooleanLlamada(interior);
+		if(mensaje==null)
+		{
+		   this.interior=interior;
+		}
+	   return mensaje;
 	}
 
 	public String getEpocaDePoda() {
