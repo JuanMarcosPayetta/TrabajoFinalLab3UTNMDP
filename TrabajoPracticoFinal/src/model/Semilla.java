@@ -75,8 +75,15 @@ public class Semilla extends ProductoOrganico{
 		return destino;
 	}
 
-	public void setDestino(String destino) {
-		this.destino = destino;
+	public String setDestino(String destino) {
+		String mensaje=validarDestinoSemillaLlamada(destino); //si devuelve "null" el dato es correcto
+		
+		if(mensaje==null)
+		{
+			this.destino = destino;
+		}
+		
+		return mensaje;	
 	}
 
 	@Override

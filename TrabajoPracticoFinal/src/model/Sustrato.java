@@ -82,23 +82,39 @@ public class Sustrato extends ProductoOrganico{
 		return abonada;
 	}
 
-	public void setAbonada(boolean abonada) {
-		this.abonada = abonada;
+	public String setAbonada(boolean abonada) {
+		
+		String mensaje=validarBooleanLlamada(abonada); //si devuelve "null" el dato es correcto
+			
+		if(mensaje==null)
+		{
+			this.abonada = abonada;
+		}
+		return mensaje;	
 	}
 
 	public String getTipoDeSuelo() {
 		return tipoDeSuelo;
 	}
 
-	public void setTipoDeSuelo(String tipoDeSuelo) {
-		this.tipoDeSuelo = tipoDeSuelo;
+	public String setTipoDeSuelo(String tipoDeSuelo) {
+		
+		String mensaje=validarTipoSueloLlamada(tipoDeSuelo); //si devuelve "null" el dato es correcto
+			
+		if(mensaje==null)
+		{
+			this.tipoDeSuelo = tipoDeSuelo;
+		}
+		
+		return mensaje;	
+		
 	}
 	
 	
 
 	@Override
 	public String toString() {
-		return super.toString()+", abonada=" + abonada + ", tipoDeSuelo=" + tipoDeSuelo;
+		return super.toString()+", abonada: " + abonada + ", tipoDeSuelo: " + tipoDeSuelo;
 	}
 	
 	

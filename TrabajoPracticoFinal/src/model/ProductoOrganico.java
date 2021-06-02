@@ -26,8 +26,15 @@ public abstract class ProductoOrganico extends Producto{
 		return gramos;
 	}
 
-	public void setGramos(int gramos) {
-		this.gramos = gramos;
+	public String setGramos(int gramos) {
+		
+	  String mensaje=validarValorNumericoLlamada(gramos); //si devuelve "null" el dato es correcto
+			
+		if(mensaje==null)
+		{
+			this.gramos = gramos;
+		}
+		return mensaje;	
 	}
 
 	@Override
