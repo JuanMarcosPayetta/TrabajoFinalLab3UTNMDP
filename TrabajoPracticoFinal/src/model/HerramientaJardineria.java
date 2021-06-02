@@ -1,5 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
 
 public abstract class HerramientaJardineria extends Producto {
 
@@ -24,7 +28,52 @@ public abstract class HerramientaJardineria extends Producto {
 		this.funcion = funcion;
 	}
 	
+	/*
+	 * valida la funcion de la herramienta, llamada main
+	 */
+	public static String validarFuncionHerramientaLlamada(String funcion)
+	{
+		String mensaje=null; //si devuelve null es correcto
+		try {
+			validarFuncionHerramienta(funcion);
+		} catch (InputMismatchException e) {
+			mensaje=e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
 	
+	private static void validarFuncionHerramienta(String funcion) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	{
+		ArrayList<String> funciones=new ArrayList<String>();
+		funciones.add("corte");
+		funciones.add("desmalezado");
+		funciones.add("labrado");
+		funciones.add("limpieza");
+		funciones.add("riego");
+		funciones.add("transporte");
+		
+		if(funcion==null)
+		{
+			throw new NullPointerException("Error, ingrese una funcion valida (corte, desmalezado, labrado, limpieza, riego, transporte)");
+		}
+		else if(funcion.isBlank())
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!funcion.matches("[a-zA-Z]*\\D{5}"))
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 5 letras");
+		}
+		else if(!funciones.contains(funcion))
+		{
+			throw new InputMismatchException("Error, ingrese una funcion valida (corte, desmalezado, labrado, limpieza, riego, transporte)");
+		}
+	
+	}
 	
 	
 	public String getMaterial() {
@@ -45,8 +94,14 @@ public abstract class HerramientaJardineria extends Producto {
 		return funcion;
 	}
 	
-	public void setFuncion(String funcion) {
-		this.funcion = funcion;
+	public String setFuncion(String funcion) {
+		String mensaje=null;
+		mensaje=validarFuncionHerramientaLlamada(funcion);
+		if(mensaje==null)
+		{
+			this.funcion = funcion;
+		}
+		return mensaje;
 	}
 	
 	
