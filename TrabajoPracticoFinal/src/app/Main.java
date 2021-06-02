@@ -10,7 +10,7 @@ public class Main {
 		System.out.println("hola mundo soy pablo probando el git hub");
 		
 		
-		
+		System.out.println("Hola esta es la magia profesional");
 	}
 
 }

@@ -1,5 +1,6 @@
 package model;
 
+
 public abstract class HerramientaJardineria extends Producto {
 
 	private String material;
@@ -23,15 +24,27 @@ public abstract class HerramientaJardineria extends Producto {
 		this.funcion = funcion;
 	}
 	
+	
+	
+	
 	public String getMaterial() {
 		return material;
 	}
-	public void setMaterial(String material) {
-		this.material = material;
+	
+	public String setMaterial(String material) {
+		String mensaje=null;
+		mensaje=validarCadenaCaracteresLlamada(material);
+		if(mensaje==null)
+		{
+			this.material = material;
+		}
+		return mensaje;
 	}
+	
 	public String getFuncion() {
 		return funcion;
 	}
+	
 	public void setFuncion(String funcion) {
 		this.funcion = funcion;
 	}
@@ -39,7 +52,7 @@ public abstract class HerramientaJardineria extends Producto {
 	
 	@Override
 	public String toString() {
-		return super.toString() + ", material:" + material + ", funcion:" + funcion;
+		return super.toString() + ", material: " + material + ", funcion: " + funcion;
 	}
 	
 	
