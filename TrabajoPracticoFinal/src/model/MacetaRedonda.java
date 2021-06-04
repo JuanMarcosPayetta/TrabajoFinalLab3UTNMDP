@@ -1,5 +1,9 @@
 package model;
 
+import java.util.InputMismatchException;
+
+import excepciones.DatoNumeroException;
+
 public class MacetaRedonda extends Maceta{
 
 	private double diametroBoca;
@@ -26,20 +30,33 @@ public class MacetaRedonda extends Maceta{
 		this.base = base;
 	}
 
+	
 	public double getDiametroBoca() {
 		return diametroBoca;
 	}
 
-	public void setDiametroBoca(double diametroBoca) {
-		this.diametroBoca = diametroBoca;
+	public String setDiametroBoca(double diametroBoca) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(diametroBoca);
+		
+		if(mensaje==null) {
+			this.diametroBoca = diametroBoca;
+		}
+		return mensaje;
 	}
 
 	public double getBase() {
 		return base;
 	}
 
-	public void setBase(double base) {
-		this.base = base;
+	public String setBase(double base) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(base);
+		
+		if(mensaje==null) {
+			this.base = base;
+		}
+		return mensaje;
 	}
 
 	@Override
