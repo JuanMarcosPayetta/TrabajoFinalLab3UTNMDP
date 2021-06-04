@@ -1,5 +1,8 @@
 package model;
 
+import java.util.InputMismatchException;
+
+import excepciones.DatoNumeroException;
 
 public class MacetaRedonda extends Maceta{
 
@@ -14,15 +17,15 @@ public class MacetaRedonda extends Maceta{
 	}
 
 	public MacetaRedonda(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
-			String descripcion, String material, String forma, double diametroBoca, double base) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma);
+			String descripcion, String material, String forma, double volumen, double diametroBoca, double base) {
+		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma, volumen);
 		this.diametroBoca = diametroBoca;
 		this.base = base;
 	}
 
 	public MacetaRedonda(String nombre, String marca, double precio, int stock, String descripcion, String material,
-			String forma, double diametroBoca, double base) {
-		super(nombre, marca, precio, stock, descripcion, material, forma);
+			String forma, double volumen, double diametroBoca, double base) {
+		super(nombre, marca, precio, stock, descripcion, material, forma, volumen);
 		this.diametroBoca = diametroBoca;
 		this.base = base;
 	}

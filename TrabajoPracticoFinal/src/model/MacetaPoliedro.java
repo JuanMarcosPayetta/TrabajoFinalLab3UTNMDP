@@ -1,32 +1,30 @@
 package model;
 
-
-public class MacetaPoliedro extends Maceta{
+public class MacetaPoliedro extends Maceta {
 
 	private double alto;
 	private double ancho;
 	private double largo;
-	
-	public MacetaPoliedro()
-	{
+
+	public MacetaPoliedro() {
 		super();
-		this.alto=0;
-		this.ancho=0;
-		this.largo=0;
+		this.alto = 0;
+		this.ancho = 0;
+		this.largo = 0;
 	}
 
 	public MacetaPoliedro(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
-			String descripcion, String material, String forma, double alto, double ancho,
+			String descripcion, String material, String forma, double volumen, double alto, double ancho,
 			double largo) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma);
+		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma, volumen);
 		this.alto = alto;
 		this.ancho = ancho;
 		this.largo = largo;
 	}
 
 	public MacetaPoliedro(String nombre, String marca, double precio, int stock, String descripcion, String material,
-			String forma, double alto, double ancho, double largo) {
-		super(nombre, marca, precio, stock, descripcion, material, forma);
+			String forma, double volumen, double alto, double ancho, double largo) {
+		super(nombre, marca, precio, stock, descripcion, material, forma, volumen);
 		this.alto = alto;
 		this.ancho = ancho;
 		this.largo = largo;
@@ -37,13 +35,11 @@ public class MacetaPoliedro extends Maceta{
 	}
 
 	public String setAlto(double alto) {
-		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(alto);
-		if(mensaje==null)
-		{
-		  this.alto = alto;
+		String mensaje = validarValorNumericoLlamada(alto);
+		if (mensaje == null) {
+
+			this.alto = alto;
 		}
-		
 		return mensaje;
 	}
 
@@ -52,13 +48,11 @@ public class MacetaPoliedro extends Maceta{
 	}
 
 	public String setAncho(double ancho) {
-		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(ancho);
-		if(mensaje==null)
-		{
+		String mensaje = validarValorNumericoLlamada(ancho);
+
+		if (mensaje == null) {
 			this.ancho = ancho;
 		}
-		
 		return mensaje;
 	}
 
@@ -66,28 +60,24 @@ public class MacetaPoliedro extends Maceta{
 		return largo;
 	}
 
-	public String setLargo(double largo) {
-		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(largo);
-		if(mensaje==null)
-		{
+	public String setLargo(double largo) { //
+		String mensaje = validarValorNumericoLlamada(largo);
+
+		if (mensaje == null) {
+
 			this.largo = largo;
 		}
-		
-		return mensaje;
+		return mensaje; 
 	}
 
 	@Override
 	public String toString() {
-		return super.toString()+", alto: " + alto + ", ancho: " + ancho + ", largo: " + largo;
+		return super.toString() + ", alto=" + alto + ", ancho=" + ancho + ", largo=" + largo;
 	}
-	
 
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Maceta poliedro");
 	}
 
-	
-	
 }

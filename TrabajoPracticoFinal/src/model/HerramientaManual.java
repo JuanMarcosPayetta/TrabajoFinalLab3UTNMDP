@@ -33,11 +33,11 @@ public class HerramientaManual extends HerramientaJardineria{
 	/*
 	 * Valida el tamaño de la herramienta manual
 	 */
-	public static String validarTamanioHManualLlamada(String tamanio)
+	public static String validarTamañoHManualLlamada(String tamanio)
 	{
 		String mensaje=null; //si devuelve null es correcto
 		try {
-			validarTamanioHManual(tamanio);
+			validarTamañoHManual(tamanio);
 		} catch (InputMismatchException e) {
 			mensaje=e.getMessage();
 		} catch (NullPointerException e) {
@@ -49,7 +49,7 @@ public class HerramientaManual extends HerramientaJardineria{
 		return mensaje;
 	}
 	
-	private static void validarTamanioHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTamañoHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>tamanioValido= new ArrayList<String>();
 		tamanioValido.add("grande");
@@ -81,7 +81,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	
 	public String setTamanio(String tamanio) {
 		String mensaje=null;
-		mensaje=validarTamanioHManualLlamada(tamanio);
+		mensaje=validarTamañoHManualLlamada(tamanio);
 		if(mensaje==null)
 		{
 			this.tamanio = tamanio;
