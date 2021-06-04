@@ -1,6 +1,5 @@
 package productos;
 
-import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 

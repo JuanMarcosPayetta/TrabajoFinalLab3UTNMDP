@@ -3,16 +3,9 @@ package app;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 
 		
-		
-		System.out.println("hola mundo soy pablo probando el git hub");
-		
-		
-		System.out.println("Hola esta es la magia profesional");
-		
-		System.out.println("Prueba busqueda error");
 	}
 	
 
