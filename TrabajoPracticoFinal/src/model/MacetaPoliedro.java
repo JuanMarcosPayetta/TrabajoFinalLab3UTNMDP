@@ -60,14 +60,14 @@ public class MacetaPoliedro extends Maceta {
 		return largo;
 	}
 
-	public String setLargo(double largo) {
+	public String setLargo(double largo) { //
 		String mensaje = validarValorNumericoLlamada(largo);
 
 		if (mensaje == null) {
 
 			this.largo = largo;
 		}
-		return mensaje;
+		return mensaje; 
 	}
 
 	@Override
