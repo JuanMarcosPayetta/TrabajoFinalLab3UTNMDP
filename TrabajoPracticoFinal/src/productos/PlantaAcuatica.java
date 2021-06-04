@@ -44,6 +44,8 @@ public class PlantaAcuatica extends Planta{
 		this.temperaturaAgua = temperaturaAgua;
 		this.durezaAgua = durezaAgua;
 		this.tipo = tipo;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
 	}
 	
 	
@@ -277,8 +279,7 @@ public class PlantaAcuatica extends Planta{
 
 	@Override
 	public void establecerCantidadFertilizante() {
-		// TODO Auto-generated method stub
-		
+		this.setCantidadFertilizante(0);
 	}
 
 	@Override

@@ -37,9 +37,10 @@ public class Arbusto extends PlantaTerrestre{
 			boolean trepador) {
 		super(nombre, marca, precio, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura,
 				flor, nivelExposicionSolar, tipoRaiz, aromatica, fruto, semilla, interior, especie);
-		
 		this.tipoDeHoja=tipoDeHoja;
 		this.trepador = trepador;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
 	}
 
 

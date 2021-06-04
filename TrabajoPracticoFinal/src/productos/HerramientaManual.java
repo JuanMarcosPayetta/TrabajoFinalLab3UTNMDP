@@ -22,6 +22,7 @@ public class HerramientaManual extends HerramientaJardineria{
 		super(nombre, marca, precio, stock, descripcion, material, funcion);
 		this.tamanio = tamanio;
 		this.reforzada = reforzada;
+		establecerClasificacion();
 	}
 	public HerramientaManual(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
 			String descripcion, String material, String funcion, String tamanio, boolean reforzada) {

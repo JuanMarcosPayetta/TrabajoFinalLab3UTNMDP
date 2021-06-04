@@ -29,6 +29,7 @@ public class SanidadVegetal extends Producto{
 		super(nombre, marca, precio, stock, descripcion);
 		this.funcion = funcion;
 		this.centimetroCubico = centimetroCubico;
+		establecerClasificacion();
 	}
 
 	/*

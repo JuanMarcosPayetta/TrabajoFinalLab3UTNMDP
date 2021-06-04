@@ -18,6 +18,7 @@ public abstract class ProductoDeHogar extends Producto {
 	public ProductoDeHogar(String nombre, String marca, double precio, int stock, String descripcion, String material) {
 		super(nombre, marca, precio, stock, descripcion);
 		this.material = material;
+		establecerClasificacion();
 	}
 
 	public String getMaterial() {

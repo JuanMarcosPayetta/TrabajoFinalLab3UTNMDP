@@ -41,6 +41,8 @@ public class Hierba extends PlantaTerrestre{
 		this.tipoDeTallo = tipoDeTallo;
 		this.comestible = comestible;
 		this.medicinal = medicinal;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
 	}
 
 	

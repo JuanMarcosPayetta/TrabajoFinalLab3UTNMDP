@@ -28,6 +28,7 @@ public class MacetaPoliedro extends Maceta {
 		this.alto = alto;
 		this.ancho = ancho;
 		this.largo = largo;
+		establecerClasificacion();
 	}
 
 	public double getAlto() {

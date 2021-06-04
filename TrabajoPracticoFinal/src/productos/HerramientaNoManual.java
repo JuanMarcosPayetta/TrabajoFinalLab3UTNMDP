@@ -24,6 +24,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.potencia = potencia;
 		this.tipoMotor = tipoMotor;
 		this.consumo = consumo;
+		establecerClasificacion();
 	}
 	
 	public HerramientaNoManual(String codigo, String nombre, String marca, String clasificacion, double precio,

@@ -25,6 +25,7 @@ public class Semilla extends ProductoOrganico{
 			String destino) {
 		super(nombre, marca, precio, stock, descripcion, gramos);
 		this.destino = destino;
+		establecerClasificacion();
 	}
 	
 	/*

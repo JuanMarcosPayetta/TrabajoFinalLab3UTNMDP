@@ -29,6 +29,7 @@ public class Sustrato extends ProductoOrganico{
 		super(nombre, marca, precio, stock, descripcion, gramos);
 		this.abonada = abonada;
 		this.tipoDeSuelo = tipoDeSuelo;
+		establecerClasificacion();
 	}
 
 	

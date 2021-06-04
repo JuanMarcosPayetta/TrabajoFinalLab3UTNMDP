@@ -23,6 +23,7 @@ public class Decoracion extends ProductoDeHogar {
 		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material);
 		this.exterior = exterior;
 		this.colorPrimario = colorPrimario;
+		establecerClasificacion();
 	}
 
 	public boolean isExterior() {

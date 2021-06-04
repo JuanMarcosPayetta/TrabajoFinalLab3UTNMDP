@@ -36,6 +36,7 @@ public class MuebleJardin extends ProductoDeHogar {
 		this.alto = alto;
 		this.largo = largo;
 		this.ancho = ancho;
+		establecerClasificacion();
 	}
 
 	public String getTipo() {

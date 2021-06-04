@@ -19,6 +19,7 @@ public abstract class ProductoOrganico extends Producto{
 	public ProductoOrganico(String nombre, String marca, double precio, int stock, String descripcion, int gramos) {
 		super(nombre, marca, precio, stock, descripcion);
 		this.gramos = gramos;
+		establecerClasificacion();
 	}
 
 	

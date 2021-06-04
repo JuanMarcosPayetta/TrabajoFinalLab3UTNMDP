@@ -24,6 +24,7 @@ public class MacetaRedonda extends Maceta{
 		super(nombre, marca, precio, stock, descripcion, material, forma);
 		this.diametroBoca = diametroBoca;
 		this.base = base;
+		establecerClasificacion();
 	}
 
 	
