@@ -1,5 +1,4 @@
-package model;
-
+package productos;
 
 public class MacetaRedonda extends Maceta{
 

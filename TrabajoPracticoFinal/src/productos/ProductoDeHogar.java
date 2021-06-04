@@ -1,4 +1,4 @@
-package model;
+package productos;
 
 public abstract class ProductoDeHogar extends Producto {
 

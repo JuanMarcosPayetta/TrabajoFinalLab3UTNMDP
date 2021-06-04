@@ -1,4 +1,4 @@
-package model;
+package productos;
 
 public abstract class ProductoOrganico extends Producto{
 

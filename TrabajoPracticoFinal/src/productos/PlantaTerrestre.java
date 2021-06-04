@@ -1,4 +1,4 @@
-package model;
+package productos;
 
 import java.util.InputMismatchException;
 
