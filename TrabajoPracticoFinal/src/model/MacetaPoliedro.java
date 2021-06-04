@@ -14,17 +14,17 @@ public class MacetaPoliedro extends Maceta {
 	}
 
 	public MacetaPoliedro(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
-			String descripcion, String material, String forma, double volumen, double alto, double ancho,
+			String descripcion, String material, String forma, double alto, double ancho,
 			double largo) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma, volumen);
+		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma);
 		this.alto = alto;
 		this.ancho = ancho;
 		this.largo = largo;
 	}
 
 	public MacetaPoliedro(String nombre, String marca, double precio, int stock, String descripcion, String material,
-			String forma, double volumen, double alto, double ancho, double largo) {
-		super(nombre, marca, precio, stock, descripcion, material, forma, volumen);
+			String forma, double alto, double ancho, double largo) {
+		super(nombre, marca, precio, stock, descripcion, material, forma);
 		this.alto = alto;
 		this.ancho = ancho;
 		this.largo = largo;
@@ -60,7 +60,7 @@ public class MacetaPoliedro extends Maceta {
 		return largo;
 	}
 
-	public String setLargo(double largo) { //
+	public String setLargo(double largo) { 
 		String mensaje = validarValorNumericoLlamada(largo);
 
 		if (mensaje == null) {
