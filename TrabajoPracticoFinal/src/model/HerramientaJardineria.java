@@ -68,7 +68,7 @@ public abstract class HerramientaJardineria extends Producto {
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 5 letras");
 		}
-		else if(!funciones.contains(funcion))
+		else if(!funciones.contains(funcion.toLowerCase()))
 		{
 			throw new InputMismatchException("Error, ingrese una funcion valida (corte, desmalezado, labrado, limpieza, riego, transporte)");
 		}

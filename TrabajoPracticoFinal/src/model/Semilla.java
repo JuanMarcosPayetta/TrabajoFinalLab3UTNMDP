@@ -64,7 +64,7 @@ public class Semilla extends ProductoOrganico{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 6 letras");
 		}
-		else if(!destinosValidos.contains(destino))
+		else if(!destinosValidos.contains(destino.toLowerCase()))
 		{
 			throw new InputMismatchException("Ingrese un destino valido (huerta, floral, cesped)");
 		}

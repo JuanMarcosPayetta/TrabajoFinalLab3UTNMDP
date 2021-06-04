@@ -96,7 +96,7 @@ public class Arbol extends PlantaTerrestre{
 		tipos.add("placoide");
 		tipos.add("escasa");
 		
-		if(tipos.contains(tipo))
+		if(tipos.contains(tipo.toLowerCase()))
 		{
 			existe=true;
 		}

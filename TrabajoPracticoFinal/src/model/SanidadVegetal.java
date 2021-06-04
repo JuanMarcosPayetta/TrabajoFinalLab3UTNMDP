@@ -69,7 +69,7 @@ public class SanidadVegetal extends Producto{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 9 letras");
 		}
-		else if(!funciones.contains(funcion))
+		else if(!funciones.contains(funcion.toLowerCase()))
 		{
 			throw new InputMismatchException("Error, ingrese una funcion valida(insecticida, funguicida, herbicida)");
 		}

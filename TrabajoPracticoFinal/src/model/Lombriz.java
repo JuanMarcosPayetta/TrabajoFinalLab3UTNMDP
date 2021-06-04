@@ -66,7 +66,7 @@ public class Lombriz extends ProductoOrganico{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 4 letras");
 		}
-		else if(!especiesLombriz.contains(especie))
+		else if(!especiesLombriz.contains(especie.toLowerCase()))
 		{
 			throw new InputMismatchException("Error, ingrese una especie de lombriz valida (rayada, dendra, roja, comun)");
 		}

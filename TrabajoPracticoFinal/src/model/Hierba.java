@@ -88,7 +88,7 @@ public class Hierba extends PlantaTerrestre{
 		tipos.add("voluble");
 		tipos.add("segmentado");
 		
-		if(tipos.contains(tipo)) {
+		if(tipos.contains(tipo.toLowerCase())) {
 			existe=true;
 		}
 		return existe;

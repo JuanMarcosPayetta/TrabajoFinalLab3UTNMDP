@@ -70,7 +70,7 @@ public class Sustrato extends ProductoOrganico{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 5 letras");
 		}
-		else if(!suelosValidos.contains(suelo))
+		else if(!suelosValidos.contains(suelo.toLowerCase()))
 		{
 			throw new InputMismatchException("Error, ingrese un tipo de suelo valido (arenoso, calizo, humifero, arcilloso, pedregoso, mixto)");
 		}

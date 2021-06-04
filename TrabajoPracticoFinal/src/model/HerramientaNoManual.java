@@ -45,7 +45,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.tipoMotor = tipoMotor;
 	}
 
-	public String getConsumo() {
+	public String getConsumo( ) {
 		return consumo;
 	}
 
