@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
+
 public class MuebleJardin extends ProductoDeHogar{
 
      private String tipo;
@@ -38,9 +43,6 @@ public class MuebleJardin extends ProductoDeHogar{
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 	public double getAlto() {
 		return alto;
@@ -71,7 +73,55 @@ public class MuebleJardin extends ProductoDeHogar{
 		return super.toString()+", tipo=" + tipo + ", alto=" + alto + ", largo=" + largo + ", ancho=" + ancho;
 	}
      
-     
-     
+	public static String validarTipoMuebleLlamada(String mueble)
+	{
+		String mensaje=null;
+		try{
+			validarTipoMueble(mueble);
+		} 
+		catch(NullPointerException e) {
+			mensaje=e.getMessage();
+		}
+		catch(CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		catch(InputMismatchException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarTipoMueble(String mueble) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	{
+		ArrayList<String> tiposMueble=new ArrayList<String>();
+		tiposMueble.add("mesa"); 
+		tiposMueble.add("silla");
+		tiposMueble.add("reposera");
+		tiposMueble.add("sillon");
+		tiposMueble.add("hamaca");
+		
+		if(mueble==null) {
+			throw new NullPointerException("Error, ingrese un dato valido");
+		}
+		else if(mueble.isBlank()) {
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!mueble.matches("[a-zA-Z]*\\D{4}")) {
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+"4 letras");
+		}
+		else if(!tiposMueble.contains(mueble.toLowerCase())) {
+			throw new InputMismatchException("Ingrese un tipo de mueble valido (mesa, silla, reposera, sillón, hamaca)");
+		}
+	}
+	
+	public String setTipo(String tipoMueble) {
+		String mensaje=null;
+		mensaje=validarTipoMuebleLlamada(tipoMueble);
+		
+		if(mensaje==null) {
+			this.tipo = tipoMueble;
+		}
+		return mensaje;
+	}
      
 }
