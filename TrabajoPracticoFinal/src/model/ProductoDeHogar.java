@@ -1,12 +1,12 @@
 package model;
 
-public abstract class ProductoDeHogar extends Producto{
+public abstract class ProductoDeHogar extends Producto {
 
 	private String material;
-	
-	public ProductoDeHogar(){
+
+	public ProductoDeHogar() {
 		super();
-		this.material=null;
+		this.material = null;
 	}
 
 	public ProductoDeHogar(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
@@ -24,14 +24,20 @@ public abstract class ProductoDeHogar extends Producto{
 		return material;
 	}
 
-	public void setMaterial(String material) {
-		this.material = material;
+	public String setMaterial(String material) {
+
+		String mensaje = validarCadenaCaracteresLlamada(material); // si devuelve null es correcto
+
+		if (mensaje == null) {
+
+			this.material = material;
+		}
+		return mensaje;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString()+", material:" + material;
+		return super.toString() + ", material:" + material;
 	}
-	
-	
+
 }
