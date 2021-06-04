@@ -51,7 +51,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	
 	private static void validarTamañoHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
-		ArrayList<String>tamanioValido= new ArrayList();
+		ArrayList<String>tamanioValido= new ArrayList<String>();
 		tamanioValido.add("grande");
 		tamanioValido.add("mediano");
 		tamanioValido.add("pequeño");

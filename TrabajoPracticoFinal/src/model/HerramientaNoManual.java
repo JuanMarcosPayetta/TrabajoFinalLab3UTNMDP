@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
+
 public class HerramientaNoManual extends HerramientaJardineria {
 	
 	private int potencia;
@@ -29,6 +34,51 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.consumo = consumo;
 	}
 
+	/*
+	 * valida el tipo de motor, electirco o a combustible
+	 */
+	public static String validarMotorLlamada(String motor)
+	{
+		String mensaje=null;
+		try {
+			validarMotor(motor);
+		} catch (InputMismatchException e) {
+			mensaje=e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarMotor(String motor) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	{
+		ArrayList<String>motorValido= new ArrayList<String>();
+		motorValido.add("electrico");
+		motorValido.add("combustible");
+	
+		
+		if(motor==null)
+		{
+			throw new NullPointerException("Error, ingrese un dato valido (electrico, combustible)");
+		}
+		else if(motor.isBlank())
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!motor.matches("[a-zA-Z]*\\D{9}"))
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 9 letras");
+		}
+		else if(!motorValido.contains(motor.toLowerCase()))
+		{
+			throw new InputMismatchException("Error, ingrese un dato valido (electrico, combustible)");
+		}
+	}
+	
+	
+	
 	public int getPotencia() {
 		return potencia;
 	}
@@ -41,8 +91,14 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return tipoMotor;
 	}
 
-	public void setTipoMotor(String tipoMotor) {
-		this.tipoMotor = tipoMotor;
+	public String setTipoMotor(String tipoMotor) {
+		String mensaje=null;
+		mensaje=validarMotorLlamada(tipoMotor);
+		if(mensaje==null)
+		{
+			this.tipoMotor = tipoMotor;
+		}
+		return mensaje;
 	}
 
 	public String getConsumo( ) {
