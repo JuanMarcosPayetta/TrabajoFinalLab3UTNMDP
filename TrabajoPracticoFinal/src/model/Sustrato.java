@@ -117,7 +117,11 @@ public class Sustrato extends ProductoOrganico{
 		return super.toString()+", abonada: " + abonada + ", tipoDeSuelo: " + tipoDeSuelo;
 	}
 	
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Sustrato");
+	}
+
 	
 	
 }

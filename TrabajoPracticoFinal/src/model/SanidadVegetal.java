@@ -113,5 +113,10 @@ public class SanidadVegetal extends Producto{
 		return super.toString()+", funcion: " + funcion + ", centimetroCubico: " + centimetroCubico;
 	}
 	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Sanidad vegetal");
+	}
+
 	
 }

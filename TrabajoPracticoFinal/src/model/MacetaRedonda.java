@@ -1,9 +1,15 @@
 package model;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
+=======
+import java.util.InputMismatchException;
+
+import excepciones.DatoNumeroException;
+>>>>>>> 32cabc9d77372524df213a88da6f5cac5d1542af
 
 public class MacetaRedonda extends Maceta{
 
@@ -36,16 +42,28 @@ public class MacetaRedonda extends Maceta{
 		return diametroBoca;
 	}
 
-	public void setDiametroBoca(double diametroBoca) {
-		this.diametroBoca = diametroBoca;
+	public String setDiametroBoca(double diametroBoca) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(diametroBoca);
+		
+		if(mensaje==null) {
+			this.diametroBoca = diametroBoca;
+		}
+		return mensaje;
 	}
 
 	public double getBase() {
 		return base;
 	}
 
-	public void setBase(double base) {
-		this.base = base;
+	public String setBase(double base) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(base);
+		
+		if(mensaje==null) {
+			this.base = base;
+		}
+		return mensaje;
 	}
 
 	@Override
@@ -53,7 +71,11 @@ public class MacetaRedonda extends Maceta{
 		return super.toString()+", diametroBoca=" + diametroBoca + ", base=" + base;
 	}
 
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Maceta redonda");
+	}
+
 	
 	
 }

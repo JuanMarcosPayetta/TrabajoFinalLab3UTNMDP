@@ -106,7 +106,7 @@ public abstract class PlantaAcuatica extends Planta{
     }
 	
 	
-    private static void validarTempAgua(Integer temperatura) throws DatoNumeroException, InputMismatchException, NullPointerException, NumberFormatException
+    private static void validarTempAgua(Integer temperatura) throws DatoNumeroException, NullPointerException, NumberFormatException
     {
     	if(temperatura==null) {
     		throw new NullPointerException("Error");

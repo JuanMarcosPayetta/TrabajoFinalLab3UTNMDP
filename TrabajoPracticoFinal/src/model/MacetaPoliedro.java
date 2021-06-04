@@ -65,12 +65,20 @@ public class MacetaPoliedro extends Maceta{
 		return super.toString()+", alto: " + alto + ", ancho: " + ancho + ", largo: " + largo;
 	}
 	
+<<<<<<< HEAD
 
 	
 
 
 	
 	 
+=======
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Maceta poliedro");
+	}
+
+>>>>>>> 32cabc9d77372524df213a88da6f5cac5d1542af
 	
 	
 }

@@ -91,6 +91,10 @@ public class Semilla extends ProductoOrganico{
 		return super.toString()+ ", destino: " + destino;
 	}
 	
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Semilla");
+	}
+
 	
 }

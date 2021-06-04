@@ -170,7 +170,11 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return super.toString() + ", potencia: " + potencia + ", tipoMotor: " + tipoMotor + ", consumo: " + consumo;
 	}
 
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Herramienta no manual");
+	}
+
 	
 	
 	
