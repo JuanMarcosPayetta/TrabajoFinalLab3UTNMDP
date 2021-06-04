@@ -11,6 +11,9 @@ public class Main {
 		
 		
 		System.out.println("Hola esta es la magia profesional");
+		
+		System.out.println("Prueba busqueda error");
 	}
+	
 
 }
