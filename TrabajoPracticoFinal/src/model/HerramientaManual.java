@@ -109,9 +109,11 @@ public class HerramientaManual extends HerramientaJardineria{
 		return super.toString()+", tamanio: " + tamanio + ", reforzada: " + reforzada;
 	}
 	
-	
-	
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Herramienta manual");
+	}
+
 	
 	
 	

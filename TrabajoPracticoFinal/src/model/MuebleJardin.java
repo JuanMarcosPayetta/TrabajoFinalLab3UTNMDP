@@ -135,5 +135,11 @@ public class MuebleJardin extends ProductoDeHogar {
 		}
 		return mensaje;
 	}
+	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Mueble de jardin");
+	}
+
 
 }

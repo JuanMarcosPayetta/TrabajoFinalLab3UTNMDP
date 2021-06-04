@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import excepciones.CadenaInvalidaException;
+
 public abstract class Maceta extends ProductoDeHogar{
 
 	private String forma;
@@ -47,7 +52,7 @@ public abstract class Maceta extends ProductoDeHogar{
 		return super.toString()+", forma:" + forma + ", volumen:" + volumen;
 	}
 	
-	
+
 	
 	
 }

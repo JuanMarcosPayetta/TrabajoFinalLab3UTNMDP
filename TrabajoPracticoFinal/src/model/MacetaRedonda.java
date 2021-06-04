@@ -47,7 +47,11 @@ public class MacetaRedonda extends Maceta{
 		return super.toString()+", diametroBoca=" + diametroBoca + ", base=" + base;
 	}
 
-	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Maceta redonda");
+	}
+
 	
 	
 }

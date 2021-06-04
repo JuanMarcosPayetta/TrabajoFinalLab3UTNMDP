@@ -92,5 +92,10 @@ public class Lombriz extends ProductoOrganico{
 		return super.toString()+", especie: " + especie;
 	}
 	
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Lombriz");
+	}
+
 	
 }

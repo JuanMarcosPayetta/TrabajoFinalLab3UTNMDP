@@ -61,4 +61,9 @@ public class Decoracion extends ProductoDeHogar {
 		return super.toString() + ", exterior:" + exterior + ", colorPrimario:" + colorPrimario;
 	}
 
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Decoracion");
+	}
+
 }
