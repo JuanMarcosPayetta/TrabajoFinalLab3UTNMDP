@@ -16,10 +16,6 @@ public class Arbol extends PlantaTerrestre{
 		super();
 		this.diametroDelTronco=0;
 		this.tipoDeCorteza=null;
-		establecerClasificacion();
-		establecerCantidadFertilizante();
-		establecerEpocaPoda();
-		establecerCantidadRiego();
 	}
 
 	public Arbol(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
@@ -32,10 +28,6 @@ public class Arbol extends PlantaTerrestre{
 				semilla, interior, epocaDePoda, cantidadRiego, especie);
 		this.diametroDelTronco = diametroDelTronco;
 		this.tipoDeCorteza = tipoDeCorteza;
-		establecerClasificacion();
-		establecerCantidadFertilizante();
-		establecerEpocaPoda();
-		establecerCantidadRiego();
 	}
 
 	public Arbol(String nombre, String marca, double precio, int stock, String descripcion, int mesesDeVida,
