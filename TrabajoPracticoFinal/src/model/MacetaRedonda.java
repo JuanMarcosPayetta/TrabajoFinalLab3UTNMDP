@@ -1,15 +1,5 @@
 package model;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-
-import excepciones.CadenaInvalidaException;
-=======
-import java.util.InputMismatchException;
-
-import excepciones.DatoNumeroException;
->>>>>>> 32cabc9d77372524df213a88da6f5cac5d1542af
 
 public class MacetaRedonda extends Maceta{
 
