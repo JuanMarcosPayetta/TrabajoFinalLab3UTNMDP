@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 
-public abstract class PlantaAcuatica extends Planta{
+public class PlantaAcuatica extends Planta{
 
 	private String tipoDeAgua; 
 	private int temperaturaAgua; 
@@ -273,6 +273,17 @@ public abstract class PlantaAcuatica extends Planta{
 	public String toString() {
 		return ", Tipo del planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
 				+ durezaAgua;
+	}
+
+	@Override
+	public void establecerCantidadFertilizante() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void establecerClasificacion() {
+		this.setClasificacion("Planta acuatica");
 	}
 	
 	
