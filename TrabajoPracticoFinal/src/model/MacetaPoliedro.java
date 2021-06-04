@@ -36,24 +36,45 @@ public class MacetaPoliedro extends Maceta{
 		return alto;
 	}
 
-	public void setAlto(double alto) {
-		this.alto = alto;
+	public String setAlto(double alto) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(alto);
+		if(mensaje==null)
+		{
+		  this.alto = alto;
+		}
+		
+		return mensaje;
 	}
 
 	public double getAncho() {
 		return ancho;
 	}
 
-	public void setAncho(double ancho) {
-		this.ancho = ancho;
+	public String setAncho(double ancho) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(ancho);
+		if(mensaje==null)
+		{
+			this.ancho = ancho;
+		}
+		
+		return mensaje;
 	}
 
 	public double getLargo() {
 		return largo;
 	}
 
-	public void setLargo(double largo) {
-		this.largo = largo;
+	public String setLargo(double largo) {
+		String mensaje=null;
+		mensaje=validarValorNumericoLlamada(largo);
+		if(mensaje==null)
+		{
+			this.largo = largo;
+		}
+		
+		return mensaje;
 	}
 
 	@Override
