@@ -1,9 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-
-import excepciones.CadenaInvalidaException;
 
 public class MacetaPoliedro extends Maceta{
 
