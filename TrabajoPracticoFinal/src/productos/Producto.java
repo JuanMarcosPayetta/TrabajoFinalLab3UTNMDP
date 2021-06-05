@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.function.LongToIntFunction;
 
+import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 
@@ -99,8 +100,9 @@ public abstract class Producto {
 	public boolean buscarCodigoExistentes(String codigoGenerado)
 	{
 		//LLAMAR AL METODO QUE ME DEVUELVE EL ARRAYLIST CON LOS CODIGOS ACTUALES
+		Vivero vivero= new Vivero();
 		ArrayList<String>codigosActuales= new ArrayList<String>();
-		codigosActuales=obtenerCodigos(); //ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL QUE SE GENERARA, PARA QUE NO SE REPITAN
+		codigosActuales=vivero.obtenerCodigos(); //ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL QUE SE GENERARA, PARA QUE NO SE REPITAN
 		
 		boolean encontrado=false;
 		for(int i=0; i<codigosActuales.size() && !encontrado; i++)
