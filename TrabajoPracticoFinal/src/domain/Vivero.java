@@ -21,10 +21,7 @@ public class Vivero implements IVivero{
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente>listaClientes;
 
-<<<<<<< Updated upstream
 	
-	public ArrayList<String> obtenerCodigos() {
-=======
 	public Vivero()
 	{
 		this.catalogoProductos= new HashMap<String, ArrayList<Producto>>();
@@ -34,7 +31,6 @@ public class Vivero implements IVivero{
 
 	
 	public ArrayList<String> obtenerCodigosProducto() {
->>>>>>> Stashed changes
 		ArrayList<Producto> productos = null;
 		ArrayList<String> codigos = new ArrayList<String>();
 		String codigoEncontrado = null;
@@ -74,9 +70,7 @@ public class Vivero implements IVivero{
 	@Override
 	public <T> void agregarElemento(T elemento) {
 	
-		
-		
-		
+
 	}
 
 	@Override
