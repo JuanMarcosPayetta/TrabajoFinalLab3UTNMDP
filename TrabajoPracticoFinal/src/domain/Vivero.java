@@ -8,6 +8,14 @@ import java.util.Map;
 import productos.Producto;
 
 public class Vivero {
+	
+	
+	/*
+	 * EL MAPA DE PRODUCTOS COMO CLAVE TIENE LA CLASIFICACION
+	 * ("ARBOL, ARBUSTO, ETC") Y DENTRO COMO VALOR TIENE UN ARRAY LIST CON TODOS LOS
+	 * ARBOLES, ARBUSTOS, ETC
+	 */
+
 
 	private HashMap<String, ArrayList<Producto>>catalogoProductos;
 	private HashMap<String, Servicio>catalogoServicios;
