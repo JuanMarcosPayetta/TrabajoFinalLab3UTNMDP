@@ -24,6 +24,7 @@ public class HerramientaManual extends HerramientaJardineria{
 		this.reforzada = reforzada;
 		establecerClasificacion();
 	}
+	
 	public HerramientaManual(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
 			String descripcion, String material, String funcion, String tamanio, boolean reforzada) {
 		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, funcion);
@@ -34,11 +35,11 @@ public class HerramientaManual extends HerramientaJardineria{
 	/*
 	 * Valida el tamaño de la herramienta manual
 	 */
-	public static String validarTamañoHManualLlamada(String tamanio)
+	public static String validarTamanioHManualLlamada(String tamanio)
 	{
 		String mensaje=null; //si devuelve null es correcto
 		try {
-			validarTamañoHManual(tamanio);
+			validarTamanioHManual(tamanio);
 		} catch (InputMismatchException e) {
 			mensaje=e.getMessage();
 		} catch (NullPointerException e) {
@@ -50,7 +51,7 @@ public class HerramientaManual extends HerramientaJardineria{
 		return mensaje;
 	}
 	
-	private static void validarTamañoHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
+	private static void validarTamanioHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>tamanioValido= new ArrayList<String>();
 		tamanioValido.add("grande");
@@ -82,7 +83,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	
 	public String setTamanio(String tamanio) {
 		String mensaje=null;
-		mensaje=validarTamañoHManualLlamada(tamanio);
+		mensaje=validarTamanioHManualLlamada(tamanio);
 		if(mensaje==null)
 		{
 			this.tamanio = tamanio;
