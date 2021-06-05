@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -18,9 +19,22 @@ public class Vivero implements IVivero{
 
 	private HashMap<String, ArrayList<Producto>> catalogoProductos;
 	private HashMap<String, Servicio> catalogoServicios;
+	private HashSet<Cliente>listaClientes;
 
+<<<<<<< Updated upstream
 	
 	public ArrayList<String> obtenerCodigos() {
+=======
+	public Vivero()
+	{
+		this.catalogoProductos= new HashMap<String, ArrayList<Producto>>();
+		this.catalogoServicios= new HashMap<String, Servicio>();
+		this.listaClientes= new HashSet<Cliente>();
+	}
+
+	
+	public ArrayList<String> obtenerCodigosProducto() {
+>>>>>>> Stashed changes
 		ArrayList<Producto> productos = null;
 		ArrayList<String> codigos = new ArrayList<String>();
 		String codigoEncontrado = null;
@@ -38,6 +52,24 @@ public class Vivero implements IVivero{
 
 		return codigos;
 	}
+	
+	public ArrayList<String> obtenerCodigosServicio() {
+
+		Servicio servicio= new Servicio();
+		ArrayList<String> codigos = new ArrayList<String>();
+		String codigoEncontrado = null;
+		Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry<String, Servicio> entry = (Map.Entry<String, Servicio>) it.next();
+			servicio = entry.getValue(); 
+			codigoEncontrado = servicio.getCodigo();
+			codigos.add(codigoEncontrado); 
+			}
+		
+		return codigos;
+	}
+
+	
 
 	@Override
 	public <T> void agregarElemento(T elemento) {

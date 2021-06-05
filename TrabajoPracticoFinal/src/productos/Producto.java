@@ -3,13 +3,14 @@ package productos;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.function.LongToIntFunction;
+
 
 import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
+import interfaces.IGenerarCodigo;
 
-public abstract class Producto {
+public abstract class Producto  implements IGenerarCodigo{
 
 	private String codigo;
 	private String nombre;
@@ -102,7 +103,7 @@ public abstract class Producto {
 		//LLAMAR AL METODO QUE ME DEVUELVE EL ARRAYLIST CON LOS CODIGOS ACTUALES
 		Vivero vivero= new Vivero();
 		ArrayList<String>codigosActuales= new ArrayList<String>();
-		codigosActuales=vivero.obtenerCodigos(); //ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL QUE SE GENERARA, PARA QUE NO SE REPITAN
+		codigosActuales=vivero.obtenerCodigosProducto(); //ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL QUE SE GENERARA, PARA QUE NO SE REPITAN
 		
 		boolean encontrado=false;
 		for(int i=0; i<codigosActuales.size() && !encontrado; i++)
