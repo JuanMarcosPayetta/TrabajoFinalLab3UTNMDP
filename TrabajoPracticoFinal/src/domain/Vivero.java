@@ -5,9 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import interfaces.IVivero;
 import productos.Producto;
 
-public class Vivero {
+public class Vivero implements IVivero{
 
 	/*
 	 * EL MAPA DE PRODUCTOS COMO CLAVE TIENE LA CLASIFICACION
@@ -37,4 +38,29 @@ public class Vivero {
 		return codigos;
 	}
 
+	@Override
+	public <T> void agregarElemento(T elemento) {
+	
+	}
+
+	@Override
+	public <T> String buscarElemento(T elemento) {
+	
+		return null;
+	}
+
+	@Override
+	public <T> String eliminarElemento(T elemento) {
+		
+		return null;
+	}
+
+	@Override
+	public <T> String mostrarElemento(T elemento) {
+		
+		return null;
+	}
+
+	
+	
 }
