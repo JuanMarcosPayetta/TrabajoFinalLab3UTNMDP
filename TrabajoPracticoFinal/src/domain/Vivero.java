@@ -20,6 +20,8 @@ public class Vivero implements IVivero{
 	private HashMap<String, ArrayList<Producto>> catalogoProductos;
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente>listaClientes;
+	private HashSet<Empleado>listaEmpleados;
+	
 
 	
 	public Vivero()
@@ -27,6 +29,7 @@ public class Vivero implements IVivero{
 		this.catalogoProductos= new HashMap<String, ArrayList<Producto>>();
 		this.catalogoServicios= new HashMap<String, Servicio>();
 		this.listaClientes= new HashSet<Cliente>();
+		this.listaEmpleados= new HashSet<Empleado>();
 	}
 
 	
