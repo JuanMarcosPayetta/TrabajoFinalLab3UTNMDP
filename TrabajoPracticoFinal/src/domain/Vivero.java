@@ -295,4 +295,34 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	public String moficarPrecioProducto(Producto elemento, int precio) {
+		String mensaje = "Producto no Encontrado.";
+		int flag = 0;
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			if (entrada.getKey().equalsIgnoreCase(elemento.getCodigo())) {
+				ArrayList<Producto> arreglo = entrada.getValue();
+
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+					if (arreglo.get(i).getCodigo().equalsIgnoreCase(elemento.getCodigo())) {
+						mensaje = arreglo.get(i).setPrecio(precio);
+						if (mensaje == null)
+						// si la exepcion del set no devuelve error
+						{
+							catalogoProductos.replace(elemento.getClasificacion(), arreglo);
+							flag = 1;
+							mensaje = "Precio modificado";
+						}
+					}
+				}
+			}
+		}
+		return mensaje;
+	}
+	
+	
+	
+	
 }
