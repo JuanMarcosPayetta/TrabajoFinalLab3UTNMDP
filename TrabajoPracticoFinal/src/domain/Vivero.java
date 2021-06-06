@@ -97,9 +97,16 @@ public class Vivero implements IVivero{
 				catalogoServicios.put(unservicio.getCodigo(), unservicio);
 			}
 		}
-		
-		
-		
+		else if(elemento instanceof Empleado)
+		{
+			Empleado unEmpleado= (Empleado) elemento;
+			listaEmpleados.add(unEmpleado);
+		}
+		else if(elemento instanceof Cliente)
+        {
+            Cliente unCliente= (Cliente) elemento;
+            listaClientes.add(unCliente);
+        }
 	}
 	
 
@@ -114,6 +121,7 @@ public class Vivero implements IVivero{
 
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
+
 	
 	@Override
 	public <T> String buscarElemento(T elemento) {
