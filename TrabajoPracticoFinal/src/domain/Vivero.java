@@ -302,11 +302,11 @@ public class Vivero implements IVivero {
 
 		while (it.hasNext() && flag == 0) {
 			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
-			if (entrada.getKey().equalsIgnoreCase(elemento.getCodigo())) {
+			if (entrada.getKey().equalsIgnoreCase(elemento.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equalsIgnoreCase(elemento.getCodigo())) {
+					if (arreglo.get(i).getCodigo().equals(elemento.getCodigo())) {
 						mensaje = arreglo.get(i).setPrecio(precio);
 						if (mensaje == null)
 						// si la exepcion del set no devuelve error
@@ -321,6 +321,8 @@ public class Vivero implements IVivero {
 		}
 		return mensaje;
 	}
+	
+	
 	
 	
 	

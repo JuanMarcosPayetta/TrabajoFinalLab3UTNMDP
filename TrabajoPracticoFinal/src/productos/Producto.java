@@ -341,7 +341,7 @@ public abstract class Producto implements IGenerarCodigo {
 		if (obj != null) {
 			if (obj instanceof Producto) {
 				Producto miProducto = (Producto) obj;
-				if (miProducto.getCodigo().equalsIgnoreCase(codigo)) {
+				if (this.getCodigo().equals(miProducto.getCodigo())) {
 					res = true;
 				}
 			}
