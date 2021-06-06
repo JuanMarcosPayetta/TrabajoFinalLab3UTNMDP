@@ -6,7 +6,7 @@ import excepciones.CadenaInvalidaException;
 public class Cliente {
 
 	private int id;
-	static private int autoid;
+	static private int autoid=1;
 	private String nombre;
 	private String apellido;
 	private String telefono;

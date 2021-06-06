@@ -125,14 +125,111 @@ public class Vivero implements IVivero{
 	@Override
 	public <T> String buscarElemento(T elemento) {
 	
-		if(elemento instanceof )
+		boolean validacion=false;
+		String encontrado="Elemento no encontrado";
+		
+		if(elemento instanceof Producto)
+		{
+			Producto unProducto= (Producto) elemento;
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it= catalogoProductos.entrySet().iterator();
+			while(it.hasNext() && validacion==false)
+			{
+				Map.Entry<String, ArrayList<Producto>> entry= (Map.Entry<String, ArrayList<Producto>>) it.next();
+				if(entry.getKey().equalsIgnoreCase(unProducto.getClasificacion()))
+				{
+					ArrayList<Producto>productos=entry.getValue();
+					for(int i=0; i<productos.size() && validacion==false; i++)
+					{
+						if(productos.get(i).getCodigo()==unProducto.getCodigo())
+						{
+							encontrado=productos.get(i).toString();
+							validacion=true;
+						}
+					}
+				}
+			}
+		}
+		
 		return null;
 	}
 
 	@Override
 	public <T> String eliminarElemento(T elemento) {
 		
-		return null;
+		String mensaje="Elemento no encontrado";
+		boolean validacion=false;
+		
+		if(elemento instanceof Producto)
+		{
+			Producto unProducto= (Producto) elemento;
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it= catalogoProductos.entrySet().iterator();
+			
+			while(it.hasNext() && validacion==false)
+			{
+				Map.Entry<String, ArrayList<Producto>> entry= (Map.Entry<String, ArrayList<Producto>>) it.next();
+				if(entry.getKey().equalsIgnoreCase(unProducto.getClasificacion()))
+				{
+					ArrayList<Producto>productos=entry.getValue();
+					for(int i=0; i<productos.size() && validacion==false; i++)
+					{
+						if(productos.get(i).getCodigo().equals(unProducto.getCodigo()))
+						{
+							productos.remove(i);
+							validacion=true;
+							mensaje="Producto eliminado con exito";
+							catalogoProductos.replace(unProducto.getClasificacion(), productos);
+						}
+					}
+				}
+			}
+		}
+		else if(elemento instanceof Servicio)
+		{
+			Servicio unServicio= (Servicio) elemento;
+			Iterator<Map.Entry<String, Servicio>> it= catalogoServicios.entrySet().iterator();
+			while(it.hasNext() && validacion==false)
+			{
+				Map.Entry<String, Servicio> entry= (Map.Entry<String, Servicio>)it.next();
+				if(entry.getKey().equals(unServicio.getCodigo()))
+				{
+					it.remove();
+					validacion=true;
+					mensaje="Servicio eliminado con exito";
+				}
+			}
+		}
+		else if(elemento instanceof Cliente)
+		{
+			Cliente unCliente= (Cliente) elemento;
+			Iterator<Cliente>it=listaClientes.iterator();
+			while(it.hasNext() && validacion==false)
+			{
+				Cliente otroCliente= it.next();
+				if(otroCliente.getDni().equals(unCliente.getDni()))
+				{
+					it.remove();
+					validacion=true;
+					mensaje="Cliente eliminado con exito";
+				}
+			}
+		}
+		else if(elemento instanceof Empleado)
+		{
+			Empleado unEmpleado= (Empleado) elemento;
+			Iterator<Empleado>it=listaEmpleados.iterator();
+			while(it.hasNext() && validacion==false)
+			{
+				Empleado otroEmpleado= it.next();
+				if(otroEmpleado.getID()==unEmpleado.getID())
+				{
+					it.remove();
+					validacion=true;
+					mensaje="Empleado eliminado con exito";
+				}
+			}
+		}
+		
+		return mensaje;
 	}
 
 	@Override
