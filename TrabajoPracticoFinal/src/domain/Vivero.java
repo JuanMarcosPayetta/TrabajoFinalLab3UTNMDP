@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.sun.tools.javac.code.Attribute.Array;
+
 import interfaces.IVivero;
 import productos.Producto;
 
@@ -237,14 +239,28 @@ public class Vivero implements IVivero {
 				}
 			}
 		}
-
 		return mensaje;
 	}
 
-	@Override
-	public <T> String mostrarElemento(T elemento) {
+	public String mostrarProductos() {
+		StringBuilder mensaje= new StringBuilder();
+		
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
 
-		return null;
+		while (it.hasNext()) {
+			Map.Entry<String,ArrayList<Producto>> entrada=(Map.Entry<String, ArrayList<Producto>>)it.next();
+			ArrayList<Producto>arreglo=entrada.getValue();
+			
+			for(int i=0;i<arreglo.size();i++)
+			{
+				mensaje.append("[" + arreglo.get(i).toString() + "]\n");
+			}
+
+		}
+
+		return mensaje.toString();
 	}
+	
+	
 
 }
