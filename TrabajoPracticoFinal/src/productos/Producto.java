@@ -21,7 +21,7 @@ public abstract class Producto  implements IGenerarCodigo{
 	private String descripcion;
 
 	
-	public Producto()
+	public Producto() 
 	{
 		this.codigo=null;
 		this.nombre=null;
@@ -45,7 +45,7 @@ public abstract class Producto  implements IGenerarCodigo{
 	}
 	
 	/*
-	 * Constructor para enviar como parametro a los metodos
+	 * Constructor para enviar como parametro a los metodos para entrar al arbol
 	 */
 	public Producto(String codigo, String clasificacion)
 	{
