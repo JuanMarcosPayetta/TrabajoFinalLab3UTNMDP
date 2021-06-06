@@ -94,5 +94,26 @@ public class Empleado {
 		return mensaje;
 	}
 	
+	@Override
+	public int hashCode() {
+	return 1;
+	}
+	
+	public boolean equals (Object obj)
+	{
+		boolean validacion=false;
+		if(obj!=null)
+		{
+			if(obj instanceof Empleado)
+			{
+				Empleado unEmpleado= (Empleado) obj;
+				if(this.getID()==unEmpleado.getID())
+				{
+					validacion=true;
+				}
+			}
+		}
+		return validacion;
+	}
 	
 }
