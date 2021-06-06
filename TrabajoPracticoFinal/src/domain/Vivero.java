@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-
 import interfaces.IVivero;
 import productos.Producto;
 
@@ -242,40 +241,58 @@ public class Vivero implements IVivero {
 	}
 
 	public String mostrarProductos() {
-		StringBuilder mensaje= new StringBuilder();
-		
+		StringBuilder mensaje = new StringBuilder();
+
 		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
 
 		while (it.hasNext()) {
-			Map.Entry<String,ArrayList<Producto>> entrada=(Map.Entry<String, ArrayList<Producto>>)it.next();
-			ArrayList<Producto>arreglo=entrada.getValue();
-			
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			ArrayList<Producto> arreglo = entrada.getValue();
+
 			mensaje.append(entrada.getKey());
-			for(int i=0;i<arreglo.size();i++)
-			{
+			for (int i = 0; i < arreglo.size(); i++) {
 				mensaje.append(" [" + arreglo.get(i).toString() + " ] \n");
 			}
 		}
 		return mensaje.toString();
 	}
-	
-	public String mostrarServicios()
-	{
-		StringBuilder mensaje= new StringBuilder();
-		
-		Iterator<Map.Entry<String,Servicio>> it=catalogoServicios.entrySet().iterator();
-		
-		while(it.hasNext())
-		{
-			Map.Entry<String,Servicio> entrada=(Map.Entry<String, Servicio>) it.next();
-			
-			mensaje.append("[ " + entrada.getValue().toString()+ " ]");
+
+	public String mostrarServicios() {
+		StringBuilder mensaje = new StringBuilder();
+
+		Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator();
+
+		while (it.hasNext()) {
+			Map.Entry<String, Servicio> entrada = (Map.Entry<String, Servicio>) it.next();
+
+			mensaje.append("[ " + entrada.getValue().toString() + " ]");
 		}
-		
+
 		return mensaje.toString();
 	}
-	
-	
-	
+
+	public String mostrarEmpleado() {
+		StringBuilder mensaje = new StringBuilder();
+
+		Iterator<Empleado> it = listaEmpleados.iterator();
+
+		while (it.hasNext()) {
+			mensaje.append("[ " + it.next().toString() + " ]");
+		}
+
+		return mensaje.toString();
+	}
+
+	public String mostrarCliente() {
+		StringBuilder mensaje = new StringBuilder();
+
+		Iterator<Cliente> it = listaClientes.iterator();
+
+		while (it.hasNext()) {
+			mensaje.append("[ " + it.next().toString() + " ]");
+		}
+
+		return mensaje.toString();
+	}
 
 }
