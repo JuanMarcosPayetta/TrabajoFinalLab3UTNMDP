@@ -329,4 +329,25 @@ public abstract class Producto implements IGenerarCodigo {
 				+ ", Precio: " + precio + ", Stock: " + stock + ", Descripcion: " + descripcion;
 	}
 
+	@Override
+	public int hashCode() {
+		return 1;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+
+		if (obj != null) {
+			if (obj instanceof Producto) {
+				Producto miProducto = (Producto) obj;
+				if (miProducto.getCodigo().equalsIgnoreCase(codigo)) {
+					res = true;
+				}
+			}
+		}
+
+		return res;
+	}
+
 }
