@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.sun.tools.javac.code.Attribute.Array;
 
 import interfaces.IVivero;
 import productos.Producto;
@@ -260,7 +259,21 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 	
-	
+	public String mostrarServicios()
+	{
+		StringBuilder mensaje= new StringBuilder();
+		
+		Iterator<Map.Entry<String,Servicio>> it=catalogoServicios.entrySet().iterator();
+		
+		while(it.hasNext())
+		{
+			Map.Entry<String,Servicio> entrada=(Map.Entry<String, Servicio>) it.next();
+			
+			mensaje.append("[ " + entrada.getValue().toString()+ " ]");
+		}
+		
+		return mensaje.toString();
+	}
 	
 	
 	
