@@ -251,15 +251,17 @@ public class Vivero implements IVivero {
 			Map.Entry<String,ArrayList<Producto>> entrada=(Map.Entry<String, ArrayList<Producto>>)it.next();
 			ArrayList<Producto>arreglo=entrada.getValue();
 			
+			mensaje.append(entrada.getKey());
 			for(int i=0;i<arreglo.size();i++)
 			{
-				mensaje.append("[" + arreglo.get(i).toString() + "]\n");
+				mensaje.append(" [" + arreglo.get(i).toString() + " ] \n");
 			}
-
 		}
-
 		return mensaje.toString();
 	}
+	
+	
+	
 	
 	
 
