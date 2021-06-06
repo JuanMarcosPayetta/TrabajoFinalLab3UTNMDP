@@ -32,6 +32,7 @@ public abstract class Producto  implements IGenerarCodigo{
 		this.descripcion=null;
 	}
 
+	
 	public Producto(String codigo, String nombre, String marca, String clasificacion, double precio, int stock, String descripcion) 
 	{
 		this.codigo = codigo;
@@ -42,6 +43,21 @@ public abstract class Producto  implements IGenerarCodigo{
 		this.stock = stock;
 		this.descripcion = descripcion;
 	}
+	
+	/*
+	 * Constructor para enviar como parametro a los metodos
+	 */
+	public Producto(String codigo, String clasificacion)
+	{
+		this.codigo=codigo;
+		this.clasificacion=clasificacion;
+		this.descripcion=null;
+		this.precio = 0;
+		this.stock = 0;
+		this.marca=null;
+		this.nombre=null;
+	}
+	
 	
 	/*
 	 * Constructor con generador de codigo automatico

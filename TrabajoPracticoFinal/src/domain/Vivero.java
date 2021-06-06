@@ -72,10 +72,49 @@ public class Vivero implements IVivero{
 
 	@Override
 	public <T> void agregarElemento(T elemento) {
+		if(elemento instanceof Producto)
+		{
+			Producto unProducto= (Producto) elemento;
+			if(!existeProducto(unProducto.getClasificacion()))
+			{
+				ArrayList<Producto>listaProductos=new ArrayList<Producto>();
+				listaProductos.add(unProducto);
+				catalogoProductos.put(unProducto.getClasificacion(), listaProductos);
+			}
+			else
+			{
+				ArrayList<Producto>listaProductos=catalogoProductos.get(unProducto.getClasificacion());
+				listaProductos.add(unProducto);
+				catalogoProductos.put(unProducto.getClasificacion(), listaProductos);
+			}
+		}
+		else if (elemento instanceof Servicio) 
+		{
+           Servicio unservicio = (Servicio) elemento;
+
+			if (!existeServicio(unservicio.getCodigo())) {
+
+				catalogoServicios.put(unservicio.getCodigo(), unservicio);
+			}
+		}
+		
+		
+		
+	}
 	
 
+	
+	
+	private boolean existeProducto(String clasificacion)
+	{
+		return catalogoProductos.containsKey(clasificacion);
 	}
 
+	private boolean existeServicio(String codigo) {
+
+		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
+	}
+	
 	@Override
 	public <T> String buscarElemento(T elemento) {
 	
