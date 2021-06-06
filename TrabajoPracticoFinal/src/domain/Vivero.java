@@ -123,8 +123,9 @@ public class Vivero implements IVivero{
 
 	
 	@Override
-	public <T> String buscarElemento(T elemento) {
+	public <T> String buscarElemento(T elemento) { //producto,servicio,empleado, cliente (RECIBO ELEMENTO CON LA CLASIFICACION Y EL CODIGO) 
 	
+<<<<<<< HEAD
 		boolean validacion=false;
 		String encontrado="Elemento no encontrado";
 		
@@ -150,6 +151,12 @@ public class Vivero implements IVivero{
 			}
 		}
 		
+=======
+		if(elemento instanceof Producto)
+		{
+			
+		}
+>>>>>>> d268711abf4f032465ff8617f2aa6b2696938af7
 		return null;
 	}
 
