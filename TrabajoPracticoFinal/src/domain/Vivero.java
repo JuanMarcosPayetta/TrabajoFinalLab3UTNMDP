@@ -324,18 +324,11 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-<<<<<<< HEAD
-	
-	
-	@Override
-	public <T> String mostrarElemento(T elemento) {
-=======
 	public String modificarStockAumenta(Producto elProducto, int stock) {
 		String mensaje = "Producto no Ecnontrado";
 
 		int flag = 0;
 		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
->>>>>>> 240c1c7846c1e4486618ad93aa202ea1fb1a2daf
 
 		while (it.hasNext() && flag == 0) {
 			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
