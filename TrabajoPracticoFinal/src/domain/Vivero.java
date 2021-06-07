@@ -11,7 +11,6 @@ import interfaces.IVivero;
 import productos.Producto;
 
 public class Vivero implements IVivero {
-
 	/*
 	 * EL MAPA DE PRODUCTOS COMO CLAVE TIENE LA CLASIFICACION
 	 * ("ARBOL, ARBUSTO, ETC") Y DENTRO COMO VALOR TIENE UN ARRAY LIST CON TODOS LOS
@@ -303,10 +302,12 @@ public class Vivero implements IVivero {
 
 		while (it.hasNext() && flag == 0) {
 			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
-			if (entrada.getKey().equalsIgnoreCase(elemento.getClasificacion())) {
+			if (entrada.getKey().equalsIgnoreCase(elemento.getClasificacion())) 
+			{
 				ArrayList<Producto> arreglo = entrada.getValue();
 
-				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) 
+				{
 					if (arreglo.get(i).getCodigo().equals(elemento.getCodigo())) {
 						mensaje = arreglo.get(i).setPrecio(precio);
 						if (mensaje == null)
@@ -325,7 +326,7 @@ public class Vivero implements IVivero {
 	
 	public String modificarStockAumenta(Producto elProducto,int stock)
 	{
-		String mensaje="Producto no Ecnontrado";
+		String mensaje="Producto no Encontrado";
 		
 		int flag=0;
 		Iterator<Map.Entry<String,ArrayList<Producto>>>it=catalogoProductos.entrySet().iterator();

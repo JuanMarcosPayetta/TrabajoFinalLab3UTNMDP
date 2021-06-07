@@ -273,7 +273,7 @@ public class PlantaAcuatica extends Planta{
 
 	@Override
 	public String toString() {
-		return ", Tipo del planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
+		return ", Tipo de planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
 				+ durezaAgua;
 	}
 

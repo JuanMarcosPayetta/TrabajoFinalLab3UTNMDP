@@ -14,7 +14,7 @@ public class Pedido implements IDescuento {
 	private String medioDePago;
 	private int descuento; 
 	private boolean fueAbonado;
-	private int numeroPedido;
+	private int numeroPedido; 
 	private ArrayList<PeticionCompra> carrito;
 	
 	public Pedido() {

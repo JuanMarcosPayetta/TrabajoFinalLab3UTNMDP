@@ -4,7 +4,7 @@ import excepciones.DatoNumeroException;
 
 public class PeticionCompra {
 
-	private String codigo;//codigo del producto/servicio
+	private String codigo; //codigo del producto/servicio
 	private double precioUnitario;
 	private int cantidad;
 	
