@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import excepciones.DatoNumeroException;
 import interfaces.IVivero;
 import productos.Producto;
 
@@ -549,9 +551,25 @@ public class Vivero implements IVivero {
 	}
 	
 	
-	/*
-	 * JSONObject plantaAcuaticaObjPrincipal=new JSONObject(); //objeto planta acuatica donde guardare el array con todas las plantas acuaticas (este objeto se almacena en el array de productos)
-		JSONArray plantaAcuaticaArray= new JSONArray(); //arreglo con todas las plantas acuaticas (se almacena dentro del objeto planta acuatica)
-		JSONObject plantaAcuaticaObjInterno= new JSONObject(); //objeto que contiene la planta acuatica, y va en cada posicion del array de plantas acuaticas
-	 */
+	
+	public String pedirCantidadCompra(int cantidad)
+	{
+		String mensaje=null;
+		try {
+			cantidadCompra(cantidad);
+		} catch (DatoNumeroException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private void cantidadCompra(int cantidad)throws DatoNumeroException
+	{
+		if(cantidad<=0)
+		{
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+ ", ni menor a 1");
+		}
+	}
+	
+	
 }
