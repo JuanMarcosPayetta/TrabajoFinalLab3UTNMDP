@@ -32,6 +32,14 @@ public class Sustrato extends ProductoOrganico{
 		establecerClasificacion();
 	}
 
+	public Sustrato(String nombre, String marca, int stock, String descripcion, int gramos,
+			boolean abonada, String tipoDeSuelo) {
+		super(nombre, marca, stock, descripcion, gramos);
+		this.abonada = abonada;
+		this.tipoDeSuelo = tipoDeSuelo;
+		establecerClasificacion();
+		establecerPrecio();
+	}
 	
 	//Validar tipo de suelo, llamada main
 	public static String validarTipoSueloLlamada(String suelo)

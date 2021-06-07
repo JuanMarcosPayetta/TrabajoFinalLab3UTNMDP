@@ -20,9 +20,13 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 	public ProductoDeHogar(String nombre, String marca, double precio, int stock, String descripcion, String material) {
 		super(nombre, marca, precio, stock, descripcion);
 		this.material = material;
-		establecerClasificacion();
 	}
 
+	public ProductoDeHogar(String nombre, String marca, int stock, String descripcion, String material) {
+		super(nombre, marca, stock, descripcion);
+		this.material = material;
+	}
+	
 	public String getMaterial() {
 		return material;
 	}

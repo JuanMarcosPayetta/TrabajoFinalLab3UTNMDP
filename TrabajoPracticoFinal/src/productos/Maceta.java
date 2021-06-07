@@ -26,6 +26,12 @@ public abstract class Maceta extends ProductoDeHogar{
 		super(nombre, marca, precio, stock, descripcion, material);
 		this.forma = forma;
 	}
+	
+	public Maceta(String nombre, String marca, int stock, String descripcion, String material,
+			String forma) {
+		super(nombre, marca, stock, descripcion, material);
+		this.forma = forma;
+	}
 
 	 /*
 	  * valida la forma de la maceta segun la opcion elegida (poliedro u redonda)

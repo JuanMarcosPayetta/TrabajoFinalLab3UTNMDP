@@ -51,7 +51,20 @@ public abstract class PlantaTerrestre extends Planta{
 		this.especie = especie;
 	}
 	
-
+	public PlantaTerrestre(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
+			String estacionPlantacion, String habitat, int altura, boolean flor,
+			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, boolean fruto, boolean semilla,
+			boolean interior, String especie) {
+		super(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura,
+				flor, nivelExposicionSolar, tipoRaiz, aromatica);
+		this.fruto = fruto;
+		this.semilla = semilla;
+		this.interior = interior;
+		this.epocaDePoda = null; 
+		this.cantidadRiego = 0; 
+		this.especie = especie;
+	}
+	
 	public abstract void establecerCantidadRiego();
 	public abstract void establecerEpocaPoda();
 

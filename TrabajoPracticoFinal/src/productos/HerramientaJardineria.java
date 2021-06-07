@@ -30,6 +30,14 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		this.material = material;
 		this.funcion = funcion;
 	}
+	
+	public HerramientaJardineria(String nombre, String marca, int stock, String descripcion,
+			String material, String funcion) {
+		super(nombre, marca, stock, descripcion);
+		this.material = material;
+		this.funcion = funcion;
+	}
+	
 
 	/*
 	 * valida la funcion de la herramienta, llamada main

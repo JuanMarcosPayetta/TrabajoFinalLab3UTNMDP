@@ -66,6 +66,19 @@ public abstract class Producto implements IGenerarCodigo {
 		this.descripcion = descripcion;
 	}
 
+	/*
+	 * Constructor con generador de codigo automatico pero sin ingreso de precio
+	 */
+	public Producto(String nombre, String marca, int stock, String descripcion) {
+		this.codigo = generarCodigo();
+		this.nombre = nombre;
+		this.marca = marca;
+		this.clasificacion = null;
+		this.precio = 0;
+		this.stock = stock;
+		this.descripcion = descripcion;
+	}
+	
 	public abstract void establecerClasificacion();
 
 	/*

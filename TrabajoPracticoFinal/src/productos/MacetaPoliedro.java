@@ -30,6 +30,16 @@ public class MacetaPoliedro extends Maceta {
 		this.largo = largo;
 		establecerClasificacion();
 	}
+	
+	public MacetaPoliedro(String nombre, String marca, int stock, String descripcion, String material,
+			String forma, double alto, double ancho, double largo) {
+		super(nombre, marca, stock, descripcion, material, forma);
+		this.alto = alto;
+		this.ancho = ancho;
+		this.largo = largo;
+		establecerClasificacion();
+		establecerPrecio();
+	}
 
 	public double getAlto() {
 		return alto;

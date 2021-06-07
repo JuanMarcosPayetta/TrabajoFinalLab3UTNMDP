@@ -44,6 +44,21 @@ public class Arbol extends PlantaTerrestre{
 		establecerCantidadRiego();
 	}
 	
+	public Arbol(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
+			String estacionPlantacion, String habitat, int altura, boolean flor,
+			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, boolean fruto, boolean semilla,
+			boolean interior, String especie, int diametroDelTronco, String tipoDeCorteza) {
+		super(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura,
+				flor, nivelExposicionSolar, tipoRaiz, aromatica, fruto, semilla, interior, especie);
+		this.diametroDelTronco = diametroDelTronco;
+		this.tipoDeCorteza = tipoDeCorteza;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
+		establecerEpocaPoda();
+		establecerCantidadRiego();
+		establecerPrecio();
+	}
+	
 	/*
 	 * Validacion tipo de corteza, llamada main
 	 */

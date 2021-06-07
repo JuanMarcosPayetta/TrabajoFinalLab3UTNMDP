@@ -28,6 +28,14 @@ public class Lombriz extends ProductoOrganico{
 		establecerClasificacion();
 	}
 
+	public Lombriz(String nombre, String marca, int stock, String descripcion, int gramos,
+			String especie) {
+		super(nombre, marca, stock, descripcion, gramos);
+		this.especie = especie;
+		establecerClasificacion();
+		establecerPrecio();
+	}
+
 	
 	/*
 	 * valida la especie de lombriz, llamada main

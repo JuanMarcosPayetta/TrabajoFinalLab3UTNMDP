@@ -48,6 +48,20 @@ public class PlantaAcuatica extends Planta{
 		establecerCantidadFertilizante();
 	}
 	
+	public PlantaAcuatica(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
+			String estacionPlantacion, String habitat, int altura, boolean flor,
+			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, String tipoDeAgua, int temperaturaAgua,
+			String durezaAgua, String tipo) {
+		super(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat,  altura,
+				flor, nivelExposicionSolar, tipoRaiz, aromatica);
+		this.tipoDeAgua = tipoDeAgua;
+		this.temperaturaAgua = temperaturaAgua;
+		this.durezaAgua = durezaAgua;
+		this.tipo = tipo;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
+		establecerPrecio();
+	}
 	
 	
 	/*

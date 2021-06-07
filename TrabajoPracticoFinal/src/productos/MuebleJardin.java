@@ -38,6 +38,17 @@ public class MuebleJardin extends ProductoDeHogar {
 		this.ancho = ancho;
 		establecerClasificacion();
 	}
+	
+	public MuebleJardin(String nombre, String marca, int stock, String descripcion, String material,
+			String tipo, double alto, double largo, double ancho) {
+		super(nombre, marca, stock, descripcion, material);
+		this.tipo = tipo;
+		this.alto = alto;
+		this.largo = largo;
+		this.ancho = ancho;
+		establecerClasificacion();
+		establecerPrecio();
+	}
 
 	public String getTipo() {
 		return tipo;

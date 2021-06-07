@@ -45,7 +45,20 @@ public class Hierba extends PlantaTerrestre{
 		establecerCantidadFertilizante();
 	}
 
-	
+	public Hierba(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
+			String estacionPlantacion, String habitat,  int altura, boolean flor,
+			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, boolean fruto, boolean semilla,
+			boolean interior, String especie, String tipoDeTallo, boolean comestible, boolean medicinal) {
+		super(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura,
+				flor, nivelExposicionSolar, tipoRaiz, aromatica, fruto, semilla, interior, especie);
+		this.tipoDeTallo = tipoDeTallo;
+		this.comestible = comestible;
+		this.medicinal = medicinal;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
+		establecerPrecio();
+	}
+
 	
 	/*
 	 * Validar tipo de tallo, llamada main

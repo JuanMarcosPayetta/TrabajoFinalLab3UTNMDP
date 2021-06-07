@@ -32,6 +32,15 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		this.centimetroCubico = centimetroCubico;
 		establecerClasificacion();
 	}
+	
+	public SanidadVegetal(String nombre, String marca, int stock, String descripcion, String funcion,
+			int centimetroCubico) {
+		super(nombre, marca, stock, descripcion);
+		this.funcion = funcion;
+		this.centimetroCubico = centimetroCubico;
+		establecerClasificacion();
+		establecerPrecio();
+	}
 
 	/*
 	 * valida la funcion del producto sanitario, llamada main

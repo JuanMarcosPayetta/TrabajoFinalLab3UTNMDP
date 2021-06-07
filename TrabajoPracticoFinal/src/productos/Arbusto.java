@@ -43,6 +43,20 @@ public class Arbusto extends PlantaTerrestre{
 		establecerCantidadFertilizante();
 	}
 
+	public Arbusto(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
+			String estacionPlantacion, String habitat, int altura, boolean flor,
+			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, boolean fruto, boolean semilla,
+			boolean interior, String especie, String tipoDeHoja,
+			boolean trepador) {
+		super(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura,
+				flor, nivelExposicionSolar, tipoRaiz, aromatica, fruto, semilla, interior, especie);
+		this.tipoDeHoja=tipoDeHoja;
+		this.trepador = trepador;
+		establecerClasificacion();
+		establecerCantidadFertilizante();
+		establecerPrecio();
+	}
+
 
 	/*
 	 * Validacion tipo de hoja, llamada main

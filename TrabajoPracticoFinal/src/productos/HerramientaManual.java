@@ -17,6 +17,13 @@ public class HerramientaManual extends HerramientaJardineria{
 		this.reforzada = false;
 	}
 	
+	public HerramientaManual(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
+			String descripcion, String material, String funcion, String tamanio, boolean reforzada) {
+		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, funcion);
+		this.tamanio = tamanio;
+		this.reforzada = reforzada;
+	}
+	
 	public HerramientaManual(String nombre, String marca, double precio, int stock, String descripcion, String material,
 			String funcion, String tamanio, boolean reforzada) {
 		super(nombre, marca, precio, stock, descripcion, material, funcion);
@@ -25,12 +32,15 @@ public class HerramientaManual extends HerramientaJardineria{
 		establecerClasificacion();
 	}
 	
-	public HerramientaManual(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
-			String descripcion, String material, String funcion, String tamanio, boolean reforzada) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, funcion);
+	public HerramientaManual(String nombre, String marca, int stock, String descripcion, String material,
+			String funcion, String tamanio, boolean reforzada) {
+		super(nombre, marca, stock, descripcion, material, funcion);
 		this.tamanio = tamanio;
 		this.reforzada = reforzada;
+		establecerClasificacion();
+		establecerPrecio();
 	}
+	
 	
 	/*
 	 * Valida el tamaño de la herramienta manual

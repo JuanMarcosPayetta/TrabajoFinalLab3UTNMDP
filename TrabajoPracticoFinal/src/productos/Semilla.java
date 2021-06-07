@@ -10,8 +10,7 @@ public class Semilla extends ProductoOrganico{
 
 	private String destino;
 	
-	public Semilla()
-	{
+	public Semilla() {
 		super();
 		this.destino=null;
 	}
@@ -27,6 +26,14 @@ public class Semilla extends ProductoOrganico{
 		super(nombre, marca, precio, stock, descripcion, gramos);
 		this.destino = destino;
 		establecerClasificacion();
+	}
+	
+	public Semilla(String nombre, String marca, int stock, String descripcion, int gramos,
+			String destino) {
+		super(nombre, marca, stock, descripcion, gramos);
+		this.destino = destino;
+		establecerClasificacion();
+		establecerPrecio();
 	}
 	
 	/*

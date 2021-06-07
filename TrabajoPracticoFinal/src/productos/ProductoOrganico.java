@@ -21,9 +21,13 @@ public abstract class ProductoOrganico extends Producto implements IEstablecerPr
 	public ProductoOrganico(String nombre, String marca, double precio, int stock, String descripcion, int gramos) {
 		super(nombre, marca, precio, stock, descripcion);
 		this.gramos = gramos;
-		establecerClasificacion();
 	}
 
+	public ProductoOrganico(String nombre, String marca, int stock, String descripcion, int gramos) {
+		super(nombre, marca, stock, descripcion);
+		this.gramos = gramos;
+	}
+	
 	
 	public int getGramos() {
 		return gramos;

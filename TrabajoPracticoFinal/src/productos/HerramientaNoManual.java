@@ -18,6 +18,14 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.consumo = null;
 	}
 	
+	public HerramientaNoManual(String codigo, String nombre, String marca, String clasificacion, double precio,
+			int stock, String descripcion, String material, String funcion, int potencia, String tipoMotor, String consumo) {
+		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, funcion);
+		this.potencia = potencia;
+		this.tipoMotor = tipoMotor;
+		this.consumo = consumo;
+	}
+	
 	public HerramientaNoManual(String nombre, String marca, double precio, int stock, String descripcion,
 			String material, String funcion, int potencia, String tipoMotor, String consumo) {
 		super(nombre, marca, precio, stock, descripcion, material, funcion);
@@ -26,15 +34,17 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.consumo = consumo;
 		establecerClasificacion();
 	}
-	
-	public HerramientaNoManual(String codigo, String nombre, String marca, String clasificacion, double precio,
-			int stock, String descripcion, String material, String funcion, int potencia, String tipoMotor, String consumo) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, funcion);
+
+	public HerramientaNoManual(String nombre, String marca, int stock, String descripcion,
+			String material, String funcion, int potencia, String tipoMotor, String consumo) {
+		super(nombre, marca, stock, descripcion, material, funcion);
 		this.potencia = potencia;
 		this.tipoMotor = tipoMotor;
 		this.consumo = consumo;
+		establecerClasificacion();
+		establecerPrecio();
 	}
-
+	
 	/*
 	 * valida el tipo de motor, electirco o a combustible
 	 */

@@ -27,6 +27,14 @@ public class MacetaRedonda extends Maceta{
 		establecerClasificacion();
 	}
 
+	public MacetaRedonda(String nombre, String marca, int stock, String descripcion, String material,
+			String forma, double diametroBoca, double base) {
+		super(nombre, marca, stock, descripcion, material, forma);
+		this.diametroBoca = diametroBoca;
+		this.base = base;
+		establecerClasificacion();
+		establecerPrecio();
+	}
 	
 	public double getDiametroBoca() {
 		return diametroBoca;
