@@ -429,6 +429,36 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
+
+	public String ComprarProducto(Producto elProducto, Cliente elCliente)
+	{
+		int flag=0;
+		String mensaje="ERROR en la compra";
+		Producto productoComprado=null;
+		
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) // si se encuentra la
+																					// clasificacion
+			{
+				ArrayList<Producto> arreglo = entrada.getValue();
+
+				for (int i = 0; i < arreglo.size() && flag == 0; i++) {
+					if (arreglo.get(i).equals(elProducto)) {
+						flag = 1;
+						
+						productoComprado=arreglo.get(i);
+						
+					}
+				}
+			}
+		}
+		
+		return mensaje;
+	}
 	
 	
 	//El objeto principal es Vivero, el cual posee dentro 1 array por cada coleccion (productos, servicios, cliente, empleado)
