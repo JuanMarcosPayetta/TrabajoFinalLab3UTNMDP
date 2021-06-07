@@ -326,6 +326,7 @@ public class Vivero implements IVivero {
 
 
 
+
 	public String modificarStockDisminuye(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -375,6 +376,7 @@ public class Vivero implements IVivero {
 			}
 		}
 
+		
 		return mensaje;
 	}
 	
