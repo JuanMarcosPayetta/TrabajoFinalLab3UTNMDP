@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 
-
 import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
 
-public abstract class Producto  implements IGenerarCodigo{
+public abstract class Producto implements IGenerarCodigo {
 
 	private String codigo;
 	private String nombre;
@@ -20,245 +19,209 @@ public abstract class Producto  implements IGenerarCodigo{
 	private int stock;
 	private String descripcion;
 
-	
-	public Producto() 
-	{
-		this.codigo=null;
-		this.nombre=null;
-		this.marca=null;
-		this.clasificacion=null;
-		this.precio=0;
-		this.stock=0;
-		this.descripcion=null;
+	public Producto() {
+		this.codigo = null;
+		this.nombre = null;
+		this.marca = null;
+		this.clasificacion = null;
+		this.precio = 0;
+		this.stock = 0;
+		this.descripcion = null;
 	}
 
-	
-	public Producto(String codigo, String nombre, String marca, String clasificacion, double precio, int stock, String descripcion) 
-	{
+	public Producto(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
+			String descripcion) {
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.marca = marca; 
+		this.marca = marca;
 		this.clasificacion = clasificacion;
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
 	}
-	
+
 	/*
 	 * Constructor para enviar como parametro a los metodos para entrar al arbol
 	 */
-	public Producto(String codigo, String clasificacion)
-	{
-		this.codigo=codigo;
-		this.clasificacion=clasificacion;
-		this.descripcion=null;
+	public Producto(String codigo, String clasificacion) {
+		this.codigo = codigo;
+		this.clasificacion = clasificacion;
+		this.descripcion = null;
 		this.precio = 0;
 		this.stock = 0;
-		this.marca=null;
-		this.nombre=null;
+		this.marca = null;
+		this.nombre = null;
 	}
-	
-	
+
 	/*
 	 * Constructor con generador de codigo automatico
 	 */
-	public Producto(String nombre, String marca, double precio, int stock, String descripcion) 
-	{
+	public Producto(String nombre, String marca, double precio, int stock, String descripcion) {
 		this.codigo = generarCodigo();
 		this.nombre = nombre;
-		this.marca = marca; 
-		this.clasificacion =null;
+		this.marca = marca;
+		this.clasificacion = null;
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
 	}
-	
-	
+
 	public abstract void establecerClasificacion();
-		
-	
-	/* 
-	 * Generador automatico del codigo de cada producto ingresado 
+
+	/*
+	 * Generador automatico del codigo de cada producto ingresado
 	 */
-	public String generarCodigo()
-	{
-		boolean existe=true;
-		int longitud=5;
-		String codigoGenerado=null;
-		String minusculas= "abcdefghijkmnlopqrstuvxyz";
-		String numeros= "0123456789";
-		String total=minusculas+numeros;
-		
-		char [] pass= new char[longitud];
-		Random random= new Random();
-		
-	    while(existe) //Mientras el codigo generado actualmente sea = al codigo actual de otro producto
-	    {
-	    	for(int i =0; i<pass.length; i++)
-			{
-				pass[i]=total.charAt(random.nextInt(total.length()));
+	public String generarCodigo() {
+		boolean existe = true;
+		int longitud = 5;
+		String codigoGenerado = null;
+		String minusculas = "abcdefghijkmnlopqrstuvxyz";
+		String numeros = "0123456789";
+		String total = minusculas + numeros;
+
+		char[] pass = new char[longitud];
+		Random random = new Random();
+
+		while (existe) // Mientras el codigo generado actualmente sea = al codigo actual de otro
+						// producto
+		{
+			for (int i = 0; i < pass.length; i++) {
+				pass[i] = total.charAt(random.nextInt(total.length()));
 			}
-	    	codigoGenerado=String.valueOf(pass); //codigo generado
-	
-			boolean encontrado=buscarCodigoExistentes(codigoGenerado); //busco si ya existe el codigo generado
-			
-			if(!encontrado) //Si el codigo generado no se repite con el codigo actual de otro producto, corta el ciclo while
+			codigoGenerado = String.valueOf(pass); // codigo generado
+
+			boolean encontrado = buscarCodigoExistentes(codigoGenerado); // busco si ya existe el codigo generado
+
+			if (!encontrado) // Si el codigo generado no se repite con el codigo actual de otro producto,
+								// corta el ciclo while
 			{
-				existe=false;
+				existe = false;
 			}
-	    }
+		}
 		return codigoGenerado;
 	}
 
-	
 	/*
 	 * Busca si un codigo existe o no actualmente en algun producto
 	 */
-	public boolean buscarCodigoExistentes(String codigoGenerado)
-	{
-		//LLAMAR AL METODO QUE ME DEVUELVE EL ARRAYLIST CON LOS CODIGOS ACTUALES
-		Vivero vivero= new Vivero();
-		ArrayList<String>codigosActuales= new ArrayList<String>();
-		codigosActuales=vivero.obtenerCodigosProducto(); //ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL QUE SE GENERARA, PARA QUE NO SE REPITAN
-		
-		boolean encontrado=false;
-		for(int i=0; i<codigosActuales.size() && !encontrado; i++)
-		{
-			if(codigosActuales.get(i).equals(codigoGenerado)) //El codigo generado es igual a uno ya existente
+	public boolean buscarCodigoExistentes(String codigoGenerado) {
+		// LLAMAR AL METODO QUE ME DEVUELVE EL ARRAYLIST CON LOS CODIGOS ACTUALES
+		Vivero vivero = new Vivero();
+		ArrayList<String> codigosActuales = new ArrayList<String>();
+		codigosActuales = vivero.obtenerCodigosProducto(); // ESTE METODO DEBE CREARSE EN LA CLASE VIVERO, EL CUAL
+															// GUARDARA EN UN ARRAYLIST (Y LO RETORNARA) CON TODOS LOS
+															// CODIGOS DE LOS PRODUCTOS CARGADOS, PARA COMPARAR CON EL
+															// QUE SE GENERARA, PARA QUE NO SE REPITAN
+
+		boolean encontrado = false;
+		for (int i = 0; i < codigosActuales.size() && !encontrado; i++) {
+			if (codigosActuales.get(i).equals(codigoGenerado)) // El codigo generado es igual a uno ya existente
 			{
-				encontrado=true;
+				encontrado = true;
 			}
 		}
 		return encontrado;
 	}
-	
-	
+
 	/*
 	 * Validacion Nombre/Marca, llamada en el main
 	 */
-	public static String validarCadenaCaracteresLlamada(String nombre)
-	{
-		    String mensaje=null;  //Si el retorno es "null" seria correcto
-			try {
-				validarCadenaCaracteres(nombre);
-			} catch (NullPointerException e) {
-				mensaje=e.getMessage();
-			} catch (CadenaInvalidaException e) {
-				mensaje=e.getMessage();
-			}
-			
-			return mensaje;
+	public static String validarCadenaCaracteresLlamada(String nombre) {
+		String mensaje = null; // Si el retorno es "null" seria correcto
+		try {
+			validarCadenaCaracteres(nombre);
+		} catch (NullPointerException e) {
+			mensaje = e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje = e.getMessage();
+		}
+
+		return mensaje;
 	}
-	
-	
-	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException
-	{
-		if(cadena==null)
-		{
+
+	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException {
+		if (cadena == null) {
 			throw new NullPointerException("Error");
-		}
-		else if(cadena.isBlank())
-		{
+		} else if (cadena.isBlank()) {
 			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		}
-		else if(!cadena.matches("[a-zA-Z]*\\D{3}")) //El nombre debe contener al menos 3 letras, ya sean miniscula o mayuscula (no numeros)
+		} else if (!cadena.matches("[a-zA-Z]*\\D{3}")) // El nombre debe contener al menos 3 letras, ya sean miniscula o
+														// mayuscula (no numeros)
 		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 3 letras");
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + " 3 letras");
 		}
-		
+
 	}
-	
-	
+
 	/*
 	 * Validacion Precio/Stock, llamada main
 	 */
-	public static <T extends Number> String validarValorNumericoLlamada(T valor)
-	{
-		String mensaje=null;
+	public static <T extends Number> String validarValorNumericoLlamada(T valor) {
+		String mensaje = null;
 		try {
 			validarValorNumerico(valor);
 		} catch (DatoNumeroException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
+		} catch (NullPointerException e) {
+			mensaje = e.getMessage();
 		}
-	    catch (NullPointerException e) {
-		    mensaje=e.getMessage();
-	    }
 		return mensaje;
 	}
-	
-	
-	private static <T extends Number> void validarValorNumerico(T valor) throws DatoNumeroException, NullPointerException
-	{
-		if(valor==null)
-		{
+
+	private static <T extends Number> void validarValorNumerico(T valor)
+			throws DatoNumeroException, NullPointerException {
+		if (valor == null) {
 			throw new NullPointerException("Error, ingrese un dato numerico valido");
+		} else if (valor instanceof Integer) {
+			if (valor.intValue() < 0) {
+				throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION);
+			}
+		} else if (valor instanceof Double) {
+			if (valor.doubleValue() < 0) {
+				throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION);
+			}
 		}
-		else if(valor instanceof Integer)
-	    {
-	       if(valor.intValue()<0)
-	       {
-	    	   throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION);
-	       }
-		}
-	    else if(valor instanceof Double)
-	    {
-	    	if(valor.doubleValue()<0)
-		    {
-		    	throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION);
-		    }
-	    }
 	}
-	
-	
+
 	/*
 	 * Valida si es un boolean, llamada main
 	 */
-	public static String validarBooleanLlamada(Boolean tipo)
-	{
-		String mensaje=null;
+	public static String validarBooleanLlamada(Boolean tipo) {
+		String mensaje = null;
 		try {
 			validarBoolean(tipo);
 		} catch (InputMismatchException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		} catch (NullPointerException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
-	
 
-	private static void validarBoolean(Boolean tipo)throws NullPointerException, InputMismatchException
-	{
-		if(tipo==null)
-		{
+	private static void validarBoolean(Boolean tipo) throws NullPointerException, InputMismatchException {
+		if (tipo == null) {
 			throw new NullPointerException("Error, ingrese true or false");
-		}
-		else if(!Boolean.FALSE && !Boolean.TRUE)
-		{
+		} else if (!Boolean.FALSE && !Boolean.TRUE) {
 			throw new InputMismatchException("Ingrese un dato valido, true o false");
 		}
- 
+
 	}
-	
-	
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
 
-	
 	/*
 	 * Verifica que el codigo no exista
 	 */
 	public String setCodigo(String codigo) {
 
-		String mensaje="Error, codigo ya existente, genero uno nuevo porfavor";
-		boolean validacion=buscarCodigoExistentes(codigo);
-		if(!validacion) //si el codigo no existe
+		String mensaje = "Error, codigo ya existente, genero uno nuevo porfavor";
+		boolean validacion = buscarCodigoExistentes(codigo);
+		if (!validacion) // si el codigo no existe
 		{
-			this.codigo=codigo;
-			mensaje="Codigo establecido con exito";
-		}	
+			this.codigo = codigo;
+			mensaje = "Codigo establecido con exito";
+		}
 		return mensaje;
 	}
 
@@ -267,13 +230,12 @@ public abstract class Producto  implements IGenerarCodigo{
 	}
 
 	public String setNombre(String nombre) {
-		String mensaje=validarCadenaCaracteresLlamada(nombre); //si devuelve "null" el dato es correcto
-		
-		if(mensaje==null)
-		{
-			this.nombre=nombre;
+		String mensaje = validarCadenaCaracteresLlamada(nombre); // si devuelve "null" el dato es correcto
+
+		if (mensaje == null) {
+			this.nombre = nombre;
 		}
-		
+
 		return mensaje;
 	}
 
@@ -282,11 +244,10 @@ public abstract class Producto  implements IGenerarCodigo{
 	}
 
 	public String setMarca(String marca) {
-		
-     String mensaje=validarCadenaCaracteresLlamada(marca); //si devuelve "null" el dato es correcto
-		
-		if(mensaje==null)
-		{
+
+		String mensaje = validarCadenaCaracteresLlamada(marca); // si devuelve "null" el dato es correcto
+
+		if (mensaje == null) {
 			this.marca = marca;
 		}
 		return mensaje;
@@ -295,7 +256,7 @@ public abstract class Producto  implements IGenerarCodigo{
 	public String getClasificacion() {
 		return clasificacion;
 	}
-	
+
 	public void setClasificacion(String clasificacion) {
 		this.clasificacion = clasificacion;
 	}
@@ -304,28 +265,54 @@ public abstract class Producto  implements IGenerarCodigo{
 		return precio;
 	}
 
-	public String setPrecio(double precio) {	
-	 String mensaje=validarValorNumericoLlamada(precio); //si devuelve "null" el dato es correcto
-			
-		if(mensaje==null)
-		{
-		 this.precio=precio;
+	public String setPrecio(double precio) {
+		String mensaje = validarValorNumericoLlamada(precio); // si devuelve "null" el dato es correcto
+
+		if (mensaje == null) {
+			this.precio = precio;
 		}
-		return mensaje;	
+		return mensaje;
 	}
 
 	public int getStock() {
 		return stock;
 	}
 
-	public String setStock(int stock) {
-	String mensaje=validarValorNumericoLlamada(stock); //si devuelve "null" el dato es correcto
-			
-	if(mensaje==null)
-	{
-	 this.stock=stock;
+	private String setStock(int stock) { // es privado por que se utiliza en aumentar o disminuir stock
+		String mensaje = validarValorNumericoLlamada(stock); // si devuelve "null" el dato es correcto
+
+		if (mensaje == null) {
+			this.stock = stock;
+		}
+		return mensaje;
 	}
-	return mensaje;			
+
+	public String aumentarStock(int unidades) {
+		String mensaje = validarValorNumericoLlamada(unidades);
+		int nuevoStock = 0;
+
+		if (mensaje == null) {
+			nuevoStock = getStock() + unidades;
+			mensaje = setStock(nuevoStock);
+		}
+		return mensaje;
+	}
+
+	public String disminuitStock(int unidades) {
+		String mensaje = validarValorNumericoLlamada(unidades);
+		int nuevoStock = 0;
+
+		if (mensaje == null) {
+			nuevoStock = getStock() - unidades;
+			if (nuevoStock < 0) {
+				mensaje = "Error el stock no puede ser menor a cero";
+			}
+
+			else {
+				mensaje = setStock(nuevoStock);
+			}
+		}
+		return mensaje;
 	}
 
 	public String getDescripcion() {
@@ -336,12 +323,31 @@ public abstract class Producto  implements IGenerarCodigo{
 		this.descripcion = descripcion;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Codigo: " + codigo + ", Nombre: " + nombre + ", Marca: " + marca + ", Clasificacion: "
-				+ clasificacion + ", Precio: " + precio + ", Stock: " + stock + ", Descripcion: " + descripcion;
+		return "Codigo: " + codigo + ", Nombre: " + nombre + ", Marca: " + marca + ", Clasificacion: " + clasificacion
+				+ ", Precio: " + precio + ", Stock: " + stock + ", Descripcion: " + descripcion;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		return 1;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+
+		if (obj != null) {
+			if (obj instanceof Producto) {
+				Producto miProducto = (Producto) obj;
+				if (this.getCodigo().equals(miProducto.getCodigo())) {
+					res = true;
+				}
+			}
+		}
+
+		return res;
+	}
+
 }
