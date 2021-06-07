@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 
+import org.json.JSONObject;
+
 import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
@@ -80,6 +82,7 @@ public abstract class Producto implements IGenerarCodigo {
 	}
 	
 	public abstract void establecerClasificacion();
+	public abstract JSONObject javaToJson();
 
 	/*
 	 * Generador automatico del codigo de cada producto ingresado

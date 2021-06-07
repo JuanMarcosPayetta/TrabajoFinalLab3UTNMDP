@@ -3,6 +3,9 @@ package productos;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 
 public class Arbusto extends PlantaTerrestre{
@@ -296,7 +299,41 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	
-	
+	public JSONObject javaToJson()
+	{
+		JSONObject json= new JSONObject();
+		try {
+			json.put("codigo", getCodigo());
+			json.put("nombre", getNombre());
+			json.put("especie", getEspecie());
+			json.put("marca", getMarca());
+			json.put("clasificacion", getClasificacion());
+			json.put("precio", getPrecio());
+			json.put("stock", getStock());
+			json.put("mesesDeVida", getMesesDeVida());
+			json.put("estacionDePlantacion", getEstacionPlantacion());
+			json.put("habitat", getHabitat());
+			json.put("altura", getAltura());
+			json.put("tieneFlor", isFlor());
+			json.put("exposicionSolar", getNivelExposicionSolar());
+			json.put("raiz", getTipoRaiz());
+			json.put("esAromatica", isAromatica());
+			json.put("fertilizante", getCantidadFertilizante());
+			json.put("tieneFruto", isFruto());
+			json.put("tieneSemilla", isSemilla());
+			json.put("esDeInterior", isInterior());
+			json.put("epocaDePoda", getEpocaDePoda());
+			json.put("riego", getCantidadRiego());
+			json.put("tipoDeHoja", getTipoDeHoja());
+			json.put("esTrepador", isTrepador());
+			json.put("descripcion", getDescripcion());
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return json;
+	}
 
 
 
