@@ -3,6 +3,9 @@ package productos;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 
 public class Sustrato extends ProductoOrganico{
@@ -149,6 +152,29 @@ public class Sustrato extends ProductoOrganico{
 		precioTotal=precioGramoSustrato*getGramos();
 		setPrecio(precioTotal);
 	}
+	
+	
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("codigo", getCodigo());
+            json.put("nombre", getNombre());
+            json.put("marca", getMarca());
+            json.put("clasificacion", getClasificacion());
+            json.put("precio", getPrecio());
+            json.put("stock", getStock());
+            json.put("gramos", getGramos());
+            json.put("esAbonada", isAbonada());
+            json.put("tipoDeSuelo", getTipoDeSuelo());
+            json.put("descripcion", getDescripcion());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 	
 	
 }

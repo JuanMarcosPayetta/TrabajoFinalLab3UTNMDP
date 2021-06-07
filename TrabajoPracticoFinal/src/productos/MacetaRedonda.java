@@ -1,5 +1,8 @@
 package productos;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MacetaRedonda extends Maceta{
 
 	private double diametroBoca;
@@ -84,5 +87,26 @@ public class MacetaRedonda extends Maceta{
 	}
 
 	
-	
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("codigo", getCodigo());
+            json.put("nombre", getNombre());
+            json.put("marca", getMarca());
+            json.put("clasificacion", getClasificacion());
+            json.put("precio", getPrecio());
+            json.put("stock", getStock());
+            json.put("material", getMaterial());
+            json.put("forma", getForma());
+            json.put("diametroBoca", getDiametroBoca());
+            json.put("base", getBase());
+            json.put("descripcion", getDescripcion());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 }

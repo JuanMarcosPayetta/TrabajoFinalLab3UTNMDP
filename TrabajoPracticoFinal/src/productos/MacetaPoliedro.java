@@ -1,5 +1,8 @@
 package productos;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MacetaPoliedro extends Maceta {
 
 	private double alto;
@@ -116,4 +119,28 @@ public class MacetaPoliedro extends Maceta {
 		setPrecio(precioFinal);
 	}
 
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("codigo", getCodigo());
+            json.put("nombre", getNombre());
+            json.put("marca", getMarca());
+            json.put("clasificacion", getClasificacion());
+            json.put("precio", getPrecio());
+            json.put("stock", getStock());
+            json.put("material", getMaterial());
+            json.put("forma", getForma());
+            json.put("alto", getAlto());
+            json.put("ancho", getAncho());
+            json.put("largo", getLargo());
+            json.put("descripcion", getDescripcion());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
+	
 }

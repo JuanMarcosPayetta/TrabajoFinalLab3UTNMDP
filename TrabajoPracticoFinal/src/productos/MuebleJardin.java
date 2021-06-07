@@ -3,6 +3,9 @@ package productos;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 
 public class MuebleJardin extends ProductoDeHogar {
@@ -183,4 +186,27 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("codigo", getCodigo());
+            json.put("nombre", getNombre());
+            json.put("marca", getMarca());
+            json.put("clasificacion", getClasificacion());
+            json.put("precio", getPrecio());
+            json.put("stock", getStock());
+            json.put("material", getMaterial());
+            json.put("tipo", getTipo());
+            json.put("alto", getAlto());
+            json.put("largo", getLargo());
+            json.put("ancho", getAncho());
+            json.put("descripcion", getDescripcion());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 }
