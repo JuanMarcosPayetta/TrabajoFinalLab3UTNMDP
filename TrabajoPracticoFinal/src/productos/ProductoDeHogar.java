@@ -1,6 +1,8 @@
 package productos;
 
-public abstract class ProductoDeHogar extends Producto {
+import interfaces.IEstablecerPrecioProductoInerte;
+
+public abstract class ProductoDeHogar extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String material;
 

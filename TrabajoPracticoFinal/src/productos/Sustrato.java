@@ -112,7 +112,6 @@ public class Sustrato extends ProductoOrganico{
 	}
 	
 	
-
 	@Override
 	public String toString() {
 		return super.toString()+", abonada: " + abonada + ", tipoDeSuelo: " + tipoDeSuelo;
@@ -122,7 +121,32 @@ public class Sustrato extends ProductoOrganico{
 	public void establecerClasificacion() {
 		this.setClasificacion("Sustrato");
 	}
-
+	
+	@Override
+	public void establecerPrecio() 
+	{
+	
+		double precioGramoSustrato=0;
+		double precioTotal=0;
+		
+		if(isAbonada())
+		{
+			precioGramoSustrato=0.3;
+		}
+		else
+		{
+			precioGramoSustrato=0.2;
+		}
+		
+		precioTotal=precioGramoSustrato*getGramos();
+		setPrecio(precioTotal);
+	}
 	
 	
 }
+
+
+	
+	
+
+	

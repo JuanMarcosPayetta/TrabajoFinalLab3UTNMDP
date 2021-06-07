@@ -261,6 +261,58 @@ public class Arbol extends PlantaTerrestre{
 	public void establecerClasificacion() {
 		this.setClasificacion("Arbol");
 	}
+
+	@Override
+	public double precioMesDeVida(int mesesVida) {
+
+		double precioMesVida=35;
+		return precioMesVida*mesesVida;
+	}
+
+	@Override
+	public double precioPorCentimentoAltura(int centimentros) {
+		double precioCentimetro=3;
+		return precioCentimetro*centimentros;
+	}
+
+	@Override
+	public void establecerPrecio() {
+		double precioMinino=0;
+		double precioFinal=0;
+		
+		if(isFruto())
+		{
+			precioMinino=600;
+		}
+		else
+		{
+			if(getDiametroDelTronco()<40)
+			{
+				precioMinino=400;
+			}
+			else
+			{
+				precioMinino=550;
+			}
+			
+		}
+		
+		double precioMesesVida=precioMesDeVida(getMesesDeVida());
+		double precioPorAltura=precioPorCentimentoAltura(getAltura());
+		double precioIntermedio=precioMesesVida+precioPorAltura;
+		
+		if(precioIntermedio<precioMinino)
+		{
+			precioFinal=precioMinino;
+		}
+		else
+		{
+			precioFinal=precioIntermedio+precioMinino;
+		}
+		
+		setPrecio(precioFinal);
+		
+	}
 	
 	
 	

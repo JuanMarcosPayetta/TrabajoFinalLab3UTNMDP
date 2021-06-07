@@ -112,7 +112,7 @@ public class MuebleJardin extends ProductoDeHogar {
 		tiposMueble.add("mesa");
 		tiposMueble.add("silla");
 		tiposMueble.add("reposera");
-		tiposMueble.add("sillon");
+		tiposMueble.add("camastro");
 		tiposMueble.add("hamaca");
 
 		if (mueble == null) {
@@ -123,7 +123,7 @@ public class MuebleJardin extends ProductoDeHogar {
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + "4 letras");
 		} else if (!tiposMueble.contains(mueble.toLowerCase())) {
 			throw new InputMismatchException(
-					"Ingrese un tipo de mueble valido (mesa, silla, reposera, sill�n, hamaca)");
+					"Ingrese un tipo de mueble valido (mesa, silla, reposera, camastro, hamaca)");
 		}
 	}
 
@@ -140,6 +140,35 @@ public class MuebleJardin extends ProductoDeHogar {
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Mueble de jardin");
+	}
+
+	@Override
+	public void establecerPrecio() {
+		double precioMueble=0;
+		
+		if(getTipo().equalsIgnoreCase("mesa"))
+		{
+			precioMueble=24.500;
+		}
+		else if(getTipo().equalsIgnoreCase("silla"))
+		{
+			precioMueble=9000;
+		}
+		else if(getTipo().equalsIgnoreCase("reposera"))
+		{
+			precioMueble=5200;
+		}
+		else if(getTipo().equalsIgnoreCase("camastro"))
+		{
+			precioMueble=45.450;
+		}
+		else if(getTipo().equalsIgnoreCase("hamaca"))
+		{
+			precioMueble=37.780;
+		}
+		
+		setPrecio(precioMueble);
+		
 	}
 
 

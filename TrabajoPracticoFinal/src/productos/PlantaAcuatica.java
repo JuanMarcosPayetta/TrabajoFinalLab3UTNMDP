@@ -286,6 +286,85 @@ public class PlantaAcuatica extends Planta{
 	public void establecerClasificacion() {
 		this.setClasificacion("Planta acuatica");
 	}
+
+	@Override
+	public double precioMesDeVida(int mesesVida)
+	{
+		double precioPorMes=0; //precio por defecto por cada mes de vida
+		if(getTipoDeAgua().equalsIgnoreCase("salada"))
+		{
+			precioPorMes=5;
+		}
+		else
+		{
+			precioPorMes=3;
+		}
+		
+		if(getTemperaturaAgua()>=25)
+		{
+			precioPorMes+=2;
+		}
+		
+		return precioPorMes*mesesVida;
+	}
+	
+	@Override
+	public double precioPorCentimentoAltura(int centimentros)
+	{
+		double precioPorCentimetro=1;  //precio por defecto por cada mes de vida
+		return precioPorCentimetro*centimentros;
+	}
+	
+	
+	@Override
+	public void establecerPrecio() {
+		
+		double precioMinino=0;
+		double precioFinal=0;
+		
+	  if(getTipoDeAgua().equalsIgnoreCase("salada"))
+	  {
+		  if(getTipo().equalsIgnoreCase("oxigenante"))
+		  {
+			  precioMinino=22;
+		  }
+		  else if(getTipo().equalsIgnoreCase("ribera") || getTipo().equalsIgnoreCase("flotante"))
+		  {
+			  precioMinino=28;
+		  }
+		  else
+		  {
+			  precioMinino=35;
+		  }
+		  
+	  }
+	  else
+	  {
+		  if(getTipo().equalsIgnoreCase("profundidades"))
+		  {
+			  precioMinino=25;
+		  }
+		  else
+		  {
+			  precioMinino=18;
+		  } 
+	  }
+	  
+	  double precioMesesVida=precioMesDeVida(getMesesDeVida());
+	  double precioPorAltura=precioPorCentimentoAltura(getAltura());
+	  double precioIntermedio=precioMesesVida+precioPorAltura;
+	  
+	  if(precioIntermedio<precioMinino)
+	  {
+		  precioFinal=precioMinino;
+	  }
+	  else
+	  {
+		  precioFinal=precioIntermedio+precioMinino;
+	  }
+		
+		setPrecio(precioFinal);
+	}
 	
 	
 	

@@ -5,8 +5,9 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
+import interfaces.IEstablecerPrecioPlanta;
 
-public abstract class Planta extends Producto{
+public abstract class Planta extends Producto implements IEstablecerPrecioPlanta{
 
 	private int mesesDeVida; 
 	private String estacionPlantacion; 

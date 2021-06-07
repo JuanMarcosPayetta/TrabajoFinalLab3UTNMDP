@@ -81,4 +81,29 @@ public class MacetaPoliedro extends Maceta {
 		this.setClasificacion("Maceta poliedro");
 	}
 
+	
+	@Override
+	public void establecerPrecio() {
+		
+		double precioFinal=0;
+		
+		if(getForma().equalsIgnoreCase("cubo"))
+		{
+			double precioAncho=18.75;
+			precioFinal=precioAncho*getAncho();
+		}
+		else if(getForma().equalsIgnoreCase("jardinera"))
+		{
+			double precioLargo=59;
+			precioFinal=precioLargo*getLargo();
+		}
+		else if(getForma().equalsIgnoreCase("piramidal"))
+		{
+			double precioAlto=19;
+			precioFinal=precioAlto*getAlto();
+		}
+		
+		setPrecio(precioFinal);
+	}
+
 }

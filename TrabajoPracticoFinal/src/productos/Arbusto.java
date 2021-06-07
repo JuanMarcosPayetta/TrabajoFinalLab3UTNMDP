@@ -210,6 +210,77 @@ public class Arbusto extends PlantaTerrestre{
 		this.setClasificacion("Arbusto");
 	}
 
+	@Override
+	public double precioMesDeVida(int mesesVida) {
+		
+		double precioPorMes=0; //precio por defecto por cada mes de vida
+		if(isInterior())
+		{
+			precioPorMes=23;
+		}
+		else
+		{
+			precioPorMes=17;
+		}
+		
+		return precioPorMes*mesesVida;
+	}
+
+	@Override
+	public double precioPorCentimentoAltura(int centimentros) {
+		
+		double precioPorCentimetro=0;
+		if(isTrepador()) 
+		{
+			precioPorCentimetro=2;
+		}
+		else
+		{
+			precioPorCentimetro=3;
+		}
+		return precioPorCentimetro*centimentros;
+	}
+
+	
+
+	@Override
+	public void establecerPrecio() {
+	
+		double precioMinino=0;
+		double precioFinal=0;
+		
+		if(isInterior())
+		{
+			precioMinino=300;
+		}
+		else
+		{
+			if(getTipoDeHoja().equalsIgnoreCase("persistente"))
+			{
+				precioMinino=260;
+			}
+			else
+			{
+				precioMinino=220;
+			}
+		}
+		
+		double precioMesesVida=precioMesDeVida(getMesesDeVida());
+		double precioPorAltura=precioPorCentimentoAltura(getAltura());
+		double precioIntermedio=precioMesesVida+precioPorAltura;
+		
+		if(precioIntermedio<precioMinino)
+		{
+			precioFinal=precioMinino;
+		}
+		else
+		{
+			precioFinal=precioIntermedio+precioMinino;
+		}
+		
+		setPrecio(precioFinal);
+	}
+
 	
 	
 

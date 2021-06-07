@@ -176,6 +176,107 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		this.setClasificacion("Herramienta no manual");
 	}
 
+	@Override
+	public void establecerPrecio() {
+	
+		double precioH=0;
+		if(getConsumo().equalsIgnoreCase("alto"))
+		{
+			if(getPotencia()<200)
+			{
+				precioH=1700;
+			}
+			else if(getPotencia()>=200 && getPotencia()<500)
+			{
+				precioH=2700.5;
+			}
+			else if(getPotencia()>=500 && getPotencia()<1000)
+			{
+				precioH=3850.9;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=5980;
+			}
+			else if(getPotencia()>=1500 && getPotencia()<2000)
+			{
+				precioH=6999;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=8020.9;
+			}
+			else
+			{
+				precioH=12000;
+			}
+		}
+		else if(getConsumo().equalsIgnoreCase("medio"))
+		{
+			if(getPotencia()<200)
+			{
+				precioH=2210;
+			}
+			else if(getPotencia()>=200 && getPotencia()<500)
+			{
+				precioH=3510.5;
+			}
+			else if(getPotencia()>=500 && getPotencia()<1000)
+			{
+				precioH=4500.9;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=6000;
+			}
+			else if(getPotencia()>=1500 && getPotencia()<2000)
+			{
+				precioH=8300.5;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=11800;
+			}
+			else
+			{
+				precioH=14600;
+			}
+		}
+		else
+		{
+			if(getPotencia()<200)
+			{
+				precioH=3500;
+			}
+			else if(getPotencia()>=200 && getPotencia()<500)
+			{
+				precioH=4859;
+			}
+			else if(getPotencia()>=500 && getPotencia()<1000)
+			{
+				precioH=5670.9;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=7299.5;
+			}
+			else if(getPotencia()>=1500 && getPotencia()<2000)
+			{
+				precioH=9235.5;
+			}
+			else if(getPotencia()>=1000 && getPotencia()<1500)
+			{
+				precioH=13560;
+			}
+			else
+			{
+				precioH=18900;
+			}
+		}
+		
+		setPrecio(precioH);
+	}
+
 	
 	
 	

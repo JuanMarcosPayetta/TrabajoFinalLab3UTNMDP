@@ -102,6 +102,8 @@ public class Vivero implements IVivero {
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
 
+	
+	
 	@Override
 	public <T> String buscarElemento(T elemento) { // producto,servicio,empleado, cliente
 
@@ -241,10 +243,14 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	
+	
 	@Override
 	public <T> String mostrarElemento(T elemento) {
 
 		return null;
 	}
+	
+	
 
 }

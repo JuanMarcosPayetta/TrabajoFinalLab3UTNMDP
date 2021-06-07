@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
+import interfaces.IEstablecerPrecioProductoInerte;
 
-public abstract class HerramientaJardineria extends Producto {
+public abstract class HerramientaJardineria extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String material;
 	private String funcion; // riego, corte, limpieza, labrado, carga,...
