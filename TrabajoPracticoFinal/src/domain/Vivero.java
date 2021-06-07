@@ -123,7 +123,7 @@ public class Vivero implements IVivero {
 					ArrayList<Producto> arreglo = entrada.getValue();
 
 					for (int i = 0; i < arreglo.size() && flag == 0; i++) {
-						if (arreglo.get(i).getCodigo().equalsIgnoreCase(unProducto.getCodigo())) {
+						if (arreglo.get(i).equals(unProducto)) {
 							mensaje = arreglo.get(i).toString();
 							flag = 1;
 						}
@@ -131,7 +131,6 @@ public class Vivero implements IVivero {
 				}
 			}
 		}
-
 		else if (elemento instanceof Servicio) // es un servicio
 		{
 
@@ -194,7 +193,7 @@ public class Vivero implements IVivero {
 				if (entry.getKey().equalsIgnoreCase(unProducto.getClasificacion())) {
 					ArrayList<Producto> productos = entry.getValue();
 					for (int i = 0; i < productos.size() && validacion == false; i++) {
-						if (productos.get(i).getCodigo().equals(unProducto.getCodigo())) {
+						if (productos.get(i).equals(unProducto)) {
 							productos.remove(i);
 							validacion = true;
 							mensaje = "Producto eliminado con exito";
@@ -306,7 +305,7 @@ public class Vivero implements IVivero {
 				ArrayList<Producto> arreglo = entrada.getValue();
 
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equals(elemento.getCodigo())) {
+					if (arreglo.get(i).equals(elemento)) {
 						mensaje = arreglo.get(i).setPrecio(precio);
 						if (mensaje == null)
 						// si la exepcion del set no devuelve error
@@ -321,7 +320,7 @@ public class Vivero implements IVivero {
 		}
 		return mensaje;
 	}
-
+	
 	public String modificarStockDisminuye(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -332,7 +331,7 @@ public class Vivero implements IVivero {
 			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+					if (arreglo.get(i).equals(elProducto)) {
 						mensaje = arreglo.get(i).disminuitStock(stock);
 						if (mensaje == null)// si la exepcion no devuelve error
 						{
@@ -358,7 +357,7 @@ public class Vivero implements IVivero {
 			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+					if (arreglo.get(i).equals(elProducto)) {
 						mensaje = arreglo.get(i).aumentarStock(stock);
 						if (mensaje == null)// si la exepcion no devuelve error
 						{
@@ -384,7 +383,7 @@ public class Vivero implements IVivero {
 			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+					if (arreglo.get(i).equals(elProducto)) {
 						mensaje = arreglo.get(i).setNombre(nombre);
 						if (mensaje == null)// si la exepcion no devuelve error
 						{
@@ -410,7 +409,7 @@ public class Vivero implements IVivero {
 			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
-					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+					if (arreglo.get(i).equals(elProducto)) {
 						mensaje = arreglo.get(i).setMarca(marca);
 						if (mensaje == null)// si la exepcion no devuelve error
 						{

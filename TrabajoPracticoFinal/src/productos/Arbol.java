@@ -330,7 +330,6 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	
-	
 		
 	
 	
