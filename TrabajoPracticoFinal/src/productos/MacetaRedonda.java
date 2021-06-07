@@ -66,6 +66,15 @@ public class MacetaRedonda extends Maceta{
 		this.setClasificacion("Maceta redonda");
 	}
 
+	@Override
+	public void establecerPrecio() {
+		
+	   double precioDiametro=30.6;
+       double precioFinal=precioDiametro*getDiametroBoca();
+	   setPrecio(precioFinal);
+		
+	}
+
 	
 	
 }

@@ -126,8 +126,7 @@ public abstract class Producto implements IGenerarCodigo {
 	/*
 	 * Validacion Nombre/Marca, llamada en el main
 	 */
-	public static String validarCadenaCaracteresLlamada(String nombre) 
-	{
+	public static String validarCadenaCaracteresLlamada(String nombre) {
 		String mensaje = null; // Si el retorno es "null" seria correcto
 		try {
 			validarCadenaCaracteres(nombre);
@@ -136,6 +135,7 @@ public abstract class Producto implements IGenerarCodigo {
 		} catch (CadenaInvalidaException e) {
 			mensaje = e.getMessage();
 		}
+
 		return mensaje;
 	}
 

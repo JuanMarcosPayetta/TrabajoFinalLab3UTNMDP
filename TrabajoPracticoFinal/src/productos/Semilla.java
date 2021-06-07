@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
+import interfaces.IEstablecerPrecioProductoInerte;
 
 public class Semilla extends ProductoOrganico{
 
@@ -95,6 +96,28 @@ public class Semilla extends ProductoOrganico{
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Semilla");
+	}
+
+	@Override
+	public void establecerPrecio() {
+	
+		double precioGramoSemilla=0;
+		double precioTotal=0;
+		if(getDestino().equalsIgnoreCase("huerta"))
+		{
+			precioGramoSemilla=4.5;
+		}
+		else if(getDestino().equalsIgnoreCase("floral"))
+		{
+			precioGramoSemilla=3.6;
+		}
+		else
+		{
+			precioGramoSemilla=1.3;
+		}
+		
+		precioTotal=precioGramoSemilla*getGramos();
+		setPrecio(precioTotal);
 	}
 
 	

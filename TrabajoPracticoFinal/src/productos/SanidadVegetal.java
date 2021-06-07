@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
+import interfaces.IEstablecerPrecioProductoInerte;
 
-public class SanidadVegetal extends Producto{
+public class SanidadVegetal extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String funcion;
 	private int centimetroCubico;
@@ -117,6 +118,29 @@ public class SanidadVegetal extends Producto{
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Sanidad vegetal");
+	}
+
+	@Override
+	public void establecerPrecio() {
+		
+		double precioCentimetroCubico=0;
+		double precioFinal=0;
+		
+		if(getFuncion().equalsIgnoreCase("insecticida"))
+		{
+			precioCentimetroCubico=1.8;
+		}
+		else if(getFuncion().equalsIgnoreCase("funguicida"))
+		{
+			precioCentimetroCubico=4;
+		}
+		else
+		{
+			precioCentimetroCubico=3.3;
+		}
+		
+		precioFinal=precioCentimetroCubico*getCentimetroCubico();
+		setPrecio(precioFinal);
 	}
 
 	

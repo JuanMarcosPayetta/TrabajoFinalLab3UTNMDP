@@ -247,6 +247,86 @@ public class Hierba extends PlantaTerrestre{
 	public void establecerClasificacion() {
 		this.setClasificacion("Hierba");
 	}
+
+	@Override
+	public double precioMesDeVida(int mesesVida) {
+		double precioPorMes=0; //precio por defecto por cada mes de vida
+		if(isInterior())
+		{
+			if(isComestible() || isMedicinal())
+			{
+				precioPorMes=10;
+			}
+			else
+			{
+				precioPorMes=8;
+			}
+		}
+		else
+		{
+			if(isComestible() || isMedicinal())
+			{
+				precioPorMes=7;
+			}
+			else
+			{
+				precioPorMes=5;
+			}
+		}
+		
+		return precioPorMes*mesesVida;
+	}
+
+	@Override
+	public double precioPorCentimentoAltura(int centimentros) {
+		
+		double precioPorCentimetro=0;
+		if(getTipoDeTallo().equalsIgnoreCase("segmentado"))
+		{
+		   precioPorCentimetro=0.50;  //precio por defecto por cada mes de vida
+		}
+		else if(getTipoDeTallo().equalsIgnoreCase("erguido") || getTipoDeTallo().equalsIgnoreCase("voluble"))
+		{
+			precioPorCentimetro=2; 
+		}
+		else
+		{
+			precioPorCentimetro=1;
+		}
+		
+		return precioPorCentimetro*centimentros;
+	}
+
+	@Override
+	public void establecerPrecio() {
+	
+		double precioMinino=0;
+		double precioFinal=0;
+		
+		if(isInterior())
+		{
+			precioMinino=55;
+		}
+		else
+		{
+			precioMinino=42;
+		}
+		
+		double precioMesesVida=precioMesDeVida(getMesesDeVida());
+		double precioPorAltura=precioPorCentimentoAltura(getAltura());
+		double precioIntermedio=precioMesesVida+precioPorAltura;
+		
+		if(precioIntermedio<precioMinino)
+		{
+			precioFinal=precioMinino;
+		}
+		else
+		{
+			precioFinal=precioIntermedio+precioMinino;
+		}
+		
+		setPrecio(precioFinal);
+	}
 	
 	
 }

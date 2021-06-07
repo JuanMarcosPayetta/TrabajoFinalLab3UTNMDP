@@ -67,4 +67,20 @@ public class Decoracion extends ProductoDeHogar {
 		this.setClasificacion("Decoracion");
 	}
 
+	@Override
+	public void establecerPrecio() {
+		
+		double precioPorDefecto=0;
+		if(isExterior())
+		{
+			precioPorDefecto=270.5;
+		}
+		else
+		{
+			precioPorDefecto=180;
+		}
+		
+		setPrecio(precioPorDefecto);
+	}
+
 }

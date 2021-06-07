@@ -116,7 +116,175 @@ public class HerramientaManual extends HerramientaJardineria{
 		this.setClasificacion("Herramienta manual");
 	}
 
-	
-	
+	@Override
+	public void establecerPrecio() {
+
+		double precioH=0;
+		if(getFuncion().equalsIgnoreCase("corte"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=5799.9;
+				if(isReforzada())
+				{
+					precioH=6400;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=4300;
+				if(isReforzada())
+				{
+					precioH=4700;
+				}
+			}
+			else
+			{ 
+				precioH=2600;
+				if(isReforzada())
+				{
+					precioH=3200;
+				}
+			}
+		}
+		else if(getFuncion().equalsIgnoreCase("desmalezado"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=2150.6;
+				if(isReforzada())
+				{
+					precioH=2420;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=1630.2;
+				if(isReforzada())
+				{
+					precioH=1993;
+				}
+			}
+			else
+			{ 
+				precioH=1040.8;
+				if(isReforzada())
+				{
+					precioH=1330.2;
+				}
+			}
+		}
+		else if(getFuncion().equalsIgnoreCase("labrado"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=2799;
+				if(isReforzada())
+				{
+					precioH=3680.4;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=2100;
+				if(isReforzada())
+				{
+					precioH=2460.7;
+				}
+			}
+			else
+			{ 
+				precioH=1658;
+				if(isReforzada())
+				{
+					precioH=1950.5;
+				}
+			}
+		}
+		else if(getFuncion().equalsIgnoreCase("limpieza"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=780;
+				if(isReforzada())
+				{
+					precioH=1246.3;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=530;
+				if(isReforzada())
+				{
+					precioH=699;
+				}
+			}
+			else
+			{ 
+				precioH=400;
+				if(isReforzada())
+				{
+					precioH=500;
+				}
+			}
+		}
+		else if(getFuncion().equalsIgnoreCase("riego"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=15600;
+				if(isReforzada())
+				{
+					precioH=16800.8;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=8600;
+				if(isReforzada())
+				{
+					precioH=10280.4;
+				}
+			}
+			else
+			{ 
+				precioH=3699;
+				if(isReforzada())
+				{
+					precioH=4400;
+				}
+			}
+		}
+		else if(getFuncion().equalsIgnoreCase("transporte"))
+		{
+			if(getTamanio().equalsIgnoreCase("grande"))
+			{
+				precioH=16400;
+				if(isReforzada())
+				{
+					precioH=18200;
+				}
+			}
+			else if(getTamanio().equalsIgnoreCase("mediano"))
+			{
+				precioH=12000;
+				if(isReforzada())
+				{
+					precioH=13560;
+				}
+			}
+			else
+			{ 
+				precioH=7800;
+				if(isReforzada())
+				{
+					precioH=9450;
+				}
+			}
+		}
+		
+		setPrecio(precioH);
+	}
+
 	
 }

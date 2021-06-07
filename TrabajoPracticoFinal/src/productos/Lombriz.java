@@ -98,5 +98,31 @@ public class Lombriz extends ProductoOrganico{
 		this.setClasificacion("Lombriz");
 	}
 
+	@Override
+	public void establecerPrecio() {
+	double precioGramoLombriz=0;
+	double precioFinal=0;
+		
+		if(getEspecie().equalsIgnoreCase("rayada"))
+		{
+			precioGramoLombriz=180;
+		}
+		else if(getEspecie().equalsIgnoreCase("dendra"))
+		{
+			precioGramoLombriz=150;
+		}
+		else if(getEspecie().equalsIgnoreCase("roja"))
+		{
+			precioGramoLombriz=220;
+		}
+		else if(getEspecie().equalsIgnoreCase("comun"))
+		{
+			precioGramoLombriz=100;
+		}
+		
+		precioFinal=precioGramoLombriz*getGramos();
+		setPrecio(precioFinal);
+	}
+
 	
 }
