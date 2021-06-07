@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-
 import interfaces.IVivero;
 import productos.Producto;
 
 public class Vivero implements IVivero {
+
 	/*
 	 * EL MAPA DE PRODUCTOS COMO CLAVE TIENE LA CLASIFICACION
 	 * ("ARBOL, ARBUSTO, ETC") Y DENTRO COMO VALOR TIENE UN ARRAY LIST CON TODOS LOS
@@ -102,6 +102,8 @@ public class Vivero implements IVivero {
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
 
+	
+	
 	@Override
 	public <T> String buscarElemento(T elemento) { // producto,servicio,empleado, cliente
 
@@ -302,12 +304,10 @@ public class Vivero implements IVivero {
 
 		while (it.hasNext() && flag == 0) {
 			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
-			if (entrada.getKey().equalsIgnoreCase(elemento.getClasificacion())) 
-			{
+			if (entrada.getKey().equalsIgnoreCase(elemento.getClasificacion())) {
 				ArrayList<Producto> arreglo = entrada.getValue();
 
-				for (int i = 0; flag == 0 && i < arreglo.size(); i++) 
-				{
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
 					if (arreglo.get(i).getCodigo().equals(elemento.getCodigo())) {
 						mensaje = arreglo.get(i).setPrecio(precio);
 						if (mensaje == null)
@@ -323,48 +323,84 @@ public class Vivero implements IVivero {
 		}
 		return mensaje;
 	}
-	
-	public String modificarStockAumenta(Producto elProducto,int stock)
-	{
-		String mensaje="Producto no Encontrado";
-		
-		int flag=0;
-		Iterator<Map.Entry<String,ArrayList<Producto>>>it=catalogoProductos.entrySet().iterator();
-		
-		while(it.hasNext()&&flag==0)
-		{
-			Map.Entry<String,ArrayList<Producto>>entrada=(Map.Entry<String, ArrayList<Producto>>)it.next();
-			if(entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion()))
-			{
-				ArrayList<Producto>arreglo=entrada.getValue();
-				for(int i=0;flag==0 && i<arreglo.size();i++)
-				{
-					if(arreglo.get(i).getCodigo().equals(elProducto.getCodigo()))
-					{
-						mensaje=arreglo.get(i).aumentarStock(stock);
-						if(mensaje==null)//si la exepcion  no devuelve error
+
+
+
+	public String modificarStockDisminuye(Producto elProducto, int stock) {
+		String mensaje = "Producto no encontrado";
+		int flag = 0;
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
+				ArrayList<Producto> arreglo = entrada.getValue();
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+						mensaje = arreglo.get(i).disminuitStock(stock);
+						if (mensaje == null)// si la exepcion no devuelve error
 						{
 							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
-							flag=1;
-							mensaje="Nuevo Stock Establecido";
+							flag = 1;
+							mensaje = "Nuevo Stock Establecido";
 						}
 					}
 				}
 			}
 		}
+
 		return mensaje;
 	}
 	
-	public String modificarStockDisminuye(Producto elProducto,int stock)
-	{
-		String mensaje="Producto no encontrado";
-		
-		
+	public String modificarNombreProdcuto(Producto elProducto, String nombre) {
+		String mensaje = "Producto no encontrado";
+		int flag = 0;
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
+				ArrayList<Producto> arreglo = entrada.getValue();
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+						mensaje = arreglo.get(i).setNombre(nombre);
+						if (mensaje == null)// si la exepcion no devuelve error
+						{
+							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
+							flag = 1;
+							mensaje = "Nombre modificado";
+						}
+					}
+				}
+			}
+		}
+
 		return mensaje;
 	}
 	
-	
-	
-	
-	
+	public String modificarMarcaProdcuto(Producto elProducto, String marca) {
+		String mensaje = "Producto no encontrado";
+		int flag = 0;
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
+				ArrayList<Producto> arreglo = entrada.getValue();
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+					if (arreglo.get(i).getCodigo().equals(elProducto.getCodigo())) {
+						mensaje = arreglo.get(i).setMarca(marca);
+						if (mensaje == null)// si la exepcion no devuelve error
+						{
+							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
+							flag = 1;
+							mensaje = "Marca modificada";
+						}
+					}
+				}
+			}
+		}
+
+		return mensaje;
+	}
 }
