@@ -11,6 +11,22 @@ public class Cliente {
 	private String apellido;
 	private String telefono;
 	private String dni;
+	
+	public Cliente() {
+		this.id=0;
+		this.nombre=null;
+		this.apellido=null;
+		this.telefono=null;
+		this.dni=null;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Cliente(String nombre, String apellido, String telefono, String dni) {
 		this.id = autoid;
@@ -177,4 +193,12 @@ public class Cliente {
 		return estado;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [id:" + id + ", nombre:" + nombre + ", apellido:" + apellido + ", telefono:" + telefono
+				+ ", dni:" + dni + "]";
+	}
+
+	
+	
 }
