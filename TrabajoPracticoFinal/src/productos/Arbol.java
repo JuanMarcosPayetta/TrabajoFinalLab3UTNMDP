@@ -329,7 +329,10 @@ public class Arbol extends PlantaTerrestre{
 		
 	}
 	
-	
+	public JSONObject javaToJson ()
+	{
+		
+	}
 		
 	
 	
