@@ -1,5 +1,8 @@
 package domain;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 
 public class Empleado {
@@ -116,4 +119,20 @@ public class Empleado {
 		return validacion;
 	}
 	
+
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("nombre", getNombre());
+            json.put("apellido", getApellido());
+            json.put("id", getID());
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 }

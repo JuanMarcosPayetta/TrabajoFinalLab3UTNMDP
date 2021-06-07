@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
@@ -251,6 +254,21 @@ public class Servicio implements IGenerarCodigo{
 				+ descripcion + ", materialesIncluidos: " + materialesIncluidos;
 	}
 	
-	
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("codigo", getCodigo());
+            json.put("nombre", getNombre());
+            json.put("precio", getPrecio());
+            json.put("descripcion", getDescripcion());
+            json.put("materiales", isMaterialesIncluidos());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 	
 }

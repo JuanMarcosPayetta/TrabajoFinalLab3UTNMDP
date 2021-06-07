@@ -1,5 +1,8 @@
 package domain;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 
 
@@ -199,6 +202,22 @@ public class Cliente {
 				+ ", dni:" + dni + "]";
 	}
 
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+            json.put("nombre", getNombre());
+            json.put("apellido", getApellido());
+            json.put("telefono", getTelefono());
+            json.put("id", getId());
+            json.put("dni", getDni());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 	
 	
 }
