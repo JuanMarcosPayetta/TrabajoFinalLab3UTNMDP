@@ -80,8 +80,9 @@ public abstract class Producto implements IGenerarCodigo {
 		this.stock = stock;
 		this.descripcion = descripcion;
 	}
-	
+
 	public abstract void establecerClasificacion();
+
 	public abstract JSONObject javaToJson();
 
 	/*
@@ -363,6 +364,15 @@ public abstract class Producto implements IGenerarCodigo {
 			}
 		}
 
+		return res;
+	}
+
+	public boolean ComprobarStock(int cantidad) {
+		boolean res = false;
+
+		if (this.getStock() >= cantidad) {
+			res = true;
+		}
 		return res;
 	}
 

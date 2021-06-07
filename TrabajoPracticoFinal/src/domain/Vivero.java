@@ -431,34 +431,51 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
+	public String ComprarProducto(Producto elProducto, String dni, int cantidadP) {
+		// BUSCAR CLIENTE
+		int flag = 0;
+		int otroFlag=0;
+		String mensaje = "ERROR en la compra";
+		Producto productoComprado = null;
+		Cliente elCliente = null;
 
-	public String ComprarProducto(Producto elProducto, Cliente elCliente)
-	{
-		int flag=0;
-		String mensaje="ERROR en la compra";
-		Producto productoComprado=null;
-		
-		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
+		Iterator<Cliente> itt = listaClientes.iterator();
 
-		while (it.hasNext() && flag == 0) {
-			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+		while (itt.hasNext() && flag == 0) {
+			elCliente = itt.next(); // guardo un cliente y debajo compruebo que sea el que busco
+			if (elCliente.getDni().equals(dni)) {
+				flag = 1;
+			}
+		}
 
-			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) // si se encuentra la
-																					// clasificacion
-			{
-				ArrayList<Producto> arreglo = entrada.getValue();
+		if (flag == 0) {
+			mensaje = "Cliente no encontrado";
+		}
 
-				for (int i = 0; i < arreglo.size() && flag == 0; i++) {
-					if (arreglo.get(i).equals(elProducto)) {
-						flag = 1;
-						
-						productoComprado=arreglo.get(i);
-						
+		else {
+
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
+
+			while (it.hasNext() && otroFlag == 0) {
+				Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+
+				if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) // si se encuentra la
+																						// clasificacion
+				{
+					ArrayList<Producto> arreglo = entrada.getValue();
+
+					for (int i = 0; i < arreglo.size() && otroFlag == 0; i++) {
+						if (arreglo.get(i).equals(elProducto)) {
+							otroFlag = 1;
+							
+							if()
+							
+						}
 					}
+					
 				}
 			}
 		}
-		
 		return mensaje;
 	}
 	
