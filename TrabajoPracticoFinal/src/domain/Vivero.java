@@ -136,8 +136,7 @@ public class Vivero implements IVivero {
 					}
 				}
 			}
-		}
-		else if (elemento instanceof Servicio) // es un servicio
+		} else if (elemento instanceof Servicio) // es un servicio
 		{
 
 			Servicio unServicio = (Servicio) elemento;
@@ -326,7 +325,7 @@ public class Vivero implements IVivero {
 		}
 		return mensaje;
 	}
-	
+
 	public String modificarStockDisminuye(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -430,11 +429,11 @@ public class Vivero implements IVivero {
 
 		return mensaje;
 	}
-	
+
 	public String ComprarProducto(Producto elProducto, String dni, int cantidadP) {
 		// BUSCAR CLIENTE
 		int flag = 0;
-		int otroFlag=0;
+		int otroFlag = 0;
 		String mensaje = "ERROR en la compra";
 		Producto productoComprado = null;
 		Cliente elCliente = null;
@@ -467,126 +466,124 @@ public class Vivero implements IVivero {
 					for (int i = 0; i < arreglo.size() && otroFlag == 0; i++) {
 						if (arreglo.get(i).equals(elProducto)) {
 							otroFlag = 1;
-							
-							if()
-							
+
+							if (arreglo.get(i).ComprobarStock(cantidadP)) {
+
+								
+								
+							}
+
+							else {
+								mensaje = "Stock insuficiente, actualmente hay " + arreglo.get(i).getStock()
+										+ " unidades";
+							}
+
 						}
 					}
-					
+
+					if (otroFlag == 0) {
+						mensaje = "No existe un producto con ese codigo";
+					}
+
+				} else {
+					mensaje = "Clasificacion incorrecta";
 				}
 			}
 		}
 		return mensaje;
 	}
-	
-	
-	//El objeto principal es Vivero, el cual posee dentro 1 array por cada coleccion (productos, servicios, cliente, empleado)
-	public JSONObject javaToJsonProductos()
-	{
-		JSONObject vivero= new JSONObject(); //objeto json principal
-		
-		
+
+	// El objeto principal es Vivero, el cual posee dentro 1 array por cada
+	// coleccion (productos, servicios, cliente, empleado)
+	public JSONObject javaToJsonProductos() {
+		JSONObject vivero = new JSONObject(); // objeto json principal
+
 		try {
-		
-		//PRODUCTOS
-		JSONArray cataloProductos= new JSONArray(); //array catalogo de productos ("mapa")
-		Iterator<Map.Entry<String, ArrayList<Producto>>> it= catalogoProductos.entrySet().iterator();
-		while(it.hasNext())
-		{
-			Map.Entry<String, ArrayList<Producto>> entry= (Map.Entry<String, ArrayList<Producto>>) it.next();
-			ArrayList<Producto>listaConProductos= entry.getValue();
-			//String clasificacion=null;
-			JSONObject objetoProducto= new JSONObject();
-			JSONArray arrayParaProductos= new JSONArray();
-			JSONObject objetoConArrayDentro= new JSONObject();
-			
-			for(int i=0; i<listaConProductos.size(); i++)
-			{
-				//clasificacion=listaConProductos.get(i).getClasificacion();
-				objetoProducto=listaConProductos.get(i).javaToJson();
-				arrayParaProductos.put(objetoProducto);
-				
+
+			// PRODUCTOS
+			JSONArray cataloProductos = new JSONArray(); // array catalogo de productos ("mapa")
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+			while (it.hasNext()) {
+				Map.Entry<String, ArrayList<Producto>> entry = (Map.Entry<String, ArrayList<Producto>>) it.next();
+				ArrayList<Producto> listaConProductos = entry.getValue();
+				// String clasificacion=null;
+				JSONObject objetoProducto = new JSONObject();
+				JSONArray arrayParaProductos = new JSONArray();
+				JSONObject objetoConArrayDentro = new JSONObject();
+
+				for (int i = 0; i < listaConProductos.size(); i++) {
+					// clasificacion=listaConProductos.get(i).getClasificacion();
+					objetoProducto = listaConProductos.get(i).javaToJson();
+					arrayParaProductos.put(objetoProducto);
+
+				}
+				// PREGUNTAR
+				// array principal -> objeto -> arraylist dentro ?? -->PREGUNTAR
+				// array principal -> arraylist dentro ??
+				// objetoConArrayDentro.put("...", arrayParaProductos);
+
+				cataloProductos.put(arrayParaProductos); // arrayList principal de productos, con un arrayList por cada
+															// posicion (divididos en clasificacion)
 			}
-			//PREGUNTAR
-			// array principal -> objeto -> arraylist dentro ??  -->PREGUNTAR
-			// array principal -> arraylist dentro ??
-			//objetoConArrayDentro.put("...", arrayParaProductos);
-			
-			cataloProductos.put(arrayParaProductos); //arrayList principal de productos, con un arrayList por cada posicion (divididos en clasificacion)
-		}
-		
-		vivero.put("productos", cataloProductos);
-		
-		
-		//SERVICIOS
-		Iterator<Map.Entry<String, Servicio>> it2= catalogoServicios.entrySet().iterator();
-		JSONArray arrayServicios= new JSONArray();
-		while(it2.hasNext())
-		{
-			Map.Entry<String, Servicio> entry= (Map.Entry<String, Servicio>)it2.next();
-			JSONObject objetoServicio= entry.getValue().javaToJson();
-			arrayServicios.put(objetoServicio);
-		}
-		
-		vivero.put("servicios", arrayServicios); // ASI ??
-		//cataloServicios.put("servicios", arrayServicios); //OBJETO CON ARRAY DENTRO ? U ARRAY CON EL ARRAY DE SERVICIOS DENTRO?
-			
-		
-		
-		//CLIENTES
-		Iterator<Cliente>it3= listaClientes.iterator();
-		JSONArray arrayClientes= new JSONArray();
-		while(it3.hasNext())
-		{
-			JSONObject objeto= new JSONObject();
-			objeto=it3.next().javaToJson();
-			arrayClientes.put(objeto);
-		}
-		
-		vivero.put("clientes", arrayClientes);
-		
-		
-		//EMPLEADO
-		Iterator<Cliente>it4= listaClientes.iterator();
-		JSONArray arrayEmpleados= new JSONArray();
-		while(it4.hasNext())
-		{
-			JSONObject objeto= new JSONObject();
-			objeto=it4.next().javaToJson();
-			arrayEmpleados.put(objeto);
-		}
-		
-		vivero.put("empleados", arrayEmpleados);
-		
-		
+
+			vivero.put("productos", cataloProductos);
+
+			// SERVICIOS
+			Iterator<Map.Entry<String, Servicio>> it2 = catalogoServicios.entrySet().iterator();
+			JSONArray arrayServicios = new JSONArray();
+			while (it2.hasNext()) {
+				Map.Entry<String, Servicio> entry = (Map.Entry<String, Servicio>) it2.next();
+				JSONObject objetoServicio = entry.getValue().javaToJson();
+				arrayServicios.put(objetoServicio);
+			}
+
+			vivero.put("servicios", arrayServicios); // ASI ??
+			// cataloServicios.put("servicios", arrayServicios); //OBJETO CON ARRAY DENTRO ?
+			// U ARRAY CON EL ARRAY DE SERVICIOS DENTRO?
+
+			// CLIENTES
+			Iterator<Cliente> it3 = listaClientes.iterator();
+			JSONArray arrayClientes = new JSONArray();
+			while (it3.hasNext()) {
+				JSONObject objeto = new JSONObject();
+				objeto = it3.next().javaToJson();
+				arrayClientes.put(objeto);
+			}
+
+			vivero.put("clientes", arrayClientes);
+
+			// EMPLEADO
+			Iterator<Cliente> it4 = listaClientes.iterator();
+			JSONArray arrayEmpleados = new JSONArray();
+			while (it4.hasNext()) {
+				JSONObject objeto = new JSONObject();
+				objeto = it4.next().javaToJson();
+				arrayEmpleados.put(objeto);
+			}
+
+			vivero.put("empleados", arrayEmpleados);
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return vivero;
 	}
-	
-	
-	
-	public String pedirCantidadCompra(int cantidad)
-	{
-		String mensaje=null;
+
+	public String pedirCantidadCompra(int cantidad) {
+		String mensaje = null;
 		try {
 			cantidadCompra(cantidad);
 		} catch (DatoNumeroException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
-	
-	private void cantidadCompra(int cantidad)throws DatoNumeroException
-	{
-		if(cantidad<=0)
-		{
-			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+ ", ni menor a 1");
+
+	private void cantidadCompra(int cantidad) throws DatoNumeroException {
+		if (cantidad <= 0) {
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni menor a 1");
 		}
 	}
-	
-	
+
 }
