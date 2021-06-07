@@ -217,4 +217,9 @@ public class Pedido implements IDescuento {
 	}
 	
 	
+	public void agregarPeticionCompra(PeticionCompra peticion)
+	{
+		carrito.add(peticion);
+	}
+	
 }
