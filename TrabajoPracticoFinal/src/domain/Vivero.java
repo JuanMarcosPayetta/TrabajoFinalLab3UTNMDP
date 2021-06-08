@@ -509,9 +509,10 @@ public class Vivero implements IVivero {
 	}
 
 	// El objeto principal es Vivero, el cual posee dentro 1 array por cada
-	// coleccion (productos, servicios, cliente, empleado)
+	// coleccion (productos, servicios, cliente, empleado, pedidos)
 	public JSONObject javaToJsonProductos() {
-		JSONObject vivero = new JSONObject(); // objeto json principal
+		
+	JSONObject vivero = new JSONObject(); // objeto json principal
 
 		try {
 
@@ -543,6 +544,7 @@ public class Vivero implements IVivero {
 
 			vivero.put("productos", cataloProductos);
 
+			
 			// SERVICIOS
 			Iterator<Map.Entry<String, Servicio>> it2 = catalogoServicios.entrySet().iterator();
 			JSONArray arrayServicios = new JSONArray();
@@ -556,6 +558,8 @@ public class Vivero implements IVivero {
 			// cataloServicios.put("servicios", arrayServicios); //OBJETO CON ARRAY DENTRO ?
 			// U ARRAY CON EL ARRAY DE SERVICIOS DENTRO?
 
+			
+			
 			// CLIENTES
 			Iterator<Cliente> it3 = listaClientes.iterator();
 			JSONArray arrayClientes = new JSONArray();
@@ -567,6 +571,8 @@ public class Vivero implements IVivero {
 
 			vivero.put("clientes", arrayClientes);
 
+			
+			
 			// EMPLEADO
 			Iterator<Cliente> it4 = listaClientes.iterator();
 			JSONArray arrayEmpleados = new JSONArray();
@@ -578,12 +584,28 @@ public class Vivero implements IVivero {
 
 			vivero.put("empleados", arrayEmpleados);
 
+			
+			
+			//PEDIDOS
+			ListIterator<Pedido> it5= registroPedidos.listIterator();
+			JSONArray arrayPedidos= new JSONArray();
+			while(it5.hasNext())
+			{
+				JSONObject objeto= new JSONObject();
+				objeto=it5.next().javaToJson();
+				arrayPedidos.put(objeto);
+			}
+			vivero.put("pedidos", arrayPedidos);
+			
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		return vivero;
 	}
+	
+	
 
 	public String pedirCantidadCompra(int cantidad) {
 		String mensaje = null;
