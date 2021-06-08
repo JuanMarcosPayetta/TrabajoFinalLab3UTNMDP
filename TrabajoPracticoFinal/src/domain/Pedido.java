@@ -3,6 +3,10 @@ package domain;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import excepciones.CadenaInvalidaException;
 import interfaces.IDescuento;
 
@@ -224,4 +228,36 @@ public class Pedido implements IDescuento {
 		carrito.add(peticion);
 	}
 	
+	public JSONObject javaToJson()
+    {
+        JSONObject json= new JSONObject();
+        try {
+        	
+        	JSONArray carri= new JSONArray();
+        	for(int i=0; i<getCarrito().size(); i++)
+        	{
+        		PeticionCompra peticion= getCarrito().get(i);
+        		JSONObject obj= new JSONObject();
+        		obj.put("codigo", peticion.getCodigo());
+        		obj.put("precioUnitario", peticion.getPrecioUnitario());
+        		obj.put("cantidad", peticion.getCantidad());
+        		carri.put(obj);
+        		
+        	}
+        	
+            json.put("idCliente", getIdCliente());
+            json.put("totalBruto", getTotalBruto());
+            json.put("totalNeto", getTotalNeto());
+            json.put("medioDePago", getMedioDePago());
+            json.put("fueAbonado", isFueAbonado());
+            json.put("numeroPedido", getNumeroPedido());
+            json.put("carrito", carri);
+            
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
 }
