@@ -3,8 +3,9 @@ package domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.InputMismatchException;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -27,12 +28,14 @@ public class Vivero implements IVivero {
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente> listaClientes;
 	private HashSet<Empleado> listaEmpleados;
+	private LinkedList<Pedido> registroPedidos;
 
 	public Vivero() {
 		this.catalogoProductos = new HashMap<String, ArrayList<Producto>>();
 		this.catalogoServicios = new HashMap<String, Servicio>();
 		this.listaClientes = new HashSet<Cliente>();
 		this.listaEmpleados = new HashSet<Empleado>();
+		this.registroPedidos = new LinkedList<Pedido>();
 	}
 
 	public ArrayList<String> obtenerCodigosProducto() {
@@ -466,18 +469,32 @@ public class Vivero implements IVivero {
 					for (int i = 0; i < arreglo.size() && otroFlag == 0; i++) {
 						if (arreglo.get(i).equals(elProducto)) {
 							otroFlag = 1;
+							productoComprado = arreglo.get(i);
+							if (productoComprado.ComprobarStock(cantidadP)) {
 
-							if (arreglo.get(i).ComprobarStock(cantidadP)) {
+								PeticionCompra petiCompra = new PeticionCompra(productoComprado.getCodigo(),
+										productoComprado.getPrecio(), cantidadP);
 
-								
-								
+								if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
+								{
+									ingresarACarrito(elCliente.getId(), petiCompra);
+								}
+
+								else // si no hay un pedido abierto
+								{
+									Pedido miPedido = new Pedido(elCliente.getId());
+									agregarPeticionToNuevoPedido(miPedido, petiCompra);
+								}
+
+								arreglo.get(i).disminuitStock(cantidadP); // resto stock
+								mensaje = "Producto agregado al carrito con exito";
+
 							}
 
 							else {
 								mensaje = "Stock insuficiente, actualmente hay " + arreglo.get(i).getStock()
 										+ " unidades";
 							}
-
 						}
 					}
 
@@ -493,8 +510,6 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	
-	
 	// El objeto principal es Vivero, el cual posee dentro 1 array por cada
 	// coleccion (productos, servicios, cliente, empleado)
 	public JSONObject javaToJsonProductos() {
@@ -585,6 +600,77 @@ public class Vivero implements IVivero {
 	private void cantidadCompra(int cantidad) throws DatoNumeroException {
 		if (cantidad <= 0) {
 			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni menor a 1");
+		}
+	}
+
+	/*
+	 * busca un pedido impago
+	 */
+	public boolean buscarPedidoImpago(int idCliente) {
+		ListIterator<Pedido> it = registroPedidos.listIterator();
+		boolean encontrado = false;
+		while (it.hasNext() && encontrado == false) {
+			Pedido pedido = it.next();
+			if (pedido.getIdCliente() == idCliente) {
+				if (!pedido.isFueAbonado()) {
+					encontrado = true;
+				}
+			}
+		}
+
+		return encontrado;
+	}
+
+	/*
+	 * agrega una peticion de compra a un nuevo pedido, y agrega este pedido a la
+	 * lista de pedidos
+	 */
+	public void agregarPeticionToNuevoPedido(Pedido pedido, PeticionCompra peticion) {
+		pedido.agregarPeticionCompra(peticion);
+		agregarPedido(pedido);
+	}
+
+	/*
+	 * agrega un pedido a la lista de pedidos
+	 */
+	private String agregarPedido(Pedido pedido) {
+		String mensaje = null;
+		ListIterator<Pedido> it = registroPedidos.listIterator();
+		boolean encontrado = false;
+		while (it.hasNext() && encontrado == false) {
+			Pedido pedidoBuscado = it.next();
+			if (pedidoBuscado.getIdCliente() == pedido.getIdCliente()) {
+				if (!pedidoBuscado.isFueAbonado()) {
+					encontrado = true;
+				}
+			}
+		}
+
+		if (encontrado == true) {
+			mensaje = "Error, este cliente ya posee actualmente un pedido impago";
+		} else {
+			registroPedidos.add(pedido);
+			mensaje = "Pedido ingresado con exito";
+		}
+
+		return mensaje;
+	}
+
+	/*
+	 * ingresa una peticion al carrito de un pedido existente
+	 */
+	public void ingresarACarrito(int idCliente, PeticionCompra peticion) {
+
+		boolean encontrado = false;
+		for (int i = 0; i < registroPedidos.size() && encontrado == false; i++) {
+			Pedido pedido = registroPedidos.get(i);
+			if (pedido.getIdCliente() == idCliente) {
+				if (!pedido.isFueAbonado()) {
+					pedido.agregarPeticionCompra(peticion);
+					registroPedidos.set(i, pedido); // pedido con un producto mas en su carrito
+					encontrado = true;
+				}
+			}
 		}
 	}
 

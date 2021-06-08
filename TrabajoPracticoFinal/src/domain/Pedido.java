@@ -15,6 +15,7 @@ public class Pedido implements IDescuento {
 	private int descuento; 
 	private boolean fueAbonado;
 	private int numeroPedido;
+	private int numeroPeidoauto=1;
 	private ArrayList<PeticionCompra> carrito;
 	
 	public Pedido() {
@@ -40,17 +41,18 @@ public class Pedido implements IDescuento {
 		this.carrito = carrito;
 	}
 	
-	public Pedido(int idCliente, String medioDePago, boolean fueAbonado, int numeroPedido) {
+	public Pedido(int idCliente) {
 		this.idCliente = idCliente;
 		this.totalBruto = 0;
 		this.totalNeto = 0;
-		this.medioDePago = medioDePago;
+		this.medioDePago = null;
 		this.descuento = 0;
-		this.fueAbonado = fueAbonado;
-		this.numeroPedido = numeroPedido;
+		this.fueAbonado = false;
+		this.numeroPedido = numeroPeidoauto;
+		this.numeroPeidoauto++;
 		carrito = new ArrayList<PeticionCompra>();
 	}
-
+	
 	public int getIdCliente() {
 		return idCliente;
 	}
