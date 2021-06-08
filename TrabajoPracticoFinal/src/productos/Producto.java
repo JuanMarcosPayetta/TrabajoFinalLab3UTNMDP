@@ -11,7 +11,7 @@ import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
 
-public abstract class Producto implements IGenerarCodigo {
+public abstract class Producto implements IGenerarCodigo, Comparable<Producto> {
 
 	private String codigo;
 	private String nombre;
@@ -375,5 +375,7 @@ public abstract class Producto implements IGenerarCodigo {
 		}
 		return res;
 	}
+	
+	
 
 }

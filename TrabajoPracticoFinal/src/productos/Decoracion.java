@@ -107,4 +107,25 @@ public class Decoracion extends ProductoDeHogar {
 		return json;
 	}
 	
+	@Override
+	public int compareTo(Producto o) {
+		int res=-2;
+		if(o!=null)
+		{
+			if(this.getPrecio()==o.getPrecio())
+			{
+				res=0;
+			}
+			else if (this.getPrecio()>o.getPrecio())
+			{
+				res=1;
+			}
+			else
+			{
+				res=-1;
+			}
+		}
+		return res;
+	}
+	
 }

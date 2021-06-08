@@ -92,7 +92,7 @@ public class Arbol extends PlantaTerrestre{
 			 throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+ "6 letras");
 		}
 		else if(!existe) {
-			throw new InputMismatchException("Ingrese un tipo de corteza valido (laminada, geometica, lobulada, rugosa, placoide, escasa)");
+			throw new InputMismatchException("Ingrese un tipo de corteza valido (laminada, geometrica, lobulada, rugosa, placoide, escasa)");
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class Arbol extends PlantaTerrestre{
 		boolean existe=false;
 		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("laminada"); 
-		tipos.add("geometica");
+		tipos.add("geometrica");
 		tipos.add("rugosa");
 		tipos.add("lobulada");
 		tipos.add("placoide");
@@ -369,7 +369,26 @@ public class Arbol extends PlantaTerrestre{
 	}
 		
 	
-	
+	@Override
+	public int compareTo(Producto o) {
+		int res=-2;
+		if(o!=null)
+		{
+			if(this.getPrecio()==o.getPrecio())
+			{
+				res=0;
+			}
+			else if (this.getPrecio()>o.getPrecio())
+			{
+				res=1;
+			}
+			else
+			{
+				res=-1;
+			}
+		}
+		return res;
+	}
 	
 
 	

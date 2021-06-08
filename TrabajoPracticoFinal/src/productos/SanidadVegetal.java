@@ -66,7 +66,7 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 	private static void validarSanidad(String funcion) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>funciones=new ArrayList<String>();
-		funciones.add("insenticida");
+		funciones.add("insecticida");
 		funciones.add("funguicida");
 		funciones.add("herbicida");
 		
@@ -175,4 +175,25 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 
         return json;
     }
+	
+	@Override
+	public int compareTo(Producto o) {
+		int res=-2;
+		if(o!=null)
+		{
+			if(this.getPrecio()==o.getPrecio())
+			{
+				res=0;
+			}
+			else if (this.getPrecio()>o.getPrecio())
+			{
+				res=1;
+			}
+			else
+			{
+				res=-1;
+			}
+		}
+		return res;
+	}
 }
