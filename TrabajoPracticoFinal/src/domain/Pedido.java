@@ -13,6 +13,7 @@ import interfaces.IDescuento;
 public class Pedido implements IDescuento {
 
 	private int idCliente;
+	private int idEmpleado;
 	private double totalBruto;
 	private double totalNeto;
 	private String medioDePago;
@@ -24,6 +25,7 @@ public class Pedido implements IDescuento {
 	
 	public Pedido() {
 		this.idCliente=0;
+		this.idEmpleado=0;
 		this.totalBruto=0;
 		this.totalNeto=0;
 		this.medioDePago=null;
@@ -33,9 +35,10 @@ public class Pedido implements IDescuento {
 		carrito = new ArrayList<PeticionCompra>();
 	}
 	
-	public Pedido(int idCliente, double totalBruto, double totalNeto, String medioDePago, int descuento,
+	public Pedido(int idCliente, int idEmpleado, double totalBruto, double totalNeto, String medioDePago, int descuento,
 			boolean fueAbonado, int numeroPedido, ArrayList<PeticionCompra> carrito) {
 		this.idCliente = idCliente;
+		this.idEmpleado=idEmpleado;
 		this.totalBruto = totalBruto;
 		this.totalNeto = totalNeto;
 		this.medioDePago = medioDePago;
@@ -47,6 +50,7 @@ public class Pedido implements IDescuento {
 	
 	public Pedido(int idCliente) {
 		this.idCliente = idCliente;
+		this.idEmpleado=0;
 		this.totalBruto = 0;
 		this.totalNeto = 0;
 		this.medioDePago = null;
@@ -56,13 +60,21 @@ public class Pedido implements IDescuento {
 		this.numeroPeidoauto++;
 		carrito = new ArrayList<PeticionCompra>();
 	}
-	
+
 	public int getIdCliente() {
 		return idCliente;
 	}
 
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
+	}
+
+	public int getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(int idEmpleado) {
+		this.idEmpleado = idEmpleado;
 	}
 
 	public double getTotalBruto() {
@@ -148,9 +160,6 @@ public class Pedido implements IDescuento {
 		this.numeroPedido = numeroPedido;
 	}
 
-	public ArrayList<PeticionCompra> getCarrito() {
-		return carrito;
-	}
 
 	public void setCarrito(ArrayList<PeticionCompra> carrito) {
 		this.carrito = carrito;
@@ -217,7 +226,7 @@ public class Pedido implements IDescuento {
 	
 	@Override
 	public String toString() {
-		return "Pedido \n idCliente: " + idCliente + ", total bruto: " + totalBruto + ", total neto: " + totalNeto
+		return "Pedido \n idCliente: " + idCliente + "idEmpleado:  "+idEmpleado+" , total bruto: " + totalBruto + ", total neto: " + totalNeto
 				+ ", medio de pago: " + medioDePago + ", fue abonado: " + fueAbonado
 				+ ", numero pedido: " + numeroPedido + ", carrito: " + carrito;
 	}
@@ -234,9 +243,9 @@ public class Pedido implements IDescuento {
         try {
         	
         	JSONArray carri= new JSONArray();
-        	for(int i=0; i<getCarrito().size(); i++)
+        	for(int i=0; i<carrito.size(); i++)
         	{
-        		PeticionCompra peticion= getCarrito().get(i);
+        		PeticionCompra peticion= carrito.get(i);
         		JSONObject obj= new JSONObject();
         		obj.put("codigo", peticion.getCodigo());
         		obj.put("precioUnitario", peticion.getPrecioUnitario());
