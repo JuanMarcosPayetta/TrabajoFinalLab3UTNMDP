@@ -433,12 +433,8 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	public String ComprarProducto(Producto elProducto, String dni, int cantidadP) {
-		// BUSCAR CLIENTE
+	public Cliente BuscaCliente(String dni) { // si retorna null "Cliente no encontrado"...desea crear unuevo?(en main)
 		int flag = 0;
-		int otroFlag = 0;
-		String mensaje = "ERROR en la compra";
-		Producto productoComprado = null;
 		Cliente elCliente = null;
 
 		Iterator<Cliente> itt = listaClientes.iterator();
@@ -449,63 +445,66 @@ public class Vivero implements IVivero {
 				flag = 1;
 			}
 		}
-		if (flag == 0) {
-			mensaje = "Cliente no encontrado";
-		}
+		return elCliente;
+	}
 
-		else {
+	//primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente puede usar el metodo
+	public String ComprarProducto(Producto elProducto, Cliente elCliente, int cantidadP) {
 
-			Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
+		int otroFlag = 0;
+		String mensaje = "ERROR en la compra";
+		Producto productoComprado = null;
 
-			while (it.hasNext() && otroFlag == 0) {
-				Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
 
-				if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) // si se encuentra la
-																						// clasificacion
-				{
-					ArrayList<Producto> arreglo = entrada.getValue();
+		while (it.hasNext() && otroFlag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
 
-					for (int i = 0; i < arreglo.size() && otroFlag == 0; i++) {
-						if (arreglo.get(i).equals(elProducto)) {
-							otroFlag = 1;
-							productoComprado = arreglo.get(i);
-							if (productoComprado.ComprobarStock(cantidadP)) {
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) // si se encuentra la
+																					// clasificacion
+			{
+				ArrayList<Producto> arreglo = entrada.getValue();
 
-								PeticionCompra petiCompra = new PeticionCompra(productoComprado.getCodigo(),
-										productoComprado.getPrecio(), cantidadP);
+				for (int i = 0; i < arreglo.size() && otroFlag == 0; i++) {
+					if (arreglo.get(i).equals(elProducto)) {
+						otroFlag = 1;
+						productoComprado = arreglo.get(i);
+						if (productoComprado.ComprobarStock(cantidadP)) {
 
-								if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
-								{
-									ingresarACarrito(elCliente.getId(), petiCompra);
-								}
+							PeticionCompra petiCompra = new PeticionCompra(productoComprado.getCodigo(),
+									productoComprado.getPrecio(), cantidadP);
 
-								else // si no hay un pedido abierto
-								{
-									Pedido miPedido = new Pedido(elCliente.getId());
-									agregarPeticionToNuevoPedido(miPedido, petiCompra);
-								}
-
-								arreglo.get(i).disminuitStock(cantidadP); // resto stock
-								mensaje = "Producto agregado al carrito con exito";
-
+							if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
+							{
+								ingresarACarrito(elCliente.getId(), petiCompra);
 							}
 
-							else {
-								mensaje = "Stock insuficiente, actualmente hay " + arreglo.get(i).getStock()
-										+ " unidades";
+							else // si no hay un pedido abierto
+							{
+								Pedido miPedido = new Pedido(elCliente.getId());
+								agregarPeticionToNuevoPedido(miPedido, petiCompra);
 							}
+
+							arreglo.get(i).disminuitStock(cantidadP); // resto stock
+							mensaje = "Producto agregado al carrito con exito";
+
+						}
+
+						else {
+							mensaje = "Stock insuficiente, actualmente hay " + arreglo.get(i).getStock() + " unidades";
 						}
 					}
-
-					if (otroFlag == 0) {
-						mensaje = "No existe un producto con ese codigo";
-					}
-
-				} else {
-					mensaje = "Clasificacion incorrecta";
 				}
+
+				if (otroFlag == 0) {
+					mensaje = "No existe un producto con ese codigo";
+				}
+
+			} else {
+				mensaje = "Clasificacion incorrecta";
 			}
 		}
+
 		return mensaje;
 	}
 
