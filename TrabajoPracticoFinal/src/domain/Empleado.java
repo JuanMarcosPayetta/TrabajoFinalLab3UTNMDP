@@ -12,8 +12,7 @@ public class Empleado {
 	private String apellido;
 	private int idSig=1;
 	
-	public Empleado()
-	{
+	public Empleado() {
 		this.ID=0;
 		this.nombre=null;
 		this.apellido=null;
@@ -31,6 +30,14 @@ public class Empleado {
 		idSig++;
 		this.nombre=nombre;
 		this.apellido=apellido;
+	}
+	
+	//creado solo para busqueda en Vivero
+	public Empleado(int id) 
+	{
+		this.ID=id;
+		this.nombre=null;
+		this.apellido=null;
 	}
 
 	public static String validarCadenaCaracteresLlamada(String nombre)

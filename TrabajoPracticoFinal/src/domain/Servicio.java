@@ -19,8 +19,7 @@ public class Servicio implements IGenerarCodigo{
 	private String descripcion;
 	private boolean materialesIncluidos;
 	
-	public Servicio()
-	{
+	public Servicio() {
 		this.codigo=null;
 		this.precio=0;
 		this.nombre=null;
@@ -43,6 +42,14 @@ public class Servicio implements IGenerarCodigo{
 		this.precio = precio;
 		this.descripcion = descripcion;
 		this.materialesIncluidos = materialesIncluidos;
+	}
+	
+	public Servicio(String codigo) {
+		this.codigo=codigo;
+		this.precio=0;
+		this.nombre=null;
+		this.descripcion=null;
+		this.materialesIncluidos=false;
 	}
 
 	@Override

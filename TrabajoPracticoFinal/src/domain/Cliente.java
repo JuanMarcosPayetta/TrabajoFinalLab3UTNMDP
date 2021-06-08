@@ -23,14 +23,6 @@ public class Cliente {
 		this.dni=null;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public Cliente(String nombre, String apellido, String telefono, String dni) {
 		this.id = autoid;
 		autoid++;
@@ -39,6 +31,25 @@ public class Cliente {
 		this.telefono = telefono;
 		this.dni = dni;
 	}
+	
+	//creado solo para busqueda en Vivero
+	public Cliente(String dni) {
+		this.id=0;
+		this.nombre=null;
+		this.apellido=null;
+		this.telefono=null;
+		this.dni=dni;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 
 	/*
 	 * Validacion Nombre, llamada en el main

@@ -279,7 +279,7 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	public String mostrarEmpleado() {
+	public String mostrarEmpleados() {
 		StringBuilder mensaje = new StringBuilder();
 
 		Iterator<Empleado> it = listaEmpleados.iterator();
@@ -291,7 +291,7 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	public String mostrarCliente() {
+	public String mostrarClientes() {
 		StringBuilder mensaje = new StringBuilder();
 
 		Iterator<Cliente> it = listaClientes.iterator();
@@ -751,5 +751,7 @@ public class Vivero implements IVivero {
 			}
 		}
 	}
+	
+	
 
 }
