@@ -485,7 +485,7 @@ public class Vivero implements IVivero {
 			{
 				for(int i=0; i<registroPedidos.get(j).getCarrito().size() ; i++)
 				{
-					sb.append(registroPedidos.get(j).getCarrito().get(i).toString());
+					sb.append(registroPedidos.get(j).getCarrito().get(i).toString()+"\n");
 				}
 			}
 		}
