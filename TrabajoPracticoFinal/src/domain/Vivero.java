@@ -303,6 +303,8 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	
+	
 	public String moficarPrecioProducto(Producto elemento, int precio) {
 		String mensaje = "Producto no Encontrado.";
 		int flag = 0;
@@ -449,6 +451,47 @@ public class Vivero implements IVivero {
 		return elCliente;
 	}
 
+	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
+	// puede usar el metodo
+	public String mostrarPedidoImpagoCliente(Cliente cliente) {
+		StringBuilder sb = new StringBuilder();
+		int flag=0;
+		boolean pedidoImp = buscarPedidoImpago(cliente.getId());
+		
+		if(pedidoImp==true) {
+			for(int j=0 ; j<registroPedidos.size() && flag==0 ; j++) 
+			{
+				if(registroPedidos.get(j).getIdCliente() == cliente.getId()) 
+				{
+					for(int i=0; i<registroPedidos.get(j).getCarrito().size(); i++)
+					{
+						sb.append(registroPedidos.get(j).getCarrito().get(i).toString());
+					}
+					flag=1;
+				}
+			}
+		}
+		return sb.toString();
+	}
+	
+	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
+	// puede usar el metodo
+	public String mostrarHistorialPedidosCliente(Cliente cliente) {
+		StringBuilder sb = new StringBuilder();
+		
+		for(int j=0 ; j<registroPedidos.size(); j++) 
+		{
+			if(registroPedidos.get(j).getIdCliente() == cliente.getId()) 
+			{
+				for(int i=0; i<registroPedidos.get(j).getCarrito().size() ; i++)
+				{
+					sb.append(registroPedidos.get(j).getCarrito().get(i).toString());
+				}
+			}
+		}
+		return sb.toString();
+	}
+	
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 	// puede usar el metodo
 	public String ComprarProducto(Producto elProducto, Cliente elCliente, int cantidadP) {
