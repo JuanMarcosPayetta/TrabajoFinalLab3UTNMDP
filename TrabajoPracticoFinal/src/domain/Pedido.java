@@ -160,6 +160,11 @@ public class Pedido implements IDescuento {
 		this.numeroPedido = numeroPedido;
 	}
 
+	
+	//unicamente se usa para eliminar productos desde el vivero
+	public ArrayList<PeticionCompra> getCarrito() {
+		return carrito;
+	}
 
 	public void setCarrito(ArrayList<PeticionCompra> carrito) {
 		this.carrito = carrito;
