@@ -448,7 +448,8 @@ public class Vivero implements IVivero {
 		return elCliente;
 	}
 
-	//primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente puede usar el metodo
+	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
+	// puede usar el metodo
 	public String ComprarProducto(Producto elProducto, Cliente elCliente, int cantidadP) {
 
 		int otroFlag = 0;
@@ -508,11 +509,50 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
+	// puede usar el metodo
+	public String ComprarServicio(String codigoServicio, Cliente elCliente) {
+
+		int otroFlag = 0;
+		String mensaje = "ERROR en la compra";
+		Servicio servicio = null;
+
+		Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator(); // iterador
+
+		while (it.hasNext() && otroFlag == 0) {
+			Map.Entry<String, Servicio> entrada = (Map.Entry<String, Servicio>) it.next();
+
+			if (entrada.getKey().equalsIgnoreCase(codigoServicio)) // si se encuentra el codigo
+			{
+				servicio = entrada.getValue();
+				PeticionCompra petiCompra = new PeticionCompra(servicio.getCodigo(), servicio.getPrecio(), 1);
+
+				if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
+				{
+					ingresarACarrito(elCliente.getId(), petiCompra);
+				}
+
+				else // si no hay un pedido abierto
+				{
+					Pedido miPedido = new Pedido(elCliente.getId());
+					agregarPeticionToNuevoPedido(miPedido, petiCompra);
+				}
+				otroFlag = 1;
+				mensaje = "Servicio agregado al carrito con exito";
+			}
+		}
+		if (otroFlag == 0) {
+			mensaje = "No existe un servicio con ese codigo";
+		}
+
+		return mensaje;
+	}
+
 	// El objeto principal es Vivero, el cual posee dentro 1 array por cada
 	// coleccion (productos, servicios, cliente, empleado, pedidos)
 	public JSONObject javaToJsonProductos() {
-		
-	JSONObject vivero = new JSONObject(); // objeto json principal
+
+		JSONObject vivero = new JSONObject(); // objeto json principal
 
 		try {
 
@@ -544,7 +584,6 @@ public class Vivero implements IVivero {
 
 			vivero.put("productos", cataloProductos);
 
-			
 			// SERVICIOS
 			Iterator<Map.Entry<String, Servicio>> it2 = catalogoServicios.entrySet().iterator();
 			JSONArray arrayServicios = new JSONArray();
@@ -558,8 +597,6 @@ public class Vivero implements IVivero {
 			// cataloServicios.put("servicios", arrayServicios); //OBJETO CON ARRAY DENTRO ?
 			// U ARRAY CON EL ARRAY DE SERVICIOS DENTRO?
 
-			
-			
 			// CLIENTES
 			Iterator<Cliente> it3 = listaClientes.iterator();
 			JSONArray arrayClientes = new JSONArray();
@@ -571,8 +608,6 @@ public class Vivero implements IVivero {
 
 			vivero.put("clientes", arrayClientes);
 
-			
-			
 			// EMPLEADO
 			Iterator<Cliente> it4 = listaClientes.iterator();
 			JSONArray arrayEmpleados = new JSONArray();
@@ -584,28 +619,22 @@ public class Vivero implements IVivero {
 
 			vivero.put("empleados", arrayEmpleados);
 
-			
-			
-			//PEDIDOS
-			ListIterator<Pedido> it5= registroPedidos.listIterator();
-			JSONArray arrayPedidos= new JSONArray();
-			while(it5.hasNext())
-			{
-				JSONObject objeto= new JSONObject();
-				objeto=it5.next().javaToJson();
+			// PEDIDOS
+			ListIterator<Pedido> it5 = registroPedidos.listIterator();
+			JSONArray arrayPedidos = new JSONArray();
+			while (it5.hasNext()) {
+				JSONObject objeto = new JSONObject();
+				objeto = it5.next().javaToJson();
 				arrayPedidos.put(objeto);
 			}
 			vivero.put("pedidos", arrayPedidos);
-			
-			
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		return vivero;
 	}
-	
-	
 
 	public String pedirCantidadCompra(int cantidad) {
 		String mensaje = null;
@@ -693,7 +722,5 @@ public class Vivero implements IVivero {
 			}
 		}
 	}
-	
-	
 
 }
