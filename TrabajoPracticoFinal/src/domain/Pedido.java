@@ -255,6 +255,7 @@ public class Pedido implements IDescuento {
         	}
         	
             json.put("idCliente", getIdCliente());
+            json.put("idEmpleado", getIdEmpleado());
             json.put("totalBruto", getTotalBruto());
             json.put("totalNeto", getTotalNeto());
             json.put("medioDePago", getMedioDePago());
