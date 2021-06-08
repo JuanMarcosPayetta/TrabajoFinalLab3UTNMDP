@@ -9,7 +9,6 @@ import productos.HerramientaJardineria;
 import productos.Hierba;
 import productos.Lombriz;
 import productos.Maceta;
-import productos.MacetaRedonda;
 import productos.MuebleJardin;
 import productos.PlantaAcuatica;
 import productos.Producto;
