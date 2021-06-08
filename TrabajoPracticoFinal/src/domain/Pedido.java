@@ -231,9 +231,14 @@ public class Pedido implements IDescuento {
 	
 	@Override
 	public String toString() {
-		return "Pedido \n idCliente: " + idCliente + "idEmpleado:  "+idEmpleado+" , total bruto: " + totalBruto + ", total neto: " + totalNeto
-				+ ", medio de pago: " + medioDePago + ", fue abonado: " + fueAbonado
-				+ ", numero pedido: " + numeroPedido + ", carrito: " + carrito;
+		return " - Pedido " + numeroPedido + " - \n"
+				+ " idCliente: " + idCliente + "\n"
+				+ " idEmpleado: "+idEmpleado + "\n"
+				+ " total bruto: " + totalBruto + "\n"
+				+ " total neto: " + totalNeto + "\n"
+				+ " medio de pago: " + medioDePago + "\n"
+				+ " fue abonado: " + fueAbonado + "\n"
+				+ " carrito: " + carrito;
 	}
 	
 	
