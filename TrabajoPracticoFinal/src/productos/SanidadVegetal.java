@@ -124,7 +124,7 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 
 	@Override
 	public String toString() {
-		return super.toString()+", funcion: " + funcion + ", centimetroCubico: " + centimetroCubico;
+		return super.toString()+", funcion: " + funcion + "\n" + ", volumen: " + centimetroCubico;
 	}
 	
 	@Override

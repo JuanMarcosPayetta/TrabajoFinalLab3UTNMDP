@@ -103,7 +103,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	@Override
 	public String toString() {
-		return super.toString() + ", tipo=" + tipo + ", alto=" + alto + ", largo=" + largo + ", ancho=" + ancho;
+		return super.toString() + ", tipo:" + tipo + ", alto:" + alto + ", largo:" + largo + ", ancho:" + ancho;
 	}
 
 	public static String validarTipoMuebleLlamada(String mueble) {

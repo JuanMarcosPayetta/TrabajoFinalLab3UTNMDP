@@ -140,7 +140,7 @@ public class Arbusto extends PlantaTerrestre{
 
 	@Override
 	public String toString() {
-		return super.toString()+", Tipo De Hoja: " + tipoDeHoja + ", Trepador: " + trepador;
+		return super.toString()+", tipo de hoja: " + tipoDeHoja + ", trepador: " + trepador;
 	}
 	
 

@@ -464,10 +464,10 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 
 	@Override
 	public String toString() {
-		return super.toString()+", Meses De Vida: " + mesesDeVida + ", Estacion de Plantacion: " + estacionPlantacion + ", Habitat: "
-				+ habitat + ", Altura: " + altura + ", Flor: " + flor + ", Nivel de Exposicion Solar: "
-				+ nivelExposicionSolar + ", tipoRaiz=" + tipoRaiz + ", aromatica=" + aromatica
-				+ ", Cantidad de Fertilizante: " + cantidadFertilizante;
+		return super.toString()+", meses de vida: " + mesesDeVida + "\n" + ", estacion de plantacion: " + estacionPlantacion + ", habitat: "
+				+ habitat + ", altura: " + altura + ", flor: " + flor + "\n" + ", nivel de Exposicion Solar: "
+				+ nivelExposicionSolar + ", tipoRaiz:" + tipoRaiz + ", aromatica:" + aromatica
+				+ ", cantidad de fertilizante: " + cantidadFertilizante + "\n";
 	}
 
 	

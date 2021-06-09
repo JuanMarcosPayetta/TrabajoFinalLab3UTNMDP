@@ -108,7 +108,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	@Override
 	public String toString() {
-		return super.toString() + ", material: " + material + ", funcion: " + funcion;
+		return super.toString() + ", material: " + material + "\n" + ", funcion: " + funcion;
 	}
 
 	
