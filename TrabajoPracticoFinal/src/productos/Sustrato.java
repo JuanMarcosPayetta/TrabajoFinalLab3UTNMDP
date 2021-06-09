@@ -117,15 +117,13 @@ public class Sustrato extends ProductoOrganico{
 		{
 			this.tipoDeSuelo = tipoDeSuelo;
 		}
-		
 		return mensaje;	
-		
 	}
 	
 	
 	@Override
 	public String toString() {
-		return super.toString()+", abonada: " + abonada + ", tipoDeSuelo: " + tipoDeSuelo;
+		return super.toString()+", abonada: " + abonada + ", tipo de suelo: " + tipoDeSuelo;
 	}
 	
 	@Override
@@ -136,7 +134,6 @@ public class Sustrato extends ProductoOrganico{
 	@Override
 	public void establecerPrecio() 
 	{
-	
 		double precioGramoSustrato=0;
 		double precioTotal=0;
 		

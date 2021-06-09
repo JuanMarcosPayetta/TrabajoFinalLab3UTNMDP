@@ -342,7 +342,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto> {
 
 	@Override
 	public String toString() {
-		return "Codigo: " + codigo + ", Nombre: " + nombre + ", Marca: " + marca + ", Clasificacion: " + clasificacion
+		return "Codigo: " + codigo + ", Nombre: " + nombre + ", Marca: " + marca + ", Clasificacion: " + clasificacion + "\n"
 				+ ", Precio: " + precio + ", Stock: " + stock + ", Descripcion: " + descripcion;
 	}
 
