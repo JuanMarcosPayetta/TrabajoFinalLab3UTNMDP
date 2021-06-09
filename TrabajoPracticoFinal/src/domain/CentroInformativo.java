@@ -4,10 +4,17 @@ import java.util.ArrayList;
 
 import productos.Arbol;
 import productos.Arbusto;
+import productos.Decoracion;
+import productos.HerramientaJardineria;
 import productos.Hierba;
+import productos.Lombriz;
+import productos.Maceta;
+import productos.MuebleJardin;
 import productos.PlantaAcuatica;
 import productos.Producto;
 import productos.SanidadVegetal;
+import productos.Semilla;
+import productos.Sustrato;
 
 public class CentroInformativo<T extends Producto> {
 
@@ -65,6 +72,7 @@ public class CentroInformativo<T extends Producto> {
 		int cant4=0;
 		int cant5=0;
 		int cant6=0;
+		int cant7=0;
 		String mensaje=null;
 		
 		if(datos.get(0) instanceof PlantaAcuatica)
@@ -176,7 +184,7 @@ public class CentroInformativo<T extends Producto> {
 					}
 				}
 			}
-			mensaje="Existe actualmente en stock: \n"+"Arbol de corteza laminada: "+cant1+"\n"+"Arbol de corteza geometrica: "+cant2+"\n"+"Arbol de corteza rugosa: "+cant3+"\n"+"Arbol de corteza lobulada: "+cant4+"\n"+"Arbol de corteza placoide: "+cant5+"Arbol de corteza escasa: "+cant6+"\n";
+			mensaje="Existe actualmente en stock: \n"+"Arbol de corteza laminada: "+cant1+"\n"+"Arbol de corteza geometrica: "+cant2+"\n"+"Arbol de corteza rugosa: "+cant3+"\n"+"Arbol de corteza lobulada: "+cant4+"\n"+"Arbol de corteza placoide: "+cant5+"\n"+"Arbol de corteza escasa: "+cant6+"\n";
 		}
 		else if(datos.get(0) instanceof Arbusto)
 		{
@@ -211,19 +219,19 @@ public class CentroInformativo<T extends Producto> {
 		{
 			for(int i=0; i<datos.size(); i++)
 			{
-				SanidadVegetal planta= (SanidadVegetal) datos.get(i);
+				SanidadVegetal sanidad= (SanidadVegetal) datos.get(i);
 				
-				if(planta.getStock()>0)
+				if(sanidad.getStock()>0)
 				{
-					if(planta.getFuncion().equalsIgnoreCase("funguicida"))
+					if(sanidad.getFuncion().equalsIgnoreCase("funguicida"))
 					{
 						cant1++;
 					}
-					else if(planta.getFuncion().equalsIgnoreCase("insecticida"))
+					else if(sanidad.getFuncion().equalsIgnoreCase("insecticida"))
 					{
 						cant2++;
 					}
-					else if(planta.getFuncion().equalsIgnoreCase("herbicida"))
+					else if(sanidad.getFuncion().equalsIgnoreCase("herbicida"))
 					{
 						cant3++;
 					}
@@ -232,5 +240,243 @@ public class CentroInformativo<T extends Producto> {
 			}
 			mensaje="Existe actualmente en stock: \n"+"Funguicidas: "+cant1+"\n"+"Insecticidas: "+cant2+"\n"+"Herbicidas: "+cant3+"\n";
 		}
-	}
+		else if(datos.get(0) instanceof Semilla)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+				Semilla semilla= (Semilla) datos.get(i);
+				
+				if(semilla.getStock()>0)
+				{
+					if(semilla.getDestino().equalsIgnoreCase("floral"))
+					{
+						cant1++;
+					}
+					else if(semilla.getDestino().equalsIgnoreCase("huerta"))
+					{
+						cant2++;
+					}
+					else if(semilla.getDestino().equalsIgnoreCase("cesped"))
+					{
+						cant3++;
+					}
+				}
+			}
+			mensaje="Existe actualmente en stock: \n"+"Semillas con destino Floral: "+cant1+"\n"+"Semillas con destino de Huerta: "+cant2+"\n"+"Semillas con destino para Cesped: "+cant3+"\n";
+	   }
+		else if(datos.get(0) instanceof Sustrato)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+				Sustrato sustrato= (Sustrato) datos.get(i);
+				
+				if(sustrato.getStock()>0)
+				{
+					if(sustrato.getTipoDeSuelo().equalsIgnoreCase("arenoso"))
+					{
+						cant1++;
+					}
+					else if(sustrato.getTipoDeSuelo().equalsIgnoreCase("calizo"))
+					{
+						cant2++;
+					}
+					else if(sustrato.getTipoDeSuelo().equalsIgnoreCase("humifero"))
+					{
+						cant3++;
+					}
+					else if(sustrato.getTipoDeSuelo().equalsIgnoreCase("arcilloso"))
+					{
+						cant4++;
+					}
+					else if(sustrato.getTipoDeSuelo().equalsIgnoreCase("pedregoso"))
+					{
+						cant5++;
+					}
+					else if(sustrato.getTipoDeSuelo().equalsIgnoreCase("mixto"))
+					{
+						cant6++;
+					}
+					
+					if(sustrato.isAbonada())
+					{
+						cant7++;
+					}
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Sustrato para suelo arenoso: "+cant1+"\n"+"Sustrato para suelo calizo: "+cant2+"\n"+"Sustrato para suelo humifero: "+cant3+"\n"+"Sustrato para suelo arcilloso: "+cant4+"\n"+"Sustrato para suelo pedregoso: "+cant5+"\n"+"Sustrato para suelo mixto: "+cant6+"\n"+"Cantidad de sustratos abonados: "+cant7;
+		}
+		else if(datos.get(0) instanceof Maceta)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+				Maceta maceta= (Maceta) datos.get(i);
+				
+				if(maceta.getStock()>0)
+				{
+					if(maceta.getForma().equalsIgnoreCase("jardinera"))
+					{
+						cant1++;
+					}
+					else if(maceta.getForma().equalsIgnoreCase("cubo"))
+					{
+						cant2++;
+					}
+					else if(maceta.getForma().equalsIgnoreCase("piramidal"))
+					{
+						cant3++;
+					}
+					else if(maceta.getForma().equalsIgnoreCase("ovalada"))
+					{
+						cant4++;
+					}
+					else if(maceta.getForma().equalsIgnoreCase("circular"))
+					{
+						cant5++;
+					}
+					
+					if(maceta.getClasificacion().equalsIgnoreCase("poliedro"))
+					{
+						cant6++;
+					}
+					else
+					{
+						cant7++;
+					}
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Maceta jardinera: "+cant1+"\n"+"Maceta cubo: "+cant2+"\n"+"Maceta piramidal: "+cant3+"\n"+"Maceta ovalada: "+cant4+"\n"+"Maceta circular: "+cant5+"\n"+"Cantidad de macetas poliedro y redondas: " +cant6+" poliedro y "+cant7+" redondas"+"\n";
+		}
+		else if(datos.get(0) instanceof Lombriz)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+				Lombriz lombriz= (Lombriz) datos.get(i);
+				
+				if(lombriz.getStock()>0)
+				{
+					if(lombriz.getEspecie().equalsIgnoreCase("rayada"))
+					{
+						cant1++;
+					}
+					else if(lombriz.getEspecie().equalsIgnoreCase("dendra"))
+					{
+						cant2++;
+					}
+					else if(lombriz.getEspecie().equalsIgnoreCase("roja"))
+					{
+						cant3++;
+					}
+					else
+					{
+						cant4++;
+					}
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Lombriz rayada: "+cant1+"\n"+"Lombriz dendra: "+cant2+"\n"+"Lombriz roja: "+cant3+"\n"+"Lombriz comun: "+cant4+"\n";
+		}
+		else if(datos.get(0) instanceof HerramientaJardineria)
+		{
+		    int cant8=0;
+			for(int i=0; i<datos.size(); i++)
+			{
+			    HerramientaJardineria herramienta= (HerramientaJardineria) datos.get(i);
+				
+				if(herramienta.getStock()>0)
+				{
+					if(herramienta.getFuncion().equalsIgnoreCase("corte"))
+					{
+						cant1++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("desmalezado"))
+					{
+						cant2++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("labrado"))
+					{
+						cant3++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("limpieza"))
+					{
+						cant4++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("riego"))
+					{
+						cant5++;
+					}
+					else 
+					{
+						cant6++;
+					}
+					
+					
+					if(herramienta.getClasificacion().equalsIgnoreCase("Herramienta manual"))
+					{
+						cant7++;
+					}
+					else
+					{
+						cant8++;
+					}
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Herramienta de corte: "+cant1+"\n"+"Herramienta de desmalezado: "+cant2+"\n"+"Herramienta de labrado: "+cant3+"\n"+"Herramienta de limpieza: "+cant4+"\n"+"Herramienta de riego: "+cant5+"\n"+"Herramienta de transporte: " +cant6+"\n"+ "Herramientas manuales y no manuales: "+cant7+" manuales,"+cant8+" no manuales"+"\n";
+		}
+		else if(datos.get(0) instanceof Decoracion)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+			    Decoracion decoracion= (Decoracion) datos.get(i);
+				
+				if(decoracion.getStock()>0)
+				{
+					if(decoracion.isExterior())
+					{
+						cant1++;
+					}
+					else 
+					{
+						cant2++;
+					}
+				
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Elemento decorativo de exterior: "+cant1+"\n"+"Elemento decorativo de interior: "+cant2+"\n";
+		}
+		else if(datos.get(0) instanceof MuebleJardin)
+		{
+		    int cant8=0;
+			for(int i=0; i<datos.size(); i++)
+			{
+			    MuebleJardin mueble= (MuebleJardin) datos.get(i);
+				
+				if(mueble.getStock()>0)
+				{
+					if(mueble.getTipo().equalsIgnoreCase("mesa"))
+					{
+						cant1++;
+					}
+					else if(mueble.getTipo().equalsIgnoreCase("silla"))
+					{
+						cant2++;
+					}
+					else if(mueble.getTipo().equalsIgnoreCase("reposera"))
+					{
+						cant3++;
+					}
+					else if(mueble.getTipo().equalsIgnoreCase("camastro"))
+					{
+						cant4++;
+					}
+					else
+					{
+						cant5++;
+					}
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Mesas: "+cant1+"\n"+"Sillas: "+cant2+"\n"+"Reposeras: "+cant3+"\n"+"Camastros: "+cant4+"\n"+"Hamacas: "+cant5+"\n";
+		}
+		
+		return mensaje;
+  }
+	
 }
