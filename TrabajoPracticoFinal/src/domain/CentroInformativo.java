@@ -1,16 +1,20 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import productos.Arbol;
 import productos.Arbusto;
 import productos.Decoracion;
-import productos.HerramientaJardineria;
+import productos.HerramientaManual;
+import productos.HerramientaNoManual;
 import productos.Hierba;
 import productos.Lombriz;
-import productos.Maceta;
+import productos.MacetaPoliedro;
+import productos.MacetaRedonda;
 import productos.MuebleJardin;
 import productos.PlantaAcuatica;
+import productos.PlantaTerrestre;
 import productos.Producto;
 import productos.SanidadVegetal;
 import productos.Semilla;
@@ -64,7 +68,7 @@ public class CentroInformativo<T extends Producto> {
 		return masEconomico.toString();
 	}
 	
-	public String informacion()
+	public String informacionStockPositivo()
 	{
 		int cant1=0;
 		int cant2=0;
@@ -305,11 +309,11 @@ public class CentroInformativo<T extends Producto> {
 			}
 			mensaje="Existe actualmente en stock: \n"+"Sustrato para suelo arenoso: "+cant1+"\n"+"Sustrato para suelo calizo: "+cant2+"\n"+"Sustrato para suelo humifero: "+cant3+"\n"+"Sustrato para suelo arcilloso: "+cant4+"\n"+"Sustrato para suelo pedregoso: "+cant5+"\n"+"Sustrato para suelo mixto: "+cant6+"\n"+"Cantidad de sustratos abonados: "+cant7;
 		}
-		else if(datos.get(0) instanceof Maceta)
+		else if(datos.get(0) instanceof MacetaPoliedro)
 		{
 			for(int i=0; i<datos.size(); i++)
 			{
-				Maceta maceta= (Maceta) datos.get(i);
+				MacetaPoliedro maceta= (MacetaPoliedro) datos.get(i);
 				
 				if(maceta.getStock()>0)
 				{
@@ -321,30 +325,34 @@ public class CentroInformativo<T extends Producto> {
 					{
 						cant2++;
 					}
-					else if(maceta.getForma().equalsIgnoreCase("piramidal"))
+					else 
 					{
 						cant3++;
 					}
-					else if(maceta.getForma().equalsIgnoreCase("ovalada"))
+				}	
+			}
+			mensaje="Existe actualmente en stock: \n"+"Maceta jardinera: "+cant1+"\n"+"Maceta cubo: "+cant2+"\n"+"Maceta piramidal: "+cant3+"\n";
+		}
+		else if(datos.get(0) instanceof MacetaRedonda)
+		{
+			for(int i=0; i<datos.size(); i++)
+			{
+				MacetaRedonda maceta= (MacetaRedonda) datos.get(i);
+				
+				if(maceta.getStock()>0)
+				{
+					if(maceta.getForma().equalsIgnoreCase("ovalada"))
 					{
-						cant4++;
+						cant1++;
 					}
 					else if(maceta.getForma().equalsIgnoreCase("circular"))
 					{
-						cant5++;
+						cant2++;
 					}
-					
-					if(maceta.getClasificacion().equalsIgnoreCase("poliedro"))
-					{
-						cant6++;
-					}
-					else
-					{
-						cant7++;
-					}
+		
 				}	
 			}
-			mensaje="Existe actualmente en stock: \n"+"Maceta jardinera: "+cant1+"\n"+"Maceta cubo: "+cant2+"\n"+"Maceta piramidal: "+cant3+"\n"+"Maceta ovalada: "+cant4+"\n"+"Maceta circular: "+cant5+"\n"+"Cantidad de macetas poliedro y redondas: " +cant6+" poliedro y "+cant7+" redondas"+"\n";
+			mensaje="Existe actualmente en stock: \n"+"Maceta jardinera: "+cant1+"\n"+"Maceta cubo: "+cant2+"\n";
 		}
 		else if(datos.get(0) instanceof Lombriz)
 		{
@@ -374,12 +382,49 @@ public class CentroInformativo<T extends Producto> {
 			}
 			mensaje="Existe actualmente en stock: \n"+"Lombriz rayada: "+cant1+"\n"+"Lombriz dendra: "+cant2+"\n"+"Lombriz roja: "+cant3+"\n"+"Lombriz comun: "+cant4+"\n";
 		}
-		else if(datos.get(0) instanceof HerramientaJardineria)
+		else if(datos.get(0) instanceof HerramientaManual)
 		{
-		    int cant8=0;
 			for(int i=0; i<datos.size(); i++)
 			{
-			    HerramientaJardineria herramienta= (HerramientaJardineria) datos.get(i);
+			    HerramientaManual herramienta= (HerramientaManual) datos.get(i);
+				
+				if(herramienta.getStock()>0)
+				{
+					if(herramienta.getFuncion().equalsIgnoreCase("corte"))
+					{
+						cant1++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("desmalezado"))
+					{
+						cant2++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("labrado"))
+					{
+						cant3++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("limpieza"))
+					{
+						cant4++;
+					}
+					else if(herramienta.getFuncion().equalsIgnoreCase("riego"))
+					{
+						cant5++;
+					}
+					else 
+					{
+						cant6++;
+					}
+
+				}	
+			}
+			mensaje="Existe actualmente en stock en herramientas manuales: \n"+"Herramienta de corte: "+cant1+"\n"+"Herramienta de desmalezado: "+cant2+"\n"+"Herramienta de labrado: "+cant3+"\n"+"Herramienta de limpieza: "+cant4+"\n"+"Herramienta de riego: "+cant5+"\n"+"Herramienta de transporte: " +cant6+"\n";
+		}
+		else if(datos.get(0) instanceof HerramientaNoManual)
+		{
+			int cant8=0;
+			for(int i=0; i<datos.size(); i++)
+			{
+			    HerramientaNoManual herramienta= (HerramientaNoManual) datos.get(i);
 				
 				if(herramienta.getStock()>0)
 				{
@@ -408,8 +453,7 @@ public class CentroInformativo<T extends Producto> {
 						cant6++;
 					}
 					
-					
-					if(herramienta.getClasificacion().equalsIgnoreCase("Herramienta manual"))
+					if(herramienta.getTipoMotor().equalsIgnoreCase("electrico"))
 					{
 						cant7++;
 					}
@@ -417,9 +461,10 @@ public class CentroInformativo<T extends Producto> {
 					{
 						cant8++;
 					}
+
 				}	
 			}
-			mensaje="Existe actualmente en stock: \n"+"Herramienta de corte: "+cant1+"\n"+"Herramienta de desmalezado: "+cant2+"\n"+"Herramienta de labrado: "+cant3+"\n"+"Herramienta de limpieza: "+cant4+"\n"+"Herramienta de riego: "+cant5+"\n"+"Herramienta de transporte: " +cant6+"\n"+ "Herramientas manuales y no manuales: "+cant7+" manuales,"+cant8+" no manuales"+"\n";
+			mensaje="Existe actualmente en stock en herramientas no manuales: \n"+"Herramienta de corte: "+cant1+"\n"+"Herramienta de desmalezado: "+cant2+"\n"+"Herramienta de labrado: "+cant3+"\n"+"Herramienta de limpieza: "+cant4+"\n"+"Herramienta de riego: "+cant5+"\n"+"Herramienta de transporte: " +cant6+"\n"+"Total de herramientas segun tipo de motor: "+cant7+" electricas, "+cant8+" a combustible"+"\n";
 		}
 		else if(datos.get(0) instanceof Decoracion)
 		{
@@ -444,7 +489,6 @@ public class CentroInformativo<T extends Producto> {
 		}
 		else if(datos.get(0) instanceof MuebleJardin)
 		{
-		    int cant8=0;
 			for(int i=0; i<datos.size(); i++)
 			{
 			    MuebleJardin mueble= (MuebleJardin) datos.get(i);
@@ -479,4 +523,33 @@ public class CentroInformativo<T extends Producto> {
 		return mensaje;
   }
 	
+	public String stockNegativo()
+	{
+		StringBuilder builder= new StringBuilder();
+		for(int i=0; i<datos.size(); i++)
+		{
+			if(datos.get(i).getStock()<1)
+			{
+				builder.append(datos.get(i).toString()+"\n");
+			}
+		}
+		return builder.toString();
+	}
+	
+	
+	public String mostrarSegunPrecio()
+	{
+		Collections.sort(datos);
+		StringBuilder builder= new StringBuilder();
+		for(int i=0; i<datos.size(); i++)
+		{
+			builder.append(datos.get(i).toString()+"\n");
+		}
+		
+		return builder.toString();
+	}
+	
+	
+	
+  
 }
