@@ -13,8 +13,8 @@ import productos.Lombriz;
 import productos.MacetaPoliedro;
 import productos.MacetaRedonda;
 import productos.MuebleJardin;
+import productos.Planta;
 import productos.PlantaAcuatica;
-import productos.PlantaTerrestre;
 import productos.Producto;
 import productos.SanidadVegetal;
 import productos.Semilla;
@@ -549,7 +549,23 @@ public class CentroInformativo<T extends Producto> {
 		return builder.toString();
 	}
 	
-	
+	//ANALIZAR SI ESTO FUNCIONA....
+	public String plantasFlorales()
+	{
+		StringBuilder builder= new StringBuilder();
+		for(int i=0; i<datos.size(); i++)
+		{
+			if(datos.get(i) instanceof Planta) 
+			{
+				Planta planta= (Planta)datos.get(i); //--> funciona??
+				if(planta.isFlor())
+				{
+					builder.append(planta.toString()+"\n");
+				}
+			}
+		}
+		return builder.toString();
+	}
 	
   
 }
