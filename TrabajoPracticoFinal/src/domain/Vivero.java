@@ -28,14 +28,13 @@ public class Vivero implements IVivero {
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente> listaClientes;
 	private HashSet<Empleado> listaEmpleados;
-	private LinkedList<Pedido> registroPedidos;
+
 
 	public Vivero() {
 		this.catalogoProductos = new HashMap<String, ArrayList<Producto>>();
 		this.catalogoServicios = new HashMap<String, Servicio>();
 		this.listaClientes = new HashSet<Cliente>();
 		this.listaEmpleados = new HashSet<Empleado>();
-		this.registroPedidos = new LinkedList<Pedido>();
 	}
 
 	public ArrayList<String> obtenerCodigosProducto() {
@@ -449,42 +448,7 @@ public class Vivero implements IVivero {
 		return elCliente;
 	}
 
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
-	// muestra pedido actual del cliente
-	public String mostrarPedidoImpagoCliente(Cliente cliente) {
-		StringBuilder sb = new StringBuilder();
-		int flag = 0;
-		boolean pedidoImp = buscarPedidoImpago(cliente.getId());
-
-		if (pedidoImp == true) {
-			for (int j = 0; j < registroPedidos.size() && flag == 0; j++) {
-				if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-					for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
-						sb.append(registroPedidos.get(j).getCarrito().get(i).toString());
-					}
-					flag = 1;
-				}
-			}
-		}
-		return sb.toString();
-	}
-
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
-	public String mostrarHistorialPedidosCliente(Cliente cliente) {
-		StringBuilder sb = new StringBuilder();
-
-		for (int j = 0; j < registroPedidos.size(); j++) {
-			if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-				for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
-					sb.append(registroPedidos.get(j).getCarrito().get(i).toString() + "\n");
-				}
-			}
-		}
-		return sb.toString();
-	}
-
+	
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 	// puede usar el metodo
 	public String ComprarProducto(Producto elProducto, Cliente elCliente, int cantidadP) {
@@ -492,6 +456,7 @@ public class Vivero implements IVivero {
 		int otroFlag = 0;
 		String mensaje = "ERROR en la compra";
 		Producto productoComprado = null;
+		RegistroVentas reg= new RegistroVentas(0);
 
 		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
 
@@ -512,15 +477,15 @@ public class Vivero implements IVivero {
 							PeticionCompra petiCompra = new PeticionCompra(productoComprado.getCodigo(),
 									productoComprado.getPrecio(), cantidadP);
 
-							if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
+							if (reg.buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
 							{
-								ingresarACarrito(elCliente.getId(), petiCompra);
+								reg.ingresarACarrito(elCliente.getId(), petiCompra);
 							}
 
 							else // si no hay un pedido abierto
 							{
 								Pedido miPedido = new Pedido(elCliente.getId());
-								agregarPeticionToNuevoPedido(miPedido, petiCompra);
+								reg.agregarPeticionToNuevoPedido(miPedido, petiCompra);
 							}
 
 							arreglo.get(i).disminuitStock(cantidadP); // resto stock
@@ -545,33 +510,7 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
-	// para eliminar servicios y productor del carrito
-	public String eliminarPeticionCarrito(String codigoP, Cliente elCliente) {
-		String mensaje = "No se encontro ningun pedido actual";
-		boolean pedidoImp = false;
-		int flag = 0;
 
-		pedidoImp = buscarPedidoImpago(elCliente.getId());
-		if (pedidoImp == true) {
-			for (int j = 0; j < registroPedidos.size() && flag == 0; j++) {
-				if (registroPedidos.get(j).getIdCliente() == elCliente.getId()
-						&& registroPedidos.get(j).isFueAbonado() == false) {
-					mensaje = "No se encontro ningun elemento en su carrito con el codigo ingresado";
-					for (int i = 0; i < registroPedidos.get(j).getCarrito().size() && flag == 0; i++) {
-						if (registroPedidos.get(j).getCarrito().get(i).getCodigo().equalsIgnoreCase(codigoP)) {
-							registroPedidos.get(j).getCarrito().remove(i);
-							mensaje = "Elemento eliminado del carrito con exito";
-							flag = 1;
-						}
-					}
-				}
-			}
-
-		}
-		return mensaje;
-	}
 
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 	// puede usar el metodo
@@ -580,6 +519,7 @@ public class Vivero implements IVivero {
 		int otroFlag = 0;
 		String mensaje = "ERROR en la compra";
 		Servicio servicio = null;
+		RegistroVentas reg= new RegistroVentas(0);
 
 		Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator(); // iterador
 
@@ -591,15 +531,15 @@ public class Vivero implements IVivero {
 				servicio = entrada.getValue();
 				PeticionCompra petiCompra = new PeticionCompra(servicio.getCodigo(), servicio.getPrecio(), 1);
 
-				if (buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
+				if (reg.buscarPedidoImpago(elCliente.getId())) // busco si hay un pedido abierto
 				{
-					ingresarACarrito(elCliente.getId(), petiCompra);
+					reg.ingresarACarrito(elCliente.getId(), petiCompra);
 				}
 
 				else // si no hay un pedido abierto
 				{
 					Pedido miPedido = new Pedido(elCliente.getId());
-					agregarPeticionToNuevoPedido(miPedido, petiCompra);
+					reg.agregarPeticionToNuevoPedido(miPedido, petiCompra);
 				}
 				otroFlag = 1;
 				mensaje = "Servicio agregado al carrito con exito";
@@ -612,92 +552,7 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	// El objeto principal es Vivero, el cual posee dentro 1 array por cada
-	// coleccion (productos, servicios, cliente, empleado, pedidos)
-	public JSONObject javaToJsonProductos() {
-
-		JSONObject vivero = new JSONObject(); // objeto json principal
-
-		try {
-
-			// PRODUCTOS
-			Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
-			JSONArray arrayMapaProductos = new JSONArray();
-
-			while (it.hasNext()) {
-				Map.Entry<String, ArrayList<Producto>> entry = (Map.Entry<String, ArrayList<Producto>>) it.next();
-				ArrayList<Producto> listaConProductos = entry.getValue();
-
-				String clasificacion = null;
-				JSONObject objetoProducto = new JSONObject();
-				JSONArray arrayParaProductos = new JSONArray();
-
-				for (int i = 0; i < listaConProductos.size(); i++) {
-					clasificacion = listaConProductos.get(i).getClasificacion();
-					objetoProducto = listaConProductos.get(i).javaToJson();
-					arrayParaProductos.put(objetoProducto);
-				}
-
-				JSONObject entradaMapa = new JSONObject();
-				entradaMapa.put("clasificacion", clasificacion);
-				entradaMapa.put("arrayProductos", arrayParaProductos);
-
-				arrayMapaProductos.put(entradaMapa); // array principal con los arrays de productos dentro
-
-			}
-
-			vivero.put("productos", arrayMapaProductos);
-
-			// SERVICIOS
-			Iterator<Map.Entry<String, Servicio>> it2 = catalogoServicios.entrySet().iterator();
-			JSONArray arrayServicios = new JSONArray();
-			while (it2.hasNext()) {
-				Map.Entry<String, Servicio> entry = (Map.Entry<String, Servicio>) it2.next();
-				JSONObject objetoServicio = entry.getValue().javaToJson();
-				arrayServicios.put(objetoServicio);
-			}
-
-			vivero.put("servicios", arrayServicios); // ASI ??
-
-			// CLIENTES
-			Iterator<Cliente> it3 = listaClientes.iterator();
-			JSONArray arrayClientes = new JSONArray();
-			while (it3.hasNext()) {
-				JSONObject objeto = new JSONObject();
-				objeto = it3.next().javaToJson();
-				arrayClientes.put(objeto);
-			}
-
-			vivero.put("clientes", arrayClientes);
-
-			// EMPLEADO
-			Iterator<Cliente> it4 = listaClientes.iterator();
-			JSONArray arrayEmpleados = new JSONArray();
-			while (it4.hasNext()) {
-				JSONObject objeto = new JSONObject();
-				objeto = it4.next().javaToJson();
-				arrayEmpleados.put(objeto);
-			}
-
-			vivero.put("empleados", arrayEmpleados);
-
-			// PEDIDOS
-			ListIterator<Pedido> it5 = registroPedidos.listIterator();
-			JSONArray arrayPedidos = new JSONArray();
-			while (it5.hasNext()) {
-				JSONObject objeto = new JSONObject();
-				objeto = it5.next().javaToJson();
-				arrayPedidos.put(objeto);
-			}
-			vivero.put("pedidos", arrayPedidos);
-
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-		return vivero;
-	}
-
+	
 	public String pedirCantidadCompra(int cantidad) {
 		String mensaje = null;
 		try {
@@ -714,97 +569,6 @@ public class Vivero implements IVivero {
 		}
 	}
 
-	/*
-	 * busca un pedido impago
-	 */
-	public boolean buscarPedidoImpago(int idCliente) {
-		ListIterator<Pedido> it = registroPedidos.listIterator();
-		boolean encontrado = false;
-		while (it.hasNext() && encontrado == false) {
-			Pedido pedido = it.next();
-			if (pedido.getIdCliente() == idCliente) {
-				if (!pedido.isFueAbonado()) {
-					encontrado = true;
-				}
-			}
-		}
-		return encontrado;
-	}
-
-	/*
-	 * agrega una peticion de compra a un nuevo pedido, y agrega este pedido a la
-	 * lista de pedidos
-	 */
-	public void agregarPeticionToNuevoPedido(Pedido pedido, PeticionCompra peticion) {
-		pedido.agregarPeticionCompra(peticion);
-		agregarPedido(pedido);
-	}
-
-	/*
-	 * agrega un pedido a la lista de pedidos
-	 */
-	private String agregarPedido(Pedido pedido) {
-		String mensaje = null;
-		ListIterator<Pedido> it = registroPedidos.listIterator();
-		boolean encontrado = false;
-		while (it.hasNext() && encontrado == false) {
-			Pedido pedidoBuscado = it.next();
-			if (pedidoBuscado.getIdCliente() == pedido.getIdCliente()) {
-				if (!pedidoBuscado.isFueAbonado()) {
-					encontrado = true;
-				}
-			}
-		}
-		if (encontrado == true) {
-			mensaje = "Error, este cliente ya posee actualmente un pedido impago";
-		} else {
-			registroPedidos.add(pedido);
-			mensaje = "Pedido ingresado con exito";
-		}
-
-		return mensaje;
-	}
-
-	/*
-	 * ingresa una peticion al carrito de un pedido existente
-	 */
-	public void ingresarACarrito(int idCliente, PeticionCompra peticion) {
-
-		boolean encontrado = false;
-		for (int i = 0; i < registroPedidos.size() && encontrado == false; i++) {
-			Pedido pedido = registroPedidos.get(i);
-			if (pedido.getIdCliente() == idCliente) {
-				if (!pedido.isFueAbonado()) {
-					pedido.agregarPeticionCompra(peticion);
-					registroPedidos.set(i, pedido); // pedido con un producto mas en su carrito
-					encontrado = true;
-				}
-			}
-		}
-	}
-
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
-	public String pagarPedido(Cliente cliente) {
-		int flag = 0;
-		boolean pedidoI = buscarPedidoImpago(cliente.getId());
-		String mensaje="El cliente ingresado no tiene ningun pedido impago";
-
-		if (pedidoI == true) {
-			for (int j = 0; j < registroPedidos.size() && flag == 0; j++) {
-				if (registroPedidos.get(j).getIdCliente() == cliente.getId() 
-						&& registroPedidos.get(j).isFueAbonado() == false) 
-				{
-					registroPedidos.get(j).setDescuento(registroPedidos.get(j).getMedioDePago());
-					registroPedidos.get(j).setTotalBruto();
-					registroPedidos.get(j).setTotalNeto();
-					registroPedidos.get(j).setFueAbonado(true);
-					flag = 1;
-					mensaje="Pedido abonado con exito";
-				}
-			}
-		}
-		return mensaje;
-	}
+	
 
 }
