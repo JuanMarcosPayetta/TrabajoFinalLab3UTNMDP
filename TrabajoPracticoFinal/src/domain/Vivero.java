@@ -28,6 +28,7 @@ public class Vivero implements IVivero {
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente> listaClientes;
 	private HashSet<Empleado> listaEmpleados;
+	private RegistroVentas reg;
 
 
 	public Vivero() {
@@ -35,6 +36,7 @@ public class Vivero implements IVivero {
 		this.catalogoServicios = new HashMap<String, Servicio>();
 		this.listaClientes = new HashSet<Cliente>();
 		this.listaEmpleados = new HashSet<Empleado>();
+		this.reg=new RegistroVentas();
 	}
 
 	public ArrayList<String> obtenerCodigosProducto() {
@@ -456,7 +458,6 @@ public class Vivero implements IVivero {
 		int otroFlag = 0;
 		String mensaje = "ERROR en la compra";
 		Producto productoComprado = null;
-		RegistroVentas reg= new RegistroVentas(0);
 
 		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator(); // iterador
 
@@ -519,7 +520,6 @@ public class Vivero implements IVivero {
 		int otroFlag = 0;
 		String mensaje = "ERROR en la compra";
 		Servicio servicio = null;
-		RegistroVentas reg= new RegistroVentas(0);
 
 		Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator(); // iterador
 

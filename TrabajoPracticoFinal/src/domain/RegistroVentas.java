@@ -6,20 +6,13 @@ import java.util.ListIterator;
 public class RegistroVentas {
 
 	private LinkedList<Pedido> registroPedidos;
-    private int dato;
     
-    public RegistroVentas() //constructor para inicio del sistema
+    public RegistroVentas() 
     {
     	this.registroPedidos=new LinkedList<Pedido>();
-    	dato=0;
     }
     
-    public RegistroVentas(int dato) //constructor para la creacion de objeto y acceso a metodos
-    {
-    	this.dato=dato;
-    }
-    
-  
+
     
     /*
 	 * busca un pedido impago
