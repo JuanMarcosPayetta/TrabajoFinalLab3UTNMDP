@@ -262,6 +262,24 @@ public class Servicio implements IGenerarCodigo, Serializable{
 				+ descripcion + ", materialesIncluidos: " + materialesIncluidos;
 	}
 	
+	public boolean equals(Object obj)
+	{
+		boolean validacion=false;
+		if(obj!=null)
+		{
+			if(obj instanceof Servicio)
+			{
+				Servicio unServicio= (Servicio) obj;
+				if(this.getCodigo().equals(unServicio.getCodigo()))
+				{
+					validacion=true;
+				}
+			}
+		}
+		return validacion;
+	}
+	
+	
 	public JSONObject javaToJson()
     {
         JSONObject json= new JSONObject();

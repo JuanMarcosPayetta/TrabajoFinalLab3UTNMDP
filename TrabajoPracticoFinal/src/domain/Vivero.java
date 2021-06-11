@@ -145,7 +145,7 @@ public class Vivero implements IVivero {
 			while (it.hasNext() && flag == 0) {
 				Map.Entry<String, Servicio> entrada = (Map.Entry<String, Servicio>) it.next();
 
-				if (entrada.getKey().equalsIgnoreCase(unServicio.getCodigo())) { // si existe el codigo
+				if (entrada.getValue().equals(unServicio)) { // si existe el codigo
 					mensaje = entrada.toString();
 					flag = 1;
 				}
@@ -159,7 +159,7 @@ public class Vivero implements IVivero {
 			Iterator<Cliente> it = listaClientes.iterator();
 
 			while (it.hasNext() && flag == 0) {
-				if (it.next().getDni().equals(unCliente.getDni())) {
+				if (it.next().equals(unCliente)) {
 					mensaje = it.toString();
 					flag = 1;
 				}
@@ -172,7 +172,7 @@ public class Vivero implements IVivero {
 			Iterator<Empleado> it = listaEmpleados.iterator();
 
 			while (it.hasNext() && flag == 0) {
-				if (it.next().getID() == unEmpleado.getID()) {
+				if (it.next().equals(unEmpleado)) {
 					mensaje = it.toString();
 					flag = 1;
 				}
@@ -211,7 +211,7 @@ public class Vivero implements IVivero {
 			Iterator<Map.Entry<String, Servicio>> it = catalogoServicios.entrySet().iterator();
 			while (it.hasNext() && validacion == false) {
 				Map.Entry<String, Servicio> entry = (Map.Entry<String, Servicio>) it.next();
-				if (entry.getKey().equals(unServicio.getCodigo())) {
+				if (entry.getValue().equals(unServicio)) {
 					it.remove();
 					validacion = true;
 					mensaje = "Servicio eliminado con exito";
@@ -222,7 +222,7 @@ public class Vivero implements IVivero {
 			Iterator<Cliente> it = listaClientes.iterator();
 			while (it.hasNext() && validacion == false) {
 				Cliente otroCliente = it.next();
-				if (otroCliente.getDni().equals(unCliente.getDni())) {
+				if (otroCliente.equals(unCliente)) {
 					it.remove();
 					validacion = true;
 					mensaje = "Cliente eliminado con exito";
@@ -233,7 +233,7 @@ public class Vivero implements IVivero {
 			Iterator<Empleado> it = listaEmpleados.iterator();
 			while (it.hasNext() && validacion == false) {
 				Empleado otroEmpleado = it.next();
-				if (otroEmpleado.getID() == unEmpleado.getID()) {
+				if (otroEmpleado.equals(unEmpleado)) {
 					it.remove();
 					validacion = true;
 					mensaje = "Empleado eliminado con exito";
@@ -581,7 +581,7 @@ public class Vivero implements IVivero {
 
 	public HashSet<Empleado> getListaEmpleados() {
 		return listaEmpleados;
-	}
+	} 
 	
 	
 

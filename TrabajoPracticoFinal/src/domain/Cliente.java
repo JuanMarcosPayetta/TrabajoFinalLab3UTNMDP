@@ -200,7 +200,7 @@ public class Cliente implements Serializable{
 			if (obj instanceof Cliente) {
 				Cliente aux = (Cliente) obj;
 
-				if (this.dni.equals(aux.getDni())) {
+				if (this.getDni().equals(aux.getDni())) {
 					estado = true;
 				}
 			}
