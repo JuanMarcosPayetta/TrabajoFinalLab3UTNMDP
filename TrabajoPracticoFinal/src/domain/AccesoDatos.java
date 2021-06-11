@@ -28,7 +28,7 @@ public class AccesoDatos { //clase para archivos
 	   
 	   try {
 		   file= new File("productos.dat");
-		   out= new FileOutputStream(file);
+		   out= new FileOutputStream("productos.dat");
 		   obj=new ObjectOutputStream(out);
 		   
 		   Iterator<Map.Entry<String, ArrayList<Producto>>>it=vivero.getCatalogoProductos().entrySet().iterator();
