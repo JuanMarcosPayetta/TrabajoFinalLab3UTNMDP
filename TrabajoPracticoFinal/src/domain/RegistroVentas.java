@@ -1,9 +1,10 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class RegistroVentas {
+public class RegistroVentas implements Serializable {
 
 	private LinkedList<Pedido> registroPedidos;
     

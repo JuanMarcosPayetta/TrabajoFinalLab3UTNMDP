@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 import excepciones.CadenaInvalidaException;
 import interfaces.IDescuento;
 
-public class Pedido implements IDescuento {
+public class Pedido implements IDescuento, Serializable{
 
 	private int idCliente;
 	private int idEmpleado;

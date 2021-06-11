@@ -1,12 +1,14 @@
 package domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import excepciones.CadenaInvalidaException;
 
 
-public class Cliente {
+public class Cliente implements Serializable{
 
 	private int id;
 	static private int autoid=1;

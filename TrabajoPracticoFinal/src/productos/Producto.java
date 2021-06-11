@@ -1,5 +1,6 @@
 package productos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -11,7 +12,7 @@ import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
 
-public abstract class Producto implements IGenerarCodigo, Comparable<Producto> {
+public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, Serializable {
 
 	private String codigo;
 	private String nombre;

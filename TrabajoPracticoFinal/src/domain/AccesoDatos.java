@@ -79,19 +79,19 @@ public class AccesoDatos { //clase para archivos
 		}
 		catch(EOFException e)
 		{
-			mensaje="Llegaste al final del archivo";
+			mensaje="Llegaste al final del archivo"+e.getMessage();
 		}
 		catch(FileNotFoundException e)
 		{
-			mensaje="Error, archivo no encontrado";
+			mensaje="Error, archivo no encontrado"+e.getMessage();
 		}
 		catch(ClassNotFoundException e)
 		{
-			mensaje="Error, el elemento que se quiere leer no fue encontrado en el archivo";
+			mensaje="Error, el elemento que se quiere leer no fue encontrado en el archivo"+e.getMessage();
 		}
 		catch(IOException e)
 		{
-			mensaje="Error";
+			mensaje="Error"+e.getMessage();
 		}
 		finally
 		{
@@ -112,5 +112,85 @@ public class AccesoDatos { //clase para archivos
 		File f1=null;
 		FileOutputStream out=null;
 		ObjectOutputStream obj=null;
+		String mensaje=null;
+		
+		try
+		{
+			f1= new File("clientes.dat");
+			out= new FileOutputStream(f1);
+			obj= new ObjectOutputStream(out);
+			
+			Iterator<Cliente>it= vivero.getListaClientes().iterator();
+			while(it.hasNext())
+			{
+				Cliente cliente= it.next();
+				obj.writeObject(cliente);
+			}
+		}
+		catch(IOException e)
+		{
+			mensaje="Se produjo un error en la escritura del archivo "+e.getMessage();
+		}
+		finally
+		{
+			try
+			{
+				obj.close();
+			}
+			catch(IOException e)
+			{
+				mensaje="Se produjo un error en el cierre del archivo "+e.getMessage();
+			}
+		}
+		return mensaje;
 	}
+	
+	public String leerArchivoClientes(Vivero vivero)
+	{
+		FileInputStream f1= null;
+		ObjectInputStream obj= null;
+		String mensaje=null;
+		
+		try
+		{
+			f1= new FileInputStream("clientes.dat");
+			obj= new ObjectInputStream(f1);
+			Cliente cliente=null;
+			
+			while((cliente= (Cliente)obj.readObject())!=null)
+			{
+				vivero.agregarElemento(cliente);
+			}
+		}
+		catch(EOFException e)
+		{
+			mensaje="Llegaste al final del archivo"+e.getMessage();
+		}
+		catch(FileNotFoundException e)
+		{
+			mensaje="Error, archivo no encontrado"+e.getMessage();
+		}
+		catch(ClassNotFoundException e)
+		{
+			mensaje="Error, el elemento que se quiere leer no fue encontrado en el archivo"+e.getMessage();
+		}
+		catch(IOException e)
+		{
+			mensaje="Error"+e.getMessage();
+		}
+		finally
+		{
+			try
+			{
+				obj.close();
+			}
+			catch(IOException e)
+			{
+				mensaje="Se produjo un error en el cierre del archivo "+e.getMessage();
+			}
+		}
+		return mensaje;
+	}
+	
+	
 }

@@ -1,11 +1,13 @@
 package domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import excepciones.CadenaInvalidaException;
 
-public class Empleado {
+public class Empleado implements Serializable{
 
 	private int ID;
 	private String nombre;

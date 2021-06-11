@@ -1,8 +1,10 @@
 package domain;
 
+import java.io.Serializable;
+
 import excepciones.DatoNumeroException;
 
-public class PeticionCompra {
+public class PeticionCompra implements Serializable{
 
 	private String codigo;//codigo del producto/servicio
 	private double precioUnitario;

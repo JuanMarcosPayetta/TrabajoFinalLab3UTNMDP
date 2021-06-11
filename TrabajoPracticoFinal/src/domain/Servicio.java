@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -11,7 +12,7 @@ import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
 
-public class Servicio implements IGenerarCodigo{
+public class Servicio implements IGenerarCodigo, Serializable{
 
 	private String codigo;
 	private double precio;
