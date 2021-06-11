@@ -19,7 +19,7 @@ public class AccesoDatos { //clase para archivos
 
 	
 	
-	public String escribirArchivoProductos(HashMap<String, ArrayList<Producto>>mapa)
+	public String escribirArchivoProductos(Vivero vivero)
 	{
 	   File file=null;
 	   FileOutputStream out= null;
@@ -31,7 +31,7 @@ public class AccesoDatos { //clase para archivos
 		   out= new FileOutputStream(file);
 		   obj=new ObjectOutputStream(out);
 		   
-		   Iterator<Map.Entry<String, ArrayList<Producto>>>it=mapa.entrySet().iterator();
+		   Iterator<Map.Entry<String, ArrayList<Producto>>>it=vivero.getCatalogoProductos().entrySet().iterator();
 		   while(it.hasNext())
 		   {
 			   Map.Entry<String, ArrayList<Producto>>entry=(Map.Entry<String, ArrayList<Producto>>)it.next();
@@ -107,5 +107,10 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
-	public String escribirArchivoClientes()
+	public String escribirArchivoClientes(Vivero vivero)
+	{
+		File f1=null;
+		FileOutputStream out=null;
+		ObjectOutputStream obj=null;
+	}
 }
