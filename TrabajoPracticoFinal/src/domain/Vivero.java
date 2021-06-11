@@ -564,6 +564,27 @@ public class Vivero implements IVivero {
 		}
 	}
 
+	/*
+	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
+	 */
+	public HashMap<String, ArrayList<Producto>> getCatalogoProductos() {
+		return catalogoProductos;
+	}
+
+	public HashMap<String, Servicio> getCatalogoServicios() {
+		return catalogoServicios;
+	}
+
+	public HashSet<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+	public HashSet<Empleado> getListaEmpleados() {
+		return listaEmpleados;
+	}
+	
+	
+
 	
 
 }
