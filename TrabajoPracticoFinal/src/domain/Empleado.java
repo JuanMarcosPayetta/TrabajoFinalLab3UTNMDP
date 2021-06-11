@@ -12,26 +12,30 @@ public class Empleado implements Serializable{
 	private int ID;
 	private String nombre;
 	private String apellido;
+	private String contrasenia;
 	private int idSig=1;
 	
 	public Empleado() {
 		this.ID=0;
 		this.nombre=null;
 		this.apellido=null;
+		this.contrasenia=null;
 	}
 
-	public Empleado(int iD, String nombre, String apellido) {
+	public Empleado(int iD, String nombre, String apellido, String contrasenia) {
 		ID = iD;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.contrasenia=contrasenia;
 	}
 	
-	public Empleado(String nombre, String apellido)
+	public Empleado(String nombre, String apellido, String contrasenia)
 	{
 		ID=idSig;
 		idSig++;
 		this.nombre=nombre;
 		this.apellido=apellido;
+		this.contrasenia=contrasenia;
 	}
 	
 	//creado solo para busqueda en Vivero
@@ -40,6 +44,7 @@ public class Empleado implements Serializable{
 		this.ID=id;
 		this.nombre=null;
 		this.apellido=null;
+		this.contrasenia=null;
 	}
 
 	public static String validarCadenaCaracteresLlamada(String nombre)
@@ -71,6 +76,39 @@ public class Empleado implements Serializable{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 3 letras");
 		}
+	}
+	
+	/*
+	 * valida la contraseña
+	 */
+	public static String validarContraseniaLlamada(String contrasenia)
+	{
+		String mensaje=null;
+		try {
+			validarContrasenia(contrasenia);
+		} catch (NullPointerException e) {
+			mensaje=e.getMessage();
+		} catch (CadenaInvalidaException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarContrasenia(String contrasenia) throws CadenaInvalidaException, NullPointerException
+	{
+		if(contrasenia==null)
+		{
+			throw new NullPointerException("Error");
+		}
+		else if(contrasenia.isBlank())
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
+		}
+		else if(!contrasenia.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"))
+		{
+			throw new CadenaInvalidaException(CadenaInvalidaException.PASSEXCEPTION);
+		}
+		
 	}
 	
 	
@@ -106,6 +144,12 @@ public class Empleado implements Serializable{
 		return mensaje;
 	}
 	
+	
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+
 	@Override
 	public int hashCode() {
 	return 1;
@@ -128,6 +172,11 @@ public class Empleado implements Serializable{
 		return validacion;
 	}
 	
+
+	@Override
+	public String toString() {
+		return "ID: " + ID + ", Nombre: " + nombre + ", Apellido: " + apellido;
+	}
 
 	public JSONObject javaToJson()
     {

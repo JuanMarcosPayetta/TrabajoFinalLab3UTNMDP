@@ -325,6 +325,27 @@ public class Vivero implements IVivero {
 		}
 		return mensaje;
 	}
+	
+	/*
+	 * valida que exista el empleado registrado
+	 */
+	public boolean buscarEmpleadoRegistrado(String pass, int id)
+	{
+		boolean validacion=false;
+		Iterator<Empleado>it= listaEmpleados.iterator();
+		while(it.hasNext() && !validacion)
+		{
+			Empleado empleado=it.next();
+			if(empleado.getID()==id)
+			{
+				if(empleado.getContrasenia().equals(pass))
+				{
+					validacion=true;
+				}
+			}
+		}
+		return validacion;
+	}
 
 	public String modificarStockDisminuye(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
