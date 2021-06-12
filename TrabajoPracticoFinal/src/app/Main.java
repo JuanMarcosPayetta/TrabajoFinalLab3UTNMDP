@@ -8,6 +8,7 @@ import domain.Cliente;
 import domain.Empleado;
 import domain.Servicio;
 import domain.Vivero;
+import productos.Arbol;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
@@ -171,7 +172,12 @@ public class Main {
 						int temperaturaAgua=0;
 						String durezaAgua=null;
 						String tipo=null;
-						
+						boolean tieneFruto=false;
+						boolean tieneSemilla=false;
+						boolean deInterior=false;
+						String especie=null;
+						int diametroDelTronco=0;
+						String corteza=null;
 						
 						switch (opcion3) {
 						case 1: {
@@ -371,6 +377,238 @@ public class Main {
 								vivero.agregarElemento(producto);
 								System.out.println("Producto agregado con exito");
 							
+							break;
+						}
+						case 2: //Arbol
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese los meses de vida actual del arbol por favor");
+									mesesDeVida=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la estacion de plantacion del arbol por favor(otonio, invierno, primavera, verano, anual)");
+									estacionPlantacion=scan.nextLine();
+								    mensaje=Planta.validarEstacionLlamada(estacionPlantacion);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el habitat del arbol por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									habitat=scan.nextLine();
+								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la altura actual del arbol por favor");
+									altura=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(altura);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si el arbol posee flor por favor (true/false)");
+									tieneflor=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneflor);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el nivel de exposicion solar del arbol por favor (sombra, mediasombra, pleno sol)");
+									nivelDeExposicionSolar=scan.nextLine();
+								    mensaje=Planta.validarExpSolarLlamada(nivelDeExposicionSolar);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de raiz del arbol por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
+									tipoRaiz=scan.nextLine();
+								    mensaje=Planta.validarTipoRaizLlamada(tipoRaiz);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si el arbol es aromatico por favor (true/false)");
+									esAromatica=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(esAromatica);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si el arbol posee fruto por favor (true/false)");
+									tieneFruto=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneFruto);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si el arbol tiene semilla por favor (true/false)");
+									tieneSemilla=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneSemilla);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si es apto interior por favor (true/false)");
+									deInterior=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(deInterior);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la especie del arbol por favor");
+									especie=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(especie);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el diametro del tronco del arbol por favor (mayor a 1 y menor a 131)");
+									diametroDelTronco=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Arbol.validarDiametroTroncoLlamada(diametroDelTronco);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de corteza del arbol por favor (laminada, geometrica, rugosa, lobulada, placoide, escasa)");
+									corteza=scan.nextLine();
+									scan.nextLine();
+								    mensaje=Arbol.validarTipoCortezaLlamada(corteza);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								
+								
+							break;
+						}
+						case 3:
+						{
+							break;
+						}
+						case 4:
+						{
 							break;
 						}
 						default:

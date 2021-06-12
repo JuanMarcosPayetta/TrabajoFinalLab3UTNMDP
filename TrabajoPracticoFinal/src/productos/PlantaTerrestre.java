@@ -68,38 +68,6 @@ public abstract class PlantaTerrestre extends Planta{
 	public abstract void establecerCantidadRiego();
 	public abstract void establecerEpocaPoda();
 
-	/*
-	 * Validar especie de la planta terrestre, llamada main
-	 */
-	public static String validarEspecieLlamada(String especie)
-	{
-		String mensaje=null;
-		try {
-			validarEspecie(especie);
-		} catch (NullPointerException e) {
-			mensaje=e.getMessage();
-		} catch (CadenaInvalidaException e) {
-			mensaje=e.getMessage();
-		}
-		return mensaje;
-	}
-	
-	private static void validarEspecie(String especie)throws NullPointerException, CadenaInvalidaException
-	{
-		if(especie==null)
-		{
-			throw new NullPointerException("Error, ingrese un dato valido");
-		}
-		else if(especie.isBlank())
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		}
-		else if(!especie.matches("[a-zA-Z]*//D{3}"))
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 3 letras");
-		}
-	}
-	
 	
 	public boolean isFruto() {
 		return fruto;
@@ -158,7 +126,7 @@ public abstract class PlantaTerrestre extends Planta{
 
 	public String setEspecie(String especie) {
 		String mensaje=null;
-		mensaje=validarEspecieLlamada(especie);
+		mensaje=Producto.validarCadenaCaracteresLlamada(especie);
 		if(mensaje==null)
 		{
 			this.especie=especie;

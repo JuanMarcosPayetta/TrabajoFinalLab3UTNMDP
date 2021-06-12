@@ -64,8 +64,8 @@ public class Cliente implements Serializable{
 			throw new NullPointerException("Error");
 		} else if (cadena.isBlank()) {
 			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		} else if (!cadena.matches("[0-9]*\\D{7}")) {
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + " 7 caracteres");
+		} else if (!cadena.matches("[0-9]")) {
+			throw new CadenaInvalidaException("Error, ingrese una cadena de al menos 7 numeros (no letras)");
 		}
 	}
 
