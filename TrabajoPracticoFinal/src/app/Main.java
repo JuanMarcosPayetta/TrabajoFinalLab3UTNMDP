@@ -14,6 +14,8 @@ import productos.Hierba;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
+import productos.Semilla;
+import productos.Sustrato;
 
 public class Main {
 
@@ -185,6 +187,10 @@ public class Main {
 						String tipoDeTallo=null;
 						boolean comestible=false;
 						boolean medicinal=false;
+						int gramos=0;
+						boolean abonada=false;
+						String tipoDeSuelo=null;
+						String destinoS=null;
 						
 						switch (opcion3) {
 						case 1: {
@@ -1055,6 +1061,160 @@ public class Main {
 							
 							break;
 						}
+
+						case 5: //Sustrato 
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese si el sustrato esta abonado por favor");
+								abonada=scan.nextBoolean();
+								scan.nextLine();
+							    mensaje=Producto.validarBooleanLlamada(abonada);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese si el sustrato esta abonado por favor");
+								tipoDeSuelo=scan.nextLine();
+							    mensaje=Sustrato.validarTipoSueloLlamada(tipoDeSuelo);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new Sustrato(nombre, marca, stock, descripcion, gramos, abonada, tipoDeSuelo);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 6: //Semilla
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el destino de la semilla por favor");
+								destinoS=scan.nextLine();
+							    mensaje=Semilla.validarDestinoSemillaLlamada(destinoS);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+						}
+						
 						default:
 						System.out.println("Opcion erronea");
 						}
