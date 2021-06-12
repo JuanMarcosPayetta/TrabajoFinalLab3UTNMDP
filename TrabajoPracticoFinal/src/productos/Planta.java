@@ -467,7 +467,7 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return super.toString()+", meses de vida: " + mesesDeVida + "\n" + ", estacion de plantacion: " + estacionPlantacion + ", habitat: "
 				+ habitat + ", altura: " + altura + ", flor: " + flor + "\n" + ", nivel de Exposicion Solar: "
 				+ nivelExposicionSolar + ", tipoRaiz:" + tipoRaiz + ", aromatica:" + aromatica
-				+ ", cantidad de fertilizante: " + cantidadFertilizante + "\n";
+				+ ", cantidad de fertilizante: " + cantidadFertilizante;
 	}
 
 	

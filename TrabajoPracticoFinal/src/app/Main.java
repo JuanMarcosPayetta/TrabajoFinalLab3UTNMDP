@@ -122,7 +122,7 @@ public class Main {
 				char opcion2=0;
 				int opcion3=0;
 		
-				//while(opcion2!='n')
+				 while(opcion2!='n')
 				{
 					System.out.println("Ingrese la opcion deseada por favor: \n");
 					System.out.println("1-Ingresar un producto al sistema: \n");
@@ -132,7 +132,7 @@ public class Main {
 					opcion3=scan.nextInt();
 					scan.nextLine();
 					
-					switch (opcion) {
+					switch (opcion3) {
 					case 1: {
 						System.out.println("Seleccione el producto a ingresar: \n");
 						System.out.println("1-Planta Acuatica: \n");
@@ -150,7 +150,7 @@ public class Main {
 						System.out.println("13-Mueble de jardin: \n");
 						System.out.println("14-Decoracion: \n");
 						
-						opcion=scan.nextInt();
+						opcion3=scan.nextInt();
 						scan.nextLine();
 						
 						String nombre=null;
@@ -170,7 +170,7 @@ public class Main {
 						String durezaAgua=null;
 						String tipo=null;
 						
-						switch (opcion) {
+						switch (opcion3) {
 						case 1: {
 
 							mensaje="";
@@ -210,7 +210,7 @@ public class Main {
 							    }
 							} 
 							
-								System.out.println("Ingrese la marca por favor");
+								System.out.println("Ingrese la descripcion por favor");
 								descripcion=scan.nextLine();
 							   
 								
@@ -338,31 +338,51 @@ public class Main {
 								    }
 								} 
 								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la dureza del agua de la planta por favor (blanda, moderada, dura)");
+									durezaAgua=scan.nextLine();
+								    mensaje=PlantaAcuatica.validarDurezaAguaLlamada(durezaAgua);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
 								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de planta acuatica por favor (flotante, oxigenante, ribera, profundidades)");
+									tipo=scan.nextLine();
+								    mensaje=PlantaAcuatica.validarTipoPlantaLlamada(tipo);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
 								
-					
-							
-							/*
-							 * String nombre, String marca, int stock, String descripcion, int mesesDeVida,
-			String estacionPlantacion, String habitat, int altura, boolean flor,
-			String nivelExposicionSolar, String tipoRaiz, boolean aromatica, String tipoDeAgua, int temperaturaAgua,
-			String durezaAgua, String tipo
-							 */
-							
+								Producto producto= new PlantaAcuatica(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura, tieneflor, nivelDeExposicionSolar, tipoRaiz, esAromatica, tipoDeAgua, temperaturaAgua, durezaAgua, tipo);
+								vivero.agregarElemento(producto);
+								System.out.println("Producto agregado con exito");
+								System.out.println(vivero.mostrarProductos());
 							
 							break;
 						}
 						default:
-							throw new IllegalArgumentException("Unexpected value: " + key);
+						System.out.println("Opcion erronea");
 						}
+				
+						
 				     break;
 					}
+					
 					default:
 						System.out.println("Opcion erronea");
 					}
 					
-				
-					
+					System.out.println("Si desea elegir otra opcion presione cualquier tecla, caso contrario 'n': ");
+					opcion2=scan.next().charAt(0);
 				}
 				
 			}

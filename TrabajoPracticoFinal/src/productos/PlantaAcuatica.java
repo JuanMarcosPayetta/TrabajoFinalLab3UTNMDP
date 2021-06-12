@@ -133,7 +133,7 @@ public class PlantaAcuatica extends Planta{
     	else if(temperatura<0) {
             throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + " y debe ser mayor a los 20°C");
         }
-        else if(temperatura>=20 && temperatura<=27) {
+        else if(temperatura<20 && temperatura>27) {
             throw new DatoNumeroException(DatoNumeroException.VALORFUERADELRANGOEXCEPTION + ": entre los 20°C y los 27°C");
         }
     }
@@ -290,7 +290,7 @@ public class PlantaAcuatica extends Planta{
 
 	@Override
 	public String toString() {
-		return ", Tipo del planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
+		return super.toString()+", Tipo del planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
 				+ durezaAgua;
 	}
 
