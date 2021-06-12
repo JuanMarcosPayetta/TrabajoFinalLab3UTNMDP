@@ -12,6 +12,9 @@ import productos.Arbol;
 import productos.Arbusto;
 import productos.Hierba;
 import productos.Lombriz;
+import productos.Maceta;
+import productos.MacetaPoliedro;
+import productos.MacetaRedonda;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
@@ -195,7 +198,13 @@ public class Main {
 						String destinoS=null;
 						String funcion=null;
 						int centimetroCubico=0;
-						
+						String forma=null;
+						double alto=0;
+						double ancho=0;
+						double largo=0;
+						double diametroBoca=0;
+						double base=0;
+						String material=null;
 						
 						switch (opcion3) {
 						case 1: {
@@ -1363,6 +1372,216 @@ public class Main {
 							} 
 							
 							Producto producto = new Lombriz(nombre, marca, stock, descripcion, gramos, especie);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+						}
+						case 9: //Maceta Redonda
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el material por favor");
+								material=scan.nextLine();
+								
+							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la forma de la maceta por favor(circular, ovalada)");
+								forma=scan.nextLine();
+								
+							    mensaje=Maceta.validarFormaMacetaLlamada("redonda", forma);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el diametro en cm de la boca de la maceta por favor");
+								diametroBoca=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(diametroBoca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el largo en cm de la base por favor");
+								base=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(base);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new MacetaRedonda(nombre, marca, stock, descripcion, material, forma, diametroBoca, base);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+						}
+						case 10: //Maceta poliedro
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el material por favor");
+								material=scan.nextLine();
+								
+							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la forma de la maceta por favor(jardinera, cubo, piramidal)");
+								forma=scan.nextLine();
+								
+							    mensaje=Maceta.validarFormaMacetaLlamada("poliedro", forma);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el alto en cm por favor");
+								alto=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(alto);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el ancho en cm por favor");
+								ancho=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(ancho);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el largo en cm por favor");
+								largo=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(largo);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new MacetaPoliedro(nombre, marca, stock, descripcion, material, forma, 
+									alto, ancho, largo);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
 						}
