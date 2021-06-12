@@ -599,8 +599,7 @@ public class Main {
 								    }
 								} 
 								
-								//crear objeto
-								//revisar cliente las validaciones escrita dos veces
+								
 								
 							break;
 						}
