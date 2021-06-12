@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
+import productos.Producto;
 
 public class Servicio implements IGenerarCodigo, Serializable{
 
@@ -105,102 +106,6 @@ public class Servicio implements IGenerarCodigo, Serializable{
 	}
 
 	
-	
-	public static String validarCadenaCaracteresLlamada(String nombre)
-	{
-		    String mensaje=null;  //Si el retorno es "null" seria correcto
-			try {
-				validarCadenaCaracteres(nombre);
-			} catch (NullPointerException e) {
-				mensaje=e.getMessage();
-			} catch (CadenaInvalidaException e) {
-				mensaje=e.getMessage();
-			}
-			
-			return mensaje;
-	}
-	
-	
-	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException
-	{
-		if(cadena==null)
-		{
-			throw new NullPointerException("Error");
-		}
-		else if(cadena.isBlank())
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		}
-		else if(!cadena.matches("[a-zA-Z]*\\D{3}")) //El nombre debe contener al menos 3 letras, ya sean miniscula o mayuscula (no numeros)
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 3 letras");
-		}
-		
-	}
-	
-	
-	/*
-	 * Validacion Precio/Stock, llamada main
-	 */
-	public static String validarValorNumericoLlamada(Double precio)
-	{
-		String mensaje=null;
-		try {
-			validarValorNumerico(precio);
-		} catch (DatoNumeroException e) {
-			mensaje=e.getMessage();
-		}
-	    catch (NullPointerException e) {
-		    mensaje=e.getMessage();
-	    }
-		return mensaje;
-	}
-	
-	
-	private static void validarValorNumerico(Double precio) throws DatoNumeroException, NullPointerException
-	{
-		if(precio==null)
-		{
-			throw new NullPointerException("Error, ingrese un dato numerico valido");
-		}
-	    else if(precio<0)
-	    {
-		    throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION);
-	    }
-	}
-	
-	
-	/*
-	 * Valida si es un boolean, llamada main
-	 */
-	public static String validarBooleanLlamada(Boolean tipo)
-	{
-		String mensaje=null;
-		try {
-			validarBoolean(tipo);
-		} catch (InputMismatchException e) {
-			mensaje=e.getMessage();
-		} catch (NullPointerException e) {
-			mensaje=e.getMessage();
-		}
-		return mensaje;
-	}
-	
-
-	private static void validarBoolean(Boolean tipo)throws NullPointerException, InputMismatchException
-	{
-		if(tipo==null)
-		{
-			throw new NullPointerException("Error, ingrese true or false");
-		}
-		else if(!Boolean.FALSE && !Boolean.TRUE)
-		{
-			throw new InputMismatchException("Ingrese un dato valido, true o false");
-		}
- 
-	}
-	
-	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -211,7 +116,7 @@ public class Servicio implements IGenerarCodigo, Serializable{
 
 	public String setPrecio(double precio) {
 		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(precio);
+		mensaje=Producto.validarValorNumericoLlamada(precio);
 		if(mensaje==null)
 		{
 			this.precio = precio;
@@ -226,7 +131,7 @@ public class Servicio implements IGenerarCodigo, Serializable{
 
 	public String setNombre(String nombre) {
 		String mensaje=null;
-		mensaje=validarCadenaCaracteresLlamada(nombre);
+		mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
 		if(mensaje==null)
 		{
 			this.nombre = nombre;
@@ -248,7 +153,7 @@ public class Servicio implements IGenerarCodigo, Serializable{
 
 	public String setMaterialesIncluidos(boolean materialesIncluidos) {
 		String mensaje=null;
-		mensaje=validarBooleanLlamada(materialesIncluidos);
+		mensaje=Producto.validarBooleanLlamada(materialesIncluidos);
 		if(mensaje==null)
 		{
 			this.materialesIncluidos = materialesIncluidos;
@@ -258,8 +163,8 @@ public class Servicio implements IGenerarCodigo, Serializable{
 
 	@Override
 	public String toString() {
-		return "codigo: " + codigo + ", precio: " + precio + ", nombre: " + nombre + ", descripcion: "
-				+ descripcion + ", materialesIncluidos: " + materialesIncluidos;
+		return "Codigo: " + codigo + ", Nombre Servicio: " + nombre + ", Precio: " + precio +", Descripcion: "
+				+ descripcion + ", MaterialesIncluidos: " + materialesIncluidos;
 	}
 	
 	public boolean equals(Object obj)

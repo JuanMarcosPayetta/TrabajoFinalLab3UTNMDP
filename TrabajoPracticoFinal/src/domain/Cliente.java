@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import excepciones.CadenaInvalidaException;
+import productos.Producto;
 
 
 public class Cliente implements Serializable{
@@ -43,44 +44,7 @@ public class Cliente implements Serializable{
 		this.dni=dni;
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	
-
-	/*
-	 * Validacion Nombre, llamada en el main
-	 */
-	public static String validarCadenaCaracteresLlamada(String nombre) {
-		String mensaje = null; // Si el retorno es "null" seria correcto
-		try {
-			validarCadenaCaracteres(nombre);
-		} catch (NullPointerException e) {
-			mensaje = e.getMessage();
-		} catch (CadenaInvalidaException e) {
-			mensaje = e.getMessage();
-		}
-
-		return mensaje;
-	}
-
-	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException {
-		if (cadena == null) {
-			throw new NullPointerException("Error");
-		} else if (cadena.isBlank()) {
-			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		} else if (!cadena.matches("[a-zA-Z]*\\D{3}")) // El nombre debe contener al menos 3 letras, ya sean miniscula o
-														// mayuscula (no numeros)
-		{
-			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + " 3 letras");
-		}
-
-	}
 
 	public static String validarCadenaCaracteresTELDNILlamada(String nombre) {
 		String mensaje = null; // Si el retorno es "null" seria correcto
@@ -105,6 +69,11 @@ public class Cliente implements Serializable{
 		}
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
 	/**
 	 * @return the nombre
 	 */
@@ -117,7 +86,7 @@ public class Cliente implements Serializable{
 	 */
 	public String setNombre(String nombre) {
 
-		String mensaje = validarCadenaCaracteresLlamada(nombre);
+		String mensaje = Producto.validarCadenaCaracteresLlamada(nombre);
 
 		if (mensaje == null) {
 
@@ -137,7 +106,7 @@ public class Cliente implements Serializable{
 	 * @param apellido the apellido to set
 	 */
 	public String setApellido(String apellido) {
-		String mensaje = validarCadenaCaracteresLlamada(apellido);
+		String mensaje = Producto.validarCadenaCaracteresLlamada(apellido);
 
 		if (mensaje == null) {
 
@@ -211,8 +180,8 @@ public class Cliente implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Cliente [id:" + id + ", nombre:" + nombre + ", apellido:" + apellido + ", telefono:" + telefono
-				+ ", dni:" + dni + "]";
+		return "ID: " + id + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Telefono: " + telefono
+				+ ", DNI: " + dni;
 	}
 
 	public JSONObject javaToJson()

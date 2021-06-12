@@ -1,10 +1,12 @@
 package app;
 
-import java.io.File;
+
 import java.util.Scanner;
 
 import domain.AccesoDatos;
+import domain.Cliente;
 import domain.Empleado;
+import domain.Servicio;
 import domain.Vivero;
 import productos.Planta;
 import productos.PlantaAcuatica;
@@ -169,6 +171,12 @@ public class Main {
 						int temperaturaAgua=0;
 						String durezaAgua=null;
 						String tipo=null;
+						boolean tieneSemilla=false;
+                        boolean deInterior=false;
+                        int cantidadRiego=0; 
+                        String especie=null;
+                        String tipoCorteza=null;
+                        int diametroDelTronco=0;
 						
 						switch (opcion3) {
 						case 1: {
@@ -269,6 +277,7 @@ public class Main {
 								{
 									System.out.println("Ingrese si la planta posee flor por favor (true/false)");
 									tieneflor=scan.nextBoolean();
+									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneflor);
 								    if(mensaje!=null)
 								    {
@@ -305,6 +314,7 @@ public class Main {
 								{
 									System.out.println("Ingrese si la planta es aromatica por favor (true/false)");
 									esAromatica=scan.nextBoolean();
+									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(esAromatica);
 								    if(mensaje!=null)
 								    {
@@ -365,16 +375,130 @@ public class Main {
 								Producto producto= new PlantaAcuatica(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura, tieneflor, nivelDeExposicionSolar, tipoRaiz, esAromatica, tipoDeAgua, temperaturaAgua, durezaAgua, tipo);
 								vivero.agregarElemento(producto);
 								System.out.println("Producto agregado con exito");
-								System.out.println(vivero.mostrarProductos());
 							
 							break;
 						}
 						default:
 						System.out.println("Opcion erronea");
 						}
-				
-						
+
 				     break;
+					}
+					case 2:
+					{
+						String descripcion=null;
+						boolean materialesIncluidos=false;
+						String nombre=null;
+						double precio=0;
+						
+						mensaje=" "; 
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el nombre del servicio por favor: ");
+							nombre=scan.nextLine();
+							mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						
+							System.out.println("Ingrese la descripcion del servicio por favor: ");
+							descripcion=scan.nextLine();
+						
+							
+						mensaje=" ";
+						while(mensaje!=null)
+						{
+							System.out.println("¿Estan los materiales incluidos? Ingrese true/false");
+							materialesIncluidos=scan.nextBoolean();
+							scan.nextLine();
+							mensaje=Producto.validarBooleanLlamada(materialesIncluidos);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						mensaje=" ";
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el costo del servicio por favor: ");
+							precio=scan.nextDouble();
+							mensaje=Producto.validarValorNumericoLlamada(precio);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						Servicio miServicio=new Servicio(nombre, precio, descripcion, materialesIncluidos);
+						vivero.agregarElemento(miServicio);
+						System.out.println("El servicio fue agregado con exito");
+						System.out.println(vivero.mostrarServicios());
+						break;
+					}
+					case 3: 
+					{
+						String nombre=null;
+						String apellido=null;
+						String telefono=null;
+						String dni=null;
+						
+						mensaje=" "; 
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el nombre del cliente por favor: ");
+							nombre=scan.nextLine();
+							mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						mensaje=" ";
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el apellido del cliente por favor: ");
+							apellido=scan.nextLine();
+							mensaje=Producto.validarCadenaCaracteresLlamada(apellido);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						mensaje=" ";
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el telefono del cliente por favor: ");
+							telefono=scan.nextLine();
+							mensaje=Cliente.validarCadenaCaracteresTELDNILlamada(telefono);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						mensaje=" ";
+						
+						while(mensaje!=null)
+						{
+							System.out.println("Ingrese el DNI del cliente por favor: (solo numeros)");
+							dni=scan.nextLine();
+							mensaje=Cliente.validarCadenaCaracteresTELDNILlamada(dni);
+							if(mensaje!=null)
+							{
+								System.out.println(mensaje);
+							}
+						}
+						
+						Cliente miCliente= new Cliente(nombre, apellido, telefono, dni);
+						vivero.agregarElemento(miCliente);
+						System.out.println("El nuevo cliente fue agregado con exito");
+						System.out.println(vivero.mostrarClientes());
+						break;
 					}
 					
 					default:
