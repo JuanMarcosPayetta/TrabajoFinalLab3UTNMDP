@@ -11,9 +11,11 @@ import domain.Vivero;
 import productos.Arbol;
 import productos.Arbusto;
 import productos.Hierba;
+import productos.Lombriz;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
+import productos.SanidadVegetal;
 import productos.Semilla;
 import productos.Sustrato;
 
@@ -191,6 +193,9 @@ public class Main {
 						boolean abonada=false;
 						String tipoDeSuelo=null;
 						String destinoS=null;
+						String funcion=null;
+						int centimetroCubico=0;
+						
 						
 						switch (opcion3) {
 						case 1: {
@@ -1133,7 +1138,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese si el sustrato esta abonado por favor");
+								System.out.println("Ingrese el tipo de suelo por favor");
 								tipoDeSuelo=scan.nextLine();
 							    mensaje=Sustrato.validarTipoSueloLlamada(tipoDeSuelo);
 							    if(mensaje!=null)
@@ -1213,6 +1218,153 @@ public class Main {
 							    }
 							} 
 							
+							Producto producto = new Semilla(nombre, marca, stock, descripcion, gramos, destinoS);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 7: //Sanidad Vegetal
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la funcion por favor");
+								funcion=scan.nextLine();
+								
+							    mensaje=SanidadVegetal.validarSanidadLlamada(funcion);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el volumen en cm cubicos por favor");
+								centimetroCubico=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(centimetroCubico);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new SanidadVegetal(nombre, marca, stock, descripcion, funcion, centimetroCubico);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 8: //Lombriz
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la especie de la lombriz por favor");
+								especie=scan.nextLine();
+								
+							    mensaje=Lombriz.validarEspecieLombrizLlamada(especie);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new Lombriz(nombre, marca, stock, descripcion, gramos, especie);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
 						}
 						
 						default:
