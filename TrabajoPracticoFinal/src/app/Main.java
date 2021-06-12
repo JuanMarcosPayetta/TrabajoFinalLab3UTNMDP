@@ -205,6 +205,12 @@ public class Main {
 						double diametroBoca=0;
 						double base=0;
 						String material=null;
+						String tamanio=null;
+						boolean reforzada=false;
+						int potencia=0;
+						String tipoMotor=null;
+						String consumo=null;
+						
 						
 						switch (opcion3) {
 						case 1: {
