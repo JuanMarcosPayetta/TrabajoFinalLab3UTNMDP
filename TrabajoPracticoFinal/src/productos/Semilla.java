@@ -7,7 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import excepciones.CadenaInvalidaException;
-import interfaces.IEstablecerPrecioProductoInerte;
 
 public class Semilla extends ProductoOrganico{
 

@@ -44,6 +44,8 @@ public class Arbusto extends PlantaTerrestre{
 		this.trepador = trepador;
 		establecerClasificacion();
 		establecerCantidadFertilizante();
+		establecerEpocaPoda();
+		establecerCantidadRiego();
 	}
 
 	public Arbusto(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
@@ -57,6 +59,8 @@ public class Arbusto extends PlantaTerrestre{
 		this.trepador = trepador;
 		establecerClasificacion();
 		establecerCantidadFertilizante();
+		establecerEpocaPoda();
+		establecerCantidadRiego();
 		establecerPrecio();
 	}
 

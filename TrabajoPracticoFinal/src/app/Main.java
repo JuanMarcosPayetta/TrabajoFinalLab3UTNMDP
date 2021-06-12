@@ -685,7 +685,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese los meses de vida actual de la planta por favor");
+									System.out.println("Ingrese los meses de vida actual del arbusto por favor");
 									mesesDeVida=scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
@@ -698,7 +698,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese la estacion de plantacion la planta por favor(otonio, invierno, primavera, verano, anual)");
+									System.out.println("Ingrese la estacion de plantacion del arbusto por favor(otonio, invierno, primavera, verano, anual)");
 									estacionPlantacion=scan.nextLine();
 								    mensaje=Planta.validarEstacionLlamada(estacionPlantacion);
 								    if(mensaje!=null)
@@ -710,7 +710,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el habitat de la planta por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									System.out.println("Ingrese el habitat del arbusto por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
 									habitat=scan.nextLine();
 								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
 								    if(mensaje!=null)
@@ -722,7 +722,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese la altura actual de la planta por favor");
+									System.out.println("Ingrese la altura actual del arbusto por favor");
 									altura=scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
@@ -735,7 +735,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta posee flor por favor (true/false)");
+									System.out.println("Ingrese si el arbusto posee flor por favor (true/false)");
 									tieneflor=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneflor);
@@ -748,7 +748,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el nivel de exposicion solar de la planta por favor (sombra, mediasombra, pleno sol)");
+									System.out.println("Ingrese el nivel de exposicion solar del arbusto por favor (sombra, mediasombra, pleno sol)");
 									nivelDeExposicionSolar=scan.nextLine();
 								    mensaje=Planta.validarExpSolarLlamada(nivelDeExposicionSolar);
 								    if(mensaje!=null)
@@ -760,7 +760,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el tipo de raiz de la planta por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
+									System.out.println("Ingrese el tipo de raiz del arbusto por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
 									tipoRaiz=scan.nextLine();
 								    mensaje=Planta.validarTipoRaizLlamada(tipoRaiz);
 								    if(mensaje!=null)
@@ -772,7 +772,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es aromatica por favor (true/false)");
+									System.out.println("Ingrese si el arbusto es aromatica por favor (true/false)");
 									esAromatica=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(esAromatica);
@@ -785,7 +785,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta tiene fruto por favor (true/false)");
+									System.out.println("Ingrese si el arbusto tiene fruto por favor (true/false)");
 									tieneFruto=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneFruto);
@@ -798,7 +798,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta tiene semilla por favor (true/false)");
+									System.out.println("Ingrese si el arbusto tiene semilla por favor (true/false)");
 									tieneSemilla=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneSemilla);
@@ -811,7 +811,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									System.out.println("Ingrese si el arbusto es apto interior por favor (true/false)");
 									deInterior=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(deInterior);
@@ -824,9 +824,21 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el tipo de hoja de la planta por favor (caduca, semicaduca, persistente)");
+									System.out.println("Ingrese el tipo de hoja del arbusto por favor (caduca, semicaduca, persistente)");
 									tipoHoja=scan.nextLine();
 								    mensaje=Arbusto.validarTipoHojaLLamada(tipoHoja);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la especie del arbusto por favor");
+									especie=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(especie);
 								    if(mensaje!=null)
 								    {
 								    	System.out.println(mensaje);
@@ -836,7 +848,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es trepadora por favor (true/false)");
+									System.out.println("Ingrese si es arbusto trepador por favor (true/false)");
 									trepador=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(trepador);
@@ -850,6 +862,7 @@ public class Main {
 									nivelDeExposicionSolar, tipoRaiz, esAromatica, tieneFruto, tieneSemilla, deInterior, especie, tipoHoja, trepador);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
+							System.out.println(vivero.mostrarProductos());
 							
 							break;
 						}
@@ -899,7 +912,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese los meses de vida actual de la planta por favor");
+									System.out.println("Ingrese los meses de vida actual de la hierba por favor");
 									mesesDeVida=scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
@@ -912,7 +925,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese la estacion de plantacion la planta por favor(otonio, invierno, primavera, verano, anual)");
+									System.out.println("Ingrese la estacion de plantacion de la hierba por favor(otonio, invierno, primavera, verano, anual)");
 									estacionPlantacion=scan.nextLine();
 								    mensaje=Planta.validarEstacionLlamada(estacionPlantacion);
 								    if(mensaje!=null)
@@ -924,7 +937,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el habitat de la planta por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									System.out.println("Ingrese el habitat de la hierba por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
 									habitat=scan.nextLine();
 								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
 								    if(mensaje!=null)
@@ -936,7 +949,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese la altura actual de la planta por favor");
+									System.out.println("Ingrese la altura actual de la hierba por favor");
 									altura=scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
@@ -949,7 +962,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta posee flor por favor (true/false)");
+									System.out.println("Ingrese si la hierba posee flor por favor (true/false)");
 									tieneflor=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneflor);
@@ -962,7 +975,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el nivel de exposicion solar de la planta por favor (sombra, mediasombra, pleno sol)");
+									System.out.println("Ingrese el nivel de exposicion solar de la hierba por favor (sombra, mediasombra, pleno sol)");
 									nivelDeExposicionSolar=scan.nextLine();
 								    mensaje=Planta.validarExpSolarLlamada(nivelDeExposicionSolar);
 								    if(mensaje!=null)
@@ -974,7 +987,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el tipo de raiz de la planta por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
+									System.out.println("Ingrese el tipo de raiz de la hierba por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
 									tipoRaiz=scan.nextLine();
 								    mensaje=Planta.validarTipoRaizLlamada(tipoRaiz);
 								    if(mensaje!=null)
@@ -986,7 +999,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es aromatica por favor (true/false)");
+									System.out.println("Ingrese si la hierba es aromatica por favor (true/false)");
 									esAromatica=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(esAromatica);
@@ -999,7 +1012,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta tiene fruto por favor (true/false)");
+									System.out.println("Ingrese si la hierba tiene fruto por favor (true/false)");
 									tieneFruto=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneFruto);
@@ -1012,7 +1025,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta tiene semilla por favor (true/false)");
+									System.out.println("Ingrese si la hierba tiene semilla por favor (true/false)");
 									tieneSemilla=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(tieneSemilla);
@@ -1025,7 +1038,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									System.out.println("Ingrese si la hierba es apta interior por favor (true/false)");
 									deInterior=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(deInterior);
@@ -1038,7 +1051,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									System.out.println("Ingrese el tipo de tallo de la hierba por favor (erguido, rastrero, voluble, segmentado)");
 									tipoDeTallo=scan.nextLine();
 								    mensaje=Hierba.validarTipoTalloLlamada(tipoDeTallo);
 								    if(mensaje!=null)
@@ -1050,7 +1063,19 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es comestible por favor (true/false)");
+									System.out.println("Ingrese la especie del arbusto por favor");
+									especie=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(especie);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la hierba es comestible por favor (true/false)");
 									comestible=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(comestible);
@@ -1063,7 +1088,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese si la planta es medicinal por favor (true/false)");
+									System.out.println("Ingrese si la hierba es medicinal por favor (true/false)");
 									medicinal=scan.nextBoolean();
 									scan.nextLine();
 								    mensaje=Producto.validarBooleanLlamada(medicinal);
@@ -1078,7 +1103,7 @@ public class Main {
 									tipoDeTallo, comestible, medicinal);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
-							
+							System.out.println(vivero.mostrarProductos());
 							break;
 						}
 
@@ -1140,7 +1165,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese si el sustrato esta abonado por favor");
+								System.out.println("Ingrese si el sustrato esta abonado por favor (true/false)");
 								abonada=scan.nextBoolean();
 								scan.nextLine();
 							    mensaje=Producto.validarBooleanLlamada(abonada);
@@ -1153,7 +1178,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el tipo de suelo por favor");
+								System.out.println("Ingrese el tipo de suelo al que esta destinado por favor(calizo, humifero, arcilloso, arenoso, pedregoso, mixto)");
 								tipoDeSuelo=scan.nextLine();
 							    mensaje=Sustrato.validarTipoSueloLlamada(tipoDeSuelo);
 							    if(mensaje!=null)
@@ -1165,6 +1190,7 @@ public class Main {
 							Producto producto = new Sustrato(nombre, marca, stock, descripcion, gramos, abonada, tipoDeSuelo);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");	
+							break;
 						}
 						case 6: //Semilla
 						{
@@ -1224,7 +1250,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el destino de la semilla por favor");
+								System.out.println("Ingrese el destino de la semilla por favor (huerta, floral, cesped)");
 								destinoS=scan.nextLine();
 							    mensaje=Semilla.validarDestinoSemillaLlamada(destinoS);
 							    if(mensaje!=null)
@@ -1236,6 +1262,7 @@ public class Main {
 							Producto producto = new Semilla(nombre, marca, stock, descripcion, gramos, destinoS);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");	
+							break;
 						}
 						case 7: //Sanidad Vegetal
 						{
@@ -1282,7 +1309,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese la funcion por favor");
+								System.out.println("Ingrese la funcion por favor(insecticida, funguicida, herbicida)");
 								funcion=scan.nextLine();
 								
 							    mensaje=SanidadVegetal.validarSanidadLlamada(funcion);
@@ -1308,6 +1335,7 @@ public class Main {
 							Producto producto = new SanidadVegetal(nombre, marca, stock, descripcion, funcion, centimetroCubico);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");	
+							break;
 						}
 						case 8: //Lombriz
 						{
@@ -1367,7 +1395,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese la especie de la lombriz por favor");
+								System.out.println("Ingrese la especie de la lombriz por favor (rayada, dendra, roja, comun)");
 								especie=scan.nextLine();
 								
 							    mensaje=Lombriz.validarEspecieLombrizLlamada(especie);
@@ -1380,6 +1408,8 @@ public class Main {
 							Producto producto = new Lombriz(nombre, marca, stock, descripcion, gramos, especie);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
+							System.out.println(vivero.mostrarProductos());
+							break;
 						}
 						case 9: //Maceta Redonda
 						{

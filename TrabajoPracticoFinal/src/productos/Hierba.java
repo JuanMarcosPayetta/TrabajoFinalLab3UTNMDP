@@ -46,6 +46,8 @@ public class Hierba extends PlantaTerrestre{
 		this.medicinal = medicinal;
 		establecerClasificacion();
 		establecerCantidadFertilizante();
+		establecerEpocaPoda();
+		establecerCantidadRiego();
 	}
 
 	public Hierba(String nombre, String marca, int stock, String descripcion, int mesesDeVida,
@@ -59,7 +61,10 @@ public class Hierba extends PlantaTerrestre{
 		this.medicinal = medicinal;
 		establecerClasificacion();
 		establecerCantidadFertilizante();
+		establecerEpocaPoda();
+		establecerCantidadRiego();
 		establecerPrecio();
+		
 	}
 
 	
@@ -171,7 +176,11 @@ public class Hierba extends PlantaTerrestre{
 
 		if(getMesesDeVida()<12)
 		{
-			if(getHabitat().equalsIgnoreCase("pantano") || getHabitat().equalsIgnoreCase("selva"))
+			if(getHabitat().equalsIgnoreCase("pantano"))
+			{
+				setCantidadRiego(3);
+			}
+			else if(getHabitat().equalsIgnoreCase("selva"))
 			{
 				setCantidadRiego(2);
 			}
@@ -182,7 +191,11 @@ public class Hierba extends PlantaTerrestre{
 		}
 		else
 		{
-			if(getHabitat().equalsIgnoreCase("pantano") || getHabitat().equalsIgnoreCase("selva"))
+			if(getHabitat().equalsIgnoreCase("pantano"))
+			{
+				setCantidadRiego(5);
+			}
+			else if(getHabitat().equalsIgnoreCase("selva"))
 			{
 				setCantidadRiego(4);
 			}
