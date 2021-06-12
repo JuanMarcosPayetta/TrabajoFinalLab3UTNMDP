@@ -171,12 +171,7 @@ public class Main {
 						int temperaturaAgua=0;
 						String durezaAgua=null;
 						String tipo=null;
-						boolean tieneSemilla=false;
-                        boolean deInterior=false;
-                        int cantidadRiego=0; 
-                        String especie=null;
-                        String tipoCorteza=null;
-                        int diametroDelTronco=0;
+						
 						
 						switch (opcion3) {
 						case 1: {
