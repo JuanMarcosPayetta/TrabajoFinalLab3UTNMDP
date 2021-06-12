@@ -9,9 +9,18 @@ import domain.Empleado;
 import domain.Servicio;
 import domain.Vivero;
 import productos.Arbol;
+import productos.Arbusto;
+import productos.Hierba;
+import productos.Lombriz;
+import productos.Maceta;
+import productos.MacetaPoliedro;
+import productos.MacetaRedonda;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
+import productos.SanidadVegetal;
+import productos.Semilla;
+import productos.Sustrato;
 
 public class Main {
 
@@ -178,6 +187,30 @@ public class Main {
 						String especie=null;
 						int diametroDelTronco=0;
 						String corteza=null;
+						String tipoHoja=null;
+						boolean trepador=false;
+						String tipoDeTallo=null;
+						boolean comestible=false;
+						boolean medicinal=false;
+						int gramos=0;
+						boolean abonada=false;
+						String tipoDeSuelo=null;
+						String destinoS=null;
+						String funcion=null;
+						int centimetroCubico=0;
+						String forma=null;
+						double alto=0;
+						double ancho=0;
+						double largo=0;
+						double diametroBoca=0;
+						double base=0;
+						String material=null;
+						String tamanio=null;
+						boolean reforzada=false;
+						int potencia=0;
+						String tipoMotor=null;
+						String consumo=null;
+						
 						
 						switch (opcion3) {
 						case 1: {
@@ -599,17 +632,964 @@ public class Main {
 								    }
 								} 
 								
-								
+								Producto producto = new Arbol(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura, tieneflor,
+										nivelDeExposicionSolar, tipoRaiz, esAromatica, tieneFruto, tieneSemilla, deInterior, especie, diametroDelTronco, corteza);
+								vivero.agregarElemento(producto);
+								System.out.println("Producto agregado con exito");
 								
 							break;
 						}
-						case 3:
+						case 3: //Arbusto
 						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese los meses de vida actual de la planta por favor");
+									mesesDeVida=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la estacion de plantacion la planta por favor(otonio, invierno, primavera, verano, anual)");
+									estacionPlantacion=scan.nextLine();
+								    mensaje=Planta.validarEstacionLlamada(estacionPlantacion);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el habitat de la planta por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									habitat=scan.nextLine();
+								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la altura actual de la planta por favor");
+									altura=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(altura);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta posee flor por favor (true/false)");
+									tieneflor=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneflor);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el nivel de exposicion solar de la planta por favor (sombra, mediasombra, pleno sol)");
+									nivelDeExposicionSolar=scan.nextLine();
+								    mensaje=Planta.validarExpSolarLlamada(nivelDeExposicionSolar);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de raiz de la planta por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
+									tipoRaiz=scan.nextLine();
+								    mensaje=Planta.validarTipoRaizLlamada(tipoRaiz);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es aromatica por favor (true/false)");
+									esAromatica=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(esAromatica);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta tiene fruto por favor (true/false)");
+									tieneFruto=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneFruto);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta tiene semilla por favor (true/false)");
+									tieneSemilla=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneSemilla);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									deInterior=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(deInterior);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de hoja de la planta por favor (caduca, semicaduca, persistente)");
+									tipoHoja=scan.nextLine();
+								    mensaje=Arbusto.validarTipoHojaLLamada(tipoHoja);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es trepadora por favor (true/false)");
+									trepador=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(trepador);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+							
+							Producto producto = new Arbusto(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura, tieneflor,
+									nivelDeExposicionSolar, tipoRaiz, esAromatica, tieneFruto, tieneSemilla, deInterior, especie, tipoHoja, trepador);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+							
 							break;
 						}
-						case 4:
+						case 4: //Hierba
 						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese los meses de vida actual de la planta por favor");
+									mesesDeVida=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la estacion de plantacion la planta por favor(otonio, invierno, primavera, verano, anual)");
+									estacionPlantacion=scan.nextLine();
+								    mensaje=Planta.validarEstacionLlamada(estacionPlantacion);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el habitat de la planta por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									habitat=scan.nextLine();
+								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la altura actual de la planta por favor");
+									altura=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(altura);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta posee flor por favor (true/false)");
+									tieneflor=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneflor);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el nivel de exposicion solar de la planta por favor (sombra, mediasombra, pleno sol)");
+									nivelDeExposicionSolar=scan.nextLine();
+								    mensaje=Planta.validarExpSolarLlamada(nivelDeExposicionSolar);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de raiz de la planta por favor (axonomorfa, ramificada, fascicular, tuberosa, napiforme, adventicia)");
+									tipoRaiz=scan.nextLine();
+								    mensaje=Planta.validarTipoRaizLlamada(tipoRaiz);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es aromatica por favor (true/false)");
+									esAromatica=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(esAromatica);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta tiene fruto por favor (true/false)");
+									tieneFruto=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneFruto);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta tiene semilla por favor (true/false)");
+									tieneSemilla=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(tieneSemilla);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									deInterior=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(deInterior);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es de interior por favor (true/false)");
+									tipoDeTallo=scan.nextLine();
+								    mensaje=Hierba.validarTipoTalloLlamada(tipoDeTallo);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es comestible por favor (true/false)");
+									comestible=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(comestible);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si la planta es medicinal por favor (true/false)");
+									medicinal=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(medicinal);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+							
+							Producto producto = new Hierba(nombre, marca, stock, descripcion, mesesDeVida, estacionPlantacion, habitat, altura, tieneflor,
+									nivelDeExposicionSolar, tipoRaiz, esAromatica, tieneFruto, tieneSemilla, deInterior, especie, 
+									tipoDeTallo, comestible, medicinal);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+							
 							break;
+						}
+
+						case 5: //Sustrato 
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese si el sustrato esta abonado por favor");
+								abonada=scan.nextBoolean();
+								scan.nextLine();
+							    mensaje=Producto.validarBooleanLlamada(abonada);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el tipo de suelo por favor");
+								tipoDeSuelo=scan.nextLine();
+							    mensaje=Sustrato.validarTipoSueloLlamada(tipoDeSuelo);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new Sustrato(nombre, marca, stock, descripcion, gramos, abonada, tipoDeSuelo);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 6: //Semilla
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el destino de la semilla por favor");
+								destinoS=scan.nextLine();
+							    mensaje=Semilla.validarDestinoSemillaLlamada(destinoS);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new Semilla(nombre, marca, stock, descripcion, gramos, destinoS);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 7: //Sanidad Vegetal
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la funcion por favor");
+								funcion=scan.nextLine();
+								
+							    mensaje=SanidadVegetal.validarSanidadLlamada(funcion);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el volumen en cm cubicos por favor");
+								centimetroCubico=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(centimetroCubico);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new SanidadVegetal(nombre, marca, stock, descripcion, funcion, centimetroCubico);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");	
+						}
+						case 8: //Lombriz
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							 
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad en gramos por favor");
+								gramos=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(gramos);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la especie de la lombriz por favor");
+								especie=scan.nextLine();
+								
+							    mensaje=Lombriz.validarEspecieLombrizLlamada(especie);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new Lombriz(nombre, marca, stock, descripcion, gramos, especie);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+						}
+						case 9: //Maceta Redonda
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el material por favor");
+								material=scan.nextLine();
+								
+							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la forma de la maceta por favor(circular, ovalada)");
+								forma=scan.nextLine();
+								
+							    mensaje=Maceta.validarFormaMacetaLlamada("redonda", forma);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el diametro en cm de la boca de la maceta por favor");
+								diametroBoca=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(diametroBoca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el largo en cm de la base por favor");
+								base=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(base);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new MacetaRedonda(nombre, marca, stock, descripcion, material, forma, diametroBoca, base);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
+						}
+						case 10: //Maceta poliedro
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println("Ingrese la descripcion por favor");
+							descripcion=scan.nextLine();
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el material por favor");
+								material=scan.nextLine();
+								
+							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la forma de la maceta por favor(jardinera, cubo, piramidal)");
+								forma=scan.nextLine();
+								
+							    mensaje=Maceta.validarFormaMacetaLlamada("poliedro", forma);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el alto en cm por favor");
+								alto=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(alto);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el ancho en cm por favor");
+								ancho=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(ancho);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el largo en cm por favor");
+								largo=scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(largo);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto = new MacetaPoliedro(nombre, marca, stock, descripcion, material, forma, 
+									alto, ancho, largo);
+							vivero.agregarElemento(producto);
+							System.out.println("Producto agregado con exito");
 						}
 						default:
 						System.out.println("Opcion erronea");
