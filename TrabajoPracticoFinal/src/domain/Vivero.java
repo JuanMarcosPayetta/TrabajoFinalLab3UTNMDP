@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 
@@ -584,7 +585,7 @@ public class Vivero implements IVivero {
 			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni menor a 1");
 		}
 	}
-
+	
 	/*
 	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
 	 */
@@ -604,8 +605,16 @@ public class Vivero implements IVivero {
 		return listaEmpleados;
 	} 
 	
-	
+	public LinkedList<Pedido> getListaPedidos()
+	{
+		LinkedList<Pedido>listaPedidos=null;
+		listaPedidos=reg.getRegistroPedidos();
+		return listaPedidos;
+	}
 
-	
+	public void agregarPedidoDesdeArchivo(Pedido pedido)
+	{
+		reg.agregarPedidoDesdeArchivo(pedido);
+	}
 
 }

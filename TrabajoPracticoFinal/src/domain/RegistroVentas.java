@@ -36,26 +36,19 @@ public class RegistroVentas implements Serializable {
 	 * agrega una peticion de compra a un nuevo pedido, y agrega este pedido a la
 	 * lista de pedidos
 	 */
-	public void agregarPeticionToNuevoPedido(Pedido pedido, PeticionCompra peticion) {
+	public String agregarPeticionToNuevoPedido(Pedido pedido, PeticionCompra peticion) {
 		pedido.agregarPeticionCompra(peticion);
-		agregarPedido(pedido);
+		String mensaje=agregarPedido(pedido);
+		return mensaje;
 	}
 
 	/*
-	 * agrega un pedido a la lista de pedidos
+	 * agrega un pedido a la lista de pedidos (verificando que no se ingrese un nuevo pedido a un cliente con un pedido impago actual)
 	 */
 	private String agregarPedido(Pedido pedido) {
 		String mensaje = null;
-		ListIterator<Pedido> it = registroPedidos.listIterator();
-		boolean encontrado = false;
-		while (it.hasNext() && encontrado == false) {
-			Pedido pedidoBuscado = it.next();
-			if (pedidoBuscado.getIdCliente() == pedido.getIdCliente()) {
-				if (!pedidoBuscado.isFueAbonado()) {
-					encontrado = true;
-				}
-			}
-		}
+		boolean encontrado = buscarPedidoImpago(pedido.getIdCliente());
+	
 		if (encontrado == true) {
 			mensaje = "Error, este cliente ya posee actualmente un pedido impago";
 		} else {
@@ -84,6 +77,8 @@ public class RegistroVentas implements Serializable {
 		}
 	}
 
+	//EL MEDIO DE PAGO HAY QUE ENVIARSELO A ESTE METODO, ESTABLECERLO ANTES DE SETEAR EL DESCUENTO?
+	
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 	// puede usar el metodo
 	public String pagarPedido(Cliente cliente) {
@@ -96,6 +91,7 @@ public class RegistroVentas implements Serializable {
 				if (registroPedidos.get(j).getIdCliente() == cliente.getId() 
 						&& registroPedidos.get(j).isFueAbonado() == false) 
 				{
+					//SET MEDIO DE PAGO ??
 					registroPedidos.get(j).setDescuento(registroPedidos.get(j).getMedioDePago());
 					registroPedidos.get(j).setTotalBruto();
 					registroPedidos.get(j).setTotalNeto();
@@ -116,13 +112,20 @@ public class RegistroVentas implements Serializable {
 			int flag = 0;
 			boolean pedidoImp = buscarPedidoImpago(cliente.getId());
 
-			if (pedidoImp == true) {
-				for (int j = 0; j < registroPedidos.size() && flag == 0; j++) {
-					if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-						for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
-							sb.append(registroPedidos.get(j).getCarrito().get(i).toString());
+			if (pedidoImp == true) 
+			{
+				for (int j = 0; j < registroPedidos.size() && flag == 0; j++) 
+			    {
+					if (registroPedidos.get(j).getIdCliente() == cliente.getId()) 
+					{
+						if(!registroPedidos.get(j).isFueAbonado())
+						{
+							for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) 
+							{
+								sb.append(registroPedidos.get(j).getCarrito().get(i).toString()+"\n");
+							}
+							flag = 1;
 						}
-						flag = 1;
 					}
 				}
 			}
@@ -137,6 +140,7 @@ public class RegistroVentas implements Serializable {
 
 			for (int j = 0; j < registroPedidos.size(); j++) {
 				if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
+					sb.append("PEDIDO N°"+j+":"+"\n");
 					for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
 						sb.append(registroPedidos.get(j).getCarrito().get(i).toString() + "\n");
 					}
@@ -173,4 +177,17 @@ public class RegistroVentas implements Serializable {
 			return mensaje;
 		}
 
+
+        //getter para poder escribir los datos en el archivo 
+		public LinkedList<Pedido> getRegistroPedidos() {
+			return registroPedidos;
+		}
+		
+		//metodo para agregar todos los pedidos desde el archivo a la lista de pedidos
+		public void agregarPedidoDesdeArchivo(Pedido pedido)
+		{
+			registroPedidos.add(pedido);
+		}
+
 }
+

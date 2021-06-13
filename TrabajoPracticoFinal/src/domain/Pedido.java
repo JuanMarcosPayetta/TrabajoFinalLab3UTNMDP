@@ -204,7 +204,7 @@ public class Pedido implements IDescuento, Serializable{
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
 		}
-		else if(!medioPago.matches("[a-zA-Z]*\\D{7}"))
+		else if(!medioPago.matches("[a-zA-Z ]*\\D{7}"))
 		{
 			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION+" 7 letras");
 		}

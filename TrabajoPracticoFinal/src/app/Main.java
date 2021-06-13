@@ -42,6 +42,7 @@ public class Main {
 		acceso.leerArchivoServicios(vivero);
 		acceso.leerArchivoEmpleados(vivero);
 		acceso.leerArchivoClientes(vivero);
+		acceso.leerArchivoPedidos(vivero);
 		
 		while(!validarEmpleado)
 		{
@@ -2188,6 +2189,7 @@ public class Main {
 		acceso.escribirArchivoServicios(vivero);
 		acceso.escribirArchivoEmpleados(vivero);
 		acceso.escribirArchivoClientes(vivero);
+		acceso.escribirArchivoPedidos(vivero);
 	}
 	
 

@@ -365,4 +365,87 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	
+	public String escribirArchivoPedidos(Vivero vivero)
+	{
+		String mensaje=null;
+		
+		File f1= null;
+		FileOutputStream out=null;
+		ObjectOutputStream obj=null;
+		
+		try {
+			f1= new File("pedidos.dat");
+			out= new FileOutputStream(f1);
+			obj= new ObjectOutputStream(out);
+			
+			for(int i=0; i<vivero.getListaPedidos().size(); i++)
+			{
+				obj.writeObject(vivero.getListaPedidos().get(i));
+			}
+		}
+		catch(IOException e)
+		{
+			mensaje="Se produjo un error en la escritura del archivo "+e.getMessage();
+		}
+		finally
+		{
+			try {
+				obj.close();
+			}
+			catch(IOException e)
+			{
+				mensaje="Se produjo un error en el cierre del archivo "+e.getMessage();
+			}
+			
+		}
+		return mensaje;
+	}
+	
+	public String leerArchivoPedidos(Vivero vivero)
+	{
+		String mensaje=null;
+		FileInputStream f1= null;
+		ObjectInputStream obj=null;
+		
+		try
+		{
+			f1= new FileInputStream("pedidos.dat");
+			obj= new ObjectInputStream(f1);
+			
+			Pedido pedido=null;
+			while((pedido= (Pedido)obj.readObject())!=null)
+			{
+				vivero.agregarPedidoDesdeArchivo(pedido);
+			}
+			
+		}catch(EOFException e)
+		{
+			mensaje="Llegaste al final del archivo"+e.getMessage();
+		}
+		catch(FileNotFoundException e)
+		{
+			mensaje="Error, archivo no encontrado"+e.getMessage();
+		}
+		catch(ClassNotFoundException e)
+		{
+			mensaje="Error, el elemento que se quiere leer no fue encontrado en el archivo"+e.getMessage();
+		}
+		catch(IOException e)
+		{
+			mensaje="Error"+e.getMessage();
+		}
+		finally
+		{
+			try
+			{
+				obj.close();
+			}
+			catch(IOException e)
+			{
+				mensaje="Se produjo un error en el cierre del archivo "+e.getMessage();
+			}
+		}
+		return mensaje;
+	}
 }
