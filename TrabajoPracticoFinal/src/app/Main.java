@@ -142,9 +142,22 @@ public class Main {
 				 while(opcion2!='n')
 				{
 					System.out.println("Ingrese la opcion deseada por favor: \n");
-					System.out.println("1-Ingresar un producto al sistema: \n");
-					System.out.println("2-Ingresar un servicio al sistema: \n");
-					System.out.println("3-Ingresar un cliente al sistema: \n");
+					System.out.println("1 - Ingresar un producto al sistema: \n");
+					System.out.println("2 - Ingresar un servicio al sistema: \n");
+					System.out.println("3 - Ingresar un cliente al sistema: \n");
+					System.out.println("4 - Agregar producto al carrito: \n");
+					System.out.println("5 - Agregar servicio al carrito: \n");
+					System.out.println("6 - Abonar carrito: \n");
+					
+					/*
+					 * menu buscar: producto, servicio, cliente, empleado
+					 * menu eliminar: producto, servicio (los elimina del catalogo)
+					 * menu mostrar: productos, empleados, clientes  
+					 * menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
+					 * 				eliminar un producto del carrito, eliminar pedido impago completo
+					 * menu estadisticas (centro informativo)
+					 * menu modificaciones: stock, atributos en general
+					 */
 			
 					opcion3=scan.nextInt();
 					scan.nextLine();
