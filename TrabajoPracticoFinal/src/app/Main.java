@@ -3,6 +3,8 @@ package app;
 
 import java.util.Scanner;
 
+import org.json.JSONObject;
+
 import domain.AccesoDatos;
 import domain.Cliente;
 import domain.Empleado;
@@ -49,6 +51,8 @@ public class Main {
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: ");
 			System.out.println("2-Ingresar al sistema: ");
+			System.out.println("3-Salir: ");
+			
 			String pass=null;
 			String mensaje="";
 			
@@ -64,7 +68,7 @@ public class Main {
 			{
 				System.out.println("Ingrese el nombre del empleado por favor: \n");
 				nombre=scan.nextLine();
-			    mensaje=Empleado.validarCadenaCaracteresLlamada(nombre);
+			    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
 			    if(mensaje!=null)
 			    {
 			    	System.out.println(mensaje);
@@ -76,7 +80,7 @@ public class Main {
 			{
 				System.out.println("Ingrese el apellido del empleado por favor: \n");
 				apellido=scan.nextLine();
-			    mensaje=Empleado.validarCadenaCaracteresLlamada(apellido);
+			    mensaje=Producto.validarCadenaCaracteresLlamada(apellido);
 			    if(mensaje!=null)
 			    {
 			    	System.out.println(mensaje);
@@ -146,12 +150,12 @@ public class Main {
 					System.out.println("1 - Ingresar un producto al sistema: \n");
 					System.out.println("2 - Ingresar un servicio al sistema: \n");
 					System.out.println("3 - Ingresar un cliente al sistema: \n");
-					System.out.println("4 - ");
+					System.out.println("4 - Menu pedidos: \n");
 					System.out.println("5 - ");
 					System.out.println("6 - ");
 					System.out.println("7 - ");
 					System.out.println("8 - ");
-					System.out.println("9 - ");
+					System.out.println("9 -Salir");
 					
 					/*
 					 * menu buscar: producto, servicio, cliente, empleado
@@ -2145,29 +2149,12 @@ public class Main {
 							}
 						}
 						
-						mensaje=" ";
-						while(mensaje!=null)
-						{
 							System.out.println("Ingrese el telefono del cliente por favor: ");
 							telefono=scan.nextLine();
-							mensaje=Cliente.validarCadenaCaracteresTELDNILlamada(telefono);
-							if(mensaje!=null)
-							{
-								System.out.println(mensaje);
-							}
-						}
-						mensaje=" ";
-						
-						while(mensaje!=null)
-						{
+							
 							System.out.println("Ingrese el DNI del cliente por favor: (solo numeros)");
 							dni=scan.nextLine();
-							mensaje=Cliente.validarCadenaCaracteresTELDNILlamada(dni);
-							if(mensaje!=null)
-							{
-								System.out.println(mensaje);
-							}
-						}
+							
 						
 						Cliente miCliente= new Cliente(nombre, apellido, telefono, dni);
 						vivero.agregarElemento(miCliente);
@@ -2177,8 +2164,122 @@ public class Main {
 					}
 					case 4:
 					{
+						//carritos impagos, historial total de compras, pedido de determinado cliente, 
+						 //				eliminar un producto del carrito, eliminar pedido impago completo
 						
+						System.out.println("Elija la opcion deseada por favor\n");
+						System.out.println("1-Comprar Producto: \n");
+						System.out.println("2-Comprar Servicio: \n");
+						System.out.println("3-Mostrar pedido impago de determinado cliente: \n");
+						System.out.println("4-Mostrar todos los pedidos impagos: \n");
+						System.out.println("5-Mostrar historial de pedidos: \n");
+						System.out.println("6-Abonar pedido: \n");
+						System.out.println("7-Eliminar producto del carrito: \n");
+						System.out.println("8-Eliminar pedido impago de determinado cliente: \n");
+						
+						opcion3=scan.nextInt();
+						scan.nextLine();
+						
+						String dniCliente=null;
+						Cliente cliente=null;
+						String codigoProducto=null;
+						int cantidad=0;
+						String clasificacion=null;
+						mensaje=" ";
+						char intentar=0;
+						
+				
+						switch (opcion3) {
+						case 1: {
+							
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println("Ingrese el DNI del cliente que efectua al pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								if(cliente!=null)
+								{
+									while(clasificacion==null)
+									{
+										System.out.println(vivero.mostrarProductoResumido());
+										System.out.println("Ingrese el codigo del producto que desea agregar al carrito por favor\n");
+										codigoProducto=scan.nextLine();
+										mensaje=Producto.validarCadenaCaracteresLlamada(codigoProducto);
+										if(mensaje!=null)
+										{
+										  System.out.println(mensaje);
+										}
+						
+										if(mensaje==null)
+										{
+											clasificacion=vivero.buscarClasificacionProducto(codigoProducto);
+											if(clasificacion==null)
+											{
+												System.out.println("Error, ingrese un codigo valido por favor");
+											}
+										}
+									}
+									
+									mensaje=" ";
+									while(mensaje!=null)
+									{
+										System.out.println("Ingrese la cantidad del producto que desea agregar por favor\n");
+										cantidad=scan.nextInt();
+										scan.nextLine();
+										mensaje=Producto.validarValorNumericoLlamada(cantidad);
+										if(mensaje!=null)
+										{
+											System.out.println(mensaje);
+										}	
+									}
+									
+									Producto producto= new PlantaAcuatica(codigoProducto, clasificacion);
+									System.out.println(vivero.ComprarProducto(producto, cliente, cantidad));
+
+							}
+							else
+							   {
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+							   }
+							}
+							
+							break;
+						}
+						case 2:
+						{
+							break;
+						}
+						case 3:
+						{
+							break;
+						}
+						case 4:
+						{
+							break;
+						}
+						case 5:
+						{
+							break;
+						}
+						case 6:
+						{
+							break;
+						}
+						case 7:
+						{
+							break;
+						}
+						case 8:
+						{
+							break;
+						}
+						
+						default:
+							System.out.println("Opcion erronea");
+						}
 						break;
+						
 					}
 					case 5: 
 					{

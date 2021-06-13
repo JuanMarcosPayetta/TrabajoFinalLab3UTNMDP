@@ -80,6 +80,21 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		this.cantidadFertilizante = 0; 
 	}
 	
+	//para la compra de productos (ya que producto no se puede instanciar por ser abstracta)
+	public Planta(String codigo, String clasificacion)
+	{   
+		super(codigo, clasificacion);
+		this.mesesDeVida=0;
+		this.estacionPlantacion =null;
+		this.habitat=null;
+		this.altura=0;
+		this.flor=false;
+		this.nivelExposicionSolar=null;
+		this.tipoRaiz=null;
+		this.aromatica=false;
+		this.cantidadFertilizante=0; 
+	}
+	
 	public abstract void establecerCantidadFertilizante(); //ESTABLECER EN CLASE FINAL
 	
 	

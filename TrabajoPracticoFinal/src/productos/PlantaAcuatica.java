@@ -66,6 +66,17 @@ public class PlantaAcuatica extends Planta{
 		establecerPrecio();
 	}
 	
+	//para la compra de productos (ya que producto no se puede instanciar por ser abstracta)
+	public PlantaAcuatica(String codigo, String clasificacion)
+	{
+		super(codigo, clasificacion);
+		this.tipoDeAgua=null;
+		this.temperaturaAgua=0;
+		this.durezaAgua=null;
+		this.tipo=null;
+		
+	}
+	
 	
 	/*
 	 * Validacion tipo de agua, llamada main

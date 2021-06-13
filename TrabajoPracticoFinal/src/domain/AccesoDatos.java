@@ -412,7 +412,6 @@ public class AccesoDatos { //clase para archivos
 		{
 			f1= new FileInputStream("pedidos.dat");
 			obj= new ObjectInputStream(f1);
-			
 			Pedido pedido=null;
 			while((pedido= (Pedido)obj.readObject())!=null)
 			{

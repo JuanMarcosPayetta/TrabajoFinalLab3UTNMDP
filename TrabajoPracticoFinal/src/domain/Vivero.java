@@ -452,6 +452,46 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	//Muestra el nombre, clasificacion, stock y codigo del producto (para el momento de elegir el codigo del producto al comprar)
+	public String mostrarProductoResumido()
+	{
+		StringBuilder builder= new StringBuilder();
+		Iterator<Map.Entry<String, ArrayList<Producto>>>it= catalogoProductos.entrySet().iterator();
+		while(it.hasNext())
+		{
+			Map.Entry<String, ArrayList<Producto>>entry= (Map.Entry<String, ArrayList<Producto>>)it.next();
+			ArrayList<Producto> productos=entry.getValue();
+			for(int i=0; i<productos.size(); i++)
+			{
+				builder.append(productos.get(i).getNombre()+" - "+productos.get(i).getClasificacion()+" - "+productos.get(i).getStock()+" - "+productos.get(i).getCodigo()+"\n");
+			}
+		}
+		
+		return builder.toString();
+	}
+	
+	//busca y retorna la "clasifiacion" del producto que sea desea comprar
+	public String buscarClasificacionProducto(String codigoProducto)
+	{
+		boolean encontrado=false;
+		String clasificacion=null;
+		Iterator<Map.Entry<String, ArrayList<Producto>>>it= catalogoProductos.entrySet().iterator();
+		while(it.hasNext() && !encontrado)
+		{
+			Map.Entry<String, ArrayList<Producto>>entry= (Map.Entry<String, ArrayList<Producto>>)it.next();
+			ArrayList<Producto>productos= entry.getValue();
+			for(int i=0; i<productos.size() && !encontrado; i++)
+			{
+				if(productos.get(i).getCodigo().equals(codigoProducto))
+				{
+					clasificacion=productos.get(i).getClasificacion();
+					encontrado=true;
+				}
+			}
+		}
+		return clasificacion;
+	}
+	
 	public Cliente BuscaCliente(String dni) { // si retorna null "Cliente no encontrado"...desea crear unuevo?(en main)
 		int flag = 0;
 		Cliente elCliente = null;
