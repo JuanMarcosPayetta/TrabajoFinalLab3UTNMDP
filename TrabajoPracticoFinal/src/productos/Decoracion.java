@@ -21,14 +21,15 @@ public class Decoracion extends ProductoDeHogar {
 		this.colorPrimario = colorPrimario;
 	}
 
-	public Decoracion(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
+	public Decoracion(String nombre, String marca, int stock,
 			String descripcion, String material, boolean exterior, String colorPrimario) {
-		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material);
+		super(nombre, marca, stock, descripcion, material);
 		this.exterior = exterior;
 		this.colorPrimario = colorPrimario;
 		establecerClasificacion();
+		establecerPrecio();
 	}
-	
+
 	public boolean isExterior() {
 		return exterior;
 	}

@@ -162,7 +162,23 @@ public class MuebleJardin extends ProductoDeHogar {
 		
 		if(getTipo().equalsIgnoreCase("mesa"))
 		{
-			precioMueble=24.500;
+			if(getLargo()<120)
+			{
+				precioMueble=11500;
+			}
+		    else if(getLargo()>120 && getLargo()<180)
+			{
+				precioMueble=16000;
+			}
+			else if(getLargo()>180 && getLargo()<220)
+			{
+				precioMueble=24.500;
+			}
+			else
+			{
+				precioMueble=30000;
+			}
+			
 		}
 		else if(getTipo().equalsIgnoreCase("silla"))
 		{

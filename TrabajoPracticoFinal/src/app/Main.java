@@ -10,11 +10,16 @@ import domain.Servicio;
 import domain.Vivero;
 import productos.Arbol;
 import productos.Arbusto;
+import productos.Decoracion;
+import productos.HerramientaJardineria;
+import productos.HerramientaManual;
+import productos.HerramientaNoManual;
 import productos.Hierba;
 import productos.Lombriz;
 import productos.Maceta;
 import productos.MacetaPoliedro;
 import productos.MacetaRedonda;
+import productos.MuebleJardin;
 import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
@@ -210,6 +215,7 @@ public class Main {
 						int potencia=0;
 						String tipoMotor=null;
 						String consumo=null;
+						String color=null;
 						
 						
 						switch (opcion3) {
@@ -1408,7 +1414,6 @@ public class Main {
 							Producto producto = new Lombriz(nombre, marca, stock, descripcion, gramos, especie);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
-							System.out.println(vivero.mostrarProductos());
 							break;
 						}
 						case 9: //Maceta Redonda
@@ -1456,7 +1461,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el material por favor");
+								System.out.println("Ingrese el material de la maceta por favor");
 								material=scan.nextLine();
 								
 							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
@@ -1508,6 +1513,7 @@ public class Main {
 							Producto producto = new MacetaRedonda(nombre, marca, stock, descripcion, material, forma, diametroBoca, base);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
+							break;
 						}
 						case 10: //Maceta poliedro
 						{
@@ -1554,7 +1560,7 @@ public class Main {
 							mensaje="";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el material por favor");
+								System.out.println("Ingrese el material de la maceta por favor");
 								material=scan.nextLine();
 								
 							    mensaje=Producto.validarCadenaCaracteresLlamada(material);
@@ -1620,6 +1626,416 @@ public class Main {
 									alto, ancho, largo);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
+							break;
+						}
+						case 11:
+						{
+							mensaje=" ";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre de la herramienta por favor");
+								nombre=scan.nextLine();
+								mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+								
+							}
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca de la herramienta por favor");
+								marca=scan.nextLine();
+								mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							
+							mensaje=" ";
+							
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual de la herramienta por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+								mensaje=Producto.validarValorNumericoLlamada(stock);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							
+							
+								System.out.println("Ingrese la descripcion de la herramienta por favor");
+								descripcion=scan.nextLine();
+				
+							mensaje=" ";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el material de la herramienta por favor");
+								material=scan.nextLine();
+								mensaje=Producto.validarCadenaCaracteresLlamada(material);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							mensaje=" ";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la funcion de la herramienta por favor(corte, desmalezado, labrado, limpieza, riego, transporte)");
+								funcion=scan.nextLine();
+								mensaje=HerramientaJardineria.validarFuncionHerramientaLlamada(funcion);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							
+							mensaje=" ";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el tamañio de la herramienta por favor (grande-mediano-pequeña)");
+								tamanio=scan.nextLine();
+								mensaje=HerramientaManual.validarTamanioHManualLlamada(tamanio);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							
+							mensaje=" ";
+							while(mensaje!=null)
+							{
+								System.out.println("Es reforzada (True/False)");
+								reforzada=scan.nextBoolean();
+								mensaje=Producto.validarBooleanLlamada(reforzada);
+								if(mensaje!=null)
+								{
+									System.out.println(mensaje);
+								}
+							}
+							
+							Producto producto = new HerramientaManual(nombre, marca, stock, descripcion, material, funcion, tamanio, reforzada);
+							vivero.agregarElemento(producto);
+							System.out.println("Herramienta manual agregada con exito");
+							System.out.println(vivero.mostrarProductos());
+							break;
+						}
+						case 12:
+						{
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el material de la herramienta por favor");
+									material=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+							
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la funcion de la herramienta por favor(corte, desmalezado, labrado, limpieza, riego, transporte)");
+									funcion=scan.nextLine();
+								    mensaje=HerramientaJardineria.validarFuncionHerramientaLlamada(funcion);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese la potencia de la herramienta por favor");
+									potencia=scan.nextInt();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(potencia);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de motor de la herramienta por favor(electrico, combustible)");
+									tipoMotor=scan.nextLine();
+								    mensaje=HerramientaNoManual.validarMotorLlamada(tipoMotor);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el consumor del motor de la herramienta por favor(alto, medio, bajo)");
+									consumo=scan.nextLine();
+								    mensaje=HerramientaNoManual.validarConsumoLlamada(consumo);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+							
+							
+							Producto producto= new HerramientaNoManual(nombre, marca, stock, descripcion, material, funcion, potencia, tipoMotor, consumo);
+							vivero.agregarElemento(producto);
+							System.out.println("Herramienta agregada con exito\n");
+							break;
+						}
+						case 13:
+						{
+	
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el material principal del mueble por favor");
+									material=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el tipo de mueble de jardin por favor(mesa, silla, reposera, camastro, hamaca)");
+									tipo=scan.nextLine();
+								    mensaje=MuebleJardin.validarTipoMuebleLlamada(tipo);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el alto en cm por favor");
+									alto=scan.nextDouble();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(alto);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el ancho en cm por favor");
+									ancho=scan.nextDouble();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(ancho);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el largo en cm por favor");
+									largo=scan.nextDouble();
+									scan.nextLine();
+								    mensaje=Producto.validarValorNumericoLlamada(largo);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								Producto producto= new MuebleJardin(nombre, marca, stock, descripcion, material, tipo, alto, largo, ancho);
+								vivero.agregarElemento(producto);
+								System.out.println("Mueble de jardin agregado con exito");
+								break;
+						}
+						case 14:
+						{
+	
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el stock actual por favor");
+								stock=scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+								System.out.println("Ingrese la descripcion por favor");
+								descripcion=scan.nextLine();
+							   
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el material principal por favor");
+									material=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(material);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese si es apto exterior por favor (true/false)");
+									deInterior=scan.nextBoolean();
+									scan.nextLine();
+								    mensaje=Producto.validarBooleanLlamada(deInterior);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								} 
+								
+								mensaje="";
+								while(mensaje!=null)
+								{
+									System.out.println("Ingrese el color primario por favor");
+									color=scan.nextLine();
+								    mensaje=Producto.validarCadenaCaracteresLlamada(color);
+								    if(mensaje!=null)
+								    {
+								    	System.out.println(mensaje);
+								    }
+								}
+								
+								
+								Producto producto= new Decoracion(nombre, marca, stock, descripcion, material, deInterior, color);
+								vivero.agregarElemento(producto);
+								System.out.println("Objeto decorativo agregado con exito");
+								System.out.println(vivero.mostrarProductos());
+								break;
+							
 						}
 						default:
 						System.out.println("Opcion erronea");
