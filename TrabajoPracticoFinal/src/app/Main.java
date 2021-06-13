@@ -146,9 +146,12 @@ public class Main {
 					System.out.println("1 - Ingresar un producto al sistema: \n");
 					System.out.println("2 - Ingresar un servicio al sistema: \n");
 					System.out.println("3 - Ingresar un cliente al sistema: \n");
-					System.out.println("4 - Agregar producto al carrito: \n");
-					System.out.println("5 - Agregar servicio al carrito: \n");
-					System.out.println("6 - Abonar carrito: \n");
+					System.out.println("4 - ");
+					System.out.println("5 - ");
+					System.out.println("6 - ");
+					System.out.println("7 - ");
+					System.out.println("8 - ");
+					System.out.println("9 - ");
 					
 					/*
 					 * menu buscar: producto, servicio, cliente, empleado
@@ -2172,7 +2175,26 @@ public class Main {
 						System.out.println(vivero.mostrarClientes());
 						break;
 					}
-					
+					case 4:
+					{
+						
+						break;
+					}
+					case 5: 
+					{
+						
+						break;
+					}
+					case 6: 
+					{
+						
+						break;
+					}
+					case 7:
+					{
+						
+						break;
+					}
 					
 					default:
 						System.out.println("Opcion erronea");
