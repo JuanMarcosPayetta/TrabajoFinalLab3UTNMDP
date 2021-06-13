@@ -2095,7 +2095,6 @@ public class Main {
 						Servicio miServicio=new Servicio(nombre, precio, descripcion, materialesIncluidos);
 						vivero.agregarElemento(miServicio);
 						System.out.println("El servicio fue agregado con exito");
-						System.out.println(vivero.mostrarServicios());
 						break;
 					}
 					case 3: 
@@ -2159,6 +2158,7 @@ public class Main {
 						System.out.println(vivero.mostrarClientes());
 						break;
 					}
+					
 					
 					default:
 						System.out.println("Opcion erronea");
