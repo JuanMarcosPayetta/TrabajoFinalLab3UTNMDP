@@ -626,6 +626,11 @@ public class Vivero implements IVivero {
 		}
 	}
 	
+	public String mostrarTodosLosPedidos()
+	{
+		return reg.mostrarTodosLosPedidos();
+	}
+	
 	/*
 	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
 	 */

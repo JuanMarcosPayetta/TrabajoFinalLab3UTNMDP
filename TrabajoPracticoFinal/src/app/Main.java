@@ -51,7 +51,7 @@ public class Main {
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: ");
 			System.out.println("2-Ingresar al sistema: ");
-			System.out.println("3-Salir: ");
+			System.out.println("3-Salir del sistema: ");
 			
 			String pass=null;
 			String mensaje="";
@@ -133,6 +133,10 @@ public class Main {
 				}
 				
 				break;
+			}
+			case 3:
+			{
+				return;
 			}
 			default:
 				System.out.println("Opcion erronea");
@@ -2195,6 +2199,7 @@ public class Main {
 							while(cliente==null && intentar!='n')
 							{
 								System.out.println("Ingrese el DNI del cliente que efectua al pedido por favor\n");
+								System.out.println(vivero.mostrarClientes());
 								dniCliente=scan.nextLine();
 								cliente=vivero.BuscaCliente(dniCliente);
 								if(cliente!=null)
@@ -2204,21 +2209,14 @@ public class Main {
 										System.out.println(vivero.mostrarProductoResumido());
 										System.out.println("Ingrese el codigo del producto que desea agregar al carrito por favor\n");
 										codigoProducto=scan.nextLine();
-										mensaje=Producto.validarCadenaCaracteresLlamada(codigoProducto);
-										if(mensaje!=null)
-										{
-										  System.out.println(mensaje);
-										}
-						
-										if(mensaje==null)
-										{
+	
 											clasificacion=vivero.buscarClasificacionProducto(codigoProducto);
 											if(clasificacion==null)
 											{
 												System.out.println("Error, ingrese un codigo valido por favor");
 											}
 										}
-									}
+								
 									
 									mensaje=" ";
 									while(mensaje!=null)
@@ -2295,6 +2293,14 @@ public class Main {
 					{
 						
 						break;
+					}
+					case 8:
+					{
+						
+					}
+					case 9:
+					{
+						return;
 					}
 					
 					default:

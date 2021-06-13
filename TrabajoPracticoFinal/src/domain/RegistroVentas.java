@@ -149,6 +149,16 @@ public class RegistroVentas implements Serializable {
 			return sb.toString();
 		}
 		
+		public String mostrarTodosLosPedidos()
+		{
+			StringBuilder builder= new StringBuilder();
+			for(int i=0; i<registroPedidos.size(); i++)
+			{
+				builder.append(registroPedidos.get(i).toString()+"\n");
+			}
+			return builder.toString();
+		}
+		
 		// primero tiene q llamar al metodo BuscaCliente (esta en la clase vivero) y despues, si existe el cliente
 		// puede usar el metodo
 		// para eliminar servicios y productor del carrito
