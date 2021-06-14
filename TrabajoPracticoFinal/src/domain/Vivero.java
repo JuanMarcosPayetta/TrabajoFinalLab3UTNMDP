@@ -678,6 +678,11 @@ public class Vivero implements IVivero {
 		
 	}
 	
+	public boolean verificarCarritoNoVacio(int idCliente)
+	{
+		return reg.verificarCarritoVacio(idCliente);
+	}
+	
 	public String mostrarTodosLosPedidosImpagos()
 	{
 		return reg.mostrarTodosLosPedidosImpagos();

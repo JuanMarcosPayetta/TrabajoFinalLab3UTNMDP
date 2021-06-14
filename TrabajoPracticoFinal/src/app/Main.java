@@ -2285,6 +2285,7 @@ public class Main {
 							   {
 									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
 									intentar=scan.next().charAt(0);
+									scan.nextLine();
 							   }
 						}
 							
@@ -2345,6 +2346,7 @@ public class Main {
 								{
 									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
 									intentar=scan.next().charAt(0);
+									scan.nextLine();
 								}
 						}
 							break;
@@ -2379,6 +2381,7 @@ public class Main {
 								{
 									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
 									intentar=scan.next().charAt(0);
+									scan.nextLine();
 								}
 							}
 							
@@ -2417,20 +2420,19 @@ public class Main {
 									if(impago==true) //si existe un pedido impago de este cliente
 									{
 										//ADEMAS DE PREGUNTAR QUE TENGA UN PEDIDO IMPAGO, QUE EL CARRITO NO ESTE VACIO 
-										while(clasificacion==null)
+										boolean carritoNoVacio=vivero.verificarCarritoNoVacio(cliente.getId());
+										if(!carritoNoVacio) //si el carrito no esta vacio
 										{
-											System.out.println(vivero.mostrarPedidoImpago(cliente));
-											System.out.println("Ingrese el codigo del producto/servicio a eliminar de su carrito: \n");
-											codigo=scan.nextLine();
-										
-												clasificacion=vivero.buscarClasificacionProducto(codigo);
-												if(clasificacion==null)
-												{
-													System.out.println("Error, ingrese un codigo valido por favor");
-												}
-										}
+												System.out.println(vivero.mostrarPedidoImpago(cliente));
+												System.out.println("Ingrese el codigo del producto/servicio a eliminar de su carrito: \n");
+												codigo=scan.nextLine();
 
-										System.out.println(vivero.eliminarPeticionCarrito(codigo, cliente));
+											System.out.println(vivero.eliminarPeticionCarrito(codigo, cliente));
+										}
+										else
+										{
+											System.out.println("Error, el carrito del pedido se encuentra vacio actualmente\n");
+										}
 								
 									}
 									else
@@ -2443,6 +2445,7 @@ public class Main {
 								{
 									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
 									intentar=scan.next().charAt(0);
+									scan.nextLine();
 								}
 							}
 

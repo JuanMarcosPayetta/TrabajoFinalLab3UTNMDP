@@ -200,6 +200,27 @@ public class RegistroVentas implements Serializable {
 			return sb.toString();
 		}
 		
+		/*
+		 * Valida que el carrito del pedido impago del cliente no este vacio
+		 */
+		public boolean verificarCarritoVacio(int idcliente)
+		{
+			boolean verificar=false;
+			for(int i=0; i<registroPedidos.size() && !verificar; i++)
+			{
+				if(registroPedidos.get(i).getIdCliente()==idcliente)
+				{
+					if(!registroPedidos.get(i).isFueAbonado())
+					{
+						if(registroPedidos.get(i).getCarrito().isEmpty())
+						{
+							verificar=true;
+						}
+					}
+				}
+			}
+			return verificar;
+		}
 		
 		// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 		// puede usar el metodo
@@ -250,7 +271,6 @@ public class RegistroVentas implements Serializable {
 			String mensaje = "No se encontro ningun pedido actual";
 			boolean pedidoImp = false;
 			int flag = 0;
-			int cantidad=0;
 
 			pedidoImp = buscarPedidoImpago(elCliente.getId());
 			if (pedidoImp == true) {
@@ -260,7 +280,7 @@ public class RegistroVentas implements Serializable {
 						mensaje = "No se encontro ningun elemento en su carrito con el codigo ingresado";
 						for (int i = 0; i < registroPedidos.get(j).getCarrito().size() && flag == 0; i++) {
 							if (registroPedidos.get(j).getCarrito().get(i).getCodigo().equalsIgnoreCase(codigoP)) {
-								cantidad=registroPedidos.get(j).getCarrito().get(i).getCantidad();
+	
 								registroPedidos.get(j).getCarrito().remove(i);
 								mensaje = "Elemento eliminado del carrito con exito";
 								flag = 1;
