@@ -22,11 +22,16 @@ import productos.Sustrato;
 
 public class CentroInformativo<T extends Producto> {
 
-	ArrayList<T>datos;
+	private ArrayList<T>datos;
 	
 	public CentroInformativo()
 	{
 		this.datos=new ArrayList<T>();
+	}
+	
+	public CentroInformativo(ArrayList<T>datosArray)
+	{
+		this.datos=datosArray;
 	}
 	
 	public String mostrarTodo()
