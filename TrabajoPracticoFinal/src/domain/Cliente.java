@@ -13,7 +13,6 @@ import productos.Producto;
 public class Cliente implements Serializable{
 
 	private int id;
-	static private int autoid=1;
 	private String nombre;
 	private String apellido;
 	private String telefono;
@@ -27,9 +26,8 @@ public class Cliente implements Serializable{
 		this.dni=null;
 	}
 
-	public Cliente(String nombre, String apellido, String telefono, String dni) {
-		this.id = autoid;
-		autoid++;
+	public Cliente(int id, String nombre, String apellido, String telefono, String dni) {
+		this.id =id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;

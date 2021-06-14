@@ -660,7 +660,7 @@ public class Vivero implements IVivero {
 		int mayorId=-1;
 		
 		Iterator<Empleado>it=listaEmpleados.iterator();
-		if(!listaEmpleados.isEmpty())
+		if(!listaEmpleados.isEmpty()) //si no esta vacia la lista
 		{
 			Empleado empleado=it.next();
 			mayorId=empleado.getID();
@@ -671,6 +671,32 @@ public class Vivero implements IVivero {
 				if(mayorId<empleado.getID())
 				{
 					mayorId=empleado.getID();
+				}
+			}
+		}
+		
+		return mayorId;
+	}
+	
+	/*
+	 * Busca el mayor id de un cliente, para generar el siguiente
+	 */
+	public int buscarMayorIdCliente()
+	{
+		int mayorId=-1;
+		
+		Iterator<Cliente>it=listaClientes.iterator();
+		if(!listaClientes.isEmpty()) //si no esta vacia la lista
+		{
+			Cliente cliente=it.next();
+			mayorId=cliente.getId();
+			
+			while(it.hasNext())
+			{
+				cliente=it.next();
+				if(mayorId<cliente.getId())
+				{
+					mayorId=cliente.getId();
 				}
 			}
 		}

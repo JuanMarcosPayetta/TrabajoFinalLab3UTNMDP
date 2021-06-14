@@ -49,8 +49,6 @@ public class Main {
 
 		while(!validarEmpleado)
 		{
-			System.out.println(vivero.mostrarEmpleados());
-			//System.out.println(vivero.mostrarClientes());
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: ");
 			System.out.println("2-Ingresar al sistema: ");
@@ -103,12 +101,6 @@ public class Main {
 			    }
 			}
 			
-			/*
-			System.out.println("Ingrese el ID del empleado por favor\n");
-			 while (!scan.hasNextInt()) scan.next();
-			 int id= scan.nextInt();
-			 scan.nextLine();
-			 */
 			
 			Empleado empleado=null;
 			int idMayor=vivero.buscarMayorIdEmpleado();
@@ -126,7 +118,6 @@ public class Main {
 				vivero.agregarElemento(empleado);
 				System.out.println("Empleado creado con exito. Su ID es: "+empleado.getID());
 			}
-			System.out.println(vivero.mostrarEmpleados());
 			
 			break;
 			
@@ -2233,9 +2224,23 @@ public class Main {
 								}
 							}
 							
+							
+							Cliente cliente=null;
+							int idMayor=vivero.buscarMayorIdCliente();
+							if(idMayor==-1)
+							{
+								cliente= new Cliente(1, nombre, apellido, telefono, dni);
+							}
+							else
+							{
+								cliente= new Cliente(idMayor+1, nombre, apellido, telefono, dni);
+							}
+							
+							if(cliente!=null)
+							{
+								vivero.agregarElemento(cliente);
+							}
 						
-						Cliente miCliente= new Cliente(nombre, apellido, telefono, dni);
-						vivero.agregarElemento(miCliente);
 						System.out.println("El nuevo cliente fue agregado con exito");
 						break;
 					}
