@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,17 +15,17 @@ public class Empleado implements Serializable{
 	private String nombre;
 	private String apellido;
 	private String contrasenia;
-	private int idSig=1;
+	private static AtomicInteger idSig= new AtomicInteger(0);
 	
 	public Empleado() {
-		this.ID=0;
+		this.ID=idSig.incrementAndGet();
 		this.nombre=null;
 		this.apellido=null;
 		this.contrasenia=null;
 	}
 
 	public Empleado(int iD, String nombre, String apellido, String contrasenia) {
-		ID = iD;
+		this.ID=idSig.incrementAndGet();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.contrasenia=contrasenia;
@@ -32,8 +33,7 @@ public class Empleado implements Serializable{
 	
 	public Empleado(String nombre, String apellido, String contrasenia)
 	{
-		ID=idSig;
-		idSig++;
+		this.ID=idSig.incrementAndGet();
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.contrasenia=contrasenia;

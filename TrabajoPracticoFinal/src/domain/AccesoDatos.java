@@ -285,12 +285,10 @@ public class AccesoDatos { //clase para archivos
 		FileOutputStream out=null;
 		ObjectOutputStream obj=null;
 		String mensaje=null;
-		
 		try {
 			f1= new File("empleados.dat");
 			out= new FileOutputStream(f1);
 			obj= new ObjectOutputStream(out);
-			
 			Iterator<Empleado>it=vivero.getListaEmpleados().iterator();
 			while(it.hasNext())
 			{

@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -184,6 +185,44 @@ public class Cliente implements Serializable{
 				+ ", DNI: " + dni;
 	}
 
+	/*
+	 * Valida que el dni ingresado posea solo numeros, y un total de 8 caracteres
+	 */
+	public static boolean validarDNI(String dni)
+	{
+		boolean validacion=true;
+		ArrayList<String>numeros=new ArrayList<String>();
+		numeros.add("1");
+		numeros.add("2");
+		numeros.add("3");
+		numeros.add("4");
+		numeros.add("5");
+		numeros.add("6");
+		numeros.add("7");
+		numeros.add("8");
+		numeros.add("9");
+		numeros.add("0");
+		
+		for(int i=0; i<dni.length() && validacion==true; i++)
+		{
+			if(!numeros.contains((dni.substring(i, i+1))))
+			{
+				validacion=false;
+			}
+		}
+
+		if(validacion==true)
+		{
+			if(dni.length()<8 && dni.length()>8)
+			{
+				validacion=false;
+			}
+		}
+		
+		return validacion;
+	}
+	
+	
 	public JSONObject javaToJson()
     {
         JSONObject json= new JSONObject();

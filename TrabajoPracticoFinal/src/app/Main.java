@@ -3,8 +3,6 @@ package app;
 
 import java.util.Scanner;
 
-import org.json.JSONObject;
-
 import domain.AccesoDatos;
 import domain.Cliente;
 import domain.Empleado;
@@ -48,11 +46,11 @@ public class Main {
 		acceso.leerArchivoEmpleados(vivero);
 		acceso.leerArchivoClientes(vivero);
 		acceso.leerArchivoPedidos(vivero);
-		
+
 		while(!validarEmpleado)
 		{
-			System.out.println(vivero.mostrarTodosLosPedidos());
-			System.out.println(vivero.mostrarProductoResumido());
+			System.out.println(vivero.mostrarEmpleados());
+			//System.out.println(vivero.mostrarClientes());
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: ");
 			System.out.println("2-Ingresar al sistema: ");
@@ -61,9 +59,10 @@ public class Main {
 			String pass=null;
 			String mensaje="";
 			
-			opcion=scan.nextInt();
-			scan.nextLine();
-			
+			 while (!scan.hasNextInt()) scan.next();
+			 opcion= scan.nextInt();
+			 scan.nextLine();
+		
 			switch (opcion) {
 			case 1: {
 				String nombre=null;
@@ -104,10 +103,20 @@ public class Main {
 			    }
 			}
 			
+			/*
+			System.out.println("Ingrese el ID del empleado por favor\n");
+			 while (!scan.hasNextInt()) scan.next();
+			 int id= scan.nextInt();
+			 scan.nextLine();
+			 */
+			
+			System.out.println(nombre);
+			System.out.println(apellido);
+			System.out.println(pass);
 			Empleado empleado= new Empleado(nombre, apellido, pass);
 			vivero.agregarElemento(empleado);
-			System.out.println("Empleado creado con exito. Su ID es: "+empleado.getID());
 			System.out.println(vivero.mostrarEmpleados());
+			System.out.println("Empleado creado con exito. Su ID es: "+empleado.getID());
 			break;
 			
 			}
@@ -118,8 +127,10 @@ public class Main {
 				while(opcion2!='n')
 				{
 					System.out.println("Ingrese su ID de empleado por favor\n");
-					int idE=scan.nextInt();
-					scan.nextLine();
+					 while (!scan.hasNextInt()) scan.next();
+					 int idE= scan.nextInt();
+					 scan.nextLine();
+					 
 					System.out.println("Ingrese su contrasenia de empleado por favor\n");
 					pass=scan.nextLine();
 					
@@ -160,8 +171,8 @@ public class Main {
 					System.out.println("1 - Ingresar un producto al sistema: \n");
 					System.out.println("2 - Ingresar un servicio al sistema: \n");
 					System.out.println("3 - Ingresar un cliente al sistema: \n");
-					System.out.println("4 - Menu pedidos: \n");
-					System.out.println("5 - Menu busquedas: \n");
+					System.out.println("4 - Menu Pedidos: \n");
+					System.out.println("5 - Menu Busquedas: \n");
 					System.out.println("6 - ");
 					System.out.println("7 - ");
 					System.out.println("8 - ");
@@ -177,7 +188,8 @@ public class Main {
 					 * menu modificaciones: stock, atributos en general
 					 */
 			
-					opcion3=scan.nextInt();
+					while (!scan.hasNextInt()) scan.next();
+					opcion3= scan.nextInt();
 					scan.nextLine();
 					
 					switch (opcion3) {
@@ -198,7 +210,8 @@ public class Main {
 						System.out.println("13-Mueble de jardin: \n");
 						System.out.println("14-Decoracion: \n");
 						
-						opcion3=scan.nextInt();
+						while (!scan.hasNextInt()) scan.next();
+						opcion3= scan.nextInt();
 						scan.nextLine();
 						
 						String nombre=null;
@@ -280,7 +293,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -297,7 +311,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese los meses de vida actual de la planta por favor");
-									mesesDeVida=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									mesesDeVida= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
 								    if(mensaje!=null)
@@ -334,7 +349,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la altura actual de la planta por favor");
-									altura=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									altura= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
 								    if(mensaje!=null)
@@ -410,7 +426,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la temperatura promedio del agua de la planta por favor (mayor o igual a 20 y menor o igual a 27)");
-									temperaturaAgua=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									temperaturaAgua= scan.nextInt();
 									scan.nextLine();
 								    mensaje=PlantaAcuatica.validarTempAguaLlamada(temperaturaAgua);
 								    if(mensaje!=null)
@@ -479,7 +496,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -496,7 +514,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese los meses de vida actual del arbol por favor");
-									mesesDeVida=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									mesesDeVida= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
 								    if(mensaje!=null)
@@ -533,7 +552,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la altura actual del arbol por favor");
-									altura=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									altura= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
 								    if(mensaje!=null)
@@ -647,7 +667,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese el diametro del tronco del arbol por favor (mayor a 1 y menor a 131)");
-									diametroDelTronco=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									diametroDelTronco= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Arbol.validarDiametroTroncoLlamada(diametroDelTronco);
 								    if(mensaje!=null)
@@ -706,7 +727,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -723,7 +745,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese los meses de vida actual del arbusto por favor");
-									mesesDeVida=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									mesesDeVida= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
 								    if(mensaje!=null)
@@ -760,7 +783,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la altura actual del arbusto por favor");
-									altura=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									altura= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
 								    if(mensaje!=null)
@@ -899,7 +923,6 @@ public class Main {
 									nivelDeExposicionSolar, tipoRaiz, esAromatica, tieneFruto, tieneSemilla, deInterior, especie, tipoHoja, trepador);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
-							System.out.println(vivero.mostrarProductos());
 							
 							break;
 						}
@@ -933,7 +956,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -950,7 +974,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese los meses de vida actual de la hierba por favor");
-									mesesDeVida=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									mesesDeVida= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(mesesDeVida);
 								    if(mensaje!=null)
@@ -987,7 +1012,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la altura actual de la hierba por favor");
-									altura=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									altura= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(altura);
 								    if(mensaje!=null)
@@ -1140,7 +1166,6 @@ public class Main {
 									tipoDeTallo, comestible, medicinal);
 							vivero.agregarElemento(producto);
 							System.out.println("Producto agregado con exito");
-							System.out.println(vivero.mostrarProductos());
 							break;
 						}
 
@@ -1174,7 +1199,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1190,7 +1216,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese la cantidad en gramos por favor");
-								gramos=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								gramos= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(gramos);
 							    if(mensaje!=null)
@@ -1259,7 +1286,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1275,7 +1303,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese la cantidad en gramos por favor");
-								gramos=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								gramos= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(gramos);
 							    if(mensaje!=null)
@@ -1331,7 +1360,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1360,7 +1390,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el volumen en cm cubicos por favor");
-								centimetroCubico=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								centimetroCubico= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(centimetroCubico);
 							    if(mensaje!=null)
@@ -1404,7 +1435,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1420,7 +1452,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese la cantidad en gramos por favor");
-								gramos=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								gramos= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(gramos);
 							    if(mensaje!=null)
@@ -1477,7 +1510,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1519,7 +1553,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el diametro en cm de la boca de la maceta por favor");
-								diametroBoca=scan.nextDouble();
+								while (!scan.hasNextDouble()) scan.next();
+								diametroBoca= scan.nextDouble();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(diametroBoca);
 							    if(mensaje!=null)
@@ -1532,7 +1567,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el largo en cm de la base por favor");
-								base=scan.nextDouble();
+								while (!scan.hasNextDouble()) scan.next();
+								base= scan.nextDouble();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(base);
 							    if(mensaje!=null)
@@ -1576,7 +1612,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1618,7 +1655,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el alto en cm por favor");
-								alto=scan.nextDouble();
+								while (!scan.hasNextDouble()) scan.next();
+								alto= scan.nextDouble();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(alto);
 							    if(mensaje!=null)
@@ -1631,7 +1669,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el ancho en cm por favor");
-								ancho=scan.nextDouble();
+								while (!scan.hasNextDouble()) scan.next();
+								ancho= scan.nextDouble();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(ancho);
 							    if(mensaje!=null)
@@ -1644,7 +1683,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el largo en cm por favor");
-								largo=scan.nextDouble();
+								while (!scan.hasNextDouble()) scan.next();
+								largo= scan.nextDouble();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(largo);
 							    if(mensaje!=null)
@@ -1691,7 +1731,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual de la herramienta por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 								mensaje=Producto.validarValorNumericoLlamada(stock);
 								if(mensaje!=null)
@@ -1754,7 +1795,6 @@ public class Main {
 							Producto producto = new HerramientaManual(nombre, marca, stock, descripcion, material, funcion, tamanio, reforzada);
 							vivero.agregarElemento(producto);
 							System.out.println("Herramienta manual agregada con exito");
-							System.out.println(vivero.mostrarProductos());
 							break;
 						}
 						case 12:
@@ -1787,7 +1827,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1829,7 +1870,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese la potencia de la herramienta por favor");
-									potencia=scan.nextInt();
+									while (!scan.hasNextInt()) scan.next();
+									potencia= scan.nextInt();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(potencia);
 								    if(mensaje!=null)
@@ -1899,7 +1941,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -1939,7 +1982,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese el alto en cm por favor");
-									alto=scan.nextDouble();
+									while (!scan.hasNextDouble()) scan.next();
+									alto= scan.nextDouble();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(alto);
 								    if(mensaje!=null)
@@ -1952,7 +1996,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese el ancho en cm por favor");
-									ancho=scan.nextDouble();
+									while (!scan.hasNextDouble()) scan.next();
+									ancho= scan.nextDouble();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(ancho);
 								    if(mensaje!=null)
@@ -1965,7 +2010,8 @@ public class Main {
 								while(mensaje!=null)
 								{
 									System.out.println("Ingrese el largo en cm por favor");
-									largo=scan.nextDouble();
+									while (!scan.hasNextDouble()) scan.next();
+									largo= scan.nextDouble();
 									scan.nextLine();
 								    mensaje=Producto.validarValorNumericoLlamada(largo);
 								    if(mensaje!=null)
@@ -2010,7 +2056,8 @@ public class Main {
 							while(mensaje!=null)
 							{
 								System.out.println("Ingrese el stock actual por favor");
-								stock=scan.nextInt();
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
 							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
@@ -2064,7 +2111,6 @@ public class Main {
 								Producto producto= new Decoracion(nombre, marca, stock, descripcion, material, deInterior, color);
 								vivero.agregarElemento(producto);
 								System.out.println("Objeto decorativo agregado con exito");
-								System.out.println(vivero.mostrarProductos());
 								break;
 							
 						}
@@ -2115,7 +2161,9 @@ public class Main {
 						while(mensaje!=null)
 						{
 							System.out.println("Ingrese el costo del servicio por favor: ");
-							precio=scan.nextDouble();
+							while (!scan.hasNextDouble()) scan.next();
+							precio= scan.nextDouble();
+							scan.nextLine();
 							mensaje=Producto.validarValorNumericoLlamada(precio);
 							if(mensaje!=null)
 							{
@@ -2162,14 +2210,22 @@ public class Main {
 							System.out.println("Ingrese el telefono del cliente por favor: ");
 							telefono=scan.nextLine();
 							
-							System.out.println("Ingrese el DNI del cliente por favor: (solo numeros)");
-							dni=scan.nextLine();
+							boolean validacion=false;
+							while(!validacion)
+							{
+								System.out.println("Ingrese el DNI del cliente por favor: (solo numeros)");
+								dni=scan.nextLine();
+								validacion=Cliente.validarDNI(dni);
+								if(!validacion)
+								{
+									System.out.println("Error, ingrese un DNI valido (unicamente 8 valores numericos)");
+								}
+							}
 							
 						
 						Cliente miCliente= new Cliente(nombre, apellido, telefono, dni);
 						vivero.agregarElemento(miCliente);
 						System.out.println("El nuevo cliente fue agregado con exito");
-						System.out.println(vivero.mostrarClientes());
 						break;
 					}
 					case 4:
@@ -2183,7 +2239,7 @@ public class Main {
 						System.out.println("3-Abonar pedido: \n");
 						System.out.println("4-Mostrar pedido impago de determinado cliente: \n");
 						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
-						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente: \n ");
+						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente, pagos e impagos: \n ");
 						System.out.println("7-Mostrar el historial de pedidos del sistema, pagos e impagos: \n");
 						System.out.println("8-Eliminar producto del carrito de un cliente: \n");
 						System.out.println("9-Eliminar pedido impago de determinado cliente: \n");
@@ -2513,8 +2569,108 @@ public class Main {
 					}
 					case 5: 
 					{
+						System.out.println("Elija la opcion deseada por favor\n");
+						System.out.println("1-Buscar Producto: \n");
+						System.out.println("2-Buscar Servicio: \n");
+						System.out.println("3-Buscar Cliente: \n");
+						System.out.println("4-Buscar Empleado: \n");
+						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
+						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente, pagos e impagos: \n ");
 						
+						opcion3=scan.nextInt();
+						scan.nextLine();
+						
+						String dniCliente=null;
+						Cliente cliente=null;
+						String codigo=null;
+						String clasificacion=null;
+						mensaje=" ";
+						char intentar=0;
+						
+				
+						switch (opcion3) {
+						case 1: {
+						
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto que desea buscar por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.buscarElemento(producto));
+			
 						break;
+					 }
+					case 2:
+					{
+						cliente=null;
+						mensaje="";
+						boolean validacion=false;
+						while(!validacion)
+						{
+							System.out.println(vivero.mostrarServicioResumido());
+							System.out.println("Ingrese el codigo del servicio que desea buscar por favor\n");
+							codigo=scan.nextLine();
+
+								validacion=vivero.existeServicio(codigo);
+								if(!validacion)
+								{
+									System.out.println("Error, ingrese un codigo valido por favor");
+								}
+						}
+						Servicio servicio= new Servicio(codigo);
+						System.out.println(vivero.buscarElemento(servicio));
+						break;
+					}
+					case 3:
+					{
+						cliente=null;
+						mensaje="";
+						
+						while(cliente==null && intentar!='n')
+						{
+							System.out.println(vivero.mostrarClientes());
+							System.out.println("Ingrese el DNI del cliente que desea buscar por favor\n");
+							dniCliente=scan.nextLine();
+							cliente=vivero.BuscaCliente(dniCliente);
+							if(cliente!=null)
+							{
+								System.out.println(vivero.buscarElemento(cliente));
+						    }
+						else
+						   {
+								System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+								intentar=scan.next().charAt(0);
+								scan.nextLine();
+						   }
+					     }
+						break;
+					}
+					case 4:
+					{
+						int idE=0;
+					
+						    System.out.println("Ingrese el ID del empleado a buscar por favor\n");
+						    while (!scan.hasNextInt()) scan.next();
+						    idE = scan.nextInt();
+									
+						   Empleado empleado= new Empleado(idE);
+						System.out.println(vivero.buscarElemento(empleado));
+
+						break;
+					}
+					default:
+						System.out.println("Opcion erronea");
+					}
+					break;
+						
 					}
 					case 6: 
 					{
@@ -2544,13 +2700,14 @@ public class Main {
 				}
 				
 			}
+			acceso.escribirArchivoProductos(vivero);
+			acceso.escribirArchivoServicios(vivero);
+			acceso.escribirArchivoEmpleados(vivero);
+			acceso.escribirArchivoClientes(vivero);
+			acceso.escribirArchivoPedidos(vivero);
 		}
 		
-		acceso.escribirArchivoProductos(vivero);
-		acceso.escribirArchivoServicios(vivero);
-		acceso.escribirArchivoEmpleados(vivero);
-		acceso.escribirArchivoClientes(vivero);
-		acceso.escribirArchivoPedidos(vivero);
+		
 	}
 	
 

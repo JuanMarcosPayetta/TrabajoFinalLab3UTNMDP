@@ -107,6 +107,8 @@ public class Vivero implements IVivero {
 
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
+	
+	
 
 	@Override
 	public <T> String buscarElemento(T elemento) { // producto,servicio,empleado, cliente
@@ -160,8 +162,9 @@ public class Vivero implements IVivero {
 			Iterator<Cliente> it = listaClientes.iterator();
 
 			while (it.hasNext() && flag == 0) {
-				if (it.next().equals(unCliente)) {
-					mensaje = it.toString();
+				Cliente otroCliente=it.next();
+				if (otroCliente.equals(unCliente)) {
+					mensaje = otroCliente.toString();
 					flag = 1;
 				}
 			}
@@ -173,8 +176,9 @@ public class Vivero implements IVivero {
 			Iterator<Empleado> it = listaEmpleados.iterator();
 
 			while (it.hasNext() && flag == 0) {
-				if (it.next().equals(unEmpleado)) {
-					mensaje = it.toString();
+				Empleado otroEmpleado= it.next();
+				if (otroEmpleado.equals(unEmpleado)) {
+					mensaje = otroEmpleado.toString();
 					flag = 1;
 				}
 			}
@@ -282,7 +286,8 @@ public class Vivero implements IVivero {
 		Iterator<Empleado> it = listaEmpleados.iterator();
 
 		while (it.hasNext()) {
-			mensaje.append("[ " + it.next().toString() + " ]");
+			Empleado empleado=it.next();
+			mensaje.append("[ " + empleado.toString() + " ]");
 		}
 
 		return mensaje.toString();
@@ -481,7 +486,7 @@ public class Vivero implements IVivero {
 				Map.Entry<String, Servicio>entry= (Map.Entry<String, Servicio>)it.next();
 				Servicio servicio=entry.getValue();
 				
-				builder.append(servicio.getNombre()+" - "+servicio.getPrecio()+" - "+servicio.getCodigo()+"\n");
+				builder.append("Nombre servicio: "+servicio.getNombre()+" // Precio: "+servicio.getPrecio()+" // Codigo: "+servicio.getCodigo()+"\n");
 			}
 			return builder.toString();
 		}
