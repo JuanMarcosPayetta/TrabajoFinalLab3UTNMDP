@@ -161,7 +161,7 @@ public class Main {
 					System.out.println("2 - Ingresar un servicio al sistema: \n");
 					System.out.println("3 - Ingresar un cliente al sistema: \n");
 					System.out.println("4 - Menu pedidos: \n");
-					System.out.println("5 - ");
+					System.out.println("5 - Menu busquedas: \n");
 					System.out.println("6 - ");
 					System.out.println("7 - ");
 					System.out.println("8 - ");
@@ -171,7 +171,7 @@ public class Main {
 					 * menu buscar: producto, servicio, cliente, empleado
 					 * menu eliminar: producto, servicio (los elimina del catalogo)
 					 * menu mostrar: productos, empleados, clientes  
-					 * menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
+					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
 					 * 				eliminar un producto del carrito, eliminar pedido impago completo
 					 * menu estadisticas (centro informativo)
 					 * menu modificaciones: stock, atributos en general
