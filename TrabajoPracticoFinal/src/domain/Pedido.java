@@ -215,7 +215,7 @@ public class Pedido implements IDescuento, Serializable{
 		}
 		else if(existeMedioP==false)
 		{
-			throw new InputMismatchException("Ingrese un tipo valido (efectivo, tarjeta, cuentaDNI, mercadopago)");
+			throw new InputMismatchException("Ingrese un tipo valido (efectivo, tarjeta, cuentadni, mercadopago)");
 		}
 	}
 
@@ -225,7 +225,7 @@ public class Pedido implements IDescuento, Serializable{
 		ArrayList<String> medios = new ArrayList<String>();
 		medios.add("efectivo");
 		medios.add("tarjeta");
-		medios.add("cuentaDNI");
+		medios.add("cuentadni");
 		medios.add("mercadopago");
 
 		if(medios.contains(medioPago.toLowerCase())) {

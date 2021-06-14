@@ -38,8 +38,10 @@ public class Main {
 		scan= new Scanner(System.in);
 		int opcion=0;
 		boolean validarEmpleado=false;
+		int idEmpleado=0;
 		Vivero vivero= new Vivero();
 		AccesoDatos acceso= new AccesoDatos();
+		
 		
 		acceso.leerArchivoProductos(vivero);
 		acceso.leerArchivoServicios(vivero);
@@ -132,6 +134,7 @@ public class Main {
 					{
 						opcion2='n';
 						validarEmpleado=true;
+						idEmpleado=idE;
 					}
 				}
 				
@@ -2316,8 +2319,7 @@ public class Main {
 											}
 										}
 										
-										boolean validacion=vivero.establecerMedioPago(cliente.getId(), metodoPago);
-										//Pedido pedido=vivero.retornarPedidoImpago(cliente.getId());
+										vivero.establecerMedioPago(cliente.getId(), metodoPago);
 										System.out.println(vivero.visualizarTotalesPedido(cliente));
 										System.out.println("Si desea abonar el pedido ingrese true, caso contrario false:");
 										boolean pagar=scan.nextBoolean();
@@ -2325,6 +2327,7 @@ public class Main {
 										
 										if(pagar)
 										{
+											vivero.setearEmpleado(idEmpleado, cliente.getId());
 											System.out.println(vivero.abonarPedido(cliente));
 										}
 										else

@@ -678,6 +678,11 @@ public class Vivero implements IVivero {
 		return reg.detallesFinalesPedido(cliente);
 	}
 	
+	public void setearEmpleado(int idEmpleado, int idCliente)
+	{
+		reg.setearEmpleado(idEmpleado, idCliente); 
+	}
+	
 	/*
 	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
 	 */

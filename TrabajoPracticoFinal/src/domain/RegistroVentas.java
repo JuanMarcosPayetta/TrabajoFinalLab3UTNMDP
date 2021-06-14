@@ -161,7 +161,6 @@ public class RegistroVentas implements Serializable {
 					}
 					
 					registroPedidos.get(j).setDescuento(registroPedidos.get(j).getMedioDePago());
-					System.out.println(registroPedidos.get(j).getDescuento());
 					totalNeto=totalBruto*registroPedidos.get(j).getDescuento();
                     builder.append("Total Bruto: "+totalBruto+"\n"+"Total Neto: "+totalNeto+"\n"+"Medio de Pago: "+registroPedidos.get(j).getMedioDePago());
 
@@ -256,7 +255,22 @@ public class RegistroVentas implements Serializable {
 			return mensaje;
 		}
 
-
+         public void setearEmpleado(int idEmpleado, int idCliente)
+         {
+        	 boolean encontrado=false;
+        	 for(int i=0; i<registroPedidos.size() && !encontrado; i++)
+        	 {
+        		 if(registroPedidos.get(i).getIdCliente()==idCliente)
+        		 {
+        			 if(!registroPedidos.get(i).isFueAbonado())
+        			 {
+        				 registroPedidos.get(i).setIdEmpleado(idEmpleado);
+        				 encontrado=true;
+        			 }
+        		 }
+        	 }
+         }
+		
         //getter para poder escribir los datos en el archivo 
 		public LinkedList<Pedido> getRegistroPedidos() {
 			return registroPedidos;
