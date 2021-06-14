@@ -2246,6 +2246,7 @@ public class Main {
 							   {
 									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
 									intentar=scan.next().charAt(0);
+									scan.nextLine();
 							   }
 							}
 							
@@ -2350,6 +2351,32 @@ public class Main {
 						}
 						case 4:
 						{
+							cliente=null;
+							mensaje="";
+
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que desea abonar su pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								
+								if(cliente!=null)
+								{
+									boolean impago=vivero.buscarPedidoImpago(cliente.getId());
+									
+									if(impago==true) //si existe un pedido impago de este cliente
+									{
+										Pedido pedido=vivero.retornarPedidoImpago(cliente.getId());
+										System.out.println(pedido.toString());
+									}
+									else
+									{
+										System.out.println("El cliente ingresado no posee pedidos impagos actualmente\n");
+									}
+								}
+							}
+							
 							break;
 						}
 						case 5:
