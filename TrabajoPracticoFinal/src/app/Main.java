@@ -2183,7 +2183,7 @@ public class Main {
 						System.out.println("3-Abonar pedido: \n");
 						System.out.println("4-Mostrar pedido impago de determinado cliente: \n");
 						System.out.println("5-Mostrar todos los pedidos impagos: \n");
-						System.out.println("6-Mostrar historial de pedidos: \n");
+						System.out.println("6-Mostrar todo el historial de pedidos, pagos e impagos: \n");
 						System.out.println("7-Eliminar producto del carrito: \n");
 						System.out.println("8-Eliminar pedido impago de determinado cliente: \n");
 						
@@ -2367,13 +2367,18 @@ public class Main {
 									
 									if(impago==true) //si existe un pedido impago de este cliente
 									{
-										Pedido pedido=vivero.retornarPedidoImpago(cliente.getId());
-										System.out.println(pedido.toString());
+										
+										System.out.println(vivero.mostrarPedidoImpago(cliente));
 									}
 									else
 									{
 										System.out.println("El cliente ingresado no posee pedidos impagos actualmente\n");
 									}
+								}
+								else
+								{
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
 								}
 							}
 							
@@ -2381,14 +2386,66 @@ public class Main {
 						}
 						case 5:
 						{
+							System.out.println(vivero.mostrarTodosLosPedidosImpagos());
+							
 							break;
 						}
 						case 6:
 						{
+							
+							
+							
 							break;
 						}
 						case 7:
 						{
+							cliente=null;
+							mensaje="";
+							clasificacion=null;
+
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que desea abonar su pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								
+								if(cliente!=null)
+								{
+                                    boolean impago=vivero.buscarPedidoImpago(cliente.getId());
+									
+									if(impago==true) //si existe un pedido impago de este cliente
+									{
+										//ADEMAS DE PREGUNTAR QUE TENGA UN PEDIDO IMPAGO, QUE EL CARRITO NO ESTE VACIO 
+										while(clasificacion==null)
+										{
+											System.out.println(vivero.mostrarPedidoImpago(cliente));
+											System.out.println("Ingrese el codigo del producto/servicio a eliminar de su carrito: \n");
+											codigo=scan.nextLine();
+										
+												clasificacion=vivero.buscarClasificacionProducto(codigo);
+												if(clasificacion==null)
+												{
+													System.out.println("Error, ingrese un codigo valido por favor");
+												}
+										}
+
+										System.out.println(vivero.eliminarPeticionCarrito(codigo, cliente));
+								
+									}
+									else
+									{
+										System.out.println("El cliente ingresado no posee pedidos impagos actualmente\n");
+									}
+
+								}
+								else
+								{
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+								}
+							}
+
 							break;
 						}
 						case 8:

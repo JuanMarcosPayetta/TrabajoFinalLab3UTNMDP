@@ -652,7 +652,6 @@ public class Vivero implements IVivero {
 		return reg.mostrarTodosLosPedidos();
 	}
 	
-	
 	public String abonarPedido(Cliente cliente)
 	{
 		return reg.pagarPedido(cliente);
@@ -673,6 +672,17 @@ public class Vivero implements IVivero {
 		return reg.retornarPedidoImpago(idCliente);
 	}
 	
+	public String mostrarPedidoImpago(Cliente cliente)
+	{
+		return reg.mostrarPedidoImpagoCliente(cliente);
+		
+	}
+	
+	public String mostrarTodosLosPedidosImpagos()
+	{
+		return reg.mostrarTodosLosPedidosImpagos();
+	}
+	
 	public String visualizarTotalesPedido(Cliente cliente)
 	{
 		return reg.detallesFinalesPedido(cliente);
@@ -682,6 +692,13 @@ public class Vivero implements IVivero {
 	{
 		reg.setearEmpleado(idEmpleado, idCliente); 
 	}
+	
+	public String eliminarPeticionCarrito(String codigoP, Cliente cliente)
+	{
+       return reg.eliminarPeticionCarrito(codigoP, cliente);	
+	}
+	
+	
 	
 	/*
 	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS

@@ -217,6 +217,7 @@ public class RegistroVentas implements Serializable {
 			return sb.toString();
 		}
 		
+		//Pagos/Impagos
 		public String mostrarTodosLosPedidos()
 		{
 			StringBuilder builder= new StringBuilder();
@@ -227,6 +228,21 @@ public class RegistroVentas implements Serializable {
 			return builder.toString();
 		}
 		
+		
+		public String mostrarTodosLosPedidosImpagos()
+		{
+			StringBuilder builder= new StringBuilder();
+			for(int i=0; i<registroPedidos.size(); i++)
+			{
+				if(!registroPedidos.get(i).isFueAbonado())
+				{
+					builder.append(registroPedidos.get(i).toString()+"\n");
+				}
+			}
+			return builder.toString();
+		}
+		
+		
 		// primero tiene q llamar al metodo BuscaCliente (esta en la clase vivero) y despues, si existe el cliente
 		// puede usar el metodo
 		// para eliminar servicios y productor del carrito
@@ -234,6 +250,7 @@ public class RegistroVentas implements Serializable {
 			String mensaje = "No se encontro ningun pedido actual";
 			boolean pedidoImp = false;
 			int flag = 0;
+			int cantidad=0;
 
 			pedidoImp = buscarPedidoImpago(elCliente.getId());
 			if (pedidoImp == true) {
@@ -243,6 +260,7 @@ public class RegistroVentas implements Serializable {
 						mensaje = "No se encontro ningun elemento en su carrito con el codigo ingresado";
 						for (int i = 0; i < registroPedidos.get(j).getCarrito().size() && flag == 0; i++) {
 							if (registroPedidos.get(j).getCarrito().get(i).getCodigo().equalsIgnoreCase(codigoP)) {
+								cantidad=registroPedidos.get(j).getCarrito().get(i).getCantidad();
 								registroPedidos.get(j).getCarrito().remove(i);
 								mensaje = "Elemento eliminado del carrito con exito";
 								flag = 1;
