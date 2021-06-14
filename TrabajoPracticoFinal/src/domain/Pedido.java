@@ -18,7 +18,7 @@ public class Pedido implements IDescuento, Serializable{
 	private double totalBruto;
 	private double totalNeto;
 	private String medioDePago;
-	private int descuento; 
+	private double descuento; 
 	private boolean fueAbonado;
 	private int numeroPedido;
 	private int numeroPeidoauto=1;
@@ -36,7 +36,7 @@ public class Pedido implements IDescuento, Serializable{
 		carrito = new ArrayList<PeticionCompra>();
 	}
 	
-	public Pedido(int idCliente, int idEmpleado, double totalBruto, double totalNeto, String medioDePago, int descuento,
+	public Pedido(int idCliente, int idEmpleado, double totalBruto, double totalNeto, String medioDePago, double descuento,
 			boolean fueAbonado, int numeroPedido, ArrayList<PeticionCompra> carrito) {
 		this.idCliente = idCliente;
 		this.idEmpleado=idEmpleado;
@@ -121,26 +121,31 @@ public class Pedido implements IDescuento, Serializable{
 		return mensaje;
 	}
 
-	public int getDescuento() {
+	public double getDescuento() {
 		return descuento;
 	}
 
 	public void setDescuento(String medioDePago) 
 	{
+		double desc=0;
 		boolean existeMedioP = existeMedioDePago(medioDePago);
 		if(existeMedioP==true) 
 		{
 			if (medioDePago.equalsIgnoreCase("efectivo")) {
-				this.descuento = (100 - DESC_EFECTIVO) / 100 ;
+				desc=((100 - DESC_EFECTIVO) / 100); 
+				this.descuento = desc;
 			}
 			else if (medioDePago.equalsIgnoreCase("tarjeta")) {
-				this.descuento = (100 - DESC_TARJETA) / 100 ;
+				desc = (100 - DESC_TARJETA) / 100 ;
+				this.descuento = desc;
 			}
-			else if (medioDePago.equalsIgnoreCase("cuenta dni")) {
-				this.descuento = (100 - DESC_CUENTADNI) / 100 ;
+			else if (medioDePago.equalsIgnoreCase("cuentadni")) {
+				desc = (100 - DESC_CUENTADNI) / 100 ;
+				this.descuento = desc;
 			}
 			else {// si es = a "mercado pago"
-				this.descuento = (100 - DESC_MERCADOPAGO) / 100 ;
+				desc = (100 - DESC_MERCADOPAGO) / 100 ;
+				this.descuento = desc;
 			}
 		}
 	}
@@ -210,7 +215,7 @@ public class Pedido implements IDescuento, Serializable{
 		}
 		else if(existeMedioP==false)
 		{
-			throw new InputMismatchException("Ingrese un tipo valido (efectivo, tarjeta, cuenta DNI, mercado pago)");
+			throw new InputMismatchException("Ingrese un tipo valido (efectivo, tarjeta, cuentaDNI, mercadopago)");
 		}
 	}
 
@@ -220,8 +225,8 @@ public class Pedido implements IDescuento, Serializable{
 		ArrayList<String> medios = new ArrayList<String>();
 		medios.add("efectivo");
 		medios.add("tarjeta");
-		medios.add("cuenta DNI");
-		medios.add("mercado pago");
+		medios.add("cuentaDNI");
+		medios.add("mercadopago");
 
 		if(medios.contains(medioPago.toLowerCase())) {
 			existe=true;

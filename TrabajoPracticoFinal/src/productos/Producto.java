@@ -223,6 +223,29 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	}
 
+	/*
+	 * Valida la cantidad a comprar de un producto/servicio
+	 */
+	public static String validarCantidadCompraLlamada(int cantidad)
+	{
+		String mensaje=null;
+		try {
+			validarCantidadCompra(cantidad);
+		} catch (DatoNumeroException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarCantidadCompra(int cantidad)throws DatoNumeroException
+	{
+		if(cantidad<=0)
+		{
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+", ni igual a 0\n");
+		}
+	}
+	
+	
 	public String getCodigo() {
 		return codigo;
 	}

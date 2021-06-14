@@ -103,7 +103,7 @@ public class Vivero implements IVivero {
 		return catalogoProductos.containsKey(clasificacion);
 	}
 
-	private boolean existeServicio(String codigo) {
+	public boolean existeServicio(String codigo) {
 
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
@@ -452,7 +452,7 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	//Muestra el nombre, clasificacion, stock y codigo del producto (para el momento de elegir el codigo del producto al comprar)
+	//Muestra el nombre, clasificacion, stock, precio y codigo del producto (para el momento de elegir el codigo del producto al comprar)
 	public String mostrarProductoResumido()
 	{
 		StringBuilder builder= new StringBuilder();
@@ -463,13 +463,30 @@ public class Vivero implements IVivero {
 			ArrayList<Producto> productos=entry.getValue();
 			for(int i=0; i<productos.size(); i++)
 			{
-				builder.append(productos.get(i).getNombre()+" - "+productos.get(i).getClasificacion()+" - "+productos.get(i).getStock()+" - "+productos.get(i).getCodigo()+"\n");
+				builder.append(productos.get(i).getNombre()+" - "+productos.get(i).getClasificacion()+" - "+productos.get(i).getPrecio()+" - "+productos.get(i).getStock()+" - "+productos.get(i).getCodigo()+"\n");
 			}
 		}
 		
 		return builder.toString();
 	}
 	
+	
+	//Muestra el nombre, stock, precio y codigo del servicio (para el momento de elegir el codigo del producto al comprar)
+		public String mostrarServicioResumido()
+		{
+			StringBuilder builder= new StringBuilder();
+			Iterator<Map.Entry<String, Servicio>>it= catalogoServicios.entrySet().iterator();
+			while(it.hasNext())
+			{
+				Map.Entry<String, Servicio>entry= (Map.Entry<String, Servicio>)it.next();
+				Servicio servicio=entry.getValue();
+				
+				builder.append(servicio.getNombre()+" - "+servicio.getPrecio()+" - "+servicio.getCodigo()+"\n");
+			}
+			return builder.toString();
+		}
+	
+		
 	//busca y retorna la "clasifiacion" del producto que sea desea comprar
 	public String buscarClasificacionProducto(String codigoProducto)
 	{
@@ -492,9 +509,12 @@ public class Vivero implements IVivero {
 		return clasificacion;
 	}
 	
+
+	
 	public Cliente BuscaCliente(String dni) { // si retorna null "Cliente no encontrado"...desea crear unuevo?(en main)
 		int flag = 0;
 		Cliente elCliente = null;
+		Cliente encontrado=null;
 
 		Iterator<Cliente> itt = listaClientes.iterator();
 
@@ -502,9 +522,10 @@ public class Vivero implements IVivero {
 			elCliente = itt.next(); // guardo un cliente y debajo compruebo que sea el que busco
 			if (elCliente.getDni().equals(dni)) {
 				flag = 1;
+				encontrado=elCliente;
 			}
 		}
-		return elCliente;
+		return encontrado;
 	}
 
 	
@@ -629,6 +650,32 @@ public class Vivero implements IVivero {
 	public String mostrarTodosLosPedidos()
 	{
 		return reg.mostrarTodosLosPedidos();
+	}
+	
+	
+	public String abonarPedido(Cliente cliente)
+	{
+		return reg.pagarPedido(cliente);
+	}
+	
+	public boolean establecerMedioPago(int idCliente, String medioPago)
+	{
+		return reg.establecerMetodoPago(idCliente, medioPago);
+	}
+	
+	public boolean buscarPedidoImpago(int idCliente)
+	{
+		return reg.buscarPedidoImpago(idCliente);
+	}
+	
+	public Pedido retornarPedidoImpago(int idCliente)
+	{
+		return reg.retornarPedidoImpago(idCliente);
+	}
+	
+	public String visualizarTotalesPedido(Cliente cliente)
+	{
+		return reg.detallesFinalesPedido(cliente);
 	}
 	
 	/*

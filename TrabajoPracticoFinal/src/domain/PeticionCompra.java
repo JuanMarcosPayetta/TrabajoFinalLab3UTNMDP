@@ -111,7 +111,7 @@ public class PeticionCompra implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "codigo producto:" + codigo + ", precio unitario: " + precioUnitario + ", cantidad:" + cantidad+"\n";
+		return "Codigo:" + codigo + ", Precio Unitario: " + precioUnitario + ", Cantidad solicitada:" + cantidad+"\n";
 	}
 	
 }

@@ -31,6 +31,44 @@ public class RegistroVentas implements Serializable {
 		}
 		return encontrado;
 	}
+	
+	 /*
+		 * busca y retorna un pedido impago
+		 */
+		public Pedido retornarPedidoImpago(int idCliente) {
+			ListIterator<Pedido> it = registroPedidos.listIterator();
+			Pedido pedido=null;
+			boolean encontrado = false;
+			while (it.hasNext() && encontrado == false) {
+				pedido = it.next();
+				if (pedido.getIdCliente() == idCliente) {
+					if (!pedido.isFueAbonado()) {
+						encontrado = true;
+					}
+				}
+			}
+			return pedido;
+		}
+	
+	
+	/*
+	 * busca un pedido impago
+	 */
+	public boolean establecerMetodoPago(int idCliente, String metodoPago) {
+		ListIterator<Pedido> it = registroPedidos.listIterator();
+		
+		boolean encontrado = false;
+		while (it.hasNext() && encontrado == false) {
+			 Pedido pedido = it.next();
+			if (pedido.getIdCliente() == idCliente) {
+				if (!pedido.isFueAbonado()) {
+					encontrado = true;
+					pedido.setMedioDePago(metodoPago);
+				}
+			}
+		}
+		return encontrado;
+	}
 
 	/*
 	 * agrega una peticion de compra a un nuevo pedido, y agrega este pedido a la
@@ -77,8 +115,7 @@ public class RegistroVentas implements Serializable {
 		}
 	}
 
-	//EL MEDIO DE PAGO HAY QUE ENVIARSELO A ESTE METODO, ESTABLECERLO ANTES DE SETEAR EL DESCUENTO?
-	
+
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 	// puede usar el metodo
 	public String pagarPedido(Cliente cliente) {
@@ -91,18 +128,50 @@ public class RegistroVentas implements Serializable {
 				if (registroPedidos.get(j).getIdCliente() == cliente.getId() 
 						&& registroPedidos.get(j).isFueAbonado() == false) 
 				{
-					//SET MEDIO DE PAGO ??
 					registroPedidos.get(j).setDescuento(registroPedidos.get(j).getMedioDePago());
 					registroPedidos.get(j).setTotalBruto();
 					registroPedidos.get(j).setTotalNeto();
 					registroPedidos.get(j).setFueAbonado(true);
 					flag = 1;
-					mensaje="Pedido abonado con exito";
+					mensaje="Pedido abonado con exito, muchas gracias por su compra";
 				}
 			}
 		}
 		return mensaje;
 	}
+	
+	//Visualizacion totales pedido antes de pagar (no setea, solo muestra)
+	public String detallesFinalesPedido(Cliente cliente) {
+		int flag = 0;
+		double totalNeto=0;
+		double totalBruto=0;
+		
+		StringBuilder builder= new StringBuilder();
+		
+			for (int j = 0; j < registroPedidos.size() && flag == 0; j++) 
+			{
+				if (registroPedidos.get(j).getIdCliente() == cliente.getId() 
+						&& registroPedidos.get(j).isFueAbonado() == false) 
+				{
+					
+					for(int i=0; i<registroPedidos.get(j).getCarrito().size(); i++)
+					{
+						double valorItem = registroPedidos.get(j).getCarrito().get(i).getPrecioUnitario() * registroPedidos.get(j).getCarrito().get(i).getCantidad();
+						totalBruto = valorItem + totalBruto;
+					}
+					
+					registroPedidos.get(j).setDescuento(registroPedidos.get(j).getMedioDePago());
+					System.out.println(registroPedidos.get(j).getDescuento());
+					totalNeto=totalBruto*registroPedidos.get(j).getDescuento();
+                    builder.append("Total Bruto: "+totalBruto+"\n"+"Total Neto: "+totalNeto+"\n"+"Medio de Pago: "+registroPedidos.get(j).getMedioDePago());
+
+					flag = 1;
+				}
+			}
+
+		return builder.toString();
+	}
+	
 	
 	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
 		// puede usar el metodo

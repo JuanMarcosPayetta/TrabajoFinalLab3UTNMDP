@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import domain.AccesoDatos;
 import domain.Cliente;
 import domain.Empleado;
+import domain.Pedido;
 import domain.Servicio;
 import domain.Vivero;
 import productos.Arbol;
@@ -48,6 +49,8 @@ public class Main {
 		
 		while(!validarEmpleado)
 		{
+			System.out.println(vivero.mostrarTodosLosPedidos());
+			System.out.println(vivero.mostrarProductoResumido());
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: ");
 			System.out.println("2-Ingresar al sistema: ");
@@ -2174,10 +2177,10 @@ public class Main {
 						System.out.println("Elija la opcion deseada por favor\n");
 						System.out.println("1-Comprar Producto: \n");
 						System.out.println("2-Comprar Servicio: \n");
-						System.out.println("3-Mostrar pedido impago de determinado cliente: \n");
-						System.out.println("4-Mostrar todos los pedidos impagos: \n");
-						System.out.println("5-Mostrar historial de pedidos: \n");
-						System.out.println("6-Abonar pedido: \n");
+						System.out.println("3-Abonar pedido: \n");
+						System.out.println("4-Mostrar pedido impago de determinado cliente: \n");
+						System.out.println("5-Mostrar todos los pedidos impagos: \n");
+						System.out.println("6-Mostrar historial de pedidos: \n");
 						System.out.println("7-Eliminar producto del carrito: \n");
 						System.out.println("8-Eliminar pedido impago de determinado cliente: \n");
 						
@@ -2186,7 +2189,7 @@ public class Main {
 						
 						String dniCliente=null;
 						Cliente cliente=null;
-						String codigoProducto=null;
+						String codigo=null;
 						int cantidad=0;
 						String clasificacion=null;
 						mensaje=" ";
@@ -2198,8 +2201,8 @@ public class Main {
 							
 							while(cliente==null && intentar!='n')
 							{
-								System.out.println("Ingrese el DNI del cliente que efectua al pedido por favor\n");
 								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que efectua al pedido por favor\n");
 								dniCliente=scan.nextLine();
 								cliente=vivero.BuscaCliente(dniCliente);
 								if(cliente!=null)
@@ -2208,9 +2211,9 @@ public class Main {
 									{
 										System.out.println(vivero.mostrarProductoResumido());
 										System.out.println("Ingrese el codigo del producto que desea agregar al carrito por favor\n");
-										codigoProducto=scan.nextLine();
+										codigo=scan.nextLine();
 	
-											clasificacion=vivero.buscarClasificacionProducto(codigoProducto);
+											clasificacion=vivero.buscarClasificacionProducto(codigo);
 											if(clasificacion==null)
 											{
 												System.out.println("Error, ingrese un codigo valido por favor");
@@ -2224,14 +2227,15 @@ public class Main {
 										System.out.println("Ingrese la cantidad del producto que desea agregar por favor\n");
 										cantidad=scan.nextInt();
 										scan.nextLine();
-										mensaje=Producto.validarValorNumericoLlamada(cantidad);
+										mensaje=Producto.validarCantidadCompraLlamada(cantidad);
 										if(mensaje!=null)
 										{
 											System.out.println(mensaje);
 										}	
 									}
 									
-									Producto producto= new PlantaAcuatica(codigoProducto, clasificacion);
+									//instanciamos una plantaAcuatica porque producto es abstracto y no puede instanciarse. Es a fin de enviarle al metodo lo que solicita
+									Producto producto= new PlantaAcuatica(codigo, clasificacion);
 									System.out.println(vivero.ComprarProducto(producto, cliente, cantidad));
 
 							}
@@ -2246,10 +2250,99 @@ public class Main {
 						}
 						case 2:
 						{
+							cliente=null;
+							mensaje="";
+							boolean validacion=false;
+							
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que efectua al pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								if(cliente!=null)
+								{
+									while(!validacion)
+									{
+										System.out.println(vivero.mostrarServicioResumido());
+										System.out.println("Ingrese el codigo del servicio que desea agregar al carrito por favor\n");
+										codigo=scan.nextLine();
+	
+											validacion=vivero.existeServicio(codigo);
+											if(!validacion)
+											{
+												System.out.println("Error, ingrese un codigo valido por favor");
+											}
+									}
+								
+									System.out.println(vivero.ComprarServicio(codigo, cliente));
+							}
+							else
+							   {
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+							   }
+						}
+							
 							break;
 						}
 						case 3:
 						{
+							cliente=null;
+							String metodoPago=null;
+							mensaje="";
+
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que desea abonar su pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								
+								if(cliente!=null)
+								{
+									boolean impago=vivero.buscarPedidoImpago(cliente.getId());
+									
+									if(impago==true) //si existe un pedido impago de este cliente
+									{
+										while(mensaje!=null)
+										{
+											System.out.println("Ingrese el medio de pago por favor(efectivo, tarjeta, cuenta DNI, mercadopago)");
+											metodoPago=scan.nextLine();
+											mensaje=Pedido.validarMedioDePagoLlamada(metodoPago);
+											if(mensaje!=null)
+											{
+												System.out.println(mensaje);
+											}
+										}
+										
+										boolean validacion=vivero.establecerMedioPago(cliente.getId(), metodoPago);
+										//Pedido pedido=vivero.retornarPedidoImpago(cliente.getId());
+										System.out.println(vivero.visualizarTotalesPedido(cliente));
+										System.out.println("Si desea abonar el pedido ingrese true, caso contrario false:");
+										boolean pagar=scan.nextBoolean();
+										scan.nextLine();
+										
+										if(pagar)
+										{
+											System.out.println(vivero.abonarPedido(cliente));
+										}
+										else
+										{
+											System.out.println("Operacion de pago interrumpida");
+										}
+									}
+									else
+									{
+										System.out.println("El cliente ingresado no posee ningun pedido impago actualmente\n");
+									}
+								}
+								else
+								{
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+								}
+						}
 							break;
 						}
 						case 4:
