@@ -20,6 +20,13 @@ import productos.SanidadVegetal;
 import productos.Semilla;
 import productos.Sustrato;
 
+/**
+ * 
+ * Esta clase almacena un ArrayList de un tipo de dato generico que extienda de Producto
+ *
+ * @param <T>
+ */
+
 public class CentroInformativo<T extends Producto> {
 
 	private ArrayList<T>datos;
@@ -34,6 +41,11 @@ public class CentroInformativo<T extends Producto> {
 		this.datos=datosArray;
 	}
 	
+
+/**
+ * Muestra toda la informacion almacenada en el ArrayList
+ * @return String
+ */
 	public String mostrarTodo()
 	{
 		StringBuilder builder= new StringBuilder();
@@ -45,12 +57,17 @@ public class CentroInformativo<T extends Producto> {
 		return builder.toString();
 	}
 	
+/**
+ * Muestra el elemento de mayor precio en el ArrayList
+ * Debe tener el metodo CompareTo implementado
+ * @return String
+ */
 	public String elementoMasCostoso()
 	{
 		T masCostoso=datos.get(0);
 		for(int i=1; i<datos.size(); i++)
 		{
-		   if(masCostoso.compareTo(datos.get(i))==-1)
+		   if(masCostoso.compareTo(datos.get(i))==-1) 
 		   {
 			   masCostoso=datos.get(i);
 		   }
@@ -59,6 +76,12 @@ public class CentroInformativo<T extends Producto> {
 		return masCostoso.toString();
 	}
 	
+/**
+ * Muestra el elemento de menor precio en el ArrayList
+ * Debe tener el metodo CompareTo implementado
+ * 
+ * @return String
+ */
 	public String elementoMasEconomico()
 	{
 		T masEconomico=datos.get(0);
@@ -73,6 +96,10 @@ public class CentroInformativo<T extends Producto> {
 		return masEconomico.toString();
 	}
 	
+	/**
+	 * Recorre la coleccion y retorna el stock total de cada tipo de dato siempre que este sea mayor a cero.
+	 * @return String
+	 */
 	public String informacionStockPositivo()
 	{
 		int cant1=0;
@@ -527,7 +554,10 @@ public class CentroInformativo<T extends Producto> {
 		
 		return mensaje;
   }
-	
+	/**
+	 * Retorna aquellas colecciones que tienen actualmente un stock menor a 1
+	 * @return String
+	 */
 	public String stockNegativo()
 	{
 		StringBuilder builder= new StringBuilder();
@@ -541,7 +571,11 @@ public class CentroInformativo<T extends Producto> {
 		return builder.toString();
 	}
 	
-	
+	/**
+	 * Muestra en orden de menor a mayor segun el precio
+	 * Tienen que tener implementado el metodo compare to
+	 * @return String
+	 */
 	public String mostrarSegunPrecio()
 	{
 		Collections.sort(datos);
@@ -553,24 +587,4 @@ public class CentroInformativo<T extends Producto> {
 		
 		return builder.toString();
 	}
-	
-	//ANALIZAR SI ESTO FUNCIONA....
-	public String plantasFlorales()
-	{
-		StringBuilder builder= new StringBuilder();
-		for(int i=0; i<datos.size(); i++)
-		{
-			if(datos.get(i) instanceof Planta) 
-			{
-				Planta planta= (Planta)datos.get(i); //--> funciona??
-				if(planta.isFlor())
-				{
-					builder.append(planta.toString()+"\n");
-				}
-			}
-		}
-		return builder.toString();
-	}
-	
-  
 }
