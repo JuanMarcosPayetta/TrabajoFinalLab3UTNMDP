@@ -463,7 +463,7 @@ public class Vivero implements IVivero {
 			ArrayList<Producto> productos=entry.getValue();
 			for(int i=0; i<productos.size(); i++)
 			{
-				builder.append(productos.get(i).getNombre()+" - "+productos.get(i).getClasificacion()+" - "+productos.get(i).getPrecio()+" - "+productos.get(i).getStock()+" - "+productos.get(i).getCodigo()+"\n");
+				builder.append("Nombre producto: "+ productos.get(i).getNombre()+" // Clasifiacion: "+productos.get(i).getClasificacion()+" // Precio: "+productos.get(i).getPrecio()+" // Stock actual: "+productos.get(i).getStock()+" // Codigo: "+productos.get(i).getCodigo()+"\n");
 			}
 		}
 		
@@ -678,6 +678,12 @@ public class Vivero implements IVivero {
 		
 	}
 	
+	public String mostrarHistorialPedidosCliente(Cliente cliente)
+	{
+		return reg.mostrarHistorialPedidosCliente(cliente);
+		
+	}
+	
 	public boolean verificarCarritoNoVacio(int idCliente)
 	{
 		return reg.verificarCarritoVacio(idCliente);
@@ -703,6 +709,10 @@ public class Vivero implements IVivero {
        return reg.eliminarPeticionCarrito(codigoP, cliente);	
 	}
 	
+	public String eliminarPedidoImpagoCliente(Cliente cliente)
+	{
+		return reg.eliminarPedidoImpagoCliente(cliente);
+	}
 	
 	
 	/*

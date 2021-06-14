@@ -16,7 +16,7 @@ public class RegistroVentas implements Serializable {
 
     
     /*
-	 * busca un pedido impago
+	 * busca un pedido impago, indica true si lo encontro o false en caso contrario
 	 */
 	public boolean buscarPedidoImpago(int idCliente) {
 		ListIterator<Pedido> it = registroPedidos.listIterator();
@@ -32,7 +32,7 @@ public class RegistroVentas implements Serializable {
 		return encontrado;
 	}
 	
-	 /*
+	     /*
 		 * busca y retorna un pedido impago
 		 */
 		public Pedido retornarPedidoImpago(int idCliente) {
@@ -230,6 +230,8 @@ public class RegistroVentas implements Serializable {
 			for (int j = 0; j < registroPedidos.size(); j++) {
 				if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
 					sb.append("PEDIDO N°"+j+":"+"\n");
+					sb.append("Abonado: "+ registroPedidos.get(j).isFueAbonado()+"\n");
+					sb.append("Carrito: "+"\n");
 					for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
 						sb.append(registroPedidos.get(j).getCarrito().get(i).toString() + "\n");
 					}
@@ -249,7 +251,9 @@ public class RegistroVentas implements Serializable {
 			return builder.toString();
 		}
 		
-		
+		/*
+		 * muestra todos los pedidos impagos del sistema
+		 */
 		public String mostrarTodosLosPedidosImpagos()
 		{
 			StringBuilder builder= new StringBuilder();
@@ -293,6 +297,9 @@ public class RegistroVentas implements Serializable {
 			return mensaje;
 		}
 
+		/*
+		 * establece el empleado que administro el pago del pedido
+		 */
          public void setearEmpleado(int idEmpleado, int idCliente)
          {
         	 boolean encontrado=false;
@@ -308,6 +315,29 @@ public class RegistroVentas implements Serializable {
         		 }
         	 }
          }
+         
+         /*
+          * elimina un pedido impago de un cliente
+          */
+         public String eliminarPedidoImpagoCliente(Cliente cliente)
+         {
+        	 String mensaje="";
+        	 boolean encontrado=false;
+        	 for(int i=0; i<registroPedidos.size() && !encontrado; i++)
+        	 {
+        		 if(registroPedidos.get(i).getIdCliente()==cliente.getId())
+        		 {
+        			 if(!registroPedidos.get(i).isFueAbonado())
+        			 {
+        				 registroPedidos.remove(i);
+        				 mensaje="Pedido eliminado con exito\n";
+        				 encontrado=true;
+        			 }
+        		 }
+        	 }
+        	 return mensaje;
+         }
+         
 		
         //getter para poder escribir los datos en el archivo 
 		public LinkedList<Pedido> getRegistroPedidos() {

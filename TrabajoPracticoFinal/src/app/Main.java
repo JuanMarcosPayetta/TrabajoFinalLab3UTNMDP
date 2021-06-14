@@ -2182,10 +2182,11 @@ public class Main {
 						System.out.println("2-Comprar Servicio: \n");
 						System.out.println("3-Abonar pedido: \n");
 						System.out.println("4-Mostrar pedido impago de determinado cliente: \n");
-						System.out.println("5-Mostrar todos los pedidos impagos: \n");
-						System.out.println("6-Mostrar todo el historial de pedidos, pagos e impagos: \n");
-						System.out.println("7-Eliminar producto del carrito: \n");
-						System.out.println("8-Eliminar pedido impago de determinado cliente: \n");
+						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
+						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente: \n ");
+						System.out.println("7-Mostrar el historial de pedidos del sistema, pagos e impagos: \n");
+						System.out.println("8-Eliminar producto del carrito de un cliente: \n");
+						System.out.println("9-Eliminar pedido impago de determinado cliente: \n");
 						
 						opcion3=scan.nextInt();
 						scan.nextLine();
@@ -2359,7 +2360,7 @@ public class Main {
 							while(cliente==null && intentar!='n')
 							{
 								System.out.println(vivero.mostrarClientes());
-								System.out.println("Ingrese el DNI del cliente que desea abonar su pedido por favor\n");
+								System.out.println("Ingrese el DNI del cliente del cual desea visualizar su pedido impago por favor\n");
 								dniCliente=scan.nextLine();
 								cliente=vivero.BuscaCliente(dniCliente);
 								
@@ -2395,12 +2396,34 @@ public class Main {
 						}
 						case 6:
 						{
+							cliente=null;
 							
-							
-							
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente del cual desea ver su historial de pedidos por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								if(cliente!=null)
+								{
+									System.out.println(vivero.mostrarHistorialPedidosCliente(cliente));
+								}
+								else
+								{
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+									scan.nextLine();
+							    }
+						     }
 							break;
 						}
 						case 7:
+						{
+							System.out.println(vivero.mostrarTodosLosPedidos());
+
+							break;
+						}
+						case 8:
 						{
 							cliente=null;
 							mensaje="";
@@ -2409,7 +2432,7 @@ public class Main {
 							while(cliente==null && intentar!='n')
 							{
 								System.out.println(vivero.mostrarClientes());
-								System.out.println("Ingrese el DNI del cliente que desea abonar su pedido por favor\n");
+								System.out.println("Ingrese el DNI del cliente que desea eliminar una peticion del carrito por favor\n");
 								dniCliente=scan.nextLine();
 								cliente=vivero.BuscaCliente(dniCliente);
 								
@@ -2419,8 +2442,7 @@ public class Main {
 									
 									if(impago==true) //si existe un pedido impago de este cliente
 									{
-										//ADEMAS DE PREGUNTAR QUE TENGA UN PEDIDO IMPAGO, QUE EL CARRITO NO ESTE VACIO 
-										boolean carritoNoVacio=vivero.verificarCarritoNoVacio(cliente.getId());
+										boolean carritoNoVacio=vivero.verificarCarritoNoVacio(cliente.getId()); //que el carrito no este vacio
 										if(!carritoNoVacio) //si el carrito no esta vacio
 										{
 												System.out.println(vivero.mostrarPedidoImpago(cliente));
@@ -2448,11 +2470,38 @@ public class Main {
 									scan.nextLine();
 								}
 							}
-
 							break;
 						}
-						case 8:
+						case 9:
 						{
+                            cliente=null;
+							while(cliente==null && intentar!='n')
+							{
+								System.out.println(vivero.mostrarClientes());
+								System.out.println("Ingrese el DNI del cliente que desea eliminar el pedido por favor\n");
+								dniCliente=scan.nextLine();
+								cliente=vivero.BuscaCliente(dniCliente);
+								if(cliente!=null)
+								{
+								    boolean impago=vivero.buscarPedidoImpago(cliente.getId());
+										
+									if(impago==true) //si existe un pedido impago de este cliente
+									{
+										System.out.println(vivero.eliminarPedidoImpagoCliente(cliente));
+									}
+									else
+									{
+										System.out.println("El cliente ingresado no posee nigun pedido impago\n");
+									}
+								}
+								else
+								{
+									System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+									intentar=scan.next().charAt(0);
+									scan.nextLine();
+							    }
+						     }
+							
 							break;
 						}
 						
