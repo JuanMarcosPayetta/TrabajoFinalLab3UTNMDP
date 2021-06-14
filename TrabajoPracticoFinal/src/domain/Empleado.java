@@ -14,17 +14,16 @@ public class Empleado implements Serializable{
 	private String nombre;
 	private String apellido;
 	private String contrasenia;
-	private static int idSig=0;
 	
 	public Empleado() {
-		this.ID=idSig++;
+		this.ID=0;
 		this.nombre=null;
 		this.apellido=null;
 		this.contrasenia=null;
 	}
 
 	public Empleado(int iD, String nombre, String apellido, String contrasenia) {
-		this.ID=idSig++;
+		this.ID=iD;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.contrasenia=contrasenia;
@@ -32,7 +31,7 @@ public class Empleado implements Serializable{
 	
 	public Empleado(String nombre, String apellido, String contrasenia)
 	{
-		this.ID=idSig++;
+		this.ID=0;
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.contrasenia=contrasenia;
@@ -84,6 +83,10 @@ public class Empleado implements Serializable{
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public void setID(int iD) {
+		ID = iD;
 	}
 
 	public String getNombre() {

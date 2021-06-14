@@ -110,13 +110,24 @@ public class Main {
 			 scan.nextLine();
 			 */
 			
-			System.out.println(nombre);
-			System.out.println(apellido);
-			System.out.println(pass);
-			Empleado empleado= new Empleado(nombre, apellido, pass);
-			vivero.agregarElemento(empleado);
+			Empleado empleado=null;
+			int idMayor=vivero.buscarMayorIdEmpleado();
+			if(idMayor==-1)
+			{
+				empleado= new Empleado(1, nombre, apellido, pass);
+			}
+			else
+			{
+				empleado= new Empleado(idMayor+1, nombre, apellido, pass);
+			}
+			
+			if(empleado!=null)
+			{
+				vivero.agregarElemento(empleado);
+				System.out.println("Empleado creado con exito. Su ID es: "+empleado.getID());
+			}
 			System.out.println(vivero.mostrarEmpleados());
-			System.out.println("Empleado creado con exito. Su ID es: "+empleado.getID());
+			
 			break;
 			
 			}

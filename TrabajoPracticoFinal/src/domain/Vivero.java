@@ -652,6 +652,32 @@ public class Vivero implements IVivero {
 		}
 	}
 	
+	/*
+	 * Busca el mayor id de un empleado, para generar el siguiente
+	 */
+	public int buscarMayorIdEmpleado()
+	{
+		int mayorId=-1;
+		
+		Iterator<Empleado>it=listaEmpleados.iterator();
+		if(!listaEmpleados.isEmpty())
+		{
+			Empleado empleado=it.next();
+			mayorId=empleado.getID();
+			
+			while(it.hasNext())
+			{
+				empleado=it.next();
+				if(mayorId<empleado.getID())
+				{
+					mayorId=empleado.getID();
+				}
+			}
+		}
+		
+		return mayorId;
+	}
+	
 	public String mostrarTodosLosPedidos()
 	{
 		return reg.mostrarTodosLosPedidos();
