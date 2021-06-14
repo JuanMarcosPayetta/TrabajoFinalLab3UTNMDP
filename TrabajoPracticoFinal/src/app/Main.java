@@ -2687,9 +2687,52 @@ public class Main {
 					}
 					break;
 						
+					
 					}
 					case 6: 
 					{
+						System.out.println("Elija la opcion deseada por favor\n");
+						System.out.println("1-Buscar Producto: \n");
+						System.out.println("2-Buscar Servicio: \n");
+						System.out.println("3-Buscar Cliente: \n");
+						System.out.println("4-Buscar Empleado: \n");
+						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
+						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente, pagos e impagos: \n ");
+						
+						opcion3=scan.nextInt();
+						scan.nextLine();
+						
+						String dniCliente=null;
+						Cliente cliente=null;
+						String codigo=null;
+						String clasificacion=null;
+						mensaje=" ";
+						char intentar=0;
+						
+				
+						switch (opcion3) {
+						case 1: {
+						
+						break;
+					 }
+					case 2:
+					{
+						
+						break;
+					}
+					case 3:
+					{
+					
+						break;
+					}
+					case 4:
+					{
+						
+						break;
+					}
+					default:
+						System.out.println("Opcion erronea");
+					}
 						
 						break;
 					}
