@@ -177,13 +177,14 @@ public class Main {
 					System.out.println("5 - Menu Busquedas: \n");
 					System.out.println("6 - Menu Eliminar: \n");
 					System.out.println("7 - Menu Mostrar: ");
-					System.out.println("8 - ");
-					System.out.println("9 -Salir");
+					System.out.println("8 - Menu Modificar: ");
+					System.out.println("9 - Menu Informativo: ");
+					System.out.println("10 -Salir");
 					
 					/*
 					 * ->menu buscar: producto, servicio, cliente, empleado
 					 * ->menu eliminar: producto, servicio (los elimina del catalogo)
-					 * menu mostrar: productos, servicios, empleados, clientes  
+					 *-> menu mostrar: productos, servicios, empleados, clientes  
 					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
 					 * 				eliminar un producto del carrito, eliminar pedido impago completo
 					 * menu estadisticas (centro informativo)
@@ -2863,7 +2864,7 @@ public class Main {
 						while(!validacion)
 						{
 							System.out.println(vivero.mostrarServicioResumido());
-							System.out.println("Ingrese el codigo del servicio que desea eliminar por favor\n");
+							System.out.println("Ingrese el codigo del servicio que desea mostrar por pantalla por favor\n");
 							codigo=scan.nextLine();
 
 								validacion=vivero.existeServicio(codigo);
@@ -2886,25 +2887,51 @@ public class Main {
 					}
 					case 6:
 					{
+                        cliente=null;
 						
+						while(cliente==null && intentar!='n')
+						{
+							System.out.println(vivero.mostrarClientes());
+							System.out.println("Ingrese el DNI del cliente que desea mostrar por por pantalla por favor\n");
+							dniCliente=scan.nextLine();
+							cliente=vivero.BuscaCliente(dniCliente);
+							if(cliente!=null)
+							{
+								System.out.println(vivero.buscarElemento(cliente));
+						    }
+						else
+						   {
+								System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+								intentar=scan.next().charAt(0);
+								scan.nextLine();
+						   }
+					     }
 						
 						break;
 					}
 					case 7: 
 					{
-						
+						System.out.println(vivero.mostrarClientes());
 						
 						break;
 					}
 					case 8:
 					{
+						int idE=0;
 						
+					    System.out.println("Ingrese el ID del empleado a mostrar por pantalla por favor\n");
+					    while (!scan.hasNextInt()) scan.next();
+					    idE = scan.nextInt();
+								
+					   Empleado empleado= new Empleado(idE);
+					System.out.println(vivero.buscarElemento(empleado));
+
 						
 						break;
 					}
 					case 9:
 					{
-						
+						System.out.println(vivero.mostrarEmpleados());
 						
 						break;
 					}
@@ -2919,6 +2946,10 @@ public class Main {
 						
 					}
 					case 9:
+					{
+						
+					}
+					case 10:
 					{
 						return;
 					}
