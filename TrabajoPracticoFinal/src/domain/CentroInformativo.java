@@ -13,7 +13,6 @@ import productos.Lombriz;
 import productos.MacetaPoliedro;
 import productos.MacetaRedonda;
 import productos.MuebleJardin;
-import productos.Planta;
 import productos.PlantaAcuatica;
 import productos.Producto;
 import productos.SanidadVegetal;

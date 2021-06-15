@@ -175,14 +175,14 @@ public class Main {
 					System.out.println("3 - Ingresar un cliente al sistema: \n");
 					System.out.println("4 - Menu Pedidos: \n");
 					System.out.println("5 - Menu Busquedas: \n");
-					System.out.println("6 - ");
+					System.out.println("6 - Menu Eliminar: \n");
 					System.out.println("7 - ");
 					System.out.println("8 - ");
 					System.out.println("9 -Salir");
 					
 					/*
-					 * menu buscar: producto, servicio, cliente, empleado
-					 * menu eliminar: producto, servicio (los elimina del catalogo)
+					 * ->menu buscar: producto, servicio, cliente, empleado
+					 * ->menu eliminar: producto, servicio (los elimina del catalogo)
 					 * menu mostrar: productos, empleados, clientes  
 					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
 					 * 				eliminar un producto del carrito, eliminar pedido impago completo
@@ -2590,9 +2590,7 @@ public class Main {
 						System.out.println("2-Buscar Servicio: \n");
 						System.out.println("3-Buscar Cliente: \n");
 						System.out.println("4-Buscar Empleado: \n");
-						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
-						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente, pagos e impagos: \n ");
-						
+			
 						opcion3=scan.nextInt();
 						scan.nextLine();
 						
@@ -2626,8 +2624,6 @@ public class Main {
 					 }
 					case 2:
 					{
-						cliente=null;
-						mensaje="";
 						boolean validacion=false;
 						while(!validacion)
 						{
@@ -2648,7 +2644,6 @@ public class Main {
 					case 3:
 					{
 						cliente=null;
-						mensaje="";
 						
 						while(cliente==null && intentar!='n')
 						{
@@ -2686,18 +2681,15 @@ public class Main {
 						System.out.println("Opcion erronea");
 					}
 					break;
-						
-					
+
 					}
 					case 6: 
 					{
 						System.out.println("Elija la opcion deseada por favor\n");
-						System.out.println("1-Buscar Producto: \n");
-						System.out.println("2-Buscar Servicio: \n");
-						System.out.println("3-Buscar Cliente: \n");
-						System.out.println("4-Buscar Empleado: \n");
-						System.out.println("5-Mostrar todos los pedidos impagos del sistema: \n");
-						System.out.println("6-Mostrar el historial de pedidos de un determinado cliente, pagos e impagos: \n ");
+						System.out.println("1-Eliminar Producto: \n");
+						System.out.println("2-Eliminar Servicio: \n");
+						System.out.println("3-Eliminar Cliente: \n");
+						System.out.println("4-Eliminar Empleado: \n");
 						
 						opcion3=scan.nextInt();
 						scan.nextLine();
@@ -2712,23 +2704,95 @@ public class Main {
 				
 						switch (opcion3) {
 						case 1: {
+							
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto que desea eliminar por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.eliminarElemento(producto));
 						
 						break;
 					 }
 					case 2:
 					{
+						boolean validacion=false;
+						while(!validacion)
+						{
+							System.out.println(vivero.mostrarServicioResumido());
+							System.out.println("Ingrese el codigo del servicio que desea eliminar por favor\n");
+							codigo=scan.nextLine();
+
+								validacion=vivero.existeServicio(codigo);
+								if(!validacion)
+								{
+									System.out.println("Error, ingrese un codigo valido por favor");
+								}
+						}
+						Servicio servicio= new Servicio(codigo);
+						System.out.println(vivero.eliminarElemento(servicio));
 						
 						break;
 					}
 					case 3:
 					{
+                        cliente=null;
+						
+						while(cliente==null && intentar!='n')
+						{
+							System.out.println(vivero.mostrarClientes());
+							System.out.println("Ingrese el DNI del cliente que desea eliminar por favor\n");
+							dniCliente=scan.nextLine();
+							cliente=vivero.BuscaCliente(dniCliente);
+							if(cliente!=null)
+							{
+								boolean impago=vivero.buscarPedidoImpago(cliente.getId());
+								if(impago)
+								{
+									System.out.println(vivero.eliminarPedidoImpagoCliente(cliente));
+								}
+								System.out.println(vivero.eliminarElemento(cliente));
+								
+						    }
+						else
+						   {
+								System.out.println("Error, el DNI ingresado es erroneo, si desea intentar nuevamente presione cualquier tecla, caso contrario 'n':");
+								intentar=scan.next().charAt(0);
+								scan.nextLine();
+						   }
+					     }
+						
 					
 						break;
 					}
 					case 4:
 					{
+						int idE=0;
 						
-						break;
+					    System.out.println("Ingrese el ID del empleado a eliminar por favor\n");
+					    while (!scan.hasNextInt()) scan.next();
+					    idE = scan.nextInt();
+								
+					   if(idE==idEmpleado)
+					   {
+						   System.out.println("Error, no es posible eliminar al empleado con el cual se esta administrando el sistema actualmente, intente mas tarde\n");
+					   }
+					   else
+					   {
+						   Empleado empleado= new Empleado(idE); 
+						   System.out.println(vivero.eliminarElemento(empleado));
+					   }
+		
+					break;
+				
 					}
 					default:
 						System.out.println("Opcion erronea");
