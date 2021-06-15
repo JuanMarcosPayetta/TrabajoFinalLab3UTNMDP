@@ -2962,34 +2962,48 @@ public class Main {
 						if(array!=null)
 						{
 							System.out.println("Elija la opcion deseada por favor\n");
-							System.out.println("1-: \n");
-							System.out.println("2-: \n");
-							System.out.println("3-: \n");
-							System.out.println("4-: \n");
-							System.out.println("5-: \n");
-							System.out.println("6-: \n");
-							System.out.println("7-: \n");
-							System.out.println("8-: \n");
-							System.out.println("9-: \n");
-							
+							System.out.println("1-Mostrar todos los productos dentro de la clasificacion: \n");
+							System.out.println("2-Mostrar el producto mas costoso dentro de la clasificacion: \n");
+							System.out.println("3-Mostrar el producto mas economico dentro de la clasificacion: \n");
+							System.out.println("4-Mostrar informacion relativa al stock positivo: \n");
+							System.out.println("5-Mostrar informacion relativa al stock faltante: \n");
+							System.out.println("6-Mostrar productos por orden de precio: \n");
+
 							while (!scan.hasNextInt()) scan.next();
 						    opcion3 = scan.nextInt();
 						    scan.nextLine();
 							
+						    CentroInformativo<Producto>centro= new CentroInformativo<Producto>(array);
 							switch (opcion3) {
 							case 1: {
 								
-								CentroInformativo<Producto>centro= new CentroInformativo<Producto>(array);
-								
-								
+							System.out.println(centro.mostrarTodo());	
+	
 								break;
 							}
 							case 2:
 							{
+								System.out.println(centro.elementoMasCostoso());
 								break;
 							}
 							case 3:
 							{
+								System.out.println(centro.elementoMasEconomico());
+								break;
+							}
+							case 4:
+							{
+								System.out.println(centro.informacionStockPositivo());
+								break;
+							}
+							case 5:
+							{
+								System.out.println(centro.stockNegativo());
+								break;
+							}
+							case 6:
+							{
+								System.out.println(centro.mostrarSegunPrecio());
 								break;
 							}
 							default:
@@ -3001,6 +3015,7 @@ public class Main {
 							System.out.println("Error, la clasificacion ingresada no fue encontrada en el sistema\n");
 						}
 							
+						break;
 					}
 					case 10:
 					{
