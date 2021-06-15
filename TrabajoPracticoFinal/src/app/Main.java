@@ -1,9 +1,11 @@
 package app;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import domain.AccesoDatos;
+import domain.CentroInformativo;
 import domain.Cliente;
 import domain.Empleado;
 import domain.Pedido;
@@ -2261,8 +2263,9 @@ public class Main {
 						System.out.println("8-Eliminar producto del carrito de un cliente: \n");
 						System.out.println("9-Eliminar pedido impago de determinado cliente: \n");
 						
-						opcion3=scan.nextInt();
-						scan.nextLine();
+						while (!scan.hasNextInt()) scan.next();
+					    opcion3 = scan.nextInt();
+					    scan.nextLine();
 						
 						String dniCliente=null;
 						Cliente cliente=null;
@@ -2592,8 +2595,9 @@ public class Main {
 						System.out.println("3-Buscar Cliente: \n");
 						System.out.println("4-Buscar Empleado: \n");
 			
-						opcion3=scan.nextInt();
-						scan.nextLine();
+						while (!scan.hasNextInt()) scan.next();
+					    opcion3 = scan.nextInt();
+					    scan.nextLine();
 						
 						String dniCliente=null;
 						Cliente cliente=null;
@@ -2672,6 +2676,7 @@ public class Main {
 						    System.out.println("Ingrese el ID del empleado a buscar por favor\n");
 						    while (!scan.hasNextInt()) scan.next();
 						    idE = scan.nextInt();
+						    scan.nextLine();
 									
 						   Empleado empleado= new Empleado(idE);
 						System.out.println(vivero.buscarElemento(empleado));
@@ -2692,9 +2697,10 @@ public class Main {
 						System.out.println("3-Eliminar Cliente: \n");
 						System.out.println("4-Eliminar Empleado: \n");
 						
-						opcion3=scan.nextInt();
-						scan.nextLine();
-						
+						while (!scan.hasNextInt()) scan.next();
+					    opcion3 = scan.nextInt();
+					    scan.nextLine();
+
 						String dniCliente=null;
 						Cliente cliente=null;
 						String codigo=null;
@@ -2781,6 +2787,7 @@ public class Main {
 					    System.out.println("Ingrese el ID del empleado a eliminar por favor\n");
 					    while (!scan.hasNextInt()) scan.next();
 					    idE = scan.nextInt();
+					    scan.nextLine();
 								
 					   if(idE==idEmpleado)
 					   {
@@ -2814,9 +2821,10 @@ public class Main {
 						System.out.println("8-Mostrar un empleado: \n");
 						System.out.println("9-Mostrar todos los empleados: \n");
 						
-						opcion3=scan.nextInt();
-						scan.nextLine();
-						
+						while (!scan.hasNextInt()) scan.next();
+					    opcion3 = scan.nextInt();
+					    scan.nextLine();
+					
 						String dniCliente=null;
 						Cliente cliente=null;
 						String codigo=null;
@@ -2891,8 +2899,7 @@ public class Main {
 						
 						while(cliente==null && intentar!='n')
 						{
-							System.out.println(vivero.mostrarClientes());
-							System.out.println("Ingrese el DNI del cliente que desea mostrar por por pantalla por favor\n");
+							System.out.println("Ingrese el DNI del cliente que desea mostrar por pantalla por favor\n");
 							dniCliente=scan.nextLine();
 							cliente=vivero.BuscaCliente(dniCliente);
 							if(cliente!=null)
@@ -2922,6 +2929,7 @@ public class Main {
 					    System.out.println("Ingrese el ID del empleado a mostrar por pantalla por favor\n");
 					    while (!scan.hasNextInt()) scan.next();
 					    idE = scan.nextInt();
+					    scan.nextLine();
 								
 					   Empleado empleado= new Empleado(idE);
 					System.out.println(vivero.buscarElemento(empleado));
@@ -2943,11 +2951,56 @@ public class Main {
 					}
 					case 8:
 					{
-						
+						//TERMINAR ESTE CASE!! <<<-------
 					}
 					case 9:
 					{
-						
+						System.out.println(vivero.mostrarClasificacionesProducto());
+						System.out.println("Ingrese la clasificacion de los productos por favor\n");
+						String clasificacion=scan.nextLine();
+						ArrayList<Producto>array=vivero.productosClasificacion(clasificacion);
+						if(array!=null)
+						{
+							System.out.println("Elija la opcion deseada por favor\n");
+							System.out.println("1-: \n");
+							System.out.println("2-: \n");
+							System.out.println("3-: \n");
+							System.out.println("4-: \n");
+							System.out.println("5-: \n");
+							System.out.println("6-: \n");
+							System.out.println("7-: \n");
+							System.out.println("8-: \n");
+							System.out.println("9-: \n");
+							
+							while (!scan.hasNextInt()) scan.next();
+						    opcion3 = scan.nextInt();
+						    scan.nextLine();
+							
+							switch (opcion3) {
+							case 1: {
+								
+								CentroInformativo<Producto>centro= new CentroInformativo<Producto>(array);
+								
+								
+								break;
+							}
+							case 2:
+							{
+								break;
+							}
+							case 3:
+							{
+								break;
+							}
+							default:
+								System.out.println("Opcion erronea");
+							}
+						}
+						else
+						{
+							System.out.println("Error, la clasificacion ingresada no fue encontrada en el sistema\n");
+						}
+							
 					}
 					case 10:
 					{

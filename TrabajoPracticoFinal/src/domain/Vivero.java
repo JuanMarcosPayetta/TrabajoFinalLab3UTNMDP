@@ -839,6 +839,26 @@ public class Vivero implements IVivero {
 		return reg.eliminarPedidoImpagoCliente(cliente);
 	}
 	
+	/*
+	 * Devuelve un array con los productos de la clasificacion solicitada (para el centro informativo)
+	 */
+	public ArrayList<Producto> productosClasificacion(String clasificacion)
+	{
+		Iterator<Map.Entry<String, ArrayList<Producto>>>it= catalogoProductos.entrySet().iterator();
+		boolean encontrado=false;
+		ArrayList<Producto>array=null;
+		while(it.hasNext() && !encontrado)
+		{
+			Map.Entry<String, ArrayList<Producto>>entry=(Map.Entry<String, ArrayList<Producto>>)it.next();
+			if(entry.getKey().equalsIgnoreCase(clasificacion))
+			{
+				array=entry.getValue();
+				encontrado=true;
+			}
+		}
+		return array;
+	}
+	
 	
 	/*
 	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
@@ -870,5 +890,7 @@ public class Vivero implements IVivero {
 	{
 		reg.agregarPedidoDesdeArchivo(pedido);
 	}
+	
+	
 
 }
