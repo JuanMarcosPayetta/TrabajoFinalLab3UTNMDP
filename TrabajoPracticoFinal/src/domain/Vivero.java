@@ -249,6 +249,9 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/*
+	 * muestra todos los productos del catalogo
+	 */
 	public String mostrarProductos() {
 		StringBuilder mensaje = new StringBuilder();
 
@@ -266,6 +269,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	/*
+	 * muestra todos los servicios del catalogo
+	 */
 	public String mostrarServicios() {
 		StringBuilder mensaje = new StringBuilder();
 
@@ -280,6 +286,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	/*
+	 * muestra todos los empleados del sistema
+	 */
 	public String mostrarEmpleados() {
 		StringBuilder mensaje = new StringBuilder();
 
@@ -293,6 +302,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	/*
+	 * muestra todos los clientes del sistema
+	 */
 	public String mostrarClientes() {
 		StringBuilder mensaje = new StringBuilder();
 
@@ -515,7 +527,9 @@ public class Vivero implements IVivero {
 	}
 	
 
-	
+	/*
+	 * Busca y retorna un cliente (en caso de no encontrarlo retorna null)
+	 */
 	public Cliente BuscaCliente(String dni) { // si retorna null "Cliente no encontrado"...desea crear unuevo?(en main)
 		int flag = 0;
 		Cliente elCliente = null;
@@ -703,6 +717,60 @@ public class Vivero implements IVivero {
 		
 		return mayorId;
 	}
+	
+	
+	/*
+	 * Muestra todos las clasifiaciones de productos disponibles en el sistema
+	 */
+	public String mostrarClasificacionesProducto()
+	{
+		StringBuilder builder= new StringBuilder();
+	
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it= catalogoProductos.entrySet().iterator();
+			while(it.hasNext())
+			{
+				Map.Entry<String, ArrayList<Producto>> entry= (Map.Entry<String, ArrayList<Producto>>) it.next();
+				String clasificacion= entry.getKey();
+				builder.append("[ "+clasificacion+" ]"+"\n");
+			}
+			
+		return builder.toString();
+	}
+	
+	
+	/*
+	 * Muestra todos los productos de una determinada clasificacion
+	 */
+	public String mostrarProductosClasificacion(String clasificacion)
+	{
+		StringBuilder builder= new StringBuilder();
+		boolean encontrado=false;
+		if(catalogoProductos.containsKey(clasificacion))
+		{
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it= catalogoProductos.entrySet().iterator();
+			while(it.hasNext() && !encontrado)
+			{
+				Map.Entry<String, ArrayList<Producto>> entry= (Map.Entry<String, ArrayList<Producto>>) it.next();
+				if(entry.getKey().equalsIgnoreCase(clasificacion))
+				{
+					ArrayList<Producto>listaProductos= entry.getValue();
+					for(int i=0; i<listaProductos.size(); i++)
+					{
+						builder.append("[ "+listaProductos.get(i).toString()+" ]"+"\n");
+					}
+					
+					encontrado=true;
+				}
+			}
+		}
+		else
+		{
+			builder.append("La clasifiacion ingresada no se encuentra en el sistema\n");
+		}
+		return builder.toString();
+	}
+	
+	//LLAMADAS A METODOS DE REGISTROVENTAS
 	
 	public String mostrarTodosLosPedidos()
 	{

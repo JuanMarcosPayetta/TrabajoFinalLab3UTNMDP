@@ -176,14 +176,14 @@ public class Main {
 					System.out.println("4 - Menu Pedidos: \n");
 					System.out.println("5 - Menu Busquedas: \n");
 					System.out.println("6 - Menu Eliminar: \n");
-					System.out.println("7 - ");
+					System.out.println("7 - Menu Mostrar: ");
 					System.out.println("8 - ");
 					System.out.println("9 -Salir");
 					
 					/*
 					 * ->menu buscar: producto, servicio, cliente, empleado
 					 * ->menu eliminar: producto, servicio (los elimina del catalogo)
-					 * menu mostrar: productos, empleados, clientes  
+					 * menu mostrar: productos, servicios, empleados, clientes  
 					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
 					 * 				eliminar un producto del carrito, eliminar pedido impago completo
 					 * menu estadisticas (centro informativo)
@@ -2802,6 +2802,115 @@ public class Main {
 					}
 					case 7:
 					{
+						System.out.println("Elija la opcion deseada por favor\n");
+						System.out.println("1-Mostrar un producto: \n");
+						System.out.println("2-Mostrar todos los productos de una clasificacion determinada: \n");
+						System.out.println("3-Mostrar todos los productos del catalogo: \n");
+						System.out.println("4-Mostrar un servicio: \n");
+						System.out.println("5-Mostrar todos los servicios: \n");
+						System.out.println("6-Mostrar un cliente: \n");
+						System.out.println("7-Mostrar todos los clientes: \n");
+						System.out.println("8-Mostrar un empleado: \n");
+						System.out.println("9-Mostrar todos los empleados: \n");
+						
+						opcion3=scan.nextInt();
+						scan.nextLine();
+						
+						String dniCliente=null;
+						Cliente cliente=null;
+						String codigo=null;
+						String clasificacion=null;
+						mensaje=" ";
+						char intentar=0;
+						
+				
+						switch (opcion3) {
+						case 1: {
+							
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto que desea mostrar por pantalla por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.buscarElemento(producto));
+						
+						break;
+					 }
+					case 2:
+					{
+						System.out.println(vivero.mostrarClasificacionesProducto());
+						System.out.println("Ingrese la clasificacion de los productos que desea mostrar por pantalla por favor\n");
+						clasificacion=scan.nextLine();
+						System.out.println(vivero.mostrarProductosClasificacion(clasificacion));
+						break;
+					}
+					case 3:
+					{
+                       System.out.println(vivero.mostrarProductos());
+						break;
+					}
+					case 4:
+					{
+						boolean validacion=false;
+						while(!validacion)
+						{
+							System.out.println(vivero.mostrarServicioResumido());
+							System.out.println("Ingrese el codigo del servicio que desea eliminar por favor\n");
+							codigo=scan.nextLine();
+
+								validacion=vivero.existeServicio(codigo);
+								if(!validacion)
+								{
+									System.out.println("Error, ingrese un codigo valido por favor");
+								}
+						}
+						Servicio servicio= new Servicio(codigo);
+						System.out.println(vivero.buscarElemento(servicio));
+						
+						break;
+				
+					}
+					case 5:
+					{
+						System.out.println(vivero.mostrarServicios());
+						
+						break;
+					}
+					case 6:
+					{
+						
+						
+						break;
+					}
+					case 7: 
+					{
+						
+						
+						break;
+					}
+					case 8:
+					{
+						
+						
+						break;
+					}
+					case 9:
+					{
+						
+						
+						break;
+					}
+					default:
+						System.out.println("Opcion erronea");
+					}
 						
 						break;
 					}
