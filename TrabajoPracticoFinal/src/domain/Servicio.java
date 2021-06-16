@@ -186,20 +186,18 @@ public class Servicio implements IGenerarCodigo, Serializable{
 	
 	
 	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("codigo", getCodigo());
-            json.put("nombre", getNombre());
-            json.put("precio", getPrecio());
-            json.put("descripcion", getDescripcion());
-            json.put("materiales", isMaterialesIncluidos());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
+	{
+		JSONObject obj=null;
+		try
+		{
+			obj=new JSONObject();
+			obj.put("nombre", getNombre());
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		return obj;
+	}
 	
 }

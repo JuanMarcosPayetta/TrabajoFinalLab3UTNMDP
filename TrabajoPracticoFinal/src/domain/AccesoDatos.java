@@ -5,19 +5,26 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import productos.Producto;
 
 public class AccesoDatos { //clase para archivos
 
-	
+	private final static String nombreArchivo = "json.txt";
 	
 	public String escribirArchivoProductos(Vivero vivero)
 	{
@@ -27,8 +34,9 @@ public class AccesoDatos { //clase para archivos
 	   String mensaje=null;
 	   
 	   try {
+
 		   file= new File("productos.dat");
-		   out= new FileOutputStream("productos.dat");
+		   out= new FileOutputStream(file);
 		   obj=new ObjectOutputStream(out);
 		   
 		   Iterator<Map.Entry<String, ArrayList<Producto>>>it=vivero.getCatalogoProductos().entrySet().iterator();
@@ -446,6 +454,89 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/*
+	 * Escribe las marcas y clasificaciones en un json object
+	 */
+	public JSONObject javaToJson(Vivero vivero)
+	{
+		JSONObject obj=null;
+		JSONArray clasificaciones=null;
+		JSONArray marcasComercializadas=null;
+		JSONArray servicios=null;
+		
+		try
+		{
+			ArrayList<String>marcas=new ArrayList<String>(); //marcas ya agregadas al objeto
+			
+			obj= new JSONObject();
+			clasificaciones= new JSONArray();
+			marcasComercializadas= new JSONArray();
+			servicios= new JSONArray();
+			
+			Iterator<Map.Entry<String, ArrayList<Producto>>>it=vivero.getCatalogoProductos().entrySet().iterator();
+			while(it.hasNext())
+			{
+				Map.Entry<String, ArrayList<Producto>>entry=(Map.Entry<String, ArrayList<Producto>>)it.next();
+				ArrayList<Producto>lista= entry.getValue();
+				
+				clasificaciones.put(entry.getKey()); //almaceno las clasificaciones
+				
+				for(int i=0; i<lista.size(); i++)
+				{
+					if(!marcas.contains(lista.get(i).getMarca()))
+					{
+						marcasComercializadas.put(lista.get(i).getMarca()); //almaceno las marcas
+						marcas.add(lista.get(i).getMarca());
+					}
+				}
+			}
+			
+			Iterator<Map.Entry<String, Servicio>>it2=vivero.getCatalogoServicios().entrySet().iterator();
+			while(it2.hasNext())
+			{
+				Map.Entry<String, Servicio>entry=(Map.Entry<String, Servicio>)it2.next();
+				servicios.put(entry.getValue().getNombre());
+			}
+			
+			obj.put("clasificaciones", clasificaciones);
+			obj.put("marcas", marcasComercializadas);
+			obj.put("servicios", servicios);
+			
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
+	}
 	
+	
+    //graba JSONObject
+    public static void grabar(JSONObject jsonObject) {
+        try {
+            FileWriter file = new FileWriter(nombreArchivo);
+            file.write(jsonObject.toString());
+            file.flush();
+            file.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    public static String leer() 
+    {
+        String contenido = "";
+        try 
+        {
+            contenido = new String(Files.readAllBytes(Paths.get(nombreArchivo)));
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+        return contenido;
+    }
 	
 }
