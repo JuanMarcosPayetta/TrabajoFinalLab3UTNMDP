@@ -394,38 +394,23 @@ public class PlantaAcuatica extends Planta{
 		setPrecio(precioFinal);
 	}
 	
-	
 	public JSONObject javaToJson()
 	{
-		JSONObject json= new JSONObject();
-		try {
-			json.put("codigo", getCodigo());
-			json.put("nombre", getNombre());
-			json.put("marca", getMarca());
-			json.put("clasificacion", getClasificacion());
-			json.put("precio", getPrecio());
-			json.put("stock", getStock());
-			json.put("mesesDeVida", getMesesDeVida());
-			json.put("estacionDePlantacion", getEstacionPlantacion());
-			json.put("habitat", getHabitat());
-			json.put("altura", getAltura());
-			json.put("tieneFlor", isFlor());
-			json.put("exposicionSolar", getNivelExposicionSolar());
-			json.put("raiz", getTipoRaiz());
-			json.put("esAromatica", isAromatica());
-			json.put("fertilizante", getCantidadFertilizante());
-			json.put("tipoDeAgua", getTipoDeAgua());
-			json.put("temperaturaAgua", getTemperaturaAgua());
-			json.put("durezaAgua", getDurezaAgua());
-			json.put("tipoDePlanta", getTipo());
-			json.put("descripcion", getDescripcion());
+		JSONObject obj=null;
+		try
+		{
+			obj=new JSONObject();
+			obj.put("marca", getMarca());
+			obj.put("clasificacion", getClasificacion());
 			
-		} catch (JSONException e) {
+		}
+		catch(JSONException e)
+		{
 			e.printStackTrace();
 		}
-
-		return json;
+		return obj;
 	}
+	
 
 	@Override
 	public int compareTo(Producto o) {

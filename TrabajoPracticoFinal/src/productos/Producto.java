@@ -44,7 +44,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/*
-	 * Constructor para enviar como parametro a los metodos para entrar al arbol
+	 * Constructor para enviar como parametro a los metodos para entrar al mapa
 	 */
 	public Producto(String codigo, String clasificacion) {
 		this.codigo = codigo;

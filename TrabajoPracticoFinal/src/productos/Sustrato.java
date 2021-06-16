@@ -150,28 +150,21 @@ public class Sustrato extends ProductoOrganico{
 		setPrecio(precioTotal);
 	}
 	
-	
 	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("codigo", getCodigo());
-            json.put("nombre", getNombre());
-            json.put("marca", getMarca());
-            json.put("clasificacion", getClasificacion());
-            json.put("precio", getPrecio());
-            json.put("stock", getStock());
-            json.put("gramos", getGramos());
-            json.put("esAbonada", isAbonada());
-            json.put("tipoDeSuelo", getTipoDeSuelo());
-            json.put("descripcion", getDescripcion());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
+	{
+		JSONObject obj= null;
+		try
+		{
+			obj=new JSONObject();
+			obj.put("marca", getMarca());
+			obj.put("clasificacion", getClasificacion());
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		return obj;
+	}
 	
 	@Override
 	public int compareTo(Producto o) {

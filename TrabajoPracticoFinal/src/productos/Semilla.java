@@ -130,25 +130,21 @@ public class Semilla extends ProductoOrganico{
 	}
 
 	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("codigo", getCodigo());
-            json.put("nombre", getNombre());
-            json.put("marca", getMarca());
-            json.put("clasificacion", getClasificacion());
-            json.put("precio", getPrecio());
-            json.put("stock", getStock());
-            json.put("gramos", getGramos());
-            json.put("destino", getDestino());
-            json.put("descripcion", getDescripcion());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
+	{
+		JSONObject obj=null;
+		try
+		{
+			obj= new JSONObject();
+			obj.put("marca", getMarca());
+			obj.put("clasificacion", getClasificacion());
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
+	}
 	
 	@Override
 	public int compareTo(Producto o) {

@@ -44,7 +44,7 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 
 	@Override
 	public String toString() {
-		return super.toString() + ", material:" + material + "\n";
+		return super.toString() + ", material:" + material;
 	}
 
 }

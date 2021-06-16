@@ -9,7 +9,7 @@ import interfaces.IEstablecerPrecioProductoInerte;
 public abstract class HerramientaJardineria extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String material;
-	private String funcion; // riego, corte, limpieza, labrado, carga,...
+	private String funcion; 
 
 	public HerramientaJardineria() {
 		super();
@@ -108,7 +108,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	@Override
 	public String toString() {
-		return super.toString() + ", material: " + material + "\n" + ", funcion: " + funcion;
+		return super.toString() + ", material: " + material + ", funcion: " + funcion;
 	}
 
 	

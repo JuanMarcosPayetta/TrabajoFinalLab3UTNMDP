@@ -11,8 +11,8 @@ import excepciones.CadenaInvalidaException;
 public class HerramientaNoManual extends HerramientaJardineria {
 	
 	private int potencia;
-	private String tipoMotor; //eléctrico, combustible
-	private String consumo; //alto, medio, bajo
+	private String tipoMotor; 
+	private String consumo; 
 	
 	public HerramientaNoManual() {
 		super();
@@ -290,30 +290,23 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		setPrecio(precioH);
 	}
 
-	//String funcion, int potencia, String tipoMotor, String consumo
 	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("codigo", getCodigo());
-            json.put("nombre", getNombre());
-            json.put("marca", getMarca());
-            json.put("clasificacion", getClasificacion());
-            json.put("precio", getPrecio());
-            json.put("stock", getStock());
-            json.put("material", getMaterial());
-            json.put("funcion", getFuncion());
-            json.put("potencia", getPotencia());
-            json.put("tipoDeMotor", getTipoMotor());
-            json.put("consumo", getConsumo());
-            json.put("descripcion", getDescripcion());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
+	{
+		JSONObject obj= null;
+		try
+		{
+			obj=new JSONObject();
+			obj.put("marca", getMarca());
+			obj.put("clasificacion", getClasificacion());
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return obj;
+	}
+	
 	
 	@Override
 	public int compareTo(Producto o) {

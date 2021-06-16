@@ -201,30 +201,22 @@ public class MuebleJardin extends ProductoDeHogar {
 		
 	}
 
-
-	public JSONObject javaToJson()
+    public JSONObject javaToJson()
     {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("codigo", getCodigo());
-            json.put("nombre", getNombre());
-            json.put("marca", getMarca());
-            json.put("clasificacion", getClasificacion());
-            json.put("precio", getPrecio());
-            json.put("stock", getStock());
-            json.put("material", getMaterial());
-            json.put("tipo", getTipo());
-            json.put("alto", getAlto());
-            json.put("largo", getLargo());
-            json.put("ancho", getAncho());
-            json.put("descripcion", getDescripcion());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
+    	JSONObject obj= null;
+    	try
+    	{
+    		obj= new JSONObject();
+    		obj.put("marca", getMarca());
+    		obj.put("clasificacion", getClasificacion());
+    	}
+    	catch(JSONException e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return obj;
     }
+	
 	
 	@Override
 	public int compareTo(Producto o) {

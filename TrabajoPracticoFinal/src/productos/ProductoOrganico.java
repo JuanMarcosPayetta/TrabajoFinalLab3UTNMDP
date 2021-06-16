@@ -46,7 +46,7 @@ public abstract class ProductoOrganico extends Producto implements IEstablecerPr
 
 	@Override
 	public String toString() {
-		return super.toString()+ ", gramos: " + gramos + "\n";
+		return super.toString()+ ", gramos: " + gramos;
 	}
 	
 	
