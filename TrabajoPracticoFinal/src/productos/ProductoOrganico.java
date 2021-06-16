@@ -28,11 +28,20 @@ public abstract class ProductoOrganico extends Producto implements IEstablecerPr
 		this.gramos = gramos;
 	}
 	
-	
+	/**
+	 * Devuelve la cantidad de gramos del producto organico
+	 * @return int
+	 */
 	public int getGramos() {
 		return gramos;
 	}
 
+	/**
+	 * Establece la cantidad de gramos del producto organico, validando que sea correcto
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param int
+	 * @return String
+	 */
 	public String setGramos(int gramos) {
 		
 	  String mensaje=validarValorNumericoLlamada(gramos); //si devuelve "null" el dato es correcto
@@ -44,6 +53,10 @@ public abstract class ProductoOrganico extends Producto implements IEstablecerPr
 		return mensaje;	
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+ ", gramos: " + gramos;

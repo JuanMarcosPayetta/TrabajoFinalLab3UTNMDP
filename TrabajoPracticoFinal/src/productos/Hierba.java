@@ -69,7 +69,8 @@ public class Hierba extends PlantaTerrestre{
 
 	
 	/**
-	 * Valida que el tipo de tallo pasado por parametro sea correcto, llamada 
+	 * Valida que el tipo de tallo pasado por parametro sea correcto
+	 * @see #validarTipoTallo(String)
 	 * @param String
 	 * @return String
 	 */
@@ -88,7 +89,8 @@ public class Hierba extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Valida que el tipo de tallo pasado por parametro sea correcto
+	 * Valida que el tipo de tallo pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarTipoTalloLlamada(String))}
+	 * @see #validarTipoTalloLlamada(String)
 	 * @param String
 	 * @throws CadenaInvalidaException
 	 * @throws NullPointerException
@@ -113,6 +115,7 @@ public class Hierba extends PlantaTerrestre{
 	
 	/**
 	 * Verifica si el tipo de tallo pasado por parametro es valido
+	 * @see #validarTipoTallo(String)
 	 * @param String
 	 * @return boolean
 	 */
@@ -140,7 +143,8 @@ public class Hierba extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el tipo de tallo de la hierba
+	 * Setea el tipo de tallo de la hierba, validando que sea correcto
+	 * @see #validarTipoRaizLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -163,7 +167,8 @@ public class Hierba extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el valor para indicar si la hierba es comestible o no
+	 * Setea el valor para indicar si la hierba es comestible o no, validando que sea correcto o no
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -187,7 +192,8 @@ public class Hierba extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el valor para indicar si la hierba es medicinal o no
+	 * Setea el valor para indicar si la hierba es medicinal o no, validando que sea correcto
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -203,6 +209,7 @@ public class Hierba extends PlantaTerrestre{
 	}
 
 	/**
+	 * Retorna informacion relavante del objeto
 	 * @return String
 	 */
 	@Override
@@ -432,7 +439,8 @@ public class Hierba extends PlantaTerrestre{
 	}
 	
 	/**
-	 * @param Producto
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * @param Objeto Producto
 	 * @return int
 	 */
 	@Override
