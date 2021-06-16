@@ -407,7 +407,7 @@ public class Vivero implements IVivero {
 						{
 							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
 							flag = 1;
-							mensaje = "Nuevo Stock Establecido";
+							mensaje = "Nuevo stock establecido con exito\n";
 						}
 					}
 				}

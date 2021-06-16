@@ -3076,30 +3076,29 @@ public class Main {
 						}
 						case 4:
 						{
-							//MODIFICAR STOCK
-							/*
+		
 							while(clasificacion==null)
 							{
 								System.out.println(vivero.mostrarProductoResumido());
-								System.out.println("Ingrese el codigo del producto al que desea modificar el precio por favor\n");
+								System.out.println("Ingrese el codigo del producto al que desea aumentar el stock por favor\n");
 								codigo=scan.nextLine();
 
 									clasificacion=vivero.buscarClasificacionProducto(codigo);
 									if(clasificacion==null)
 									{
-										System.out.println("Error, ingrese un codigo valido por favor");
+										System.out.println("Error, ingrese un codigo valido por favor\n");
 									}
 							}
 							
+							int stock=0;
 							mensaje="";
-							double precio=0;
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el nuevo precio por favor");
-								while (!scan.hasNextDouble()) scan.next();
-								precio= scan.nextDouble();
+								System.out.println("Ingrese la cantidad de stock a aumentar por favor\n");
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
 								scan.nextLine();
-							    mensaje=Producto.validarPrecioLlamada(precio);
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
 							    if(mensaje!=null)
 							    {
 							    	System.out.println(mensaje);
@@ -3107,10 +3106,45 @@ public class Main {
 							} 
 							
 							Producto producto= new PlantaAcuatica(codigo, clasificacion);
-							System.out.println(vivero.modificarPrecioProducto(producto, precio));
+							System.out.println(vivero.modificarStockAumenta(producto, stock));
+							System.out.println(vivero.mostrarProductoResumido());
 							break;
+
+						}
+						case 5:
+						{
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto al que desea reducir el stock por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor\n");
+									}
+							}
 							
-							*/
+							int stock=0;
+							mensaje="";
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la cantidad de stock a reducir por favor\n");
+								while (!scan.hasNextInt()) scan.next();
+								stock= scan.nextInt();
+								scan.nextLine();
+							    mensaje=Producto.validarValorNumericoLlamada(stock);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.modificarStockDisminuye(producto, stock));
+							System.out.println(vivero.mostrarProductoResumido());
+							break;
 						}
 						default:
 							System.out.println("Opcion erronea");
