@@ -66,7 +66,8 @@ public class Arbusto extends PlantaTerrestre{
 
 
 	/**
-	 * Valida que el tipo de hoja pasado por parametro sea correcto, llamada 
+	 * Valida que el tipo de hoja pasado por parametro sea correcto
+	 * @see #validarTipoHoja(String)
 	 * @param String
 	 * @return String
 	 */
@@ -87,8 +88,9 @@ public class Arbusto extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Valida que el tipo de hoja pasado por parametro sea correcto
-	 * @param tipo
+	 * Valida que el tipo de hoja pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarTipoHojaLLamada(String)}
+	 * @see #validarTipoHojaLLamada(String)
+	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
 	 * @throws InputMismatchException
@@ -128,7 +130,8 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el tipo de hoja del arbusto
+	 * Setea el tipo de hoja del arbusto, validando que sea valido
+	 * @see #validarTipoHojaLLamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -152,7 +155,8 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el valor del arbusto para indicar si es trepador o no
+	 * Setea el valor del arbusto para indicar si es trepador o no, validando que sea valido
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -169,6 +173,7 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	/**
+	 * Retorna informacion relevante del objeto
 	 * @return String
 	 */
 	@Override
@@ -366,7 +371,8 @@ public class Arbusto extends PlantaTerrestre{
 	
 	
 	/**
-	 * @param Producto
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * @param Objeto Producto
 	 * @return int
 	 */
 	@Override

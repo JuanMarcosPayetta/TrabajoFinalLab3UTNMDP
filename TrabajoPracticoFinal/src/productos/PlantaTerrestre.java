@@ -131,7 +131,8 @@ public abstract class PlantaTerrestre extends Planta{
 	}
 
 	/**
-	 * Setea el valor que indica si la planta es o no es de interior
+	 * Setea el valor que indica si la planta es o no es de interior, validando que sea correcto
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -170,7 +171,8 @@ public abstract class PlantaTerrestre extends Planta{
 	}
 
 	/**
-	 * Setea el tipo de especie de la planta
+	 * Setea el tipo de especie de la planta, validando que sea correcto
+	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -201,6 +203,7 @@ public abstract class PlantaTerrestre extends Planta{
 	}
 
 	/**
+	 * Retorna informacion relevante del objeto
 	 * @return String
 	 */
 	@Override

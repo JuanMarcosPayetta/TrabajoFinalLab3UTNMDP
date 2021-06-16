@@ -45,8 +45,11 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		establecerPrecio();
 	}
 
-	/*
-	 * valida la funcion del producto sanitario, llamada main
+	/**
+	 * Verifica que se ingrese una funcion valida para el producto organico
+	 * @param String
+	 * @return String
+	 * @see #validarSanidad(String)
 	 */
 	public static String validarSanidadLlamada(String funcion)
 	{
@@ -63,6 +66,14 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el String ingresado sea valido y lanza una excepcion que es capturada por {@link #validarSanidadLlamada(String)}
+	 *@see #validarSanidadLlamada(String)
+	 * @param funcion
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarSanidad(String funcion) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>funciones=new ArrayList<String>();
@@ -90,11 +101,20 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 	
 	}
 	
-	
+	/**
+	 * Devuelve la funcion correspondiente al producto de sanidad vegetal
+	 * @return String
+	 */
 	public String getFuncion() {
 		return funcion;
 	}
 
+	/**
+	 * Establece la funcion correspondiente al producto de sanidad vegetal, validando que sea correcta
+	 * @see #validarSanidadLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setFuncion(String funcion) {
 	String mensaje=validarSanidadLlamada(funcion); //si devuelve "null" el dato es correcto
 		
@@ -106,10 +126,20 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		return mensaje;	
 	}
 
+	/**
+	 * Devuelve la cantidad de centimetros cubicos de producto
+	 * @return int
+	 */
 	public int getCentimetroCubico() {
 		return centimetroCubico;
 	}
 
+	/**
+	 * Establece la cantidad de centimetros cubicos de producto, validando que sea correcto
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param int
+	 * @return String
+	 */
 	public String setCentimetroCubico(int centimetroCubico) {
       String mensaje=validarValorNumericoLlamada(centimetroCubico); //si devuelve "null" el dato es correcto
 		
@@ -122,16 +152,26 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		
 	}
 
+	/**
+	 * Devuelve informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", funcion: " + funcion +", volumen: " + centimetroCubico;
 	}
 	
+	/**
+	 * Establece la clsificacion a la que pertenece el objeto
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Sanidad vegetal");
 	}
 
+	/**
+	 * Establece el precio del producto de sanidad vegetal
+	 */
 	@Override
 	public void establecerPrecio() {
 		
@@ -155,25 +195,11 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		setPrecio(precioFinal);
 	}
 
-	public JSONObject javaToJson()
-	{
-		JSONObject obj=null;
-		try
-		{
-			obj= new JSONObject();
-			obj.put("marca", getMarca());
-			obj.put("clasificacion", getClasificacion());
-		}
-		catch(JSONException e)
-		{
-			e.printStackTrace();
-		}
-		
-		return obj;
-	}
-	
-	
-	
+	/**
+	 * Compara dos objetos de sanidad vegetal, indicando si son iguales, mayor o menor
+	 * @param Objeto producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;
@@ -193,5 +219,11 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 			}
 		}
 		return res;
+	}
+
+	@Override
+	public JSONObject javaToJson() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

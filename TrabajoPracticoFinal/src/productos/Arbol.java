@@ -63,7 +63,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Valida que el tipo de corteza pasado por parametro sea correcto, llamada
+	 * Valida que el tipo de corteza pasado por parametro sea correcto
+	 * @see #validarTipoCorteza(String)
 	 * @param String
 	 * @return String
 	 */
@@ -82,7 +83,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 	/**
-	 * Valida que el tipo de corteza pasado por parametro sea correcto
+	 * Valida que el tipo de corteza pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarTipoCortezaLlamada(String)}
+	 * @see #validarTipoCortezaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -106,6 +108,7 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	/**
+	 * @see #validarTipoCorteza(String)
 	 * @param String
 	 * @return boolean
 	 */
@@ -129,7 +132,8 @@ public class Arbol extends PlantaTerrestre{
 
 
 	/**
-	 * Valida el diametro del tronco, llamada 
+	 * Valida el diametro del tronco
+	 * @see #validarDiametroTronco(Integer)
 	 * @param Integer
 	 * @return String
 	 */
@@ -146,6 +150,7 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	/**
+	 * Valida la dimension del tronco del Arbol, lanzando una excepcion que es capturada por {@link #validarDiametroTroncoLlamada(Integer)}
 	 * @param Integer
 	 * @throws DatoNumeroException
 	 * @throws NullPointerException
@@ -170,6 +175,7 @@ public class Arbol extends PlantaTerrestre{
 
 	/**
 	 * Setea el diametro del tronco, corroborando primero que el valor ingresado sea valido
+	 * @see #validarDiametroTroncoLlamada(Integer)
 	 * @param int
 	 * @return String
 	 */
@@ -192,7 +198,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 	/**
-	 * Setea el tipo de corteza del arbol 
+	 * Setea el tipo de corteza del arbol , validando que sea valido
+	 * @see #validarTipoCortezaLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -207,6 +214,7 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 	/**
+	 * Retorna informacion relevante del objeto
 	 * @return String
 	 */
 	@Override
@@ -398,7 +406,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	/**
-	 * @param Producto
+	 * Compara dos objetos e indica si son iguales, mayor u menor
+	 * @param Objeto Producto
 	 * @return int
 	 */
 	@Override

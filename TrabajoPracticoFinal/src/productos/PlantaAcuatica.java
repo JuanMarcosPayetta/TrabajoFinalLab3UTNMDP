@@ -79,7 +79,8 @@ public class PlantaAcuatica extends Planta{
 	
 	
 	/**
-	 * Valida que el tipo de agua pasado por parametro sea correcto, llamada
+	 * Valida que el tipo de agua pasado por parametro sea correcto
+	 * @see #validarTipoDeAgua(String)
 	 * @param String
 	 * @return String
 	 */
@@ -98,7 +99,8 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	/**
-	 * Valida que el tipo de agua pasado por parametro sea correcto
+	 * Valida que el tipo de agua pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarTipoDeAguaLlamada(String)}
+	 * @see #validarTipoPlantaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -127,6 +129,7 @@ public class PlantaAcuatica extends Planta{
 	
 	/**
 	 * Valida que la temperatura del agua pasada por parametro sea correcta, llamada 
+	 * @see #validarTempAgua(Integer)
 	 * @param Integer
 	 * @return String
 	 */ 
@@ -145,7 +148,8 @@ public class PlantaAcuatica extends Planta{
     }
 	
 	/**
-	 * Valida que la temperatura del agua pasada por parametro sea correcta
+	 * Valida que la temperatura del agua pasada por parametro sea correcta, lanzando una excepcion que es capturada por {@link #validarTempAguaLlamada(Integer)}
+	 * @see #validarTempAguaLlamada(Integer)
 	 * @param Integer
 	 * @throws DatoNumeroException
 	 * @throws NullPointerException
@@ -166,7 +170,8 @@ public class PlantaAcuatica extends Planta{
     
     
     /**
-     * Valida que la dureza del agua pasada por parametro sea correcta, llamada
+     * Valida que la dureza del agua pasada por parametro sea correcta
+     * @see #validarDurezaAgua(String)
      * @param String
      * @return String
      */
@@ -186,7 +191,8 @@ public class PlantaAcuatica extends Planta{
 	}
     
 	/**
-	 * Valida que la dureza del agua pasada por parametro sea correcta
+	 * Valida que la dureza del agua pasada por parametro sea correcta, lanzando una excepcion que es capturada por {@link #validarDurezaAguaLlamada(String)}
+	 * @see #validarDurezaAguaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -219,7 +225,8 @@ public class PlantaAcuatica extends Planta{
 	
 	
 	/**
-	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto, llamada
+	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto
+	 * @see #validarTipoPlanta(String)
 	 * @param String
 	 * @return String
 	 */
@@ -240,7 +247,8 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	/**
-	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto
+	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarTipoPlantaLlamada(String)}
+	 * @see #validarTipoPlantaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -368,6 +376,7 @@ public class PlantaAcuatica extends Planta{
 	}
 
 	/**
+	 * Retorna informacion relevante del objeto 
 	 * @return String
 	 */
 	@Override
@@ -501,7 +510,8 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	/**
-	 * @param Producto
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * @param Objeto Producto
 	 * @return int
 	 */
 	@Override

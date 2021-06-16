@@ -120,7 +120,8 @@ public class Empleado implements Serializable{
 	
 
 	/**
-	 * Establece el nombrel del objeto
+	 * Establece el nombrel del objeto, validando que sea correcto
+	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -143,7 +144,8 @@ public class Empleado implements Serializable{
 	}
 
 	/**
-	 * Establece el apellido del objeto
+	 * Establece el apellido del objeto, validando que sea correcto
+	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -171,6 +173,10 @@ public class Empleado implements Serializable{
 	return 1;
 	}
 	
+	/**
+	 * Compara dos objetos, retornando true or false en caso de ser iguales o no
+	 * @param Object
+	 */
 	public boolean equals (Object obj)
 	{
 		boolean validacion=false;

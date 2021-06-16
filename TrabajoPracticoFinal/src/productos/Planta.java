@@ -102,7 +102,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	
 	//Valida los meses de vida o la altura de la planta
 	/**
-	 * Valida que el numero pasado por parametro sea correcto, llamada 
+	 * Valida que el numero pasado por parametro sea correcto
+	 * @see #validarDatosNumericos(Integer)
 	 * @param Integer
 	 * @return String
 	 */
@@ -117,7 +118,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 	
 	/**
-	 * Valida que el numero pasado por parametro sea correcto
+	 * Valida que el numero pasado por parametro sea correcto, lanzando una excepcion que es capturada por {@link #validarDatosNumericosLlamada(Integer)}
+	 * @see #validarDatosNumericosLlamada(Integer)
 	 * @param Integer
 	 * @throws DatoNumeroException
 	 * @throws NullPointerException
@@ -133,7 +135,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 	
 	/**
-	 * Valida que el tipo de raiz pasado por parametro sea correcto, llamada
+	 * Valida que el tipo de raiz pasado por parametro sea correcto
+	 * @see #validarTipoRaiz(String)
 	 * @param String
 	 * @return String
 	 */
@@ -153,7 +156,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Valida que el tipo de raiz sea valido
+	 * Valida que el tipo de raiz sea valido, lanzando una excepcion que es capturada por {@link #validarTipoRaizLlamada(String)}
+	 * @see #validarTipoRaizLlamada(String)
 	 * @param String
 	 */
 	private static void validarTipoRaiz(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
@@ -186,7 +190,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	
 	
 	/**
-	 * Valida que el tipo de estacion pasada por parametro sea correcta, llamada
+	 * Valida que el tipo de estacion pasada por parametro sea correcta
+	 * @see #validarEstacion(String)
 	 * @param String
 	 * @return String
 	 */
@@ -206,7 +211,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 	
 	/**
-	 * Valida que el tipo de estacion pasada por parametro sea correcta
+	 * Valida que el tipo de estacion pasada por parametro sea correcta, lanzando una excepcion que es capturada por {@link #validarEstacionLlamada(String)}
+	 * @see #validarEstacionLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -242,6 +248,7 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	
 	/**
 	 * Valida que el habitat pasado por parametro sea correcto
+	 * @see #validarHabitat(String, String)b
 	 * @param String
 	 * @param String
 	 * @return String
@@ -264,6 +271,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 
 	/**
 	 * Valida que el habitat pasado por parametro sea correcto (La opcion es para determinar los posibles habitat validos segun el tipo de planta (terrestre, acuatica)
+	 * Lanza una excepcion que es capturada por {@link #validarHabitatLlamada(String, String)}
+	 * @see #validarHabitatLlamada(String, String)
 	 * @param String
 	 * @param String
 	 * @throws NullPointerException
@@ -343,7 +352,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	
 
 	/**
-	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto, llamada 
+	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto
+	 * @see #validarExpSolar(String)
 	 * @param String
 	 * @param String
 	 * @return String
@@ -364,7 +374,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 	
 	/**
-	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto 
+	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto, lanzando una excepcion que es capturada por {@link #validarExpSolarLlamada(String)}
+	 * @see #validarExpSolarLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -405,7 +416,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea los meses de vida de la planta
+	 * Setea los meses de vida de la planta, validando que sea correcto
+	 * @see #validarDatosNumericosLlamada(Integer)
 	 * @param int
 	 * @return String
 	 */
@@ -428,7 +440,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea la altura de la planta
+	 * Setea la altura de la planta, validando que sea correcta
+	 * @see #validarDatosNumericosLlamada(Integer)
 	 * @param int
 	 * @return String
 	 */
@@ -451,7 +464,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor de la estacion de la planta
+	 * Setea el valor de la estacion de la planta, validando que sea correcta
+	 * @see #validarEstacionLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -476,7 +490,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor del habitat de la planta
+	 * Setea el valor del habitat de la planta, validando que sea correcto
+	 * @see #validarHabitatLlamada(String, String)
 	 * @param String
 	 * @param String
 	 * @return String
@@ -501,7 +516,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor que indica si la planta tiene o no flor
+	 * Setea el valor que indica si la planta tiene o no flor, validando que sea correcto
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -524,7 +540,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor de exposicion solar apto para la planta
+	 * Setea el valor de exposicion solar apto para la planta, validando que sea correcto
+	 * @see #validarExpSolarLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -547,7 +564,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor del tipo de raiz de la planta
+	 * Setea el valor del tipo de raiz de la planta, validando que sea correcto
+	 * @see #validarTipoRaizLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -570,7 +588,8 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
-	 * Setea el valor que indica si la planta es aromatica o no
+	 * Setea el valor que indica si la planta es aromatica o no, validando que sea correcto
+	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
 	 */
@@ -601,6 +620,7 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	}
 
 	/**
+	 * Retorna informacion relevante del objeto
 	 * @return String
 	 */
 	@Override
