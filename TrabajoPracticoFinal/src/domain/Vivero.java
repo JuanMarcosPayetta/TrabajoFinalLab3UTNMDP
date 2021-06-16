@@ -317,8 +317,8 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	public String moficarPrecioProducto(Producto elemento, int precio) {
-		String mensaje = "Producto no Encontrado.";
+	public String modificarPrecioProducto(Producto elemento, double precio) {
+		String mensaje = "Producto no encontrado\n";
 		int flag = 0;
 		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
 
@@ -335,7 +335,7 @@ public class Vivero implements IVivero {
 						{
 							catalogoProductos.replace(elemento.getClasificacion(), arreglo);
 							flag = 1;
-							mensaje = "Precio modificado";
+							mensaje = "Precio modificado con exito\n";
 						}
 					}
 				}
@@ -433,7 +433,7 @@ public class Vivero implements IVivero {
 						{
 							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
 							flag = 1;
-							mensaje = "Nombre modificado";
+							mensaje = "Nombre modificado con exito\n";
 						}
 					}
 				}

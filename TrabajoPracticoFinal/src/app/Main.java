@@ -52,9 +52,9 @@ public class Main {
 		while(!validarEmpleado)
 		{
 			System.out.println("Ingrese la opcion deseada por favor:\n");
-			System.out.println("1-Crear un nuevo empleado: ");
-			System.out.println("2-Ingresar al sistema: ");
-			System.out.println("3-Salir del sistema: ");
+			System.out.println("1-Crear un nuevo empleado: \n");
+			System.out.println("2-Ingresar al sistema: \n");
+			System.out.println("3-Salir del sistema: \n");
 			
 			String pass=null;
 			String mensaje="";
@@ -178,10 +178,10 @@ public class Main {
 					System.out.println("4 - Menu Pedidos: \n");
 					System.out.println("5 - Menu Busquedas: \n");
 					System.out.println("6 - Menu Eliminar: \n");
-					System.out.println("7 - Menu Mostrar: ");
-					System.out.println("8 - Menu Modificar: ");
-					System.out.println("9 - Menu Informativo: ");
-					System.out.println("10 -Salir");
+					System.out.println("7 - Menu Mostrar: \n");
+					System.out.println("8 - Menu Modificar: \n");
+					System.out.println("9 - Menu Informativo: \n");
+					System.out.println("10 -Salir: \n");
 					
 					/*
 					 * ->menu buscar: producto, servicio, cliente, empleado
@@ -189,7 +189,7 @@ public class Main {
 					 *-> menu mostrar: productos, servicios, empleados, clientes  
 					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
 					 * 				eliminar un producto del carrito, eliminar pedido impago completo
-					 * menu estadisticas (centro informativo)
+					 * ->menu estadisticas (centro informativo)
 					 * menu modificaciones: stock, atributos en general
 					 */
 			
@@ -2951,7 +2951,135 @@ public class Main {
 					}
 					case 8:
 					{
-						//TERMINAR ESTE CASE!! <<<-------
+						System.out.println("Elija la opcion deseada por favor\n");
+						System.out.println("1-Modificar nombre de un producto: \n");
+						System.out.println("2-Modificar marca de un producto: \n");
+						System.out.println("3-Modificar precio de un producto: \n");
+						System.out.println("4-Aumentar stock de un producto: \n");
+						System.out.println("5-Reducir stock de un producto: \n");
+						System.out.println("6-: \n");
+						System.out.println("7-: \n");
+						System.out.println("8-: \n");
+						System.out.println("9-: \n");
+						
+						while (!scan.hasNextInt()) scan.next();
+					    opcion3 = scan.nextInt();
+					    scan.nextLine();
+					
+						String dniCliente=null;
+						Cliente cliente=null;
+						String codigo=null;
+						String clasificacion=null;
+						mensaje=" ";
+						char intentar=0;
+						
+				
+						switch (opcion3) {
+						case 1:{
+							
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto al que desea modificar el nombre por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							String nombre=null;
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nuevo nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.modificarNombreProdcuto(producto, nombre));
+							System.out.println(vivero.mostrarProductoResumido());
+							
+						}
+						case 2:
+						{
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto al que desea modificar la marca por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							String marca=null;
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese la nueva marca por favor");
+								marca=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(marca);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.modificarMarcaProdcuto(producto, marca));
+							System.out.println(vivero.mostrarProductoResumido());
+						}
+						case 3:
+						{
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto al que desea modificar el precio por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							double precio=0;
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nuevo precio por favor");
+								while (!scan.hasNextDouble()) scan.next();
+								precio= scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarPrecioLlamada(precio);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.modificarPrecioProducto(producto, precio));
+							System.out.println(vivero.mostrarProductoResumido());
+							
+						}
+						default:
+							System.out.println("Opcion erronea");
+						}
+							
+						break;
 					}
 					case 9:
 					{

@@ -246,6 +246,29 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 	
 	
+	/*
+	 * Valida que el precio ingresado no sea negativo, ni igual a 0
+	 */
+	public static String validarPrecioLlamada(double precio)
+	{
+		String mensaje=null;
+		try {
+			validarPrecio(precio);
+		} catch (DatoNumeroException e) {
+			mensaje=e.getMessage();
+		}
+		return mensaje;
+	}
+	
+	private static void validarPrecio(double precio) throws  DatoNumeroException
+	{
+		if(precio<=0)
+		{
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+", ni igual a 0\n");
+		}
+	}
+	
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -306,7 +329,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	public String setPrecio(double precio) {
-		String mensaje = validarValorNumericoLlamada(precio); // si devuelve "null" el dato es correcto
+		String mensaje = validarPrecioLlamada(precio); // si devuelve "null" el dato es correcto
 
 		if (mensaje == null) {
 			this.precio = precio;
