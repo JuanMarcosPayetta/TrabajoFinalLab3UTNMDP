@@ -186,7 +186,6 @@ public class Empleado implements Serializable{
 		}
 		return validacion;
 	}
-	
 
 	/**
 	 * Muestra informacion relevante del objeto

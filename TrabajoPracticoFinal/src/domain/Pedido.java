@@ -11,6 +11,10 @@ import org.json.JSONObject;
 import excepciones.CadenaInvalidaException;
 import interfaces.IDescuento;
 
+/**
+ * Gestiona todo los metodos y atributos referentes a los pedidos
+ *
+ */
 public class Pedido implements IDescuento, Serializable{
 
 	private int idCliente;
@@ -62,26 +66,49 @@ public class Pedido implements IDescuento, Serializable{
 		carrito = new ArrayList<PeticionCompra>();
 	}
 
+	/**
+	 * Retorna el Id del cliente
+	 * @return int
+	 */
 	public int getIdCliente() {
 		return idCliente;
 	}
 
+	/**
+	 * Establece el Id del objeto cliente
+	 * @param idCliente
+	 */
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
 
+	/**
+	 * Retorna el Id del empleado
+	 * @return int
+	 */
 	public int getIdEmpleado() {
 		return idEmpleado;
 	}
 
+	/**
+	 * Establece el Id del empleado
+	 * @param idEmpleado
+	 */
 	public void setIdEmpleado(int idEmpleado) {
 		this.idEmpleado = idEmpleado;
 	}
 
+	/**
+	 * Retorna el total bruto del pedido
+	 * @return double
+	 */
 	public double getTotalBruto() {
 		return totalBruto;
 	}
 
+	/**
+	 * Setea el total bruto del pedido
+	 */
 	public void setTotalBruto() 
 	{
 		double total=0;
@@ -94,11 +121,18 @@ public class Pedido implements IDescuento, Serializable{
 			this.totalBruto=total;
 		}
 	}
-
+	
+	/**
+	 * Retorna el totalNeto del pedido
+	 * @return double
+	 */
 	public double getTotalNeto() {
 		return totalNeto;
 	}
 
+	/**
+	 * Setea el total neto del pedido
+	 */
 	public void setTotalNeto() 
 	{
 		if(carrito!=null) 
@@ -107,10 +141,19 @@ public class Pedido implements IDescuento, Serializable{
 		}
 	}
 
+	/**
+	 * Retorna el medio de pago establecido en el pedido
+	 * @return String
+	 */
 	public String getMedioDePago() {
 		return medioDePago;
 	}
 
+	/**
+	 * Establece el medio de pago del pedido
+	 * @param medioDePago
+	 * @return String
+	 */
 	public String setMedioDePago(String medioDePago) {
 		String mensaje=null;
 		mensaje=validarMedioDePagoLlamada(medioDePago);
@@ -121,6 +164,7 @@ public class Pedido implements IDescuento, Serializable{
 		return mensaje;
 	}
 
+	//CONTINUAR COMENTARIOS DESDE AQUI ///
 	public double getDescuento() {
 		return descuento;
 	}
