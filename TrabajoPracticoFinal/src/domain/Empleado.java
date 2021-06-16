@@ -54,7 +54,7 @@ public class Empleado implements Serializable{
 	/**
 	 * Captura la exepcion lanzada por {@link #validarContrasenia(String)}
 	 * @see #validarContrasenia(String)
-	 * @param contrasenia
+	 * @param String
 	 * @return String
 	 */
 	public static String validarContraseniaLlamada(String contrasenia)
@@ -72,7 +72,7 @@ public class Empleado implements Serializable{
 	
 	/**
 	 * Valida String ingresado y lanza una exepcion que es capturada por {@link #validarContraseniaLlamada(String)}
-	 * @param contrasenia
+	 * @param String
 	 * @throws CadenaInvalidaException
 	 * @throws NullPointerException
 	 * @see #validarContraseniaLlamada(String)
@@ -104,7 +104,7 @@ public class Empleado implements Serializable{
 	
 	/**
 	 * Establece el ID del objeto
-	 * @param iD
+	 * @param int
 	 */
 	public void setID(int iD) {
 		ID = iD;
@@ -117,10 +117,11 @@ public class Empleado implements Serializable{
 	public String getNombre() {
 		return nombre;
 	}
+	
 
 	/**
 	 * Establece el nombrel del objeto
-	 * @param nombre
+	 * @param String
 	 * @return String
 	 */
 	public String setNombre(String nombre) {
@@ -143,7 +144,7 @@ public class Empleado implements Serializable{
 
 	/**
 	 * Establece el apellido del objeto
-	 * @param apellido
+	 * @param String
 	 * @return String
 	 */
 	public String setApellido(String apellido) {

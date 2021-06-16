@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import excepciones.DatoNumeroException;
 
+/**
+ * 
+ * Gestiona la informacion relacionada a los productos/servicios a 
+ *
+ */
 public class PeticionCompra implements Serializable{
 
 	private String codigo;//codigo del producto/servicio
