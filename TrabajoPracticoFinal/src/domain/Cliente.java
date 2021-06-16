@@ -49,7 +49,7 @@ public class Cliente implements Serializable{
 	
 	
 /**
- * Captura la exepcion lanzada por validarCadenaCaracteresTELDNI
+ * Captura la exepcion lanzada por {@link #validarCadenaCaracteresTELDNI(String)}
  * @see #validarCadenaCaracteresTELDNI(String)
  * @param nombre
  * @return String
@@ -72,7 +72,7 @@ public class Cliente implements Serializable{
 	 * @throws CadenaInvalidaException
 	 * @throws NullPointerException
 	 * @see #validarCadenaCaracteresTELDNILlamada(String)
-	 * Valida String ingresado y lanza una exepcion que es capturada por validarCadenaCaracteresTELDNILlamada
+	 * Valida String ingresado y lanza una exepcion que es capturada por {@link #validarCadenaCaracteresTELDNILlamada(String)}
 	 */
 	private static void validarCadenaCaracteresTELDNI(String cadena)
 			throws CadenaInvalidaException, NullPointerException {
