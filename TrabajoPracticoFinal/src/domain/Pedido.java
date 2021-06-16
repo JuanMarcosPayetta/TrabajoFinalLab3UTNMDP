@@ -164,11 +164,18 @@ public class Pedido implements IDescuento, Serializable{
 		return mensaje;
 	}
 
-	//CONTINUAR COMENTARIOS DESDE AQUI ///
+	/**
+	 * Retorna el descuento establecido del objeto
+	 * @return double
+	 */
 	public double getDescuento() {
 		return descuento;
 	}
 
+	/**
+	 * Establece el descuento para ese objeto
+	 * @param String
+	 */
 	public void setDescuento(String medioDePago) 
 	{
 		double desc=0;
@@ -194,31 +201,46 @@ public class Pedido implements IDescuento, Serializable{
 		}
 	}
 
+	/**
+	 * Retorna si el pedido ha sido abonado o no
+	 * @return boolean
+	 */
 	public boolean isFueAbonado() {
 		return fueAbonado;
 	}
 
+	/**
+	 * Se utiliza para establecer que el pedido ha sido abonado
+	 * @param fueAbonado
+	 */
 	public void setFueAbonado(boolean fueAbonado) {
 		this.fueAbonado = fueAbonado;
 	}
 
+	/**
+	 * Retorna el numero del pedido
+	 * @return int
+	 */
 	public int getNumeroPedido() {
 		return numeroPedido;
 	}
 
+	/**
+	 * Establece el numero de pedido
+	 * @param int
+	 */
 	public void setNumeroPedido(int numeroPedido) {
 		this.numeroPedido = numeroPedido;
 	}
 
-	
-	//unicamente se usa para eliminar productos desde el vivero
+/**
+ * 	Retorna el ArrayList de peticion Compra
+ * @return ArrayList<PeticionCompra> 
+ */
 	public ArrayList<PeticionCompra> getCarrito() {
 		return carrito;
 	}
 
-	public void setCarrito(ArrayList<PeticionCompra> carrito) {
-		this.carrito = carrito;
-	}
 	
 	public void agregarProductoToCarrito(PeticionCompra peticion) {
 		carrito.add(peticion);
