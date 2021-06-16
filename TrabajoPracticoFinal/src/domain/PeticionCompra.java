@@ -6,7 +6,7 @@ import excepciones.DatoNumeroException;
 
 /**
  * 
- * Gestiona la informacion relacionada a los productos/servicios a 
+ * Gestiona la informacion relacionada a los productos/servicios adquiridos 
  *
  */
 public class PeticionCompra implements Serializable{
@@ -26,7 +26,12 @@ public class PeticionCompra implements Serializable{
 		this.precioUnitario = precioUnitario;
 		this.cantidad = cantidad;
 	}
-	
+	/**
+	 * Captura la exepcion lanzada por {@link #validarCantidad(Integer)}
+	 * @see #validarCantidad(Integer)
+	 * @param Double
+	 * @return String
+	 */
 	private static String validarPrecioUnitarioLlamada(Double precioU) 
 	{
 		String mensaje=null;
@@ -42,6 +47,13 @@ public class PeticionCompra implements Serializable{
 		return mensaje;
 	}
 	
+	/**
+	 * Lanza una exepcion que es capturada por {@link #validarPrecioUnitarioLlamada(Double)}
+	 * @see #validarPrecioUnitarioLlamada(Double)
+	 * @param Double
+	 * @throws NullPointerException
+	 * @throws DatoNumeroException
+	 */
 	private static void validarPrecioUnitario(Double precioU) throws NullPointerException, DatoNumeroException 
 	{
 		if(precioU==null) {
@@ -52,6 +64,12 @@ public class PeticionCompra implements Serializable{
 		}
 	}
 
+	/**
+	 * Captura la exepcion lanzada por {@link #validarCantidad(Integer)}
+	 * @see #validarCantidad(Integer)
+	 * @param Integer
+	 * @return
+	 */
 	private static String validarCantidadLlamada(Integer cantidad) 
 	{
 		String mensaje=null;
@@ -67,6 +85,13 @@ public class PeticionCompra implements Serializable{
 		return mensaje;
 	}
 	
+	/**
+	 * Lanza una exepcion que es capturada por {@link #validarCantidadLlamada(Integer)}
+	 * @see #validarCantidadLlamada(Integer)
+	 * @param Integer
+	 * @throws NullPointerException
+	 * @throws DatoNumeroException
+	 */
 	private static void validarCantidad(Integer cantidad) throws NullPointerException, DatoNumeroException 
 	{
 		if(cantidad==null) {
@@ -77,18 +102,36 @@ public class PeticionCompra implements Serializable{
 		}
 	}
 	
+	/**
+	 * Retorna el codigo del objeto
+	 * @return String
+	 */
 	public String getCodigo() {
 		return codigo;
 	}
 
+	/**
+	 * Establece el codigo del objeto
+	 * @param String
+	 */
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
+	/**
+	 * Retorna el precioUnitario del objeto
+	 * @return double
+	 */
 	public double getPrecioUnitario() {
 		return precioUnitario;
 	}
 
+	/**
+	 * Establece el precio unitario del objeto y valida que sea correcto
+	 * @see #validarPrecioUnitarioLlamada(Double)
+	 * @param double
+	 * @return String
+	 */
 	public String setPrecioUnitario(double precioUnitario) {
 		String mensaje=null;
 		mensaje=validarPrecioUnitarioLlamada(precioUnitario);
@@ -99,10 +142,19 @@ public class PeticionCompra implements Serializable{
 		return mensaje;
 	}
 
+	/**
+	 * Retorna la cantidad solicitada del producto
+	 * @return int
+	 */
 	public int getCantidad() {
 		return cantidad;
 	}
 
+	/**
+	 * Establece la cantidad solicitada del producto
+	 * @param int
+	 * @return String
+	 */
 	public String setCantidad(int cantidad) {
 		String mensaje=null;
 		mensaje=validarCantidadLlamada(cantidad);
@@ -113,8 +165,10 @@ public class PeticionCompra implements Serializable{
 		return mensaje;
 	}
 	
-	
-	@Override
+	/**
+	 * Retorna la informacion relevante del objeto
+	 * @return String
+	 */
 	public String toString() {
 		return "Codigo:" + codigo + ", Precio Unitario: " + precioUnitario + ", Cantidad solicitada:" + cantidad+"\n";
 	}
