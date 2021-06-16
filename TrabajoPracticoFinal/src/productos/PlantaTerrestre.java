@@ -65,14 +65,29 @@ public abstract class PlantaTerrestre extends Planta{
 		this.especie = especie;
 	}
 	
+	/**
+	 * Metodo abstracto, establece la cantidad de riego que necesita la planta
+	 */
 	public abstract void establecerCantidadRiego();
+	
+	/**
+	 * Metodo abstracto, establece la epoca de poda de la planta
+	 */
 	public abstract void establecerEpocaPoda();
 
-	
+	/**
+	 * Devuelve si la planta tiene fruto o no
+	 * @return boolean
+	 */
 	public boolean isFruto() {
 		return fruto;
 	}
 
+	/**
+	 * Setea el valor que indica si la planta tiene fruto o no
+	 * @param boolean
+	 * @return String
+	 */
 	public String setFruto(boolean fruto) {
 		
 		String mensaje=null;
@@ -84,10 +99,19 @@ public abstract class PlantaTerrestre extends Planta{
 	   return mensaje;
 	}
 
+	/**
+	 * Retorna si la planta tiene semilla o no
+	 * @return boolean
+	 */
 	public boolean isSemilla() {
 		return semilla;
 	}
 
+	/**
+	 * Setea el valor que indica si la planta tiene semilla
+	 * @param boolean
+	 * @return String
+	 */
 	public String setSemilla(boolean semilla) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(semilla);
@@ -98,10 +122,19 @@ public abstract class PlantaTerrestre extends Planta{
 	   return mensaje;
 	}
 
+	/**
+	 * Retorna si la planta es o no es de interior
+	 * @return
+	 */
 	public boolean isInterior() {
 		return interior;
 	}
 
+	/**
+	 * Setea el valor que indica si la planta es o no es de interior
+	 * @param boolean
+	 * @return String
+	 */
 	public String setInterior(boolean interior) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(interior);
@@ -112,18 +145,35 @@ public abstract class PlantaTerrestre extends Planta{
 	   return mensaje;
 	}
 
+	/**
+	 * Devuelve la epoca de poda de la planta
+	 * @return String
+	 */
 	public String getEpocaDePoda() {
 		return epocaDePoda;
 	}
 
+	/**
+	 * Devuelve la cantidad de riego que necesita la planta
+	 * @return int
+	 */
 	public int getCantidadRiego() {
 		return cantidadRiego;
 	}
 
+	/**
+	 * Devuelve la especie de la planta
+	 * @return String
+	 */
 	public String getEspecie() {
 		return especie;
 	}
 
+	/**
+	 * Setea el tipo de especie de la planta
+	 * @param String
+	 * @return String
+	 */
 	public String setEspecie(String especie) {
 		String mensaje=null;
 		mensaje=Producto.validarCadenaCaracteresLlamada(especie);
@@ -134,14 +184,25 @@ public abstract class PlantaTerrestre extends Planta{
 		return mensaje;
 	}
 
+	/**
+	 * Setea la epoca de poda de la planta
+	 * @param String
+	 */
 	public void setEpocaDePoda(String epocaDePoda) {
 		this.epocaDePoda = epocaDePoda;
 	}
 
+	/**
+	 * Setea la cantidad de riego que necesita la planta
+	 * @param int
+	 */
 	public void setCantidadRiego(int cantidadRiego) {
 		this.cantidadRiego = cantidadRiego;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", especie: " + especie + ", posee fruto: " + fruto + ", posee semilla: " + semilla 

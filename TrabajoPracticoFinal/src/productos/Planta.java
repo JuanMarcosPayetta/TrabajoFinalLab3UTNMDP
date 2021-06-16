@@ -95,11 +95,16 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		this.cantidadFertilizante=0; 
 	}
 	
-	public abstract void establecerCantidadFertilizante(); //ESTABLECER EN CLASE FINAL
+	/**
+	 * Metodo abstracto, establece la cantidad de fertilizante que necesita la planta
+	 */
+	public abstract void establecerCantidadFertilizante();
 	
-	
-	/*
-	 * Validacion Meses de vida/Altura, llamada main
+	//Valida los meses de vida o la altura de la planta
+	/**
+	 * Valida que el numero pasado por parametro sea correcto, llamada 
+	 * @param Integer
+	 * @return String
 	 */
 	public static String validarDatosNumericosLlamada(Integer numero) {
 		String mensaje = null; // si el retorno es null es correcto
@@ -111,6 +116,12 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el numero pasado por parametro sea correcto
+	 * @param Integer
+	 * @throws DatoNumeroException
+	 * @throws NullPointerException
+	 */
 	private static void validarDatosNumericos(Integer numero) throws DatoNumeroException, NullPointerException 
 	{
 		if (numero==null) {
@@ -120,11 +131,11 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 			throw new DatoNumeroException("Ingrese un numero superior a 0");
 		}
 	}
-
 	
-	
-	/*
-	 * Validacion tipo de raiz, llamada main
+	/**
+	 * Valida que el tipo de raiz pasado por parametro sea correcto, llamada
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoRaizLlamada(String tipo)
 	{
@@ -141,6 +152,10 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
+	/**
+	 * Valida que el tipo de raiz sea valido
+	 * @param String
+	 */
 	private static void validarTipoRaiz(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>tipos=new ArrayList<String>();
@@ -170,8 +185,10 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
     }
 	
 	
-	/*
-	 * Validacion estacion de plantacion, llamada main
+	/**
+	 * Valida que el tipo de estacion pasada por parametro sea correcta, llamada
+	 * @param String
+	 * @return String
 	 */
 	public static String validarEstacionLlamada(String tipo)
 	{
@@ -188,6 +205,13 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de estacion pasada por parametro sea correcta
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarEstacion(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>tipos=new ArrayList<String>();
@@ -216,8 +240,11 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
     }
 	
 	
-	/*
-	 * Validacion habitat, llamada main (La opcion es para determinar los posibles habitat validos segun el tipo de planta (terrestre, acuatica))
+	/**
+	 * Valida que el habitat pasado por parametro sea correcto
+	 * @param String
+	 * @param String
+	 * @return String
 	 */
 	public static String validarHabitatLlamada(String opcion, String tipo)
 	{
@@ -235,6 +262,14 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
+	/**
+	 * Valida que el habitat pasado por parametro sea correcto (La opcion es para determinar los posibles habitat validos segun el tipo de planta (terrestre, acuatica)
+	 * @param String
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarHabitat(String opcion, String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
 		ArrayList<String>opciones=new ArrayList<String>();
@@ -307,8 +342,11 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
     }
 	
 
-	/*
-	 * Validar nivel de exposicion solar, llamada main
+	/**
+	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto, llamada 
+	 * @param String
+	 * @param String
+	 * @return String
 	 */
 	public static String validarExpSolarLlamada(String tipo)
 	{
@@ -325,6 +363,13 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el nivel de exposicion solar pasado por marametro sea correcto 
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarExpSolar(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
         ArrayList<String>tipos=new ArrayList<String>();
@@ -351,11 +396,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
         
     }
 	
-	
+	/**
+	 * Devuelve los meses de vida de la planta
+	 * @return int
+	 */
 	public int getMesesDeVida() {
 		return mesesDeVida;
 	}
 
+	/**
+	 * Setea los meses de vida de la planta
+	 * @param int
+	 * @return String
+	 */
 	public String setMesesDeVida(int mesesDeVida) {
 		String mensaje=null;
 		mensaje=validarDatosNumericosLlamada(mesesDeVida);
@@ -366,10 +419,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 	
+	/**
+	 * Devuelve la altura de la planta
+	 * @return int
+	 */
 	public int getAltura() {
 		return altura;
 	}
 
+	/**
+	 * Setea la altura de la planta
+	 * @param int
+	 * @return String
+	 */
 	public String setAltura(int altura) {
 		String mensaje=null;
 		mensaje=validarDatosNumericosLlamada(altura);
@@ -380,11 +442,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
-	
+	/**
+	 * Devuelve la estacion de plantacion de la planta
+	 * @return String
+	 */
 	public String getEstacionPlantacion() {
 		return estacionPlantacion;
 	}
 
+	/**
+	 * Setea el valor de la estacion de la planta
+	 * @param String
+	 * @return String
+	 */
 	public String setEstacionPlantacion(String estacionPlantacion) {
 		
 		String mensaje=null;
@@ -397,10 +467,20 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el habitat de la planta
+	 * @return String
+	 */
 	public String getHabitat() {
 		return habitat;
 	}
 
+	/**
+	 * Setea el valor del habitat de la planta
+	 * @param String
+	 * @param String
+	 * @return String
+	 */
 	public String setHabitat(String opcion, String habitat) {
 		
 		String mensaje=null;
@@ -412,11 +492,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
-	
+	/**
+	 * Devuelve si la planta tiene flor o no
+	 * @return boolean
+	 */
 	public boolean isFlor() {
 		return flor;
 	}
 
+	/**
+	 * Setea el valor que indica si la planta tiene o no flor
+	 * @param boolean
+	 * @return String
+	 */
 	public String setFlor(boolean flor) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(flor);
@@ -427,10 +515,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	   return mensaje;
 	}
 
+	/**
+	 * Devuelve la exposicion solar de la planta
+	 * @return String
+	 */
 	public String getNivelExposicionSolar() {
 		return nivelExposicionSolar;
 	}
 
+	/**
+	 * Setea el valor de exposicion solar apto para la planta
+	 * @param String
+	 * @return String
+	 */
 	public String setNivelExposicionSolar(String nivelExposicionSolar) {
 		String mensaje=null;
 		mensaje=validarExpSolarLlamada(nivelExposicionSolar);
@@ -441,10 +538,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el tipo de raiz de la planta
+	 * @return String
+	 */
 	public String getTipoRaiz() {
 		return tipoRaiz;
 	}
 
+	/**
+	 * Setea el valor del tipo de raiz de la planta
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoRaiz(String tipoRaiz) {
 		String mensaje=null;
 		mensaje=validarTipoRaizLlamada(tipoRaiz);
@@ -455,10 +561,19 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve si la planta es o no aromatica
+	 * @return boolean
+	 */
 	public boolean isAromatica() {
 		return aromatica;
 	}
 
+	/**
+	 * Setea el valor que indica si la planta es aromatica o no
+	 * @param boolean
+	 * @return String
+	 */
 	public String setAromatica(boolean aromatica) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(aromatica);
@@ -469,14 +584,25 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	   return mensaje;
 	}
 	
+	/**
+	 * Setea la cantidad apta de fertilizante para la planta
+	 * @param int
+	 */
 	public void setCantidadFertilizante(int cantidadFertilizante) {
 		this.cantidadFertilizante = cantidadFertilizante;
 	}
 
+	/**
+	 * Devuelve la cantidad de fertilizante apta para la planta
+	 * @return int
+	 */
 	public int getCantidadFertilizante() {
 		return cantidadFertilizante;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", meses de vida: " + mesesDeVida + "\n" + ", estacion de plantacion: " + estacionPlantacion + ", habitat: "

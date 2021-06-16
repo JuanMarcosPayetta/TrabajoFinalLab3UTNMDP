@@ -65,8 +65,10 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 
-	/*
-	 * Validacion tipo de hoja, llamada main
+	/**
+	 * Valida que el tipo de hoja pasado por parametro sea correcto, llamada 
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoHojaLLamada(String tipo)
 	{
@@ -84,6 +86,13 @@ public class Arbusto extends PlantaTerrestre{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de hoja pasado por parametro sea correcto
+	 * @param tipo
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoHoja(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
     {
         ArrayList<String>tipos=new ArrayList<String>();
@@ -110,11 +119,19 @@ public class Arbusto extends PlantaTerrestre{
 
     }
 
-	
+	/**
+	 * Devuelve el tipo de hoja del arbusto
+	 * @return String
+	 */
 	public String getTipoDeHoja() {
 		return tipoDeHoja;
 	}
 
+	/**
+	 * Setea el tipo de hoja del arbusto
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoDeHoja(String tipoDeHoja) {
 		
 		String mensaje=null;
@@ -126,10 +143,19 @@ public class Arbusto extends PlantaTerrestre{
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve si el arbusto es trepador o no lo es
+	 * @return boolean
+	 */
 	public boolean isTrepador() {
 		return trepador;
 	}
 
+	/**
+	 * Setea el valor del arbusto para indicar si es trepador o no
+	 * @param boolean
+	 * @return String
+	 */
 	public String setTrepador(boolean trepador) {
         
 		String mensaje=null;
@@ -142,14 +168,17 @@ public class Arbusto extends PlantaTerrestre{
 	   return mensaje;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", tipo de hoja: " + tipoDeHoja + ", trepador: " + trepador;
 	}
 	
 
-	/*
-	 * Establece la cantidad de litros  de agua por arbusto segun su desarrollo y habitat
+	/**
+	 * Establece la cantidad de litros de agua por arbusto segun su desarrollo y habitat
 	 */
 	@Override
 	public void establecerCantidadRiego() {
@@ -183,7 +212,7 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	
-	/*
+	/**
 	 * Establece la epoca de poda segun las caracteristicas del arbusto
 	 */
 	@Override
@@ -207,8 +236,8 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 
-	/*
-	 * Establece la cantidad de fertilizante segun sea una planta joven o mas desarrollada (en gramos)
+	/**
+	 * Establece la cantidad de fertilizante indicado para el arbusto segun sea una planta joven o mas desarrollada (en gramos)
 	 */
 	@Override
 	public void establecerCantidadFertilizante() {
@@ -226,11 +255,19 @@ public class Arbusto extends PlantaTerrestre{
 		}
 	}
 
+	/**
+	 * Establece la clasificacion a "Arbusto"
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Arbusto");
 	}
 
+	/**
+	 * Calcula el precio del arbusto segun los meses de vida que tiene
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioMesDeVida(int mesesVida) {
 		
@@ -247,6 +284,11 @@ public class Arbusto extends PlantaTerrestre{
 		return precioPorMes*mesesVida;
 	}
 
+	/**
+	 * Calcula el precio del arbusto segun su altura (en cm)
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioPorCentimentoAltura(int centimentros) {
 		
@@ -262,8 +304,9 @@ public class Arbusto extends PlantaTerrestre{
 		return precioPorCentimetro*centimentros;
 	}
 
-	
-
+	/**
+	 * Establece el precio del arbusto
+	 */
 	@Override
 	public void establecerPrecio() {
 	
@@ -322,7 +365,10 @@ public class Arbusto extends PlantaTerrestre{
 	
 	
 	
-
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

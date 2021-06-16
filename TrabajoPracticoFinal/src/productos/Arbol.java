@@ -62,8 +62,10 @@ public class Arbol extends PlantaTerrestre{
 		establecerPrecio();
 	}
 	
-	/*
-	 * Validacion tipo de corteza, llamada main
+	/**
+	 * Valida que el tipo de corteza pasado por parametro sea correcto, llamada
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoCortezaLlamada(String tipo) {
 		String mensaje=null; //si devuelve "null" es correcto
@@ -79,6 +81,13 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 
+	/**
+	 * Valida que el tipo de corteza pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoCorteza(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		boolean existe=existeTipoCorteza(tipo);
@@ -96,6 +105,10 @@ public class Arbol extends PlantaTerrestre{
 		}
 	}
 	
+	/**
+	 * @param String
+	 * @return boolean
+	 */
 	private static boolean existeTipoCorteza(String tipo){
 		boolean existe=false;
 		ArrayList<String> tipos = new ArrayList<String>();
@@ -115,10 +128,10 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 
-	/*
-	 * Valida el diametro del tronco, llamada main
-	 * ("Se espera un dato entero entre los 2cm y 130cm")
-	 * - en validacion del main: ver ingreso String (aunq lo convierta a  Integer) 
+	/**
+	 * Valida el diametro del tronco, llamada 
+	 * @param Integer
+	 * @return String
 	 */
 	public static String validarDiametroTroncoLlamada(Integer diametro) {
 		String mensaje=null;
@@ -132,6 +145,11 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 	
+	/**
+	 * @param Integer
+	 * @throws DatoNumeroException
+	 * @throws NullPointerException
+	 */
 	private static void validarDiametroTronco(Integer diametro) throws DatoNumeroException, NullPointerException
 	{
 		if(diametro==null) {
@@ -142,12 +160,19 @@ public class Arbol extends PlantaTerrestre{
 		}
 	}
 	
-	
-	
+	/**
+	 * Devuelve el diametro del tronco
+	 * @return int
+	 */
 	public int getDiametroDelTronco() {
 		return diametroDelTronco;
 	}
 
+	/**
+	 * Setea el diametro del tronco, corroborando primero que el valor ingresado sea valido
+	 * @param int
+	 * @return String
+	 */
 	public String setDiametroDelTronco(int diametroTronco) {
 		String mensaje=validarDiametroTroncoLlamada(diametroTronco);
 		
@@ -158,11 +183,19 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 	
-
+	/**
+	 * Retorna el tipo de corteza del arbol
+	 * @return String
+	 */
 	public String getTipoDeCorteza() {
 		return tipoDeCorteza;
 	}
 
+	/**
+	 * Setea el tipo de corteza del arbol 
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoCorteza(String tipoCorteza) {
 		String mensaje=validarTipoCortezaLlamada(tipoCorteza);
 		
@@ -173,14 +206,16 @@ public class Arbol extends PlantaTerrestre{
 		return mensaje;
 	}
 
-	
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", diametro del tronco: " + diametroDelTronco + ", tipo de corteza: " + tipoDeCorteza;
 	}
 
 	
-	/*
+	/**
 	 * Establece la cantidad de riego segun el diametro del tronco de un arbol (diametro x litros) y su habitat
 	 */
 	@Override
@@ -236,8 +271,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 	
-	/*
-	 * Establece la mejor epoca de poda para un Arbol
+	/**
+	 * Establece la mejor epoca de poda para un producto de tipo Arbol
 	 */
 	@Override
 	public void establecerEpocaPoda() {
@@ -253,8 +288,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 
 	
-	/*
-	 * Establece la cantidad de fertilizante segun el diametro del tronco del arbol(50gr) y su habitat
+	/**
+	 * Establece la cantidad de fertilizante segun el diametro del tronco del arbol y su habitat
 	 */
 	@Override
 	public void establecerCantidadFertilizante() {
@@ -272,14 +307,19 @@ public class Arbol extends PlantaTerrestre{
 		}
 	}
 	
-	/*
-	 * Establece la clafisicacion
+	/**
+	 * Establece la clafisicacion a "Arbol" 
 	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Arbol");
 	}
 
+	/**
+	 * Retorna el precio del arbol, dependiendo de los meses de vida que tiene
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioMesDeVida(int mesesVida) {
 
@@ -287,12 +327,20 @@ public class Arbol extends PlantaTerrestre{
 		return precioMesVida*mesesVida;
 	}
 
+	/**
+	 * Calcula el precio del arbol segun su altura (en cm)
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioPorCentimentoAltura(int centimentros) {
 		double precioCentimetro=3;
 		return precioCentimetro*centimentros;
 	}
 
+	/**
+	 * Establece el precio del arbol
+	 */
 	@Override
 	public void establecerPrecio() {
 		double precioMinino=0;
@@ -349,7 +397,10 @@ public class Arbol extends PlantaTerrestre{
 		return obj;
 	}
 	
-	
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

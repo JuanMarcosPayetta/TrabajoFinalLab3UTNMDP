@@ -68,8 +68,10 @@ public class Hierba extends PlantaTerrestre{
 	}
 
 	
-	/*
-	 * Validar tipo de tallo, llamada main
+	/**
+	 * Valida que el tipo de tallo pasado por parametro sea correcto, llamada 
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoTalloLlamada (String tipo) {
 		String mensaje=null;
@@ -85,6 +87,13 @@ public class Hierba extends PlantaTerrestre{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de tallo pasado por parametro sea correcto
+	 * @param String
+	 * @throws CadenaInvalidaException
+	 * @throws NullPointerException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoTallo(String tipo) throws CadenaInvalidaException, NullPointerException, InputMismatchException
 	{
 		boolean existe=existeTipoTallo(tipo);
@@ -102,6 +111,11 @@ public class Hierba extends PlantaTerrestre{
 		}
 	}
 	
+	/**
+	 * Verifica si el tipo de tallo pasado por parametro es valido
+	 * @param String
+	 * @return boolean
+	 */
 	private static boolean existeTipoTallo(String tipo){
 		boolean existe=false;
 		ArrayList<String> tipos = new ArrayList<String>();
@@ -117,11 +131,19 @@ public class Hierba extends PlantaTerrestre{
 		return existe;
 	}
 	
-	
+	/**
+	 * Devuelve el tipo de tallo de la hierba
+	 * @return String
+	 */
 	public String getTipoDeTallo() {
 		return tipoDeTallo;
 	}
 
+	/**
+	 * Setea el tipo de tallo de la hierba
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoDeTallo(String tipoTallo) {
 		String mensaje=validarTipoTalloLlamada(tipoTallo);
 		
@@ -132,11 +154,19 @@ public class Hierba extends PlantaTerrestre{
 		return mensaje;
 	}
 	
-	
+	/**
+	 * Retorna si la hierba es comestible o no
+	 * @return boolean
+	 */
 	public boolean isComestible() {
 		return comestible;
 	}
 
+	/**
+	 * Setea el valor para indicar si la hierba es comestible o no
+	 * @param boolean
+	 * @return String
+	 */
 	public String setComestible(boolean comestible) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(comestible);
@@ -148,10 +178,19 @@ public class Hierba extends PlantaTerrestre{
 	   return mensaje;
 	}
 
+	/**
+	 * Retorna si la hierba es medicinal o no
+	 * @return boolean
+	 */
 	public boolean isMedicinal() {
 		return medicinal;
 	}
 
+	/**
+	 * Setea el valor para indicar si la hierba es medicinal o no
+	 * @param boolean
+	 * @return String
+	 */
 	public String setMedicinal(boolean medicinal) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(medicinal);
@@ -163,13 +202,16 @@ public class Hierba extends PlantaTerrestre{
 	   return mensaje;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", tipo de tallo: " + tipoDeTallo + ", comestible: " + comestible + "\n" + ", medicinal: " + medicinal;
 	}
 
-	/*
-	 * Establece la cantidad de litros  de agua de una hierba segun su desarrollo y habitat
+	/**
+	 * Establece la cantidad de litros de agua de una hierba segun su desarrollo y habitat
 	 */
 	@Override
 	public void establecerCantidadRiego() {
@@ -210,7 +252,7 @@ public class Hierba extends PlantaTerrestre{
 		}
 	}
 	
-	/*
+	/**
 	 * Establece la epoca de vida segun las caracteristicas de la hierba
 	 */
 	@Override
@@ -252,7 +294,7 @@ public class Hierba extends PlantaTerrestre{
 		}
 	}
 
-	/*
+	/**
 	 * Establece la cantidad de fertilizante segun sea una planta joven o mas desarrollada (en gramos)
 	 */
 	@Override
@@ -271,12 +313,20 @@ public class Hierba extends PlantaTerrestre{
 			setCantidadFertilizante(200);
 		}
 	}
-
+	
+	/**
+	 * Establece la clasificacion a "Hierba"
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Hierba");
 	}
 
+	/**
+	 * Calcula el precio de la hierba segun los meses de vida que tiene
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioMesDeVida(int mesesVida) {
 		double precioPorMes=0; //precio por defecto por cada mes de vida
@@ -306,6 +356,11 @@ public class Hierba extends PlantaTerrestre{
 		return precioPorMes*mesesVida;
 	}
 
+	/**
+	 * Calcula el precio de la hierba segun su altura(en cm)
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioPorCentimentoAltura(int centimentros) {
 		
@@ -326,6 +381,9 @@ public class Hierba extends PlantaTerrestre{
 		return precioPorCentimetro*centimentros;
 	}
 
+	/**
+	 * Establece el precio de la hierba
+	 */
 	@Override
 	public void establecerPrecio() {
 	
@@ -373,7 +431,10 @@ public class Hierba extends PlantaTerrestre{
 		return obj;
 	}
 	
-	
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

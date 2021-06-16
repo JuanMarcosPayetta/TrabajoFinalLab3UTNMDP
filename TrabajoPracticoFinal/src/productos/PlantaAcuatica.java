@@ -78,8 +78,10 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	
-	/*
-	 * Validacion tipo de agua, llamada main
+	/**
+	 * Valida que el tipo de agua pasado por parametro sea correcto, llamada
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoDeAguaLlamada(String tipo) {
 		String mensaje=null; //si devuelve "null" es correcto
@@ -95,6 +97,13 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de agua pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoDeAgua(String tipo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String> tipos = new ArrayList<String>();
@@ -116,10 +125,10 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	
-	/*
-	 * Validacion temperatura del agua, llamada main
-	 * ("Se espera un dato entero entre los 20°C y los 27°C inclusive")
-	 * - en validacion del main: ver ingreso String (aunq lo convierta a  Integer) 
+	/**
+	 * Valida que la temperatura del agua pasada por parametro sea correcta, llamada 
+	 * @param Integer
+	 * @return String
 	 */ 
 	public static String validarTempAguaLlamada(Integer temperatura) {
         String mensaje=null; //si devuelve "null" es correcto
@@ -135,7 +144,13 @@ public class PlantaAcuatica extends Planta{
         return mensaje;
     }
 	
-	
+	/**
+	 * Valida que la temperatura del agua pasada por parametro sea correcta
+	 * @param Integer
+	 * @throws DatoNumeroException
+	 * @throws NullPointerException
+	 * @throws NumberFormatException
+	 */
     private static void validarTempAgua(Integer temperatura) throws DatoNumeroException, NullPointerException, NumberFormatException
     {
     	if(temperatura==null) {
@@ -149,10 +164,12 @@ public class PlantaAcuatica extends Planta{
         }
     }
     
-	
-    /*
-	 * Validacion dureza del agua, llamada en main
-	 */
+    
+    /**
+     * Valida que la dureza del agua pasada por parametro sea correcta, llamada
+     * @param String
+     * @return String
+     */
 	public static String validarDurezaAguaLlamada(String durezaAgua)
 	{
 		String mensaje=null; //si devuelve "null" es correcto
@@ -168,6 +185,13 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
     
+	/**
+	 * Valida que la dureza del agua pasada por parametro sea correcta
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarDurezaAgua(String durezaAgua) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>dureza=new ArrayList<String>();
@@ -194,8 +218,10 @@ public class PlantaAcuatica extends Planta{
 	}
 	
 	
-	/*
-	 * Validacion tipo de planta acuatica, llamada main
+	/**
+	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto, llamada
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTipoPlantaLlamada(String tipoPlanta)
 	{
@@ -213,6 +239,13 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de planta acuatica pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoPlanta (String tipoPlanta) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>tipos=new ArrayList<String>();
@@ -239,11 +272,19 @@ public class PlantaAcuatica extends Planta{
 		}
 	}
 
-	
+	/**
+	 * Devuelve el tipo de agua que necesita la planta
+	 * @return String
+	 */
 	public String getTipoDeAgua() {
 		return tipoDeAgua;
 	}
 
+	/**
+	 * Setea el valor del tipo de agua que necesita la planta
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoDeAgua(String tipoDeAgua) {
 		String mensaje=null;
 		mensaje=validarTipoDeAguaLlamada(tipoDeAgua);
@@ -254,10 +295,19 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el valor de la temperatura del agua
+	 * @return int
+	 */
 	public int getTemperaturaAgua() {
 		return temperaturaAgua;
 	}
 
+	/**
+	 * Setea el valor de la temperatura del agua
+	 * @param int
+	 * @return String
+	 */
 	public String setTemperaturaAgua(int temperaturaAgua) {
 		String mensaje=null;
 		mensaje=validarTempAguaLlamada(temperaturaAgua);
@@ -269,10 +319,19 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve la dureza del agua
+	 * @return String
+	 */
 	public String getDurezaAgua() {
 		return durezaAgua;
 	}
 
+	/**
+	 * Setea el valor de dureza del agua
+	 * @param String
+	 * @return String
+	 */
 	public String setDurezaAgua(String durezaAgua) {
 		String mensaje=null;
 		mensaje=validarDurezaAguaLlamada(durezaAgua);
@@ -284,10 +343,19 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el tipo de la planta acuatica
+	 * @return
+	 */
 	public String getTipo() {
 		return tipo;
 	}
 
+	/**
+	 * Setea el tipo de planta acuatica
+	 * @param String
+	 * @return String
+	 */
 	public String setTipo(String tipo) {
 		String mensaje=null;
 		mensaje=validarTipoPlantaLlamada(tipo);
@@ -299,22 +367,36 @@ public class PlantaAcuatica extends Planta{
 		return mensaje;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", Tipo del planta: " + tipo+ ", Tipo De Agua: " + tipoDeAgua + ", Temperatura del Agua: " + temperaturaAgua + ", Dureza del Agua: "
 				+ durezaAgua;
 	}
 
+	/**
+	 * Establece la cantidad de fertilizante necesario para la planta
+	 */
 	@Override
 	public void establecerCantidadFertilizante() {
 		this.setCantidadFertilizante(0);
 	}
 
+	/**
+	 * Establece la clasificacion a "Planta acuatica"
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Planta acuatica");
 	}
 
+	/**
+	 * Devuelve el precio que calcula segun los meses de vida de la planta
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioMesDeVida(int mesesVida)
 	{
@@ -336,6 +418,11 @@ public class PlantaAcuatica extends Planta{
 		return precioPorMes*mesesVida;
 	}
 	
+	/**
+	 * Establece el precio de la planta segun su alura(en cm)
+	 * @param int
+	 * @return double
+	 */
 	@Override
 	public double precioPorCentimentoAltura(int centimentros)
 	{
@@ -343,7 +430,9 @@ public class PlantaAcuatica extends Planta{
 		return precioPorCentimetro*centimentros;
 	}
 	
-	
+	/**
+	 * Establece el precio de la planta acuatica
+	 */
 	@Override
 	public void establecerPrecio() {
 		
@@ -411,7 +500,10 @@ public class PlantaAcuatica extends Planta{
 		return obj;
 	}
 	
-
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;
