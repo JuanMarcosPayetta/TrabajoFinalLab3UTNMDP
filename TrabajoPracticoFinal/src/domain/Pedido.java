@@ -241,13 +241,21 @@ public class Pedido implements IDescuento, Serializable{
 		return carrito;
 	}
 
-	
+	/**
+	 * Agrega un objeto de la clase peticionCompra al carrito de pedidos
+	 * @param peticionCompra
+	 */
 	public void agregarProductoToCarrito(PeticionCompra peticion) {
 		carrito.add(peticion);
 	}
 
 	
-	
+	/**
+	 * Captura la expecion lanzada por {@link #validarMedioDePago(String)}
+	 * @see #validarMedioDePago(String)
+	 * @param String
+	 * @return String
+	 */
 	public static String validarMedioDePagoLlamada(String medioPago)
 	{
 		String mensaje=null;
@@ -263,6 +271,16 @@ public class Pedido implements IDescuento, Serializable{
 		return mensaje;
 	}
 	
+	
+	/**
+	 * Verifica que el medio de pago ingresado sea valido
+	 * Lanza una expecion que es capturada por {@link #validarMedioDePagoLlamada(String)}
+	 * @see #validarMedioDePagoLlamada(String)
+	 * @param medioPago
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarMedioDePago (String medioPago) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		boolean existeMedioP = existeMedioDePago(medioPago);
@@ -285,6 +303,11 @@ public class Pedido implements IDescuento, Serializable{
 		}
 	}
 
+	/**
+	 * Retorna true si el medio de pago ingresado esta dentro de los permitidos
+	 * @param String
+	 * @return boolean
+	 */
 	private static boolean existeMedioDePago (String medioPago) 
 	{
 		boolean existe=false;
@@ -301,7 +324,10 @@ public class Pedido implements IDescuento, Serializable{
 	}
 	
 	
-	@Override
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	public String toString() {
 		return " - Pedido " + numeroPedido + " - \n"
 				+ " idCliente: " + idCliente + "\n"
@@ -313,7 +339,10 @@ public class Pedido implements IDescuento, Serializable{
 				+ " carrito: " + carrito;
 	}
 	
-	
+	/**
+	 * Agrega un objeto peticionCompra al arrayList de Pedido
+	 * @param peticionCompra
+	 */
 	public void agregarPeticionCompra(PeticionCompra peticion)
 	{
 		carrito.add(peticion);
