@@ -7,7 +7,11 @@ import org.json.JSONObject;
 
 import excepciones.CadenaInvalidaException;
 import productos.Producto;
-
+/**
+ * 
+ * Esta clase se almacena en un HashSet, tiene sobre escrito el metodo equals
+ *
+ */
 public class Empleado implements Serializable{
 
 	private int ID;
@@ -47,8 +51,11 @@ public class Empleado implements Serializable{
 	}
 
 	
-	/*
-	 * valida la contraseña
+	/**
+	 * Captura la exepcion lanzada por {@link #validarContrasenia(String)}
+	 * @see #validarContrasenia(String)
+	 * @param contrasenia
+	 * @return String
 	 */
 	public static String validarContraseniaLlamada(String contrasenia)
 	{
@@ -63,6 +70,13 @@ public class Empleado implements Serializable{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida String ingresado y lanza una exepcion que es capturada por {@link #validarContraseniaLlamada(String)}
+	 * @param contrasenia
+	 * @throws CadenaInvalidaException
+	 * @throws NullPointerException
+	 * @see #validarContraseniaLlamada(String)
+	 */
 	private static void validarContrasenia(String contrasenia) throws CadenaInvalidaException, NullPointerException
 	{
 		if(contrasenia==null)
@@ -80,15 +94,23 @@ public class Empleado implements Serializable{
 		
 	}
 	
-	
+	/**
+	 * Retorna el ID del objeto
+	 * @return int
+	 */
 	public int getID() {
 		return ID;
 	}
 	
+	/**
+	 * Establece el ID del objeto
+	 * @param iD
+	 */
 	public void setID(int iD) {
 		ID = iD;
 	}
 
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -9,6 +9,10 @@ import org.json.JSONObject;
 import excepciones.CadenaInvalidaException;
 import productos.Producto;
 
+/**
+ *Esta clase se almacena en un HashSet, tiene sobre escrito el metodo equals. 
+ *
+ */
 
 public class Cliente implements Serializable{
 
@@ -44,7 +48,12 @@ public class Cliente implements Serializable{
 	}
 	
 	
-
+/**
+ * Captura la exepcion lanzada por {@link #validarCadenaCaracteresTELDNI(String)}
+ * @see #validarCadenaCaracteresTELDNI(String)
+ * @param nombre
+ * @return String
+ */
 	public static String validarCadenaCaracteresTELDNILlamada(String nombre) {
 		String mensaje = null; // Si el retorno es "null" seria correcto
 		try {
@@ -57,6 +66,14 @@ public class Cliente implements Serializable{
 		return mensaje;
 	}
 
+	/**
+	 * 
+	 * @param cadena
+	 * @throws CadenaInvalidaException
+	 * @throws NullPointerException
+	 * @see #validarCadenaCaracteresTELDNILlamada(String)
+	 * Valida String ingresado y lanza una exepcion que es capturada por {@link #validarCadenaCaracteresTELDNILlamada(String)}
+	 */
 	private static void validarCadenaCaracteresTELDNI(String cadena)
 			throws CadenaInvalidaException, NullPointerException {
 		if (cadena == null) {
@@ -68,20 +85,26 @@ public class Cliente implements Serializable{
 		}
 	}
 
-	
+	/**
+	 * Retorna el ID del objeto
+	 * @return int
+	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * @return the nombre
+	 * Retorna el nombre del objeto
+	 * @return String
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
+	 * Establece el nombre del objeto
 	 * @param nombre the nombre to set
+	 * @return String
 	 */
 	public String setNombre(String nombre) {
 
@@ -95,14 +118,17 @@ public class Cliente implements Serializable{
 	}
 
 	/**
-	 * @return the apellido
+	 * Retorna el apellido del objeto
+	 * @return apellido
 	 */
 	public String getApellido() {
 		return apellido;
 	}
 
 	/**
-	 * @param apellido the apellido to set
+	 * Establece el apellido del objeto
+	 * @param apellido
+	 * @return String
 	 */
 	public String setApellido(String apellido) {
 		String mensaje = Producto.validarCadenaCaracteresLlamada(apellido);
@@ -114,15 +140,18 @@ public class Cliente implements Serializable{
 		return mensaje;
 	}
 
-	/**
-	 * @return the telefono
-	 */
+/**
+ * Retorna el telefono del objeto
+ * @return String
+ */
 	public String getTelefono() {
 		return telefono;
 	}
 
 	/**
-	 * @param telefono the telefono to set
+	 * Establece el telefono del objeto
+	 * @param telefono
+	 * @return String
 	 */
 	public String setTelefono(String telefono) {
 		String mensaje = validarCadenaCaracteresTELDNILlamada(telefono);
@@ -134,14 +163,17 @@ public class Cliente implements Serializable{
 	}
 
 	/**
-	 * @return the dni
+	 * Retorna el dni del objeto
+	 * @return String
 	 */
 	public String getDni() {
 		return dni;
 	}
 
 	/**
-	 * @param dni the dni to set
+	 * Establece el dni del objeto
+	 * @param dni
+	 * @return String
 	 */
 	public String setDni(String dni) {
 
@@ -177,14 +209,19 @@ public class Cliente implements Serializable{
 		return estado;
 	}
 
-	@Override
+	/**
+	 * Muestra informacion relevante del objeto
+	 * @return String
+	 */
 	public String toString() {
 		return "ID: " + id + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Telefono: " + telefono
 				+ ", DNI: " + dni;
 	}
 
-	/*
+	/**
 	 * Valida que el dni ingresado posea solo numeros, y un total de 8 caracteres
+	 * @param dni
+	 * @return boolean
 	 */
 	public static boolean validarDNI(String dni)
 	{
