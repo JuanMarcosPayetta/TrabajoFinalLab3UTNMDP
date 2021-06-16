@@ -182,18 +182,8 @@ public class Main {
 					System.out.println("7 - Menu Mostrar: \n");
 					System.out.println("8 - Menu Modificar: \n");
 					System.out.println("9 - Menu Informativo: \n");
-					System.out.println("10 -Salir: \n");
+					System.out.println("10 -Salir del sistema: \n");
 					
-					/*
-					 * ->menu buscar: producto, servicio, cliente, empleado
-					 * ->menu eliminar: producto, servicio (los elimina del catalogo)
-					 *-> menu mostrar: productos, servicios, empleados, clientes  
-					 *-> menu pedidos: carritos impagos, historial total de compras, pedido de determinado cliente, 
-					 * 				eliminar un producto del carrito, eliminar pedido impago completo
-					 * ->menu estadisticas (centro informativo)
-					 * menu modificaciones: stock, atributos en general
-					 */
-			
 					while (!scan.hasNextInt()) scan.next();
 					opcion3= scan.nextInt();
 					scan.nextLine();
