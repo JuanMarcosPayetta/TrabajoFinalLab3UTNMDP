@@ -30,10 +30,20 @@ public class Decoracion extends ProductoDeHogar {
 		establecerPrecio();
 	}
 
+	/**
+	 * Devuelve si la decoracion es o no de exterior
+	 * @return boolean
+	 */
 	public boolean isExterior() {
 		return exterior;
 	}
-
+	
+	/**
+	 * Setea el valor que indica si la decoracion es de exterior o no
+	 * @see #validarBooleanLlamada(Boolean)
+	 * @param boolean
+	 * @return String
+	 */
 	public String setExterior(boolean exterior) {
 		String mensaje = validarBooleanLlamada(exterior);// si devuelve null es correcto
 
@@ -45,10 +55,20 @@ public class Decoracion extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el color primario de la decoracion
+	 * @return String
+	 */
 	public String getColorPrimario() {
 		return colorPrimario;
 	}
 
+	/**
+	 * Setea el valor que indica el color primario de la decoracion
+	 * @see #validarCadenaCaracteresLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setColorPrimario(String colorPrimario) {
 
 		String mensaje = validarCadenaCaracteresLlamada(colorPrimario);// si devuelve null es correcto
@@ -61,16 +81,29 @@ public class Decoracion extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", exterior:" + exterior + ", colorPrimario:" + colorPrimario;
 	}
 
+	/**
+	 * Establece la clasificacion del objeto a "Decoracion"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Decoracion");
 	}
 
+	/**
+	 * Establece el precio del producto
+	 * @see #isExterior()
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() {
 		
@@ -103,7 +136,11 @@ public class Decoracion extends ProductoDeHogar {
     	 return obj;
      }
 	
-	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

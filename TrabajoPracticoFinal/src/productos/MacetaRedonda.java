@@ -39,10 +39,20 @@ public class MacetaRedonda extends Maceta{
 		establecerPrecio();
 	}
 	
+	/**
+	 * Devuelve el diametro de la boca de la maceta
+	 * @return double
+	 */
 	public double getDiametroBoca() {
 		return diametroBoca;
 	}
 
+	/**
+	 * Setear el valor que indica el diametro de la boca de la maceta
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setDiametroBoca(double diametroBoca) {
 		String mensaje=null;
 		mensaje=validarValorNumericoLlamada(diametroBoca);
@@ -53,10 +63,20 @@ public class MacetaRedonda extends Maceta{
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el valor de la base de la maceta
+	 * @return double
+	 */
 	public double getBase() {
 		return base;
 	}
 
+	/**
+	 * Setea el valor que indica el tamanio de la base
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setBase(double base) {
 		String mensaje=null;
 		mensaje=validarValorNumericoLlamada(base);
@@ -67,16 +87,28 @@ public class MacetaRedonda extends Maceta{
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", diametroBoca: " + diametroBoca + ", base: " + base;
 	}
 
+	/**
+	 * Establece la clasificacion de la maceta a: "Maceta redonda"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Maceta redonda");
 	}
 
+	/**
+	 * Establece el precio de la maceta
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() {
 		
@@ -102,7 +134,11 @@ public class MacetaRedonda extends Maceta{
 		return obj;
 	}
 	
-	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int 
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

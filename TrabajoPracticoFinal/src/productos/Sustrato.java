@@ -44,7 +44,13 @@ public class Sustrato extends ProductoOrganico{
 		establecerPrecio();
 	}
 	
-	//Validar tipo de suelo, llamada main
+	
+	/**
+	 * Valida que el tipo de suelo pasado por parametro sea correcto, llamada
+	 * @see #validarTipoSuelo(String)
+	 * @param String
+	 * @return String
+	 */
 	public static String validarTipoSueloLlamada(String suelo)
 	{
 		String mensaje=null;
@@ -60,6 +66,13 @@ public class Sustrato extends ProductoOrganico{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de suelo pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoSuelo(String suelo) throws NullPointerException, CadenaInvalidaException, InputMismatchException 
 	{
 		ArrayList<String>suelosValidos=new ArrayList<String>();
@@ -89,11 +102,20 @@ public class Sustrato extends ProductoOrganico{
 
 	}
 	
-	
+	/**
+	 * Devuelve si el sustrato esta abonado o no
+	 * @return boolean
+	 */
 	public boolean isAbonada() {
 		return abonada;
 	}
 
+	/**
+	 * Setea el valor que indica si el sustrato esta abonado o no
+	 * @see #validarBooleanLlamada(Boolean)
+	 * @param abonada
+	 * @return String
+	 */
 	public String setAbonada(boolean abonada) {
 		
 		String mensaje=validarBooleanLlamada(abonada); //si devuelve "null" el dato es correcto
@@ -105,10 +127,20 @@ public class Sustrato extends ProductoOrganico{
 		return mensaje;	
 	}
 
+	/**
+	 * Devuelve el tipo de suelo que corresponde al sustrato
+	 * @return String
+	 */
 	public String getTipoDeSuelo() {
 		return tipoDeSuelo;
 	}
 
+	/**
+	 * Setea el valor que indica el tipo de suelo que corresponde al sustrato 
+	 * @see #validarTipoSueloLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoDeSuelo(String tipoDeSuelo) {
 		
 		String mensaje=validarTipoSueloLlamada(tipoDeSuelo); //si devuelve "null" el dato es correcto
@@ -120,17 +152,30 @@ public class Sustrato extends ProductoOrganico{
 		return mensaje;	
 	}
 	
-	
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", abonada: " + abonada + ", tipo de suelo: " + tipoDeSuelo;
 	}
 	
+	/**
+	 * Establece la clasificacion del objeto a "Sustrato"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Sustrato");
 	}
 	
+	/**
+	 * Establece el precio del sustrato
+	 * @see #isAbonada()
+	 * @see #getGramos()
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() 
 	{
@@ -166,6 +211,11 @@ public class Sustrato extends ProductoOrganico{
 		return obj;
 	}
 	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

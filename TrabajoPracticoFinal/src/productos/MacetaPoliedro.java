@@ -57,10 +57,20 @@ public class MacetaPoliedro extends Maceta {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el ancho de la maceta
+	 * @return double
+	 */
 	public double getAncho() {
 		return ancho;
 	}
 
+	/**
+	 * Setea el valor que indica el ancho de la maceta
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setAncho(double ancho) {
 		String mensaje = validarValorNumericoLlamada(ancho);
 
@@ -70,10 +80,20 @@ public class MacetaPoliedro extends Maceta {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el largo de la maceta
+	 * @return double
+	 */
 	public double getLargo() {
 		return largo;
 	}
 
+	/**
+	 * Setea el valor que indica el largo de la maceta
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setLargo(double largo) { 
 		String mensaje = validarValorNumericoLlamada(largo);
 
@@ -84,17 +104,28 @@ public class MacetaPoliedro extends Maceta {
 		return mensaje; 
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", alto:" + alto + ", ancho:" + ancho + ", largo:" + largo;
 	}
 
+	/**
+	 * Establece la clasificacion del objeto a: "Maceta poliedro"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Maceta poliedro");
 	}
 
-	
+	/**
+	 * Establece el precio de la maceta
+	 * @see #getForma()
+	 */
 	@Override
 	public void establecerPrecio() {
 		
@@ -135,6 +166,10 @@ public class MacetaPoliedro extends Maceta {
 		return obj;
 	}
 	
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;
