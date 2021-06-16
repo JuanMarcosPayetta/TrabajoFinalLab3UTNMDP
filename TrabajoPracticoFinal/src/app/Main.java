@@ -51,6 +51,7 @@ public class Main {
 
 		while(!validarEmpleado)
 		{
+			System.out.println(vivero.mostrarServicioResumido());
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: \n");
 			System.out.println("2-Ingresar al sistema: \n");
@@ -2957,23 +2958,19 @@ public class Main {
 						System.out.println("3-Modificar precio de un producto: \n");
 						System.out.println("4-Aumentar stock de un producto: \n");
 						System.out.println("5-Reducir stock de un producto: \n");
-						System.out.println("6-: \n");
-						System.out.println("7-: \n");
-						System.out.println("8-: \n");
-						System.out.println("9-: \n");
-						
+						System.out.println("6-Modificar descripcion de un producto: \n");
+						System.out.println("7-Modificar nombre de un servicio: \n");
+						System.out.println("8-Modificar precio de un servicio: \n");
+			
 						while (!scan.hasNextInt()) scan.next();
 					    opcion3 = scan.nextInt();
 					    scan.nextLine();
 					
-						String dniCliente=null;
-						Cliente cliente=null;
+				
 						String codigo=null;
 						String clasificacion=null;
 						mensaje=" ";
-						char intentar=0;
-						
-				
+					
 						switch (opcion3) {
 						case 1:{
 							
@@ -3144,6 +3141,101 @@ public class Main {
 							Producto producto= new PlantaAcuatica(codigo, clasificacion);
 							System.out.println(vivero.modificarStockDisminuye(producto, stock));
 							System.out.println(vivero.mostrarProductoResumido());
+							break;
+						}
+						case 6:
+						{
+							while(clasificacion==null)
+							{
+								System.out.println(vivero.mostrarProductoResumido());
+								System.out.println("Ingrese el codigo del producto al que desea modificar la descripcion por favor\n");
+								codigo=scan.nextLine();
+
+									clasificacion=vivero.buscarClasificacionProducto(codigo);
+									if(clasificacion==null)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							String descripcion=null;
+							System.out.println("Ingrese la nueva descripcion por favor\n");
+							descripcion=scan.nextLine();
+		
+							Producto producto= new PlantaAcuatica(codigo, clasificacion);
+							System.out.println(vivero.modificarDescripcionProdcuto(producto, descripcion));
+							break;
+							
+						}
+						case 7:
+						{
+							boolean validacion=false;
+							while(!validacion)
+							{
+								System.out.println(vivero.mostrarServicioResumido());
+								System.out.println("Ingrese el codigo del servicio al que desea modificar el nombre por favor\n");
+								codigo=scan.nextLine();
+
+									validacion=vivero.existeServicio(codigo);
+									if(!validacion)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							String nombre=null;
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nuevo nombre por favor");
+								nombre=scan.nextLine();
+							    mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println(vivero.modificarNombreServicio(codigo, nombre));
+							System.out.println(vivero.mostrarServicioResumido());
+							
+							break;
+						}
+						case 8:
+						{
+							boolean validacion=false;
+							while(!validacion)
+							{
+								System.out.println(vivero.mostrarServicioResumido());
+								System.out.println("Ingrese el codigo del servicio al que desea modificar el precio por favor\n");
+								codigo=scan.nextLine();
+
+									validacion=vivero.existeServicio(codigo);
+									if(!validacion)
+									{
+										System.out.println("Error, ingrese un codigo valido por favor");
+									}
+							}
+							
+							mensaje="";
+							double precio=0;
+							while(mensaje!=null)
+							{
+								System.out.println("Ingrese el nuevo precio por favor\n");
+								while (!scan.hasNextDouble()) scan.next();
+								precio= scan.nextDouble();
+								scan.nextLine();
+							    mensaje=Producto.validarPrecioLlamada(precio);
+							    if(mensaje!=null)
+							    {
+							    	System.out.println(mensaje);
+							    }
+							} 
+							
+							System.out.println(vivero.modificarPrecioServicio(codigo, precio));
+							System.out.println(vivero.mostrarServicioResumido());
+							
 							break;
 						}
 						default:

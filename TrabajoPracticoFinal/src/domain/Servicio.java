@@ -116,7 +116,7 @@ public class Servicio implements IGenerarCodigo, Serializable{
 
 	public String setPrecio(double precio) {
 		String mensaje=null;
-		mensaje=Producto.validarValorNumericoLlamada(precio);
+		mensaje=Producto.validarPrecioLlamada(precio);
 		if(mensaje==null)
 		{
 			this.precio = precio;

@@ -459,7 +459,7 @@ public class Vivero implements IVivero {
 						{
 							catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
 							flag = 1;
-							mensaje = "Marca modificada";
+							mensaje = "Marca modificada con exito\n";
 						}
 					}
 				}
@@ -468,6 +468,86 @@ public class Vivero implements IVivero {
 
 		return mensaje;
 	}
+	
+	/*
+	 * Modifica la descripcion de un producto
+	 */
+	public String modificarDescripcionProdcuto(Producto elProducto, String descripcion) {
+		String mensaje = "Producto no encontrado";
+		int flag = 0;
+		Iterator<Map.Entry<String, ArrayList<Producto>>> it = catalogoProductos.entrySet().iterator();
+
+		while (it.hasNext() && flag == 0) {
+			Map.Entry<String, ArrayList<Producto>> entrada = (Map.Entry<String, ArrayList<Producto>>) it.next();
+			if (entrada.getKey().equalsIgnoreCase(elProducto.getClasificacion())) {
+				ArrayList<Producto> arreglo = entrada.getValue();
+				for (int i = 0; flag == 0 && i < arreglo.size(); i++) {
+					if (arreglo.get(i).equals(elProducto)) {
+						arreglo.get(i).setDescripcion(descripcion);
+						catalogoProductos.replace(elProducto.getClasificacion(), arreglo);
+						flag = 1;
+						mensaje = "Descripcion modificada con exito\n";
+					}
+				}
+			}
+		}
+
+		return mensaje;
+	}
+	
+	/*
+	 * Modifica el nombre de un servicio
+	 */
+	public String modificarNombreServicio(String codigo, String nombre)
+	{
+		String mensaje="Servicio no encontrado\n";
+		Iterator<Map.Entry<String, Servicio>>it= catalogoServicios.entrySet().iterator();
+		boolean encontrado=false;
+		while(it.hasNext() && !encontrado)
+		{
+			Map.Entry<String, Servicio>entry=(Map.Entry<String, Servicio>)it.next();
+			if(entry.getKey().equalsIgnoreCase(codigo))
+			{
+				Servicio servicio=entry.getValue();
+				mensaje=servicio.setNombre(nombre);
+				if(mensaje==null)
+				{
+					catalogoServicios.replace(codigo, servicio);
+					encontrado=true;
+					mensaje="Nombre modificado con exito\n";
+				}
+			}
+		}
+		return mensaje;
+	}
+	
+	/*
+	 * Modifica el precio de un servicio
+	 */
+	public String modificarPrecioServicio(String codigo, double precio)
+	{
+		String mensaje="Servicio no encontrado\n";
+		Iterator<Map.Entry<String, Servicio>>it= catalogoServicios.entrySet().iterator();
+		boolean encontrado=false;
+		while(it.hasNext() && !encontrado)
+		{
+			Map.Entry<String, Servicio>entry=(Map.Entry<String, Servicio>)it.next();
+			if(entry.getKey().equalsIgnoreCase(codigo))
+			{
+				Servicio servicio=entry.getValue();
+				mensaje=servicio.setPrecio(precio);
+				if(mensaje==null)
+				{
+					catalogoServicios.replace(codigo, servicio);
+					encontrado=true;
+					mensaje="Precio modificado con exito\n";
+				}
+			}
+		}
+		return mensaje;
+	}
+	
+	
 
 	//Muestra el nombre, clasificacion, stock, precio y codigo del producto (para el momento de elegir el codigo del producto al comprar)
 	public String mostrarProductoResumido()
