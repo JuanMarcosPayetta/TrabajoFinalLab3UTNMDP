@@ -110,11 +110,19 @@ public class Empleado implements Serializable{
 		ID = iD;
 	}
 
-	
+	/**
+	 * Retorna el nombre del objeto 
+	 * @return String
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Establece el nombrel del objeto
+	 * @param nombre
+	 * @return String
+	 */
 	public String setNombre(String nombre) {
 		String mensaje=null;
 		mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
@@ -125,10 +133,19 @@ public class Empleado implements Serializable{
 		return mensaje;
 	}
 
+	/**
+	 * Retorna el apellido del objeto
+	 * @return String
+	 */
 	public String getApellido() {
 		return apellido;
 	}
 
+	/**
+	 * Establece el apellido del objeto
+	 * @param apellido
+	 * @return String
+	 */
 	public String setApellido(String apellido) {
 		String mensaje=null;
 		mensaje=Producto.validarCadenaCaracteresLlamada(apellido);
@@ -139,7 +156,10 @@ public class Empleado implements Serializable{
 		return mensaje;
 	}
 	
-	
+	/**
+	 * Retorna la contraseña del objeto
+	 * @return String
+	 */
 	public String getContrasenia() {
 		return contrasenia;
 	}
@@ -168,7 +188,10 @@ public class Empleado implements Serializable{
 	}
 	
 
-	@Override
+	/**
+	 * Muestra informacion relevante del objeto
+	 * @return String
+	 */
 	public String toString() {
 		return "ID: " + ID + ", Nombre: " + nombre + ", Apellido: " + apellido;
 	}
