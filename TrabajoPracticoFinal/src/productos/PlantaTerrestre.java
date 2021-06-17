@@ -1,8 +1,5 @@
 package productos;
 
-
-import excepciones.CadenaInvalidaException;
-
 public abstract class PlantaTerrestre extends Planta{
 
 	private boolean fruto;

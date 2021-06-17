@@ -12,7 +12,6 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -505,7 +504,7 @@ public class AccesoDatos { //clase para archivos
 	}
 	
 	/**
-	 * Permite generar un objeto Json con informacion relevante
+	 * Permite generar un objeto Json con informacion relevante, los tipos de productos comercializados, las marcas que el vivero trabaja, y los servicios ofrecidos
 	 * @param Vivero
 	 * @return JSONObject
 	 */

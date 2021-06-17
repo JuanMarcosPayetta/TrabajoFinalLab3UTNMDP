@@ -2,9 +2,6 @@ package domain;
 
 import java.io.Serializable;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import excepciones.CadenaInvalidaException;
 import productos.Producto;
 /**
