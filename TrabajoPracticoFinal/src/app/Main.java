@@ -535,7 +535,7 @@ public class Main {
 								mensaje="";
 								while(mensaje!=null)
 								{
-									System.out.println("Ingrese el habitat del arbol por favor(pradera, desierto, bosque, pantano, polar, savana, selva)");
+									System.out.println("Ingrese el habitat del arbol por favor(pradera, desierto, bosque, pantano, polar, sabana, selva)");
 									habitat=scan.nextLine();
 								    mensaje=Planta.validarHabitatLlamada("terrestre", habitat);
 								    if(mensaje!=null)
