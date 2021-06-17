@@ -1,7 +1,10 @@
 package excepciones;
 
+/**
+ *Utiliza constantes para enviar los mensajes 
+ */
 public class CadenaInvalidaException extends Exception{
-	
+		
 	private static final long serialVersionUID = 1L;
 	
 	public static final String LONGITUDYNUMEROSEXCEPTION="Error, el dato ingresado no debe poseer numeros, y tener un minimo de ";
