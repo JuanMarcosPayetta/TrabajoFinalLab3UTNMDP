@@ -2,15 +2,9 @@ package servicios;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Random;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import domain.Vivero;
-import excepciones.CadenaInvalidaException;
-import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
 import productos.Producto;
 
@@ -190,20 +184,5 @@ public class Servicio implements IGenerarCodigo, Serializable{
 		return validacion;
 	}
 	
-	
-	public JSONObject javaToJson()
-	{
-		JSONObject obj=null;
-		try
-		{
-			obj=new JSONObject();
-			obj.put("nombre", getNombre());
-		}
-		catch(JSONException e)
-		{
-			e.printStackTrace();
-		}
-		return obj;
-	}
 	
 }

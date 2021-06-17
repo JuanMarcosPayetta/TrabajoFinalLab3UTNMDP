@@ -1,8 +1,5 @@
 package productos;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class MacetaRedonda extends Maceta{
 
 	private double diametroBoca;

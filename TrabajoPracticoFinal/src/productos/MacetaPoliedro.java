@@ -1,7 +1,5 @@
 package productos;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MacetaPoliedro extends Maceta {
 
