@@ -48,7 +48,7 @@ public class MacetaRedonda extends Maceta{
 	}
 
 	/**
-	 * Setear el valor que indica el diametro de la boca de la maceta
+	 * Setear el valor que indica el diametro de la boca de la maceta, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -72,7 +72,7 @@ public class MacetaRedonda extends Maceta{
 	}
 
 	/**
-	 * Setea el valor que indica el tamanio de la base
+	 * Setea el valor que indica el tamanio de la base, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -135,6 +135,7 @@ public class MacetaRedonda extends Maceta{
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int 

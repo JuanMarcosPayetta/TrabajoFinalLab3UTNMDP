@@ -41,7 +41,7 @@ public class Lombriz extends ProductoOrganico{
 
 	
 	/**
-	 * Valida que la especie pasada por parametro sea correcta, llamada 
+	 * Valida que la especie pasada por parametro sea correcta
 	 * @see #validarEspecieLombriz(String)
 	 * @param String
 	 * @return String
@@ -63,6 +63,7 @@ public class Lombriz extends ProductoOrganico{
 	
 	/**
 	 * Valida que la especie pasada por parametro sea correcta
+	 * @see #validarEspecieLombrizLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -104,7 +105,7 @@ public class Lombriz extends ProductoOrganico{
 	}
 
 	/**
-	 * Setea el valor que indica la especie de la lombriz
+	 * Setea el valor que indica la especie de la lombriz, validando que sea correcta
 	 * @see #validarEspecieLombrizLlamada(String)
 	 * @param String
 	 * @return String
@@ -185,6 +186,7 @@ public class Lombriz extends ProductoOrganico{
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int

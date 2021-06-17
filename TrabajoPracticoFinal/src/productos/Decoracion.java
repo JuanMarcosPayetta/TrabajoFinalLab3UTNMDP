@@ -39,7 +39,7 @@ public class Decoracion extends ProductoDeHogar {
 	}
 	
 	/**
-	 * Setea el valor que indica si la decoracion es de exterior o no
+	 * Setea el valor que indica si la decoracion es de exterior o no, validando que sea correcto
 	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
@@ -64,7 +64,7 @@ public class Decoracion extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el color primario de la decoracion
+	 * Setea el valor que indica el color primario de la decoracion, validando que sea correcto
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -137,6 +137,7 @@ public class Decoracion extends ProductoDeHogar {
      }
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int

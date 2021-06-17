@@ -49,7 +49,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
-	 * Valida que el tipo de motor pasado por parametro sea correcto (electirco o a combustible), llamada
+	 * Valida que el tipo de motor pasado por parametro sea correcto (electirco o a combustible)
 	 * @see #validarMotor(String)
 	 * @param String
 	 * @return String
@@ -70,7 +70,8 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
-	 * Valida que el tipo de motor pasado por parametro sea correcto
+	 * Valida que el tipo de motor pasado por parametro sea correcto, lanzando una excepcion que sera capturada por {@link #validarMotorLlamada(String)}
+	 * @see #validarMotorLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -101,7 +102,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
-	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto), llamada
+	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto)
 	 * @see #validarConsumo(String)
 	 * @param String
 	 * @return String
@@ -123,7 +124,8 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
-	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto)
+	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto), lanzando una excepcion que sera capturada por {@link #validarConsumoLlamada(String))}
+	 * @see #validarConsumoLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -163,7 +165,8 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 
 	/**
-	 * Setea el valor que indica la potencia de la herramienta
+	 * Setea el valor que indica la potencia de la herramienta, validando que sea correcto
+	 * @see #validarValorNumericoLlamada(Number)
 	 * @param int
 	 * @return String
 	 */
@@ -186,7 +189,8 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
-	 * Setea el valor que indica el tipo de motor de la herramienta
+	 * Setea el valor que indica el tipo de motor de la herramienta, validando que sea correcto
+	 * @see #validarMotorLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -209,7 +213,8 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 
 	/**
-	 * Setea el valor que indica el consumo de la herramienta
+	 * Setea el valor que indica el consumo de la herramienta, validando que sea correcto
+	 * @see #validarConsumoLlamada(String)
 	 * @param String
 	 * @return String
 	 */
@@ -366,6 +371,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int

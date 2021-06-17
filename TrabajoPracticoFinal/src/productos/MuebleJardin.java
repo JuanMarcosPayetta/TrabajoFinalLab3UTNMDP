@@ -70,7 +70,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el alto del mueble
+	 * Setea el valor que indica el alto del mueble, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -95,7 +95,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el largo del mueble
+	 * Setea el valor que indica el largo del mueble, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -119,7 +119,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el ancho del mueble
+	 * Setea el valor que indica el ancho del mueble, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -145,7 +145,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Valida el tipo de mueble pasado por parametro, llamada
+	 * Valida el tipo de mueble pasado por parametro
 	 * @see #validarTipoMueble(String)
 	 * @param String
 	 * @return String
@@ -165,7 +165,8 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Valida el tipo de mueble pasado por parametro
+	 * Valida el tipo de mueble pasado por parametro, lanzando una excepcion que sera capturada por {@link #validarTipoMuebleLlamada(String)}
+	 * @see #validarTipoMuebleLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -193,7 +194,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el tipo de mueble
+	 * Setea el valor que indica el tipo de mueble, validando que sea correcto
 	 * @see #validarTipoMuebleLlamada(String)
 	 * @param String
 	 * @return String
@@ -284,6 +285,7 @@ public class MuebleJardin extends ProductoDeHogar {
     }
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @param Producto
 	 * @return int
 	 */

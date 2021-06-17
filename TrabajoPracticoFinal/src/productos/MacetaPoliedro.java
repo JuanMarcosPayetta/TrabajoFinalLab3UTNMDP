@@ -44,10 +44,20 @@ public class MacetaPoliedro extends Maceta {
 		establecerPrecio();
 	}
 
+	/**
+	 * Retorna el alto de la maceta poliedro
+	 * @return double
+	 */
 	public double getAlto() {
 		return alto;
 	}
 
+	/**
+	 * Establece el alto de la maceta poliedro, validando que sea correcto
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setAlto(double alto) {
 		String mensaje = validarValorNumericoLlamada(alto);
 		if (mensaje == null) {
@@ -66,7 +76,7 @@ public class MacetaPoliedro extends Maceta {
 	}
 
 	/**
-	 * Setea el valor que indica el ancho de la maceta
+	 * Setea el valor que indica el ancho de la maceta, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -89,7 +99,7 @@ public class MacetaPoliedro extends Maceta {
 	}
 
 	/**
-	 * Setea el valor que indica el largo de la maceta
+	 * Setea el valor que indica el largo de la maceta, validando que sea correcto
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -167,6 +177,7 @@ public class MacetaPoliedro extends Maceta {
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @param Producto
 	 * @return int
 	 */

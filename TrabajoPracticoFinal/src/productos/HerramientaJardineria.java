@@ -40,7 +40,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	
 
 	/**
-	 * Valida que la funcion de la herramienta pasada por parametro sea correcta, llamada
+	 * Valida que la funcion de la herramienta pasada por parametro sea correcta
 	 * @see #validarFuncionHerramienta(String)
 	 * @param String
 	 * @return String
@@ -60,7 +60,8 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Valida que la funcion de la herramienta pasada por parametro sea correcta
+	 * Valida que la funcion de la herramienta pasada por parametro sea correcta, lanzando una excepcion que sera capturada por {@link #validarFuncionHerramientaLlamada(String)}
+	 * @see #validarFuncionHerramientaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -98,7 +99,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Setea el valor que indica el material de la herramienta
+	 * Setea el valor que indica el material de la herramienta, validando que sea correcto
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -121,7 +122,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Setea el valor que indica la funcion de la herramienta
+	 * Setea el valor que indica la funcion de la herramienta, validando que sea correcta
 	 * @see #validarFuncionHerramientaLlamada(String)
 	 * @param String
 	 * @return String

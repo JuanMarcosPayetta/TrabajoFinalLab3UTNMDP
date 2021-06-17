@@ -39,7 +39,7 @@ public class Semilla extends ProductoOrganico{
 	}
 	
 	/**
-	 * Valida que el valor pasado por parametro sea correcto, llamada main
+	 * Valida que el valor pasado por parametro sea correcto
 	 * @see #validarDestinoSemilla(String)
 	 * @param String
 	 * @return String 
@@ -60,7 +60,8 @@ public class Semilla extends ProductoOrganico{
 	}
 	
 	/**
-	 * Valida que el valor pasado por parametro sea correcto
+	 * Valida que el valor pasado por parametro sea correcto, lanzando una excepcion que sera capturada por {@link #validarDestinoSemillaLlamada(String)}
+	 * @see #validarDestinoSemillaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -101,7 +102,7 @@ public class Semilla extends ProductoOrganico{
 	}
 
 	/**
-	 * Setea el valor que indica el destino de la semilla
+	 * Setea el valor que indica el destino de la semilla, validando que sea correcto
 	 * @see #validarDestinoSemillaLlamada(String)
 	 * @param String
 	 * @return String
@@ -179,6 +180,7 @@ public class Semilla extends ProductoOrganico{
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int

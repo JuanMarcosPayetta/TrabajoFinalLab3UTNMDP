@@ -46,7 +46,7 @@ public class Sustrato extends ProductoOrganico{
 	
 	
 	/**
-	 * Valida que el tipo de suelo pasado por parametro sea correcto, llamada
+	 * Valida que el tipo de suelo pasado por parametro sea correcto
 	 * @see #validarTipoSuelo(String)
 	 * @param String
 	 * @return String
@@ -67,7 +67,8 @@ public class Sustrato extends ProductoOrganico{
 	}
 	
 	/**
-	 * Valida que el tipo de suelo pasado por parametro sea correcto
+	 * Valida que el tipo de suelo pasado por parametro sea correcto, lanzando una excepcion que sera capturada por {@link #validarTipoSueloLlamada(String)}
+	 *@see #validarTipoSueloLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -111,7 +112,7 @@ public class Sustrato extends ProductoOrganico{
 	}
 
 	/**
-	 * Setea el valor que indica si el sustrato esta abonado o no
+	 * Setea el valor que indica si el sustrato esta abonado o no, validando que sea correcto
 	 * @see #validarBooleanLlamada(Boolean)
 	 * @param abonada
 	 * @return String
@@ -136,7 +137,7 @@ public class Sustrato extends ProductoOrganico{
 	}
 
 	/**
-	 * Setea el valor que indica el tipo de suelo que corresponde al sustrato 
+	 * Setea el valor que indica el tipo de suelo que corresponde al sustrato, validando que sea correcto
 	 * @see #validarTipoSueloLlamada(String)
 	 * @param String
 	 * @return String
@@ -212,6 +213,7 @@ public class Sustrato extends ProductoOrganico{
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int

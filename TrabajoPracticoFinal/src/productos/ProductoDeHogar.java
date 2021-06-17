@@ -36,7 +36,7 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 	}
 
 	/**
-	 * Setea el valor del material del que esta compuesto el producto
+	 * Setea el valor del material del que esta compuesto el producto, validando que sea correcto
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String

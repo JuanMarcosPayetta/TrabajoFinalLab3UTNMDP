@@ -46,7 +46,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	
 	
 	/**
-	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto, llamada
+	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto
 	 * @see #validarTamanioHManual(String)
 	 * @param String
 	 * @return String
@@ -68,7 +68,8 @@ public class HerramientaManual extends HerramientaJardineria{
 	}
 	
 	/**
-	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto
+	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto, lanzando una excepcion que sera capturada por {@link #validarTamanioHManualLlamada(String)}
+	 * @see #validarTamanioHManualLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
 	 * @throws CadenaInvalidaException
@@ -108,7 +109,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	}
 	
 	/**
-	 * Setea el valor que indica el tamanio de la herramienta
+	 * Setea el valor que indica el tamanio de la herramienta, validando que sea correcto
 	 * @see #validarTamanioHManualLlamada(String)
 	 * @param String
 	 * @return String
@@ -133,7 +134,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	}
 	
 	/**
-	 * Setea el valor que indica si la herramienta esta reforzada o no lo esta
+	 * Setea el valor que indica si la herramienta esta reforzada o no lo esta, validando que sea correcto
 	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
@@ -362,6 +363,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	}
 	
 	/**
+	 * Compara dos objetos, indicando si son iguales, mayor o menor
 	 * @see #getPrecio()
 	 * @param Producto 
 	 * @return int

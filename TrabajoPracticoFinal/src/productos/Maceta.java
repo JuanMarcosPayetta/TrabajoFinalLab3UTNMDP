@@ -34,7 +34,7 @@ public abstract class Maceta extends ProductoDeHogar{
 	}
 
 	 /**
-	  * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda), llamada
+	  * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda)
 	  * @see #validarFormaMaceta(String, String)
 	  * @param String
 	  * @param String
@@ -56,7 +56,8 @@ public abstract class Maceta extends ProductoDeHogar{
 	}
 	 
 	/**
-	 * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda)
+	 * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda), lanzando una excepcion que sera capturada por {@link #validarFormaMacetaLlamada(String, String)}
+	 * @see #validarFormaMacetaLlamada(String, String)
 	 * @param String
 	 * @param String
 	 * @throws NullPointerException
@@ -135,7 +136,7 @@ public abstract class Maceta extends ProductoDeHogar{
 	}
 
 	/**
-	 * Setea el valor que indica la forma de la maceta
+	 * Setea el valor que indica la forma de la maceta, validando que sea correcta
 	 * @see #setForma(String)
 	 * @param String
 	 * @return String
