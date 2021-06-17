@@ -156,7 +156,7 @@ public class HerramientaManual extends HerramientaJardineria{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", tamanio: " + tamanio + ", reforzada: " + reforzada;
+		return super.toString()+", Tamanio: " + tamanio + ", Es reforzada: " + reforzada;
 	}
 	
 	/**

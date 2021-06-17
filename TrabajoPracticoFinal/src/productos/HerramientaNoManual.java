@@ -234,7 +234,7 @@ public class HerramientaNoManual extends HerramientaJardineria {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + ", potencia: " + potencia + ", tipoMotor: " + tipoMotor + ", consumo: " + consumo;
+		return super.toString() + ", Potencia: " + potencia + ", Tipo de motor: " + tipoMotor + ", Consumo: " + consumo;
 	}
 
 	/**

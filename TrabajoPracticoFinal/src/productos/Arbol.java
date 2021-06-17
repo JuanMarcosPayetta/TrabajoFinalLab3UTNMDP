@@ -219,7 +219,7 @@ public class Arbol extends PlantaTerrestre{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", diametro del tronco: " + diametroDelTronco + ", tipo de corteza: " + tipoDeCorteza;
+		return super.toString()+", Diametro del tronco: " + diametroDelTronco + ", Tipo de corteza: " + tipoDeCorteza;
 	}
 
 	

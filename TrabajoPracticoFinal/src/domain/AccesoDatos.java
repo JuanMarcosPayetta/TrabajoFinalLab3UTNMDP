@@ -27,6 +27,11 @@ public class AccesoDatos { //clase para archivos
 
 	private final static String nombreArchivo = "json.txt";
 	
+	/**
+	 * Permite escribir un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String escribirArchivoProductos(Vivero vivero)
 	{
 	   File file=null;
@@ -70,6 +75,11 @@ public class AccesoDatos { //clase para archivos
 		
 	}
 	
+	/**
+	 * Permite leer un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String leerArchivoProductos(Vivero vivero)
 	{
 		FileInputStream f1=null;
@@ -116,6 +126,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/**
+	 * Permite escribir un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String escribirArchivoServicios(Vivero vivero) {
 
 		File file = null;
@@ -158,6 +173,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 
+	/**
+	 * Permite leer un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String leerArchivoServicios(Vivero vivero) {
 		String mensaje = null;
 
@@ -203,6 +223,11 @@ public class AccesoDatos { //clase para archivos
 	}
 	
 	
+	/**
+	 * Permite escribir un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String escribirArchivoClientes(Vivero vivero)
 	{
 		File f1=null;
@@ -241,6 +266,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/**
+	 * Permite leer un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String leerArchivoClientes(Vivero vivero)
 	{
 		FileInputStream f1= null;
@@ -288,6 +318,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/**
+	 * Permite escribir un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String escribirArchivoEmpleados(Vivero vivero)
 	{
 		File f1= null;
@@ -324,6 +359,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/**
+	 * Permite leer un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String leerArchivoEmpleados(Vivero vivero)
 	{
 		FileInputStream f1= null;
@@ -372,7 +412,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
-	
+	/**
+	 * Permite escribir un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String escribirArchivoPedidos(Vivero vivero)
 	{
 		String mensaje=null;
@@ -409,6 +453,11 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
+	/**
+	 * Permite leer un archivo binario
+	 * @param Vivero
+	 * @return String
+	 */
 	public String leerArchivoPedidos(Vivero vivero)
 	{
 		String mensaje=null;
@@ -455,8 +504,10 @@ public class AccesoDatos { //clase para archivos
 		return mensaje;
 	}
 	
-	/*
-	 * Escribe las marcas y clasificaciones en un json object
+	/**
+	 * Permite generar un objeto Json con informacion relevante
+	 * @param Vivero
+	 * @return JSONObject
 	 */
 	public JSONObject javaToJson(Vivero vivero)
 	{
@@ -496,7 +547,7 @@ public class AccesoDatos { //clase para archivos
 			while(it2.hasNext())
 			{
 				Map.Entry<String, Servicio>entry=(Map.Entry<String, Servicio>)it2.next();
-				servicios.put(entry.getValue().getNombre());
+				servicios.put(entry.getValue().getNombre()); //almaceno el nombre del servicio
 			}
 			
 			obj.put("clasificaciones", clasificaciones);
@@ -513,7 +564,11 @@ public class AccesoDatos { //clase para archivos
 	}
 	
 	
-    //graba JSONObject
+	
+	/**
+	 * Permite grabar un objeto Json en un archivo
+	 * @param JSONObject
+	 */
     public static void grabar(JSONObject jsonObject) {
         try {
             FileWriter file = new FileWriter(nombreArchivo);
@@ -526,6 +581,10 @@ public class AccesoDatos { //clase para archivos
         }
     }
  
+    /**
+	 * Permite leer un archivo retornando un String con su informacion
+	 * @return String
+	 */
     public static String leer() 
     {
         String contenido = "";

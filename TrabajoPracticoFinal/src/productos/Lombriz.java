@@ -126,7 +126,7 @@ public class Lombriz extends ProductoOrganico{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", especie: " + especie;
+		return super.toString()+", Especie: " + especie;
 	}
 	
 	/**

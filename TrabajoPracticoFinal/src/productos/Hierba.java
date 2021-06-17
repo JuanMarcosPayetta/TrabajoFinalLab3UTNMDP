@@ -214,7 +214,7 @@ public class Hierba extends PlantaTerrestre{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", tipo de tallo: " + tipoDeTallo + ", comestible: " + comestible + "\n" + ", medicinal: " + medicinal;
+		return super.toString()+", Tipo de tallo: " + tipoDeTallo + ", Es comestible: " + comestible + ", Es medicinal: " + medicinal;
 	}
 
 	/**

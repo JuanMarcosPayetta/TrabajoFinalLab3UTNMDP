@@ -348,37 +348,4 @@ public class Pedido implements IDescuento, Serializable{
 		carrito.add(peticion);
 	}
 	
-	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-        	
-        	JSONArray carri= new JSONArray();
-        	for(int i=0; i<carrito.size(); i++)
-        	{
-        		PeticionCompra peticion= carrito.get(i);
-        		JSONObject obj= new JSONObject();
-        		obj.put("codigo", peticion.getCodigo());
-        		obj.put("precioUnitario", peticion.getPrecioUnitario());
-        		obj.put("cantidad", peticion.getCantidad());
-        		carri.put(obj);
-        		
-        	}
-        	
-            json.put("idCliente", getIdCliente());
-            json.put("idEmpleado", getIdEmpleado());
-            json.put("totalBruto", getTotalBruto());
-            json.put("totalNeto", getTotalNeto());
-            json.put("medioDePago", getMedioDePago());
-            json.put("fueAbonado", isFueAbonado());
-            json.put("numeroPedido", getNumeroPedido());
-            json.put("carrito", carri);
-            
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
 }

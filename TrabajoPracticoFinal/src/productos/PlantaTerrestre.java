@@ -208,8 +208,8 @@ public abstract class PlantaTerrestre extends Planta{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", especie: " + especie + ", posee fruto: " + fruto + ", posee semilla: " + semilla 
-				+ ", de interior: " + interior + "\n" + ", epoca de poda: "+ epocaDePoda + ", cantidad de riego: " + cantidadRiego;
+		return super.toString()+", Especie: " + especie + ", Posee fruto: " + fruto + ", Posee semilla: " + semilla 
+				+ ", De interior: " + interior + "\n" + ", Epoca de poda: "+ epocaDePoda + ", Cantidad de riego: " + cantidadRiego;
 	}
 	
 	

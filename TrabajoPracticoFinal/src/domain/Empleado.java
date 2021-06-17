@@ -202,19 +202,5 @@ public class Empleado implements Serializable{
 		return "ID: " + ID + ", Nombre: " + nombre + ", Apellido: " + apellido;
 	}
 
-	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("nombre", getNombre());
-            json.put("apellido", getApellido());
-            json.put("id", getID());
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
+	
 }

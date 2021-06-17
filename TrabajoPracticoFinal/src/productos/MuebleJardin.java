@@ -141,7 +141,7 @@ public class MuebleJardin extends ProductoDeHogar {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + ", tipo:" + tipo + ", alto:" + alto + ", largo:" + largo + ", ancho:" + ancho;
+		return super.toString() + ", Tipo:" + tipo + ", Alto: " + alto + ", Largo: " + largo + ", Ancho: " + ancho;
 	}
 
 	/**

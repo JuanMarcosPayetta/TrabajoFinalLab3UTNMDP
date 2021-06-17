@@ -120,7 +120,7 @@ public class MacetaPoliedro extends Maceta {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + ", alto:" + alto + ", ancho:" + ancho + ", largo:" + largo;
+		return super.toString() + ", Alto: " + alto + ", Ancho: " + ancho + ", Largo: " + largo;
 	}
 
 	/**

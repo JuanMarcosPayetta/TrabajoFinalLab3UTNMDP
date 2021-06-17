@@ -87,7 +87,7 @@ public class Decoracion extends ProductoDeHogar {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + ", exterior:" + exterior + ", colorPrimario:" + colorPrimario;
+		return super.toString() + ", De exterior: " + exterior + ", Color primario: " + colorPrimario;
 	}
 
 	/**

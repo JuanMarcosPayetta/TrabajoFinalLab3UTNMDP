@@ -257,23 +257,5 @@ public class Cliente implements Serializable{
 		return validacion;
 	}
 	
-	
-	public JSONObject javaToJson()
-    {
-        JSONObject json= new JSONObject();
-        try {
-            json.put("nombre", getNombre());
-            json.put("apellido", getApellido());
-            json.put("telefono", getTelefono());
-            json.put("id", getId());
-            json.put("dni", getDni());
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
-	
-	
 }

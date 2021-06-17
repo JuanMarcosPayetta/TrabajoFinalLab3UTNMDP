@@ -124,7 +124,7 @@ public class Semilla extends ProductoOrganico{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+ ", destino: " + destino;
+		return super.toString()+ ", Destino: " + destino;
 	}
 	
 	/**

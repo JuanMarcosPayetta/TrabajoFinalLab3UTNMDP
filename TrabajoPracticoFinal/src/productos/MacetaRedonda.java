@@ -93,7 +93,7 @@ public class MacetaRedonda extends Maceta{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", diametroBoca: " + diametroBoca + ", base: " + base;
+		return super.toString()+", Diametro de boca: " + diametroBoca + ", Base: " + base;
 	}
 
 	/**

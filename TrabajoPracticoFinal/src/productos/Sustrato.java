@@ -159,7 +159,7 @@ public class Sustrato extends ProductoOrganico{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", abonada: " + abonada + ", tipo de suelo: " + tipoDeSuelo;
+		return super.toString()+", Es abonada: " + abonada + ", Tipo de suelo: " + tipoDeSuelo;
 	}
 	
 	/**
