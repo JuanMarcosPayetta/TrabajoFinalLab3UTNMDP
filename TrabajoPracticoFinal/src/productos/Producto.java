@@ -84,7 +84,6 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	public abstract void establecerClasificacion();
 
-	public abstract JSONObject javaToJson();
 
 	/**
 	 * Genera un codigo unico automatico que correspondera a un producto

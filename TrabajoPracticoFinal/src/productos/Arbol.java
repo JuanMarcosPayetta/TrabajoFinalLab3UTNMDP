@@ -398,22 +398,6 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	
-	public JSONObject javaToJson()
-	{
-		JSONObject obj=null;
-		try
-		{
-			obj=new JSONObject();
-			obj.put("marca", getMarca());
-			obj.put("clasificacion", getClasificacion());
-		}
-		catch(JSONException e)
-		{
-			e.printStackTrace();
-		}
-		return obj;
-	}
-	
 	/**
 	 * Compara dos objetos e indica si son iguales, mayor u menor
 	 * @see #getPrecio()

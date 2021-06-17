@@ -353,22 +353,6 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		setPrecio(precioH);
 	}
 
-	public JSONObject javaToJson()
-	{
-		JSONObject obj= null;
-		try
-		{
-			obj=new JSONObject();
-			obj.put("marca", getMarca());
-			obj.put("clasificacion", getClasificacion());
-		}
-		catch(JSONException e)
-		{
-			e.printStackTrace();
-		}
-		
-		return obj;
-	}
 	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor

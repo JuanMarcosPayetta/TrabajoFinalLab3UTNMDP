@@ -221,9 +221,5 @@ public class SanidadVegetal extends Producto implements IEstablecerPrecioProduct
 		return res;
 	}
 
-	@Override
-	public JSONObject javaToJson() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
