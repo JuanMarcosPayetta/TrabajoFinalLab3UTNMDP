@@ -14,7 +14,11 @@ import productos.Producto;
 
 public class Vivero implements IVivero {
 
-
+/**
+ * Clase contenedora del sistema
+ * Administra los productos, servicios, clientes, empleados del sistema. Invoca a los metodos que gestionan los pedidos.
+ * Contiene las colecciones (HashMap, HashSet) que almacenan la informacion del sistema
+ */
 	private HashMap<String, ArrayList<Producto>> catalogoProductos;
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente> listaClientes;
