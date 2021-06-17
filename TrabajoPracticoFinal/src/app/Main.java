@@ -2643,7 +2643,6 @@ public class Main {
 						
 						while(cliente==null && intentar!='n')
 						{
-							System.out.println(vivero.mostrarClientes());
 							System.out.println("Ingrese el DNI del cliente que desea buscar por favor\n");
 							dniCliente=scan.nextLine();
 							cliente=vivero.BuscaCliente(dniCliente);
