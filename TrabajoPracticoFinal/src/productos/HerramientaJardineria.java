@@ -39,8 +39,11 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 	
 
-	/*
-	 * valida la funcion de la herramienta, llamada main
+	/**
+	 * Valida que la funcion de la herramienta pasada por parametro sea correcta, llamada
+	 * @see #validarFuncionHerramienta(String)
+	 * @param String
+	 * @return String
 	 */
 	public static String validarFuncionHerramientaLlamada(String funcion) {
 		String mensaje = null; // si devuelve null es correcto
@@ -56,6 +59,13 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		return mensaje;
 	}
 
+	/**
+	 * Valida que la funcion de la herramienta pasada por parametro sea correcta
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarFuncionHerramienta(String funcion)
 			throws NullPointerException, CadenaInvalidaException, InputMismatchException {
 		ArrayList<String> funciones = new ArrayList<String>();
@@ -80,10 +90,19 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	}
 
+	/** Devuelve el material del que esta hecho la herramienta
+	 * @return String
+	 */
 	public String getMaterial() {
 		return material;
 	}
 
+	/**
+	 * Setea el valor que indica el material de la herramienta
+	 * @see #validarCadenaCaracteresLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setMaterial(String material) {
 		String mensaje = null;
 		mensaje = validarCadenaCaracteresLlamada(material);
@@ -93,10 +112,20 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve la funcion de la herramienta
+	 * @return String
+	 */
 	public String getFuncion() {
 		return funcion;
 	}
 
+	/**
+	 * Setea el valor que indica la funcion de la herramienta
+	 * @see #validarFuncionHerramientaLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setFuncion(String funcion) {
 		String mensaje = null;
 		mensaje = validarFuncionHerramientaLlamada(funcion);
@@ -106,6 +135,10 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", material: " + material + ", funcion: " + funcion;

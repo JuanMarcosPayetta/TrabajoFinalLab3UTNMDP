@@ -260,7 +260,9 @@ public class Hierba extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Establece la epoca de vida segun las caracteristicas de la hierba
+	 * Establece la epoca de vida segun las caracteristicas de la hierba4
+	 * @see #setEpocaDePoda(String)
+	 * @see #getTipoDeTallo()
 	 */
 	@Override
 	public void establecerEpocaPoda() {
@@ -303,6 +305,8 @@ public class Hierba extends PlantaTerrestre{
 
 	/**
 	 * Establece la cantidad de fertilizante segun sea una planta joven o mas desarrollada (en gramos)
+	 * @see #setCantidadFertilizante(int)
+	 * @see #getMesesDeVida()
 	 */
 	@Override
 	public void establecerCantidadFertilizante() {
@@ -322,7 +326,7 @@ public class Hierba extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Establece la clasificacion a "Hierba"
+	 * Establece la clasificacion del objeto a "Hierba"
 	 */
 	@Override
 	public void establecerClasificacion() {
@@ -331,6 +335,8 @@ public class Hierba extends PlantaTerrestre{
 
 	/**
 	 * Calcula el precio de la hierba segun los meses de vida que tiene
+	 * @see #isComestible()
+	 * @see #isMedicinal()e
 	 * @param int
 	 * @return double
 	 */
@@ -359,12 +365,12 @@ public class Hierba extends PlantaTerrestre{
 				precioPorMes=5;
 			}
 		}
-		
 		return precioPorMes*mesesVida;
 	}
 
 	/**
 	 * Calcula el precio de la hierba segun su altura(en cm)
+	 * @see #getTipoDeTallo()
 	 * @param int
 	 * @return double
 	 */
@@ -384,12 +390,15 @@ public class Hierba extends PlantaTerrestre{
 		{
 			precioPorCentimetro=1;
 		}
-		
 		return precioPorCentimetro*centimentros;
 	}
 
 	/**
 	 * Establece el precio de la hierba
+	 * @see #isInterior()
+	 * @see #precioMesDeVida(int)
+	 * @see #precioPorCentimentoAltura(int)
+	 * @see #setPrecio(double)
 	 */
 	@Override
 	public void establecerPrecio() {
@@ -440,6 +449,7 @@ public class Hierba extends PlantaTerrestre{
 	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * @see #getPrecio()
 	 * @param Objeto Producto
 	 * @return int
 	 */

@@ -298,6 +298,9 @@ public class Arbol extends PlantaTerrestre{
 	
 	/**
 	 * Establece la cantidad de fertilizante segun el diametro del tronco del arbol y su habitat
+	 * @see #setCantidadFertilizante(int)
+	 * @see #getHabitat()
+	 * @see #getDiametroDelTronco()
 	 */
 	@Override
 	public void establecerCantidadFertilizante() {
@@ -316,7 +319,8 @@ public class Arbol extends PlantaTerrestre{
 	}
 	
 	/**
-	 * Establece la clafisicacion a "Arbol" 
+	 * Establece la clafisicacion del objeto a "Arbol" 
+	 * @see #setClasificacion(String)
 	 */
 	@Override
 	public void establecerClasificacion() {
@@ -348,6 +352,11 @@ public class Arbol extends PlantaTerrestre{
 
 	/**
 	 * Establece el precio del arbol
+	 * @see #isFruto()
+	 * @see #getDiametroDelTronco()
+	 * @see #precioMesDeVida(int)
+	 * @see #precioPorCentimentoAltura(int)
+	 * @see #setPrecio(double)
 	 */
 	@Override
 	public void establecerPrecio() {
@@ -407,6 +416,7 @@ public class Arbol extends PlantaTerrestre{
 	
 	/**
 	 * Compara dos objetos e indica si son iguales, mayor u menor
+	 * @see #getPrecio()
 	 * @param Objeto Producto
 	 * @return int
 	 */

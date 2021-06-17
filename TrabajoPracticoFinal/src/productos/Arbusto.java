@@ -184,6 +184,9 @@ public class Arbusto extends PlantaTerrestre{
 
 	/**
 	 * Establece la cantidad de litros de agua por arbusto segun su desarrollo y habitat
+	 * @see #getMesesDeVida()
+	 * @see #getHabitat()
+	 * @see #setCantidadRiego(int)
 	 */
 	@Override
 	public void establecerCantidadRiego() {
@@ -219,6 +222,8 @@ public class Arbusto extends PlantaTerrestre{
 	
 	/**
 	 * Establece la epoca de poda segun las caracteristicas del arbusto
+	 * @see #setEpocaDePoda(String)
+	 * @see #getTipoDeHoja()
 	 */
 	@Override
 	public void establecerEpocaPoda() {
@@ -243,6 +248,8 @@ public class Arbusto extends PlantaTerrestre{
 
 	/**
 	 * Establece la cantidad de fertilizante indicado para el arbusto segun sea una planta joven o mas desarrollada (en gramos)
+	 * @see #getMesesDeVida()
+	 * @see #setCantidadFertilizante(int)
 	 */
 	@Override
 	public void establecerCantidadFertilizante() {
@@ -261,7 +268,8 @@ public class Arbusto extends PlantaTerrestre{
 	}
 
 	/**
-	 * Establece la clasificacion a "Arbusto"
+	 * Establece la clasificacion del objeto a "Arbusto"
+	 * @see #setClasificacion(String)
 	 */
 	@Override
 	public void establecerClasificacion() {
@@ -270,6 +278,7 @@ public class Arbusto extends PlantaTerrestre{
 
 	/**
 	 * Calcula el precio del arbusto segun los meses de vida que tiene
+	 * @see #isInterior()
 	 * @param int
 	 * @return double
 	 */
@@ -291,6 +300,7 @@ public class Arbusto extends PlantaTerrestre{
 
 	/**
 	 * Calcula el precio del arbusto segun su altura (en cm)
+	 * @see #isTrepador()
 	 * @param int
 	 * @return double
 	 */
@@ -311,6 +321,11 @@ public class Arbusto extends PlantaTerrestre{
 
 	/**
 	 * Establece el precio del arbusto
+	 * @see #isInterior()
+	 * @see #getTipoDeHoja()
+	 * @see #precioMesDeVida(int)
+	 * @see #precioPorCentimentoAltura(int)
+	 * @see #setPrecio(double)
 	 */
 	@Override
 	public void establecerPrecio() {
@@ -368,10 +383,9 @@ public class Arbusto extends PlantaTerrestre{
 	}
 	
 	
-	
-	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * @see #getPrecio()
 	 * @param Objeto Producto
 	 * @return int
 	 */
