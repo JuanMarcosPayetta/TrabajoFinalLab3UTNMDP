@@ -14,12 +14,11 @@ import productos.Producto;
 
 public class Vivero implements IVivero {
 
-	/*
-	 * EL MAPA DE PRODUCTOS COMO CLAVE TIENE LA CLASIFICACION
-	 * ("ARBOL, ARBUSTO, ETC") Y DENTRO COMO VALOR TIENE UN ARRAY LIST CON TODOS LOS
-	 * ARBOLES, ARBUSTOS, ETC
-	 */
-
+/**
+ * Clase contenedora del sistema
+ * Administra los productos, servicios, clientes, empleados del sistema. Invoca a los metodos que gestionan los pedidos.
+ * Contiene las colecciones (HashMap, HashSet) que almacenan la informacion del sistema
+ */
 	private HashMap<String, ArrayList<Producto>> catalogoProductos;
 	private HashMap<String, Servicio> catalogoServicios;
 	private HashSet<Cliente> listaClientes;
@@ -35,6 +34,10 @@ public class Vivero implements IVivero {
 		this.reg=new RegistroVentas();
 	}
 
+	/**
+	 * Retorna los codigos correspondientes a el catalogo de productos
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<String> obtenerCodigosProducto() {
 		ArrayList<Producto> productos = null;
 		ArrayList<String> codigos = new ArrayList<String>();
@@ -54,6 +57,10 @@ public class Vivero implements IVivero {
 		return codigos;
 	}
 
+	/**
+	 * Retorna los codigos correspondientes a el catalogo de servicios
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<String> obtenerCodigosServicio() {
 
 		Servicio servicio = new Servicio();
@@ -70,6 +77,10 @@ public class Vivero implements IVivero {
 		return codigos;
 	}
 
+	/**
+	 * Metodo generico que permite ingresar un nuevo producto, servicio, cliente u empleado al sistema
+	 * @param Dato generico 
+	 */
 	@Override
 	public <T> void agregarElemento(T elemento) {
 		if (elemento instanceof Producto) {
@@ -99,17 +110,31 @@ public class Vivero implements IVivero {
 		}
 	}
 
+	/**
+	 * Verifica que exista o no una determinada clave en el catalogo de productos
+	 * @param String
+	 * @return boolean
+	 */
 	private boolean existeProducto(String clasificacion) {
 		return catalogoProductos.containsKey(clasificacion);
 	}
 
+	/**
+	 * Verifica que exista o no una determinada clave en el catalogo de servicios
+	 * @param String
+	 * @return boolean
+	 */
 	public boolean existeServicio(String codigo) {
 
 		return catalogoServicios.containsKey(codigo); // si existe te devuelve true
 	}
 	
 	
-
+    /**
+     * Metodo generico que permite buscar un producto, servicio, cliente u empleado en el sistema
+     * @param Dato generico
+     * @return String
+     */
 	@Override
 	public <T> String buscarElemento(T elemento) { // producto,servicio,empleado, cliente
 
@@ -187,6 +212,11 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/**
+	 * Metodo generico que permite eliminar un producto, servicio, cliente u empleado del sistema
+	 * @param Dato generico
+	 * @return  String
+	 */
 	@Override
 	public <T> String eliminarElemento(T elemento) {
 
@@ -249,8 +279,10 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
-	/*
-	 * muestra todos los productos del catalogo
+	
+	/**
+	 * Muestra por pantalla todos los productos del sistema
+	 * @return String
 	 */
 	public String mostrarProductos() {
 		StringBuilder mensaje = new StringBuilder();
@@ -269,8 +301,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	/*
-	 * muestra todos los servicios del catalogo
+	/**
+	 * Muestra por pantalla todos los servicios del sistema
+	 * @return String
 	 */
 	public String mostrarServicios() {
 		StringBuilder mensaje = new StringBuilder();
@@ -286,8 +319,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	/*
-	 * muestra todos los empleados del sistema
+	/**
+	 * Muestra por pantalla todos los empleados del sistema
+	 * @return String
 	 */
 	public String mostrarEmpleados() {
 		StringBuilder mensaje = new StringBuilder();
@@ -302,8 +336,9 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
-	/*
-	 * muestra todos los clientes del sistema
+	/**
+	 * Muestra por pantalla todos los clientes del sistema
+	 * @return String
 	 */
 	public String mostrarClientes() {
 		StringBuilder mensaje = new StringBuilder();
@@ -317,6 +352,12 @@ public class Vivero implements IVivero {
 		return mensaje.toString();
 	}
 
+	/**
+	 * Permite modificar el precio de un producto
+	 * @param Producto
+	 * @param double
+	 * @return String
+	 */
 	public String modificarPrecioProducto(Producto elemento, double precio) {
 		String mensaje = "Producto no encontrado\n";
 		int flag = 0;
@@ -344,9 +385,12 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
-	/*
-	 * valida que exista el empleado registrado
-	 */
+    /**
+     * Verifica que se encuentre o no registrado un determinado empleado, retornando true o false en cada caso
+     * @param String
+     * @param int
+     * @return boolean
+     */
 	public boolean buscarEmpleadoRegistrado(String pass, int id)
 	{
 		boolean validacion=false;
@@ -365,6 +409,12 @@ public class Vivero implements IVivero {
 		return validacion;
 	}
 
+	/**
+	 * Permite reducir el stock actual de un producto del sistema
+	 * @param Producto
+	 * @param int
+	 * @return String
+	 */
 	public String modificarStockDisminuye(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -391,6 +441,12 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/**
+	 * Permite aumentar el stock actual de un producto del sistema
+	 * @param Producto
+	 * @param int
+	 * @return String
+	 */
 	public String modificarStockAumenta(Producto elProducto, int stock) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -417,6 +473,12 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/**
+	 * Permite modificar el nombre actual de un producto del sistema
+	 * @param Producto
+	 * @param String
+	 * @return String
+	 */
 	public String modificarNombreProdcuto(Producto elProducto, String nombre) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -443,6 +505,12 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/**
+	 * Permite modificar la marca actual de un producto del sistema
+	 * @param Producto
+	 * @param String
+	 * @return String
+	 */
 	public String modificarMarcaProdcuto(Producto elProducto, String marca) {
 		String mensaje = "Producto no encontrado";
 		int flag = 0;
@@ -469,8 +537,11 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
-	/*
-	 * Modifica la descripcion de un producto
+	/**
+	 * Permite modificar la descripcion actual de un producto del sistema
+	 * @param Producto
+	 * @param String
+	 * @return String
 	 */
 	public String modificarDescripcionProdcuto(Producto elProducto, String descripcion) {
 		String mensaje = "Producto no encontrado";
@@ -495,8 +566,11 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
-	/*
-	 * Modifica el nombre de un servicio
+	/**
+	 * Permite modificar el nombre actual de un servicio del sistema
+	 * @param String
+	 * @param String
+	 * @return String
 	 */
 	public String modificarNombreServicio(String codigo, String nombre)
 	{
@@ -521,8 +595,11 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 	
-	/*
-	 * Modifica el precio de un servicio
+	/**
+	 * Permite modificar el precio actual de un servicio del sistema
+	 * @param String
+	 * @param double
+	 * @return String
 	 */
 	public String modificarPrecioServicio(String codigo, double precio)
 	{
@@ -549,7 +626,10 @@ public class Vivero implements IVivero {
 	
 	
 
-	//Muestra el nombre, clasificacion, stock, precio y codigo del producto (para el momento de elegir el codigo del producto al comprar)
+	/**
+	 * //Muestra el nombre, clasificacion, stock, precio y codigo de los productos del sistema
+	 * @return String
+	 */
 	public String mostrarProductoResumido()
 	{
 		StringBuilder builder= new StringBuilder();
@@ -568,7 +648,10 @@ public class Vivero implements IVivero {
 	}
 	
 	
-	//Muestra el nombre, stock, precio y codigo del servicio (para el momento de elegir el codigo del producto al comprar)
+	    /**
+	     * Muestra el nombre, stock, precio y codigo de los servicios del sistema
+	     * @return String
+	     */
 		public String mostrarServicioResumido()
 		{
 			StringBuilder builder= new StringBuilder();
@@ -584,7 +667,11 @@ public class Vivero implements IVivero {
 		}
 	
 		
-	//busca y retorna la "clasifiacion" del producto que sea desea comprar
+	/**
+	 * Busca y retorna la clasifiacion del producto deseado
+	 * @param String
+	 * @return String
+	 */
 	public String buscarClasificacionProducto(String codigoProducto)
 	{
 		boolean encontrado=false;
@@ -607,8 +694,10 @@ public class Vivero implements IVivero {
 	}
 	
 
-	/*
-	 * Busca y retorna un cliente (en caso de no encontrarlo retorna null)
+	/**
+	 * Busca y retorna un cliente, en caso de no encontrarlo retorna NULL
+	 * @param String
+	 * @return Cliente
 	 */
 	public Cliente BuscaCliente(String dni) { // si retorna null "Cliente no encontrado"...desea crear unuevo?(en main)
 		int flag = 0;
@@ -628,8 +717,13 @@ public class Vivero implements IVivero {
 	}
 
 	
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
+	/**
+	 * Permite adquirir un producto e ingresarlo al pedido del cliente correspondiente
+	 * @param Producto
+	 * @param Cliente
+	 * @param int
+	 * @return String
+	 */
 	public String ComprarProducto(Producto elProducto, Cliente elCliente, int cantidadP) {
 
 		int otroFlag = 0;
@@ -690,8 +784,13 @@ public class Vivero implements IVivero {
 
 
 
-	// primero tiene q llamar al metodo BuscaCliente y despues, si existe el cliente
-	// puede usar el metodo
+
+	/**
+	 * Permite adquirir un servicio e ingresarlo al pedido del cliente correspondiente
+	 * @param String
+	 * @param Cliente
+	 * @return String
+	 */
 	public String ComprarServicio(String codigoServicio, Cliente elCliente) {
 
 		int otroFlag = 0;
@@ -730,6 +829,12 @@ public class Vivero implements IVivero {
 	}
 
 	
+	/**
+	 * Valida que el dato ingresado sea valido y captura la excepcion en caso de ser preciso 
+	 * @see #cantidadCompra(int)
+	 * @param int
+	 * @return String
+	 */
 	public String pedirCantidadCompra(int cantidad) {
 		String mensaje = null;
 		try {
@@ -740,14 +845,21 @@ public class Vivero implements IVivero {
 		return mensaje;
 	}
 
+	/**
+	 * Valida que el dato ingresado sea valido, lanzando una excepcion que sera capturada por {@link #pedirCantidadCompra(int)}
+	 * @see #pedirCantidadCompra(int)
+	 * @param int
+	 * @throws DatoNumeroException
+	 */
 	private void cantidadCompra(int cantidad) throws DatoNumeroException {
 		if (cantidad <= 0) {
 			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni menor a 1");
 		}
 	}
 	
-	/*
-	 * Busca el mayor id de un empleado, para generar el siguiente
+	/**
+	 * Busca el mayor ID de un empleado, para generar el siguiente
+	 * @return int
 	 */
 	public int buscarMayorIdEmpleado()
 	{
@@ -772,8 +884,9 @@ public class Vivero implements IVivero {
 		return mayorId;
 	}
 	
-	/*
-	 * Busca el mayor id de un cliente, para generar el siguiente
+	/**
+	 * Busca el mayor ID de un cliente, para generar el siguiente
+	 * @return int
 	 */
 	public int buscarMayorIdCliente()
 	{
@@ -799,8 +912,9 @@ public class Vivero implements IVivero {
 	}
 	
 	
-	/*
+	/**
 	 * Muestra todos las clasifiaciones de productos disponibles en el sistema
+	 * @return String
 	 */
 	public String mostrarClasificacionesProducto()
 	{
@@ -818,8 +932,10 @@ public class Vivero implements IVivero {
 	}
 	
 	
-	/*
+	/**
 	 * Muestra todos los productos de una determinada clasificacion
+	 * @param String
+	 * @return String
 	 */
 	public String mostrarProductosClasificacion(String clasificacion)
 	{
@@ -852,75 +968,141 @@ public class Vivero implements IVivero {
 	
 	//LLAMADAS A METODOS DE REGISTROVENTAS
 	
+	/**
+	 * Invoca al metodo que muestra todos los pedidos existentes en el sistema
+	 * @see #mostrarTodosLosPedidos()
+	 * @return String
+	 */
 	public String mostrarTodosLosPedidos()
 	{
 		return reg.mostrarTodosLosPedidos();
 	}
 	
+	/**
+	 * Invoca al metodo que abona un pedido existentes en el sistema
+	 * @see #pagarPedido(cliente)
+	 * @return String
+	 */
 	public String abonarPedido(Cliente cliente)
 	{
 		return reg.pagarPedido(cliente);
 	}
 	
+	/**
+	 * Invoca al metodo que establece el metodo de pago de un pedido existentes en el sistema
+	 * @see #establecerMetodoPago(idCliente, medioPago)
+	 * @return boolean
+	 */
 	public boolean establecerMedioPago(int idCliente, String medioPago)
 	{
 		return reg.establecerMetodoPago(idCliente, medioPago);
 	}
 	
+	/**
+	 * Invoca al metodo que busca e indica si existe un pedido impago de un cliente
+	 * @see #buscarPedidoImpago(idCliente)
+	 * @return boolean
+	 */
 	public boolean buscarPedidoImpago(int idCliente)
 	{
 		return reg.buscarPedidoImpago(idCliente);
 	}
 	
+	/**
+	 * Invoca al metodo que busca y retorna el pedido impago de un cliente en caso de existir
+	 * @see #retornarPedidoImpago(idCliente)
+	 * @return Pedido
+	 */
 	public Pedido retornarPedidoImpago(int idCliente)
 	{
 		return reg.retornarPedidoImpago(idCliente);
 	}
 	
+	/**
+	 * Invoca al metodo que muestra el pedido impago de un cliente en caso de existir
+	 * @see #mostrarPedidoImpagoCliente(cliente)
+	 * @return String
+	 */
 	public String mostrarPedidoImpago(Cliente cliente)
 	{
 		return reg.mostrarPedidoImpagoCliente(cliente);
 		
 	}
 	
+	/**
+	 * Invoca al metodo que muestra todos los pedidos de cliente, pagos e impagos
+	 * @see #mostrarHistorialPedidosCliente(cliente)
+	 * @return String
+	 */
 	public String mostrarHistorialPedidosCliente(Cliente cliente)
 	{
 		return reg.mostrarHistorialPedidosCliente(cliente);
 		
 	}
 	
+	/**
+	 * Invoca al metodo que verifica que el carrito de un pedido no se encuentre vacio
+	 * @see #verificarCarritoVacio(idCliente)
+	 * @return boolean
+	 */
 	public boolean verificarCarritoNoVacio(int idCliente)
 	{
 		return reg.verificarCarritoVacio(idCliente);
 	}
 	
+	/**
+	 * Invoca al metodo que muestra todos los pedidos impagos del sistema
+	 * @see #mostrarTodosLosPedidosImpagos()
+	 * @return String
+	 */
 	public String mostrarTodosLosPedidosImpagos()
 	{
 		return reg.mostrarTodosLosPedidosImpagos();
 	}
 	
+	/**
+	 * Invoca al metodo que muestra los totales bruto, neto y medio de pago correspondiente al pedido impago de un cliente
+	 * @see #detallesFinalesPedido(cliente)
+	 * @return String
+	 */
 	public String visualizarTotalesPedido(Cliente cliente)
 	{
 		return reg.detallesFinalesPedido(cliente);
 	}
 	
+	/**
+	 * Invoca al metodo que establece el empleado que administro el pago de un pedido
+	 * @see #setearEmpleado(idEmpleado, idCliente)
+	 */
 	public void setearEmpleado(int idEmpleado, int idCliente)
 	{
 		reg.setearEmpleado(idEmpleado, idCliente); 
 	}
 	
+	/**
+	 * Invoca al metodo que elimina una peticion de compra del carrito de un cliente
+	 * @see #eliminarPeticionCarrito(codigoP, cliente)
+	 * @return String
+	 */
 	public String eliminarPeticionCarrito(String codigoP, Cliente cliente)
 	{
        return reg.eliminarPeticionCarrito(codigoP, cliente);	
 	}
 	
+	/**
+	 * Invoca al metodo que elimina el pedido impago existente de un cliente
+	 * @see #eliminarPedidoImpagoCliente(cliente)
+	 * @return String
+	 */
 	public String eliminarPedidoImpagoCliente(Cliente cliente)
 	{
 		return reg.eliminarPedidoImpagoCliente(cliente);
 	}
 	
-	/*
-	 * Devuelve un array con los productos de la clasificacion solicitada (para el centro informativo)
+	/**
+	 * Retorna un ArrayList con los productos de la clasificacion solicitada (para el centro informativo)
+	 * @param String
+	 * @return ArrayList
 	 */
 	public ArrayList<Producto> productosClasificacion(String clasificacion)
 	{
@@ -940,25 +1122,42 @@ public class Vivero implements IVivero {
 	}
 	
 	
-	/*
-	 * GETTERS PARA ACCEDER A LAS COLECCIONES Y GRABARLAS/LEER ARCHIVOS
+	/**
+	 * Permite acceder al catalogo de productos (utilizado para la escritura del archivo base de datos)
+	 * @return HashMap<String, ArrayList<Producto>>
 	 */
 	public HashMap<String, ArrayList<Producto>> getCatalogoProductos() {
 		return catalogoProductos;
 	}
 
+	/**
+	 * Permite acceder al catalogo de servicios (utilizado para la escritura del archivo base de datos)
+	 * @return HashMap<String, Servicio>
+	 */
 	public HashMap<String, Servicio> getCatalogoServicios() {
 		return catalogoServicios;
 	}
 
+	/**
+	 * Permite acceder a la lista de clientes (utilizado para la escritura del archivo base de datos)
+	 * @return HashSet
+	 */
 	public HashSet<Cliente> getListaClientes() {
 		return listaClientes;
 	}
 
+	/**
+	 * Permite acceder a la lista de empleados (utilizado para la escritura del archivo base de datos)
+	 * @return HashSet
+	 */
 	public HashSet<Empleado> getListaEmpleados() {
 		return listaEmpleados;
 	} 
 	
+	/**
+	 * Permite acceder a la lista de pedidos (utilizado para la escritura del archivo base de datos)
+	 * @return LinkedList
+	 */
 	public LinkedList<Pedido> getListaPedidos()
 	{
 		LinkedList<Pedido>listaPedidos=null;
@@ -966,6 +1165,11 @@ public class Vivero implements IVivero {
 		return listaPedidos;
 	}
 
+	/**
+	 * Invoca al metodo que permite ingresar un pedido al sistema (utilizado en la lectura del archivo base de datos)
+	 * @see #agregarPedidoDesdeArchivo(Pedido)
+	 * @param Pedido
+	 */
 	public void agregarPedidoDesdeArchivo(Pedido pedido)
 	{
 		reg.agregarPedidoDesdeArchivo(pedido);

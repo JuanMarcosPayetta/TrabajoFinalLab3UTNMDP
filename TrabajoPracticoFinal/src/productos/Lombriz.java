@@ -40,9 +40,12 @@ public class Lombriz extends ProductoOrganico{
 	}
 
 	
-	/*
-	 * valida la especie de lombriz, llamada main
-	 */
+	/**
+	 * Valida que la especie pasada por parametro sea correcta, llamada 
+	 * @see #validarEspecieLombriz(String)
+	 * @param String
+	 * @return String
+	 */ 
 	public static String validarEspecieLombrizLlamada(String especie)
 	{
 		String mensaje=null;
@@ -58,6 +61,13 @@ public class Lombriz extends ProductoOrganico{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que la especie pasada por parametro sea correcta
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarEspecieLombriz(String especie) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>especiesLombriz=new ArrayList<String>();
@@ -85,10 +95,20 @@ public class Lombriz extends ProductoOrganico{
 	
 	}
 	
+	/**
+	 * Devuelve la especie de la lombriz
+	 * @return String
+	 */
 	public String getEspecie() {
 		return especie;
 	}
 
+	/**
+	 * Setea el valor que indica la especie de la lombriz
+	 * @see #validarEspecieLombrizLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setEspecie(String especie) {
 	String mensaje=validarEspecieLombrizLlamada(especie);
 		
@@ -99,16 +119,29 @@ public class Lombriz extends ProductoOrganico{
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", especie: " + especie;
 	}
 	
+	/**
+	 * Establece la clasificacion del objeto a "Lombriz"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Lombriz");
 	}
 
+	/**
+	 * Establece el precio de las lombrices
+	 * @see #getEspecie()
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() {
 	double precioGramoLombriz=0;
@@ -151,7 +184,11 @@ public class Lombriz extends ProductoOrganico{
 		return obj;
 	}
 	
-	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

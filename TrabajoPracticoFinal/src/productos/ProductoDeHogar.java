@@ -27,10 +27,20 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 		this.material = material;
 	}
 	
+	/**
+	 * Devuelve el material del que esta compuesto el producto
+	 * @return String
+	 */
 	public String getMaterial() {
 		return material;
 	}
 
+	/**
+	 * Setea el valor del material del que esta compuesto el producto
+	 * @see #validarCadenaCaracteresLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setMaterial(String material) {
 
 		String mensaje = validarCadenaCaracteresLlamada(material); // si devuelve null es correcto
@@ -42,6 +52,10 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", material:" + material;

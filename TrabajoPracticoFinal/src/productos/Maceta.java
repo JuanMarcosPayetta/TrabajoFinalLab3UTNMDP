@@ -33,8 +33,12 @@ public abstract class Maceta extends ProductoDeHogar{
 		this.forma = forma;
 	}
 
-	 /*
-	  * valida la forma de la maceta segun la opcion elegida (poliedro u redonda)
+	 /**
+	  * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda), llamada
+	  * @see #validarFormaMaceta(String, String)
+	  * @param String
+	  * @param String
+	  * @return String
 	  */
 	public static String validarFormaMacetaLlamada(String opcion, String forma)
 	{
@@ -51,7 +55,14 @@ public abstract class Maceta extends ProductoDeHogar{
 		return mensaje;
 	}
 	 
-	 
+	/**
+	 * Valida la forma de la maceta segun el tipo de maceta (poliedro u redonda)
+	 * @param String
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarFormaMaceta(String opcion, String forma) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>opciones=new ArrayList<String>();
@@ -86,7 +97,6 @@ public abstract class Maceta extends ProductoDeHogar{
 		}
 		
 		
-		
 		if(forma==null)
 		{
 			throw new NullPointerException("Error, ingrese una forma valida");
@@ -116,11 +126,20 @@ public abstract class Maceta extends ProductoDeHogar{
 
 	}
 	
-	
+	/**
+	 * Devuelve la forma de la maceta
+	 * @return String
+	 */
 	public String getForma() {
 		return forma;
 	}
 
+	/**
+	 * Setea el valor que indica la forma de la maceta
+	 * @see #setForma(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setForma(String forma)
 	{
 		String mensaje=null;
@@ -131,7 +150,10 @@ public abstract class Maceta extends ProductoDeHogar{
 		return mensaje;
 	}
 	
-	
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", forma:" + forma;

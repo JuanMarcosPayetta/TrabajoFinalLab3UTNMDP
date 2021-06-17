@@ -53,14 +53,28 @@ public class MuebleJardin extends ProductoDeHogar {
 		establecerPrecio();
 	}
 
+	/**
+	 * Devuelve el tipo de mueble
+	 * @return String
+	 */
 	public String getTipo() {
 		return tipo;
 	}
 
+	/**
+	 * Devuelve el alto del mueble
+	 * @return double
+	 */
 	public double getAlto() {
 		return alto;
 	}
 
+	/**
+	 * Setea el valor que indica el alto del mueble
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setAlto(double alto) {
 
 		String mensaje = validarValorNumericoLlamada(alto);
@@ -72,10 +86,20 @@ public class MuebleJardin extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el largo del mueble
+	 * @return double
+	 */
 	public double getLargo() {
 		return largo;
 	}
 
+	/**
+	 * Setea el valor que indica el largo del mueble
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setLargo(double largo) {
 		String mensaje = validarValorNumericoLlamada(largo);
 
@@ -86,10 +110,20 @@ public class MuebleJardin extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el ancho del mueble
+	 * @return double
+	 */
 	public double getAncho() {
 		return ancho;
 	}
 
+	/**
+	 * Setea el valor que indica el ancho del mueble
+	 * @see #validarValorNumericoLlamada(Number)
+	 * @param double
+	 * @return String
+	 */
 	public String setAncho(double ancho) {
 
 		String mensaje = validarValorNumericoLlamada(ancho);
@@ -101,11 +135,21 @@ public class MuebleJardin extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", tipo:" + tipo + ", alto:" + alto + ", largo:" + largo + ", ancho:" + ancho;
 	}
 
+	/**
+	 * Valida el tipo de mueble pasado por parametro, llamada
+	 * @see #validarTipoMueble(String)
+	 * @param String
+	 * @return String
+	 */
 	public static String validarTipoMuebleLlamada(String mueble) {
 		String mensaje = null;
 		try {
@@ -120,6 +164,13 @@ public class MuebleJardin extends ProductoDeHogar {
 		return mensaje;
 	}
 
+	/**
+	 * Valida el tipo de mueble pasado por parametro
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTipoMueble(String mueble)
 			throws NullPointerException, CadenaInvalidaException, InputMismatchException {
 		ArrayList<String> tiposMueble = new ArrayList<String>();
@@ -141,6 +192,12 @@ public class MuebleJardin extends ProductoDeHogar {
 		}
 	}
 
+	/**
+	 * Setea el valor que indica el tipo de mueble
+	 * @see #validarTipoMuebleLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setTipo(String tipoMueble) {
 		String mensaje = null;
 		mensaje = validarTipoMuebleLlamada(tipoMueble);
@@ -151,11 +208,20 @@ public class MuebleJardin extends ProductoDeHogar {
 		return mensaje;
 	}
 	
+	/**
+	 * Establece la clasificacion del objeto a: "Mueble de jardin"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Mueble de jardin");
 	}
 
+	/**
+	 * Establece el precio del mueble
+	 * @see #getTipo()
+	 * @see #getLargo()
+	 */
 	@Override
 	public void establecerPrecio() {
 		double precioMueble=0;
@@ -217,7 +283,10 @@ public class MuebleJardin extends ProductoDeHogar {
     	return obj;
     }
 	
-	
+	/**
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

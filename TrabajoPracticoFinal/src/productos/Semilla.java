@@ -38,8 +38,11 @@ public class Semilla extends ProductoOrganico{
 		establecerPrecio();
 	}
 	
-	/*
-	 * Valida el destino de la semilla, llamada main
+	/**
+	 * Valida que el valor pasado por parametro sea correcto, llamada main
+	 * @see #validarDestinoSemilla(String)
+	 * @param String
+	 * @return String 
 	 */
 	public static String validarDestinoSemillaLlamada(String destino)
 	{
@@ -56,6 +59,13 @@ public class Semilla extends ProductoOrganico{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el valor pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarDestinoSemilla(String destino) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>destinosValidos=new ArrayList<String>();
@@ -82,10 +92,20 @@ public class Semilla extends ProductoOrganico{
 	
 	}
 
+	/**
+	 * Devuelve el destino de la semilla
+	 * @return String
+	 */
 	public String getDestino() {
 		return destino;
 	}
 
+	/**
+	 * Setea el valor que indica el destino de la semilla
+	 * @see #validarDestinoSemillaLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setDestino(String destino) {
 		String mensaje=validarDestinoSemillaLlamada(destino); //si devuelve "null" el dato es correcto
 		
@@ -97,16 +117,28 @@ public class Semilla extends ProductoOrganico{
 		return mensaje;	
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+ ", destino: " + destino;
 	}
 	
+	/**
+	 * Establece la clasificacion del objeto a "Semilla"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Semilla");
 	}
 
+	/**
+	 * Establece el precio de la semilla
+	 * @see #getDestino()
+	 */
 	@Override
 	public void establecerPrecio() {
 	
@@ -146,6 +178,11 @@ public class Semilla extends ProductoOrganico{
 		return obj;
 	}
 	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;
