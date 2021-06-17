@@ -9,7 +9,6 @@ import domain.CentroInformativo;
 import domain.Cliente;
 import domain.Empleado;
 import domain.Pedido;
-import domain.Servicio;
 import domain.Vivero;
 import productos.Arbol;
 import productos.Arbusto;
@@ -29,6 +28,7 @@ import productos.Producto;
 import productos.SanidadVegetal;
 import productos.Semilla;
 import productos.Sustrato;
+import servicios.Servicio;
 
 public class Main {
 
@@ -2380,7 +2380,7 @@ public class Main {
 									{
 										while(mensaje!=null)
 										{
-											System.out.println("Ingrese el medio de pago por favor(efectivo, tarjeta, cuenta DNI, mercadopago)");
+											System.out.println("Ingrese el medio de pago por favor(efectivo, tarjeta, cuentaDNI, mercadopago)");
 											metodoPago=scan.nextLine();
 											mensaje=Pedido.validarMedioDePagoLlamada(metodoPago);
 											if(mensaje!=null)

@@ -1,1 +1,1 @@
-{"servicios":["Paisajismo","Poda"],"marcas":["LaJardinera"],"clasificaciones":["Arbol"]}
+{"servicios":[],"marcas":["LaJardinera"],"clasificaciones":["Arbol"]}

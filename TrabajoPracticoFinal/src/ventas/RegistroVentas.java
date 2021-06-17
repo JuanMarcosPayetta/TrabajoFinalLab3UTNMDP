@@ -1,8 +1,12 @@
-package domain;
+package ventas;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
+import domain.Cliente;
+import domain.Pedido;
+import domain.PeticionCompra;
 
 /**
  * Almacena en un linkedList del tipo Pedido los pedidos realizados
@@ -262,7 +266,7 @@ public class RegistroVentas implements Serializable {
 
 		for (int j = 0; j < registroPedidos.size(); j++) {
 			if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-				sb.append("PEDIDO Nï¿½" + j + ":" + "\n");
+				sb.append("PEDIDO N°" + j + ":" + "\n");
 				sb.append("Abonado: " + registroPedidos.get(j).isFueAbonado() + "\n");
 				sb.append("Carrito: " + "\n");
 				for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {

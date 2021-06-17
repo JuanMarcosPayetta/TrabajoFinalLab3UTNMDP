@@ -1,4 +1,4 @@
-package domain;
+package servicios;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import java.util.Random;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
@@ -167,6 +168,11 @@ public class Servicio implements IGenerarCodigo, Serializable{
 				+ descripcion + ", MaterialesIncluidos: " + materialesIncluidos;
 	}
 	
+	/**
+	 * Compara dos objetos, indicando si son iguales o no
+	 * @param Object
+	 * @return boolean
+	 */
 	public boolean equals(Object obj)
 	{
 		boolean validacion=false;
