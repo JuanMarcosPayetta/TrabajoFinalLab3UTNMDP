@@ -1,1 +1,1 @@
-{"servicios":[],"marcas":["LaJardinera","GreenWoods","ClearWater"],"clasificaciones":["Arbusto","Planta acuatica","Arbol"]}
+{"servicios":[],"marcas":["LaJardinera","GreenWoods","ClearWater","Alemana"],"clasificaciones":["Arbusto","Planta acuatica","Arbol","Hierba"]}
