@@ -1,1 +1,1 @@
-{"servicios":[],"marcas":["Terra","LaJardinera","GreenWoods","Germinadora","ClearWater","Sanifox","Fungox","Alemana","Naturaliz"],"clasificaciones":["Sustrato","Arbusto","Semilla","Planta acuatica","Sanidad vegetal","Arbol","Hierba","Lombriz"]}
+{"servicios":[],"marcas":["Terra","LaJardinera","GreenWoods","Germinadora","HomeStudio","ClearWater","Sanifox","Fungox","Alemana","Naturaliz"],"clasificaciones":["Sustrato","Arbusto","Semilla","Maceta poliedro","Planta acuatica","Sanidad vegetal","Arbol","Maceta redonda","Hierba","Lombriz"]}
