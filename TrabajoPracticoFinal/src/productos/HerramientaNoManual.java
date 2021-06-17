@@ -48,8 +48,11 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		establecerPrecio();
 	}
 	
-	/*
-	 * valida el tipo de motor, electirco o a combustible
+	/**
+	 * Valida que el tipo de motor pasado por parametro sea correcto (electirco o a combustible), llamada
+	 * @see #validarMotor(String)
+	 * @param String
+	 * @return String
 	 */
 	public static String validarMotorLlamada(String motor)
 	{
@@ -66,13 +69,19 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tipo de motor pasado por parametro sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarMotor(String motor) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>motorValido= new ArrayList<String>();
 		motorValido.add("electrico");
 		motorValido.add("combustible");
 	
-		
 		if(motor==null)
 		{
 			throw new NullPointerException("Error, ingrese un dato valido (electrico, combustible)");
@@ -91,8 +100,11 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		}
 	}
 	
-	/*
-	 * valida el consumo (bajo, medio, alto)
+	/**
+	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto), llamada
+	 * @see #validarConsumo(String)
+	 * @param String
+	 * @return String
 	 */
 	public static String validarConsumoLlamada(String consumo)
 	{
@@ -110,6 +122,13 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el consumo enviado por parametro sea correcto(bajo, medio, alto)
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarConsumo(String consumo) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>consumoValido= new ArrayList<String>();
@@ -117,7 +136,6 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		consumoValido.add("medio");
 		consumoValido.add("bajo");
 	
-		
 		if(consumo==null)
 		{
 			throw new NullPointerException("Error, ingrese un dato valido (alto, medio, bajo)");
@@ -136,10 +154,19 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		}
 	}
 	
+	/**
+	 * Devuelve la potencia de la herramienta
+	 * @return int
+	 */
 	public int getPotencia() {
 		return potencia;
 	}
 
+	/**
+	 * Setea el valor que indica la potencia de la herramienta
+	 * @param int
+	 * @return String
+	 */
 	public String setPotencia(int potencia) {
 		String mensaje=null;
 		mensaje=validarValorNumericoLlamada(potencia);
@@ -150,10 +177,19 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el tipo de motor de la herramienta
+	 * @return String
+	 */
 	public String getTipoMotor() {
 		return tipoMotor;
 	}
-
+	
+	/**
+	 * Setea el valor que indica el tipo de motor de la herramienta
+	 * @param String
+	 * @return String
+	 */
 	public String setTipoMotor(String tipoMotor) {
 		String mensaje=null;
 		mensaje=validarMotorLlamada(tipoMotor);
@@ -164,10 +200,19 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return mensaje;
 	}
 
+	/**
+	 * Devuelve el consumo de la herramienta
+	 * @return Srting
+	 */
 	public String getConsumo( ) {
 		return consumo;
 	}
 
+	/**
+	 * Setea el valor que indica el consumo de la herramienta
+	 * @param String
+	 * @return String
+	 */
 	public String setConsumo(String consumo) {
 		String mensaje=null;
 		mensaje=validarConsumoLlamada(consumo);
@@ -178,17 +223,30 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return mensaje;
 	}
 
-	
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + ", potencia: " + potencia + ", tipoMotor: " + tipoMotor + ", consumo: " + consumo;
 	}
 
+	/**
+	 * Establece la clasificacion del objeto a "Herramienta no manual"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Herramienta no manual");
 	}
 
+	/**
+	 * Establece el precio de la herramienta
+	 * @see #getConsumo()
+	 * @see #getPotencia()
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() {
 	
@@ -307,7 +365,11 @@ public class HerramientaNoManual extends HerramientaJardineria {
 		return obj;
 	}
 	
-	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;

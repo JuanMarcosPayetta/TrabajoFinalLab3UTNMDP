@@ -45,8 +45,11 @@ public class HerramientaManual extends HerramientaJardineria{
 	}
 	
 	
-	/*
-	 * Valida el tamaño de la herramienta manual
+	/**
+	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto, llamada
+	 * @see #validarTamanioHManual(String)
+	 * @param String
+	 * @return String
 	 */
 	public static String validarTamanioHManualLlamada(String tamanio)
 	{
@@ -64,6 +67,13 @@ public class HerramientaManual extends HerramientaJardineria{
 		return mensaje;
 	}
 	
+	/**
+	 * Valida que el tamanio pasado por parametro de la herramienta manual sea correcto
+	 * @param String
+	 * @throws NullPointerException
+	 * @throws CadenaInvalidaException
+	 * @throws InputMismatchException
+	 */
 	private static void validarTamanioHManual(String tamanio) throws NullPointerException, CadenaInvalidaException, InputMismatchException
 	{
 		ArrayList<String>tamanioValido= new ArrayList<String>();
@@ -89,11 +99,20 @@ public class HerramientaManual extends HerramientaJardineria{
 		}
 	}
 	
-	
+	/**
+	 * Devuelve el tamanio de la herramienta
+	 * @return String
+	 */
 	public String getTamanio() {
 		return tamanio;
 	}
 	
+	/**
+	 * Setea el valor que indica el tamanio de la herramienta
+	 * @see #validarTamanioHManualLlamada(String)
+	 * @param String
+	 * @return String
+	 */
 	public String setTamanio(String tamanio) {
 		String mensaje=null;
 		mensaje=validarTamanioHManualLlamada(tamanio);
@@ -104,10 +123,21 @@ public class HerramientaManual extends HerramientaJardineria{
 	 
 		return mensaje;
 	}
+	
+	/**
+	 * Devuelve si la herramienta esta reforzada o no
+	 * @return String
+	 */
 	public boolean isReforzada() {
 		return reforzada;
 	}
 	
+	/**
+	 * Setea el valor que indica si la herramienta esta reforzada o no lo esta
+	 * @see #validarBooleanLlamada(Boolean)
+	 * @param boolean
+	 * @return String
+	 */
 	public String setReforzada(boolean reforzada) {
 		String mensaje=null;
 		mensaje=validarBooleanLlamada(reforzada);
@@ -119,16 +149,31 @@ public class HerramientaManual extends HerramientaJardineria{
 		return mensaje;
 	}
 
+	/**
+	 * Retorna informacion relevante del objeto
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return super.toString()+", tamanio: " + tamanio + ", reforzada: " + reforzada;
 	}
 	
+	/**
+	 * Establece la clasificacion del objeto a "Herramienta manual"
+	 * @see #setClasificacion(String)
+	 */
 	@Override
 	public void establecerClasificacion() {
 		this.setClasificacion("Herramienta manual");
 	}
 
+	/**
+	 * Establece el precio de la herramienta
+	 * @see #getFuncion()
+	 * @see #getTamanio()
+	 * @see #isReforzada()
+	 * @see #setPrecio(double)
+	 */
 	@Override
 	public void establecerPrecio() {
 
@@ -316,7 +361,11 @@ public class HerramientaManual extends HerramientaJardineria{
 		return obj;
 	}
 	
-	
+	/**
+	 * @see #getPrecio()
+	 * @param Producto 
+	 * @return int
+	 */
 	@Override
 	public int compareTo(Producto o) {
 		int res=-2;
