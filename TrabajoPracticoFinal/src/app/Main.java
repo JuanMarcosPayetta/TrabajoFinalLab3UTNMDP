@@ -1767,7 +1767,7 @@ public class Main {
 							mensaje=" ";
 							while(mensaje!=null)
 							{
-								System.out.println("Ingrese el tamañio de la herramienta por favor (grande-mediano-pequeña)");
+								System.out.println("Ingrese el tamañio de la herramienta por favor (grande-mediano-pequeño)");
 								tamanio=scan.nextLine();
 								mensaje=HerramientaManual.validarTamanioHManualLlamada(tamanio);
 								if(mensaje!=null)
