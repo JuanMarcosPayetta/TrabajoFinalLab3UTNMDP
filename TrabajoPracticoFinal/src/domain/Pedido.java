@@ -324,9 +324,9 @@ public class Pedido implements IDescuento, Serializable {
 	 * @return String
 	 */
 	public String toString() {
-		return " - Pedido " + numeroPedido + " - \n" + " idCliente: " + idCliente + "\n" + " idEmpleado: " + idEmpleado
-				+ "\n" + " total bruto: " + totalBruto + "\n" + " total neto: " + totalNeto + "\n" + " medio de pago: "
-				+ medioDePago + "\n" + " fue abonado: " + fueAbonado + "\n" + " carrito: " + carrito;
+		return " IDCliente: " + idCliente + "\n" + " IDEmpleado: " + idEmpleado
+				+ "\n" + " Total Bruto: " + totalBruto + "\n" + " Total Neto: " + totalNeto + "\n" + " Medio de Pago: "
+				+ medioDePago + "\n" + " Fue Abonado: " + fueAbonado + "\n" + " Carrito: " +"\n"+ carrito;
 	}
 
 	/**

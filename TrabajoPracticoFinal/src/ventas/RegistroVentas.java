@@ -268,7 +268,7 @@ public class RegistroVentas implements Serializable {
 
 		for (int j = 0; j < registroPedidos.size(); j++) {
 			if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-				sb.append("PEDIDO N�" + j + ":" + "\n");
+				sb.append("\n"+"PEDIDO " + j + ":" + "\n");
 				sb.append("Abonado: " + registroPedidos.get(j).isFueAbonado() + "\n");
 				sb.append("Carrito: " + "\n");
 				for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
@@ -287,6 +287,7 @@ public class RegistroVentas implements Serializable {
 	public String mostrarTodosLosPedidos() {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < registroPedidos.size(); i++) {
+			builder.append("\n"+"PEDIDO: "+"\n");
 			builder.append(registroPedidos.get(i).toString() + "\n");
 		}
 		return builder.toString();
