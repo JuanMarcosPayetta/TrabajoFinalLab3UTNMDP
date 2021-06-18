@@ -1,5 +1,9 @@
 package interfaces;
-
+/**
+ * 
+ * Utiliza constantes para enviar los mensajes 
+ *
+ */
 public interface IDescuento {
 
 	public static final double DESC_TARJETA = 0;

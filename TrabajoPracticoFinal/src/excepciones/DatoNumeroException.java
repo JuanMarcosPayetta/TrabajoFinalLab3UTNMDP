@@ -1,5 +1,8 @@
 package excepciones;
 
+/**
+ *Utiliza constantes para enviar los mensajes 
+ */
 public class DatoNumeroException extends Exception{
 
 	private static final long serialVersionUID = 1L;
