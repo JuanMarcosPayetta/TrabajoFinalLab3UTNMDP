@@ -559,12 +559,19 @@ public class CentroInformativo<T extends Producto> {
 	public String stockNegativo()
 	{
 		StringBuilder builder= new StringBuilder();
+		int flag=0;
 		for(int i=0; i<datos.size(); i++)
 		{
 			if(datos.get(i).getStock()<1)
 			{
 				builder.append(datos.get(i).toString()+"\n");
+				flag=1;
 			}
+		}
+		
+		if(flag==0)
+		{
+			builder.append("Todos los productos poseen stock actualmente\n");
 		}
 		return builder.toString();
 	}
