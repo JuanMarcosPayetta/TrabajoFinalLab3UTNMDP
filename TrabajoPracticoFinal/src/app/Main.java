@@ -57,6 +57,7 @@ public class Main {
 		acceso.leerArchivoEmpleados(vivero);
 		acceso.leerArchivoClientes(vivero);
 		acceso.leerArchivoPedidos(vivero);
+		System.out.println(acceso.JSONToJava(acceso.leer()));
 
 		while (!validarEmpleado) {
 			System.out.println("Ingrese la opcion deseada por favor:\n");

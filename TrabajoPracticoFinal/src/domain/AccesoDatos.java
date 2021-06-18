@@ -490,19 +490,19 @@ public class AccesoDatos { // clase para archivos
 			servicios=obj.getJSONArray("servicios");
 	
 			builder= new StringBuilder();
-			builder.append("Tipos de productos comercializados: \n");
+			builder.append("Tipos de productos comercializados: "+"\n");
 			for(int i=0; i<clasificaciones.length(); i++)
 			{
 				builder.append(clasificaciones.getString(i)+"\n");
 			}
 			
-			builder.append("Marcas comercializadas: \n");
+			builder.append("\n"+"Marcas comercializadas: "+"\n");
 			for(int j=0; j<marcas.length(); j++)
 			{
 				builder.append(marcas.getString(j)+"\n");
 			}
 			
-			builder.append("Servicios prestados: \n");
+			builder.append("\n"+"Servicios prestados: "+"\n");
 			for(int x=0; x<servicios.length(); x++)
 			{
 				builder.append(servicios.getString(x)+"\n");
