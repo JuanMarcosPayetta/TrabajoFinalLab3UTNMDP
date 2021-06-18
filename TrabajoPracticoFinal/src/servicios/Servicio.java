@@ -215,6 +215,7 @@ public class Servicio implements IGenerarCodigo, Serializable {
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	public String toString() {

@@ -1,19 +1,19 @@
 package productos;
+
 /**
  * 
  * Atributos de los productos clasificacion maceta redonda
  *
  */
-public class MacetaRedonda extends Maceta{
+public class MacetaRedonda extends Maceta {
 
 	private double diametroBoca;
 	private double base;
-	
-	public MacetaRedonda()
-	{
+
+	public MacetaRedonda() {
 		super();
-		this.diametroBoca=0;
-		this.base=0;
+		this.diametroBoca = 0;
+		this.base = 0;
 	}
 
 	public MacetaRedonda(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
@@ -31,17 +31,18 @@ public class MacetaRedonda extends Maceta{
 		establecerClasificacion();
 	}
 
-	public MacetaRedonda(String nombre, String marca, int stock, String descripcion, String material,
-			String forma, double diametroBoca, double base) {
+	public MacetaRedonda(String nombre, String marca, int stock, String descripcion, String material, String forma,
+			double diametroBoca, double base) {
 		super(nombre, marca, stock, descripcion, material, forma);
 		this.diametroBoca = diametroBoca;
 		this.base = base;
 		establecerClasificacion();
 		establecerPrecio();
 	}
-	
+
 	/**
 	 * Devuelve el diametro de la boca de la maceta
+	 * 
 	 * @return double
 	 */
 	public double getDiametroBoca() {
@@ -49,16 +50,18 @@ public class MacetaRedonda extends Maceta{
 	}
 
 	/**
-	 * Setear el valor que indica el diametro de la boca de la maceta, validando que sea correcto
+	 * Setear el valor que indica el diametro de la boca de la maceta, validando que
+	 * sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
 	 */
 	public String setDiametroBoca(double diametroBoca) {
-		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(diametroBoca);
-		
-		if(mensaje==null) {
+		String mensaje = null;
+		mensaje = validarValorNumericoLlamada(diametroBoca);
+
+		if (mensaje == null) {
 			this.diametroBoca = diametroBoca;
 		}
 		return mensaje;
@@ -66,6 +69,7 @@ public class MacetaRedonda extends Maceta{
 
 	/**
 	 * Devuelve el valor de la base de la maceta
+	 * 
 	 * @return double
 	 */
 	public double getBase() {
@@ -74,15 +78,16 @@ public class MacetaRedonda extends Maceta{
 
 	/**
 	 * Setea el valor que indica el tamanio de la base, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
 	 */
 	public String setBase(double base) {
-		String mensaje=null;
-		mensaje=validarValorNumericoLlamada(base);
-		
-		if(mensaje==null) {
+		String mensaje = null;
+		mensaje = validarValorNumericoLlamada(base);
+
+		if (mensaje == null) {
 			this.base = base;
 		}
 		return mensaje;
@@ -90,15 +95,17 @@ public class MacetaRedonda extends Maceta{
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+", Diametro de boca: " + diametroBoca + ", Base: " + base;
+		return super.toString() + ", Diametro de boca: " + diametroBoca + ", Base: " + base;
 	}
 
 	/**
 	 * Establece la clasificacion de la maceta a: "Maceta redonda"
+	 * 
 	 * @see #setClasificacion(String)
 	 */
 	@Override
@@ -108,40 +115,35 @@ public class MacetaRedonda extends Maceta{
 
 	/**
 	 * Establece el precio de la maceta
+	 * 
 	 * @see #setPrecio(double)
 	 */
 	@Override
 	public void establecerPrecio() {
-		
-	   double precioDiametro=30.6;
-       double precioFinal=precioDiametro*getDiametroBoca();
-	   setPrecio(precioFinal);
-		
+
+		double precioDiametro = 30.6;
+		double precioFinal = precioDiametro * getDiametroBoca();
+		setPrecio(precioFinal);
+
 	}
 
-	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * 
 	 * @see #getPrecio()
 	 * @param Producto
-	 * @return int 
+	 * @return int
 	 */
 	@Override
 	public int compareTo(Producto o) {
-		int res=-2;
-		if(o!=null)
-		{
-			if(this.getPrecio()==o.getPrecio())
-			{
-				res=0;
-			}
-			else if (this.getPrecio()>o.getPrecio())
-			{
-				res=1;
-			}
-			else
-			{
-				res=-1;
+		int res = -2;
+		if (o != null) {
+			if (this.getPrecio() == o.getPrecio()) {
+				res = 0;
+			} else if (this.getPrecio() > o.getPrecio()) {
+				res = 1;
+			} else {
+				res = -1;
 			}
 		}
 		return res;

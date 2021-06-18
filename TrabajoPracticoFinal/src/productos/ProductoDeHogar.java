@@ -1,12 +1,13 @@
 package productos;
 
 import interfaces.IEstablecerPrecioProductoInerte;
+
 /**
  * 
- * Atributos de los productos clasificacion Producto de hogar 
+ * Atributos de los productos clasificacion Producto de hogar
  *
  */
-public abstract class ProductoDeHogar extends Producto implements IEstablecerPrecioProductoInerte{
+public abstract class ProductoDeHogar extends Producto implements IEstablecerPrecioProductoInerte {
 
 	private String material;
 
@@ -30,9 +31,10 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 		super(nombre, marca, stock, descripcion);
 		this.material = material;
 	}
-	
+
 	/**
 	 * Devuelve el material del que esta compuesto el producto
+	 * 
 	 * @return String
 	 */
 	public String getMaterial() {
@@ -40,7 +42,9 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 	}
 
 	/**
-	 * Setea el valor del material del que esta compuesto el producto, validando que sea correcto
+	 * Setea el valor del material del que esta compuesto el producto, validando que
+	 * sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -58,6 +62,7 @@ public abstract class ProductoDeHogar extends Producto implements IEstablecerPre
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override

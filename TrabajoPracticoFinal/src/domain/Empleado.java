@@ -4,103 +4,99 @@ import java.io.Serializable;
 
 import excepciones.CadenaInvalidaException;
 import productos.Producto;
+
 /**
  * 
  * Esta clase se almacena en un HashSet, tiene sobre escrito el metodo equals
  *
  */
-public class Empleado implements Serializable{
+public class Empleado implements Serializable {
 
 	private int ID;
 	private String nombre;
 	private String apellido;
 	private String contrasenia;
-	
+
 	public Empleado() {
-		this.ID=0;
-		this.nombre=null;
-		this.apellido=null;
-		this.contrasenia=null;
+		this.ID = 0;
+		this.nombre = null;
+		this.apellido = null;
+		this.contrasenia = null;
 	}
 
 	public Empleado(int iD, String nombre, String apellido, String contrasenia) {
-		this.ID=iD;
+		this.ID = iD;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.contrasenia=contrasenia;
-	}
-	
-	public Empleado(String nombre, String apellido, String contrasenia)
-	{
-		this.ID=0;
-		this.nombre=nombre;
-		this.apellido=apellido;
-		this.contrasenia=contrasenia;
-	}
-	
-	//creado solo para busqueda en Vivero
-	public Empleado(int id) 
-	{
-		this.ID=id;
-		this.nombre=null;
-		this.apellido=null;
-		this.contrasenia=null;
+		this.contrasenia = contrasenia;
 	}
 
-	
+	public Empleado(String nombre, String apellido, String contrasenia) {
+		this.ID = 0;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.contrasenia = contrasenia;
+	}
+
+	// creado solo para busqueda en Vivero
+	public Empleado(int id) {
+		this.ID = id;
+		this.nombre = null;
+		this.apellido = null;
+		this.contrasenia = null;
+	}
+
 	/**
 	 * Captura la exepcion lanzada por {@link #validarContrasenia(String)}
+	 * 
 	 * @see #validarContrasenia(String)
 	 * @param String
 	 * @return String
 	 */
-	public static String validarContraseniaLlamada(String contrasenia)
-	{
-		String mensaje=null;
+	public static String validarContraseniaLlamada(String contrasenia) {
+		String mensaje = null;
 		try {
 			validarContrasenia(contrasenia);
 		} catch (NullPointerException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		} catch (CadenaInvalidaException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
-	
+
 	/**
-	 * Valida String ingresado y lanza una exepcion que es capturada por {@link #validarContraseniaLlamada(String)}
+	 * Valida String ingresado y lanza una exepcion que es capturada por
+	 * {@link #validarContraseniaLlamada(String)}
+	 * 
 	 * @param String
 	 * @throws CadenaInvalidaException
 	 * @throws NullPointerException
 	 * @see #validarContraseniaLlamada(String)
 	 */
-	private static void validarContrasenia(String contrasenia) throws CadenaInvalidaException, NullPointerException
-	{
-		if(contrasenia==null)
-		{
+	private static void validarContrasenia(String contrasenia) throws CadenaInvalidaException, NullPointerException {
+		if (contrasenia == null) {
 			throw new NullPointerException("Error");
-		}
-		else if(contrasenia.isBlank())
-		{
+		} else if (contrasenia.isBlank()) {
 			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
-		}
-		else if(!contrasenia.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"))
-		{
+		} else if (!contrasenia.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) {
 			throw new CadenaInvalidaException(CadenaInvalidaException.PASSEXCEPTION);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Retorna el ID del objeto
+	 * 
 	 * @return int
 	 */
 	public int getID() {
 		return ID;
 	}
-	
+
 	/**
 	 * Establece el ID del objeto
+	 * 
 	 * @param int
 	 */
 	public void setID(int iD) {
@@ -108,25 +104,25 @@ public class Empleado implements Serializable{
 	}
 
 	/**
-	 * Retorna el nombre del objeto 
+	 * Retorna el nombre del objeto
+	 * 
 	 * @return String
 	 */
 	public String getNombre() {
 		return nombre;
 	}
-	
 
 	/**
 	 * Establece el nombrel del objeto, validando que sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
 	 */
 	public String setNombre(String nombre) {
-		String mensaje=null;
-		mensaje=Producto.validarCadenaCaracteresLlamada(nombre);
-		if(mensaje==null)
-		{
+		String mensaje = null;
+		mensaje = Producto.validarCadenaCaracteresLlamada(nombre);
+		if (mensaje == null) {
 			this.nombre = nombre;
 		}
 		return mensaje;
@@ -134,6 +130,7 @@ public class Empleado implements Serializable{
 
 	/**
 	 * Retorna el apellido del objeto
+	 * 
 	 * @return String
 	 */
 	public String getApellido() {
@@ -142,49 +139,46 @@ public class Empleado implements Serializable{
 
 	/**
 	 * Establece el apellido del objeto, validando que sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
 	 */
 	public String setApellido(String apellido) {
-		String mensaje=null;
-		mensaje=Producto.validarCadenaCaracteresLlamada(apellido);
-		if(mensaje==null)
-		{
+		String mensaje = null;
+		mensaje = Producto.validarCadenaCaracteresLlamada(apellido);
+		if (mensaje == null) {
 			this.apellido = apellido;
 		}
 		return mensaje;
 	}
-	
+
 	/**
 	 * Retorna la contraseña del objeto
+	 * 
 	 * @return String
 	 */
 	public String getContrasenia() {
 		return contrasenia;
 	}
 
-
 	@Override
 	public int hashCode() {
-	return 1;
+		return 1;
 	}
-	
+
 	/**
 	 * Compara dos objetos, retornando true or false en caso de ser iguales o no
+	 * 
 	 * @param Object
 	 */
-	public boolean equals (Object obj)
-	{
-		boolean validacion=false;
-		if(obj!=null)
-		{
-			if(obj instanceof Empleado)
-			{
-				Empleado unEmpleado= (Empleado) obj;
-				if(this.getID()==unEmpleado.getID())
-				{
-					validacion=true;
+	public boolean equals(Object obj) {
+		boolean validacion = false;
+		if (obj != null) {
+			if (obj instanceof Empleado) {
+				Empleado unEmpleado = (Empleado) obj;
+				if (this.getID() == unEmpleado.getID()) {
+					validacion = true;
 				}
 			}
 		}
@@ -193,11 +187,11 @@ public class Empleado implements Serializable{
 
 	/**
 	 * Muestra informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	public String toString() {
 		return "ID: " + ID + ", Nombre: " + nombre + ", Apellido: " + apellido;
 	}
 
-	
 }

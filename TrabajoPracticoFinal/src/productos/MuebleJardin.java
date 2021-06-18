@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
+
 /**
  * 
  * Atributos de los productos clasificacion mueblesjardin
@@ -42,9 +43,9 @@ public class MuebleJardin extends ProductoDeHogar {
 		this.ancho = ancho;
 		establecerClasificacion();
 	}
-	
-	public MuebleJardin(String nombre, String marca, int stock, String descripcion, String material,
-			String tipo, double alto, double largo, double ancho) {
+
+	public MuebleJardin(String nombre, String marca, int stock, String descripcion, String material, String tipo,
+			double alto, double largo, double ancho) {
 		super(nombre, marca, stock, descripcion, material);
 		this.tipo = tipo;
 		this.alto = alto;
@@ -56,6 +57,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Devuelve el tipo de mueble
+	 * 
 	 * @return String
 	 */
 	public String getTipo() {
@@ -64,6 +66,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Devuelve el alto del mueble
+	 * 
 	 * @return double
 	 */
 	public double getAlto() {
@@ -72,6 +75,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Setea el valor que indica el alto del mueble, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -89,6 +93,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Devuelve el largo del mueble
+	 * 
 	 * @return double
 	 */
 	public double getLargo() {
@@ -97,6 +102,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Setea el valor que indica el largo del mueble, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -113,6 +119,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Devuelve el ancho del mueble
+	 * 
 	 * @return double
 	 */
 	public double getAncho() {
@@ -121,6 +128,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Setea el valor que indica el ancho del mueble, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -138,6 +146,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -147,6 +156,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Valida el tipo de mueble pasado por parametro
+	 * 
 	 * @see #validarTipoMueble(String)
 	 * @param String
 	 * @return String
@@ -166,7 +176,9 @@ public class MuebleJardin extends ProductoDeHogar {
 	}
 
 	/**
-	 * Valida el tipo de mueble pasado por parametro, lanzando una excepcion que sera capturada por {@link #validarTipoMuebleLlamada(String)}
+	 * Valida el tipo de mueble pasado por parametro, lanzando una excepcion que
+	 * sera capturada por {@link #validarTipoMuebleLlamada(String)}
+	 * 
 	 * @see #validarTipoMuebleLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
@@ -196,6 +208,7 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Setea el valor que indica el tipo de mueble, validando que sea correcto
+	 * 
 	 * @see #validarTipoMuebleLlamada(String)
 	 * @param String
 	 * @return String
@@ -209,9 +222,10 @@ public class MuebleJardin extends ProductoDeHogar {
 		}
 		return mensaje;
 	}
-	
+
 	/**
 	 * Establece la clasificacion del objeto a: "Mueble de jardin"
+	 * 
 	 * @see #setClasificacion(String)
 	 */
 	@Override
@@ -221,76 +235,55 @@ public class MuebleJardin extends ProductoDeHogar {
 
 	/**
 	 * Establece el precio del mueble
+	 * 
 	 * @see #getTipo()
 	 * @see #getLargo()
 	 */
 	@Override
 	public void establecerPrecio() {
-		double precioMueble=0;
-		
-		if(getTipo().equalsIgnoreCase("mesa"))
-		{
-			if(getLargo()<120)
-			{
-				precioMueble=11500;
+		double precioMueble = 0;
+
+		if (getTipo().equalsIgnoreCase("mesa")) {
+			if (getLargo() < 120) {
+				precioMueble = 11500;
+			} else if (getLargo() > 120 && getLargo() < 180) {
+				precioMueble = 16000;
+			} else if (getLargo() > 180 && getLargo() < 220) {
+				precioMueble = 24.500;
+			} else {
+				precioMueble = 30000;
 			}
-		    else if(getLargo()>120 && getLargo()<180)
-			{
-				precioMueble=16000;
-			}
-			else if(getLargo()>180 && getLargo()<220)
-			{
-				precioMueble=24.500;
-			}
-			else
-			{
-				precioMueble=30000;
-			}
-			
+
+		} else if (getTipo().equalsIgnoreCase("silla")) {
+			precioMueble = 9000;
+		} else if (getTipo().equalsIgnoreCase("reposera")) {
+			precioMueble = 5200;
+		} else if (getTipo().equalsIgnoreCase("camastro")) {
+			precioMueble = 45.450;
+		} else if (getTipo().equalsIgnoreCase("hamaca")) {
+			precioMueble = 37.780;
 		}
-		else if(getTipo().equalsIgnoreCase("silla"))
-		{
-			precioMueble=9000;
-		}
-		else if(getTipo().equalsIgnoreCase("reposera"))
-		{
-			precioMueble=5200;
-		}
-		else if(getTipo().equalsIgnoreCase("camastro"))
-		{
-			precioMueble=45.450;
-		}
-		else if(getTipo().equalsIgnoreCase("hamaca"))
-		{
-			precioMueble=37.780;
-		}
-		
+
 		setPrecio(precioMueble);
-		
+
 	}
 
-	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * 
 	 * @param Producto
 	 * @return int
 	 */
 	@Override
 	public int compareTo(Producto o) {
-		int res=-2;
-		if(o!=null)
-		{
-			if(this.getPrecio()==o.getPrecio())
-			{
-				res=0;
-			}
-			else if (this.getPrecio()>o.getPrecio())
-			{
-				res=1;
-			}
-			else
-			{
-				res=-1;
+		int res = -2;
+		if (o != null) {
+			if (this.getPrecio() == o.getPrecio()) {
+				res = 0;
+			} else if (this.getPrecio() > o.getPrecio()) {
+				res = 1;
+			} else {
+				res = -1;
 			}
 		}
 		return res;

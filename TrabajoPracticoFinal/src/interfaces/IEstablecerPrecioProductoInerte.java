@@ -1,4 +1,5 @@
 package interfaces;
+
 /**
  * 
  * Establece automaticamente el precio de venta

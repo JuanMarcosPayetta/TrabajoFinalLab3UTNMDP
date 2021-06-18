@@ -9,6 +9,7 @@ import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
+
 /**
  * 
  * Atributos de los productos clasificacion Producto
@@ -86,9 +87,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	public abstract void establecerClasificacion();
 
-
 	/**
 	 * Genera un codigo unico automatico que correspondera a un producto
+	 * 
 	 * @param String
 	 */
 	public String generarCodigo() {
@@ -121,9 +122,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 		return codigoGenerado;
 	}
 
-	
 	/**
 	 * Verifica que el codigo generado corresponda o no a un producto actual
+	 * 
 	 * @see #obtenerCodigosProucto()
 	 * @param String
 	 * @return boolean
@@ -131,7 +132,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	public boolean buscarCodigoExistentes(String codigoGenerado) {
 		Vivero vivero = new Vivero();
 		ArrayList<String> codigosActuales = new ArrayList<String>();
-		codigosActuales = vivero.obtenerCodigosProducto(); 
+		codigosActuales = vivero.obtenerCodigosProducto();
 
 		boolean encontrado = false;
 		for (int i = 0; i < codigosActuales.size() && !encontrado; i++) {
@@ -145,6 +146,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Valida que el String ingresado sea correcto
+	 * 
 	 * @see #validarCadenaCaracteres(String)
 	 * @param String
 	 * @return String
@@ -161,28 +163,31 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 		return mensaje;
 	}
-	
-    /**
-     * Valida que el String ingresado sea correcto, lanzando una excepcion que es capturada por {@link #validarCadenaCaracteresLlamada(String)}
-     * @see #validarCadenaCaracteresLlamada(String)
-     * @param String
-     * @throws CadenaInvalidaException
-     * @throws NullPointerException
-     */
+
+	/**
+	 * Valida que el String ingresado sea correcto, lanzando una excepcion que es
+	 * capturada por {@link #validarCadenaCaracteresLlamada(String)}
+	 * 
+	 * @see #validarCadenaCaracteresLlamada(String)
+	 * @param String
+	 * @throws CadenaInvalidaException
+	 * @throws NullPointerException
+	 */
 	private static void validarCadenaCaracteres(String cadena) throws CadenaInvalidaException, NullPointerException {
 		if (cadena == null) {
 			throw new NullPointerException("Error");
 		} else if (cadena.isBlank()) {
 			throw new CadenaInvalidaException(CadenaInvalidaException.ESPACIOENBLANCOEXCEPTION);
 		} else if (!cadena.matches("[a-zA-Z ]*\\D{3}")) {
-			
-		  throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + " 3 letras");
+
+			throw new CadenaInvalidaException(CadenaInvalidaException.LONGITUDYNUMEROSEXCEPTION + " 3 letras");
 		}
 
 	}
 
 	/**
 	 * Metodo generico que valida que el dato numerico ingresado sea valido
+	 * 
 	 * @see #validarValorNumerico(Number)
 	 * @param <T> Valor numerico
 	 * @return String
@@ -200,7 +205,10 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Metodo generico que valida que el dato numerico ingresado sea valido, lanzando una excepcion que es capturada por {@link #validarValorNumericoLlamada(Number)}
+	 * Metodo generico que valida que el dato numerico ingresado sea valido,
+	 * lanzando una excepcion que es capturada por
+	 * {@link #validarValorNumericoLlamada(Number)}
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param <T> Valor numerico
 	 * @throws DatoNumeroException
@@ -223,6 +231,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Valida que el dato boolean ingresado sea valido
+	 * 
 	 * @see #validarBoolean(Boolean)
 	 * @param Boolean
 	 * @return String
@@ -240,7 +249,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Valida que el dato boolean ingresado sea valido, lanzando una excepcion que es capturada por {@link #validarBooleanLlamada(Boolean)}
+	 * Valida que el dato boolean ingresado sea valido, lanzando una excepcion que
+	 * es capturada por {@link #validarBooleanLlamada(Boolean)}
+	 * 
 	 * @see #validarBooleanLlamada(Boolean)
 	 * @param Boolean
 	 * @throws NullPointerException
@@ -257,69 +268,70 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Valida que la cantidad ingresada por parametro sea valida
+	 * 
 	 * @see #validarCantidadCompra(int)
 	 * @param int
 	 * @return String
 	 */
-	public static String validarCantidadCompraLlamada(int cantidad)
-	{
-		String mensaje=null;
+	public static String validarCantidadCompraLlamada(int cantidad) {
+		String mensaje = null;
 		try {
 			validarCantidadCompra(cantidad);
 		} catch (DatoNumeroException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
-	
+
 	/**
-	 * Valida que la cantidad ingresada por parametro sea valida, lanzando una excepcion que es capturada por {@link #validarCantidadCompraLlamada(int)}
+	 * Valida que la cantidad ingresada por parametro sea valida, lanzando una
+	 * excepcion que es capturada por {@link #validarCantidadCompraLlamada(int)}
+	 * 
 	 * @see #validarCantidadCompraLlamada(int)
 	 * @param int
 	 * @throws DatoNumeroException
 	 */
-	private static void validarCantidadCompra(int cantidad)throws DatoNumeroException
-	{
-		if(cantidad<=0)
-		{
-			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+", ni igual a 0\n");
+	private static void validarCantidadCompra(int cantidad) throws DatoNumeroException {
+		if (cantidad <= 0) {
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni igual a 0\n");
 		}
 	}
-	
-	
+
 	/**
 	 * Valida que el precio ingresado por parametro sea valido
+	 * 
 	 * @see #validarPrecio(double)
 	 * @param double
 	 * @return String
 	 */
-	public static String validarPrecioLlamada(double precio)
-	{
-		String mensaje=null;
+	public static String validarPrecioLlamada(double precio) {
+		String mensaje = null;
 		try {
 			validarPrecio(precio);
 		} catch (DatoNumeroException e) {
-			mensaje=e.getMessage();
+			mensaje = e.getMessage();
 		}
 		return mensaje;
 	}
-	
+
 	/**
-	 * Valida que el precio del producto ingresado por parametro sea valido, lanzando una excepcion que es capturada por {@link #validarPrecioLlamada(double)}
+	 * Valida que el precio del producto ingresado por parametro sea valido,
+	 * lanzando una excepcion que es capturada por
+	 * {@link #validarPrecioLlamada(double)}
+	 * 
 	 * @see #validarPrecioLlamada(double)
 	 * @param double
 	 * @throws DatoNumeroException
 	 */
-	private static void validarPrecio(double precio) throws  DatoNumeroException
-	{
-		if(precio<=0)
-		{
-			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION+", ni igual a 0\n");
+	private static void validarPrecio(double precio) throws DatoNumeroException {
+		if (precio <= 0) {
+			throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + ", ni igual a 0\n");
 		}
 	}
-	
+
 	/**
 	 * Retorna el codigo correspondiente a un producto
+	 * 
 	 * @return String
 	 */
 	public String getCodigo() {
@@ -327,7 +339,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Establece el codigo de un producto, verificando que no este siendo usado por otro producto
+	 * Establece el codigo de un producto, verificando que no este siendo usado por
+	 * otro producto
+	 * 
 	 * @see #buscarCodigoExistentes(String)
 	 * @param String
 	 * @return String
@@ -346,6 +360,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna el nombre correspondiente a un producto
+	 * 
 	 * @return String
 	 */
 	public String getNombre() {
@@ -354,6 +369,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece el nombre de un producto, validando que sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -370,6 +386,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna la marca correspondiente a un producto
+	 * 
 	 * @return String
 	 */
 	public String getMarca() {
@@ -378,6 +395,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece la marca correspondiente a un producto, validando que sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -394,6 +412,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna la clasificacion a la que pertenece un producto
+	 * 
 	 * @return String
 	 */
 	public String getClasificacion() {
@@ -402,6 +421,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece la clasifiacion a la que pertenece un producto
+	 * 
 	 * @param String
 	 */
 	public void setClasificacion(String clasificacion) {
@@ -410,6 +430,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna el precio correspondiente a un producto
+	 * 
 	 * @return double
 	 */
 	public double getPrecio() {
@@ -418,6 +439,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece el precio correspondiente a un producto, validando que sea correcto
+	 * 
 	 * @see #validarPrecioLlamada(double)
 	 * @param double
 	 * @return String
@@ -433,6 +455,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna el stock correspondiente a un producto
+	 * 
 	 * @return int
 	 */
 	public int getStock() {
@@ -441,6 +464,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece el stock correspondiente a un producto, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param int
 	 * @return String
@@ -455,7 +479,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Aumenta el stock de un producto, validando que la cantidad ingresada sea correcta
+	 * Aumenta el stock de un producto, validando que la cantidad ingresada sea
+	 * correcta
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param int
 	 * @return String
@@ -472,7 +498,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Disminuye el stock de un producto, validando que la cantidad ingresada sea correcta
+	 * Disminuye el stock de un producto, validando que la cantidad ingresada sea
+	 * correcta
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param int
 	 * @return String
@@ -496,6 +524,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna la descripcion correspondiente a un producto
+	 * 
 	 * @return String
 	 */
 	public String getDescripcion() {
@@ -504,6 +533,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Establece la descripcion correspondiente a un producto
+	 * 
 	 * @param String
 	 */
 	public void setDescripcion(String descripcion) {
@@ -512,6 +542,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -527,6 +558,7 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 
 	/**
 	 * Compara dos objetos, retornando true o false en caso de ser iguales o no
+	 * 
 	 * @param Object
 	 * @return boolean
 	 */
@@ -547,7 +579,9 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 	}
 
 	/**
-	 * Valida que el stock actual de un producto sea igual o mayor a la ingresada por parametro
+	 * Valida que el stock actual de un producto sea igual o mayor a la ingresada
+	 * por parametro
+	 * 
 	 * @param int
 	 * @return boolean
 	 */
@@ -559,7 +593,5 @@ public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, 
 		}
 		return res;
 	}
-	
-	
 
 }

@@ -1,7 +1,8 @@
 package interfaces;
+
 /**
  * 
- * Utiliza constantes para enviar los mensajes 
+ * Utiliza constantes para enviar los mensajes
  *
  */
 public interface IDescuento {

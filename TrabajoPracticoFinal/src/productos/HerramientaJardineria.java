@@ -5,15 +5,16 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import interfaces.IEstablecerPrecioProductoInerte;
+
 /**
  * 
  * Atributos de los productos clasificacion Herramienta jardineria
  *
  */
-public abstract class HerramientaJardineria extends Producto implements IEstablecerPrecioProductoInerte{
+public abstract class HerramientaJardineria extends Producto implements IEstablecerPrecioProductoInerte {
 
 	private String material;
-	private String funcion; 
+	private String funcion;
 
 	public HerramientaJardineria() {
 		super();
@@ -34,17 +35,17 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		this.material = material;
 		this.funcion = funcion;
 	}
-	
-	public HerramientaJardineria(String nombre, String marca, int stock, String descripcion,
-			String material, String funcion) {
+
+	public HerramientaJardineria(String nombre, String marca, int stock, String descripcion, String material,
+			String funcion) {
 		super(nombre, marca, stock, descripcion);
 		this.material = material;
 		this.funcion = funcion;
 	}
-	
 
 	/**
 	 * Valida que la funcion de la herramienta pasada por parametro sea correcta
+	 * 
 	 * @see #validarFuncionHerramienta(String)
 	 * @param String
 	 * @return String
@@ -64,7 +65,10 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Valida que la funcion de la herramienta pasada por parametro sea correcta, lanzando una excepcion que sera capturada por {@link #validarFuncionHerramientaLlamada(String)}
+	 * Valida que la funcion de la herramienta pasada por parametro sea correcta,
+	 * lanzando una excepcion que sera capturada por
+	 * {@link #validarFuncionHerramientaLlamada(String)}
+	 * 
 	 * @see #validarFuncionHerramientaLlamada(String)
 	 * @param String
 	 * @throws NullPointerException
@@ -95,7 +99,9 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	}
 
-	/** Devuelve el material del que esta hecho la herramienta
+	/**
+	 * Devuelve el material del que esta hecho la herramienta
+	 * 
 	 * @return String
 	 */
 	public String getMaterial() {
@@ -103,7 +109,9 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Setea el valor que indica el material de la herramienta, validando que sea correcto
+	 * Setea el valor que indica el material de la herramienta, validando que sea
+	 * correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -119,6 +127,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	/**
 	 * Devuelve la funcion de la herramienta
+	 * 
 	 * @return String
 	 */
 	public String getFuncion() {
@@ -126,7 +135,9 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 	}
 
 	/**
-	 * Setea el valor que indica la funcion de la herramienta, validando que sea correcta
+	 * Setea el valor que indica la funcion de la herramienta, validando que sea
+	 * correcta
+	 * 
 	 * @see #validarFuncionHerramientaLlamada(String)
 	 * @param String
 	 * @return String
@@ -142,6 +153,7 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -149,5 +161,4 @@ public abstract class HerramientaJardineria extends Producto implements IEstable
 		return super.toString() + ", Material: " + material + ", Funcion: " + funcion;
 	}
 
-	
 }

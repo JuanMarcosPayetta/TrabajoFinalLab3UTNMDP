@@ -236,7 +236,9 @@ public class RegistroVentas implements Serializable {
 	}
 
 	/**
-	 * Valida que el carrito del pedido impago del cliente no este vacio, de lo contrario retorna false
+	 * Valida que el carrito del pedido impago del cliente no este vacio, de lo
+	 * contrario retorna false
+	 * 
 	 * @param int
 	 * @return boolean
 	 */
@@ -254,9 +256,9 @@ public class RegistroVentas implements Serializable {
 		return verificar;
 	}
 
-
 	/**
 	 * Muestra el historial de pedidos del cliente
+	 * 
 	 * @see #BuscaCliente
 	 * @param cliente
 	 * @return String
@@ -266,7 +268,7 @@ public class RegistroVentas implements Serializable {
 
 		for (int j = 0; j < registroPedidos.size(); j++) {
 			if (registroPedidos.get(j).getIdCliente() == cliente.getId()) {
-				sb.append("PEDIDO N°" + j + ":" + "\n");
+				sb.append("PEDIDO Nï¿½" + j + ":" + "\n");
 				sb.append("Abonado: " + registroPedidos.get(j).isFueAbonado() + "\n");
 				sb.append("Carrito: " + "\n");
 				for (int i = 0; i < registroPedidos.get(j).getCarrito().size(); i++) {
@@ -277,9 +279,9 @@ public class RegistroVentas implements Serializable {
 		return sb.toString();
 	}
 
-	
 	/**
 	 * Muestra todos los pedidos del cliente
+	 * 
 	 * @return String
 	 */
 	public String mostrarTodosLosPedidos() {
@@ -292,6 +294,7 @@ public class RegistroVentas implements Serializable {
 
 	/**
 	 * Muestra todos los pedidos impagos de todos los clientes
+	 * 
 	 * @return String
 	 */
 	public String mostrarTodosLosPedidosImpagos() {
@@ -306,6 +309,7 @@ public class RegistroVentas implements Serializable {
 
 	/**
 	 * Elimina una peticion de compra de un pedido impago
+	 * 
 	 * @see #BuscaCliente
 	 * @param String
 	 * @param elCliente
@@ -339,6 +343,7 @@ public class RegistroVentas implements Serializable {
 
 	/**
 	 * Establece el emplado que gestiona el pago del pedido del cliente
+	 * 
 	 * @param int
 	 * @param int
 	 */
@@ -356,6 +361,7 @@ public class RegistroVentas implements Serializable {
 
 	/**
 	 * Elimina completamente un pedido impago de un cliente
+	 * 
 	 * @param cliente
 	 * @return String
 	 */
@@ -374,18 +380,21 @@ public class RegistroVentas implements Serializable {
 		return mensaje;
 	}
 
-/**
- * Retorna la linkedList de Pedido para poder grabarlo en el archivo
- * @return LinkedList<Pedido>
- */
+	/**
+	 * Retorna la linkedList de Pedido para poder grabarlo en el archivo
+	 * 
+	 * @return LinkedList<Pedido>
+	 */
 	public LinkedList<Pedido> getRegistroPedidos() {
 		return registroPedidos;
 	}
 
-/**
- * Recibe los pedidos almacenados en el archivo para poder agregarlos al LinkedList<Pedido>
- * @param pedido
- */
+	/**
+	 * Recibe los pedidos almacenados en el archivo para poder agregarlos al
+	 * LinkedList<Pedido>
+	 * 
+	 * @param pedido
+	 */
 	public void agregarPedidoDesdeArchivo(Pedido pedido) {
 		registroPedidos.add(pedido);
 	}

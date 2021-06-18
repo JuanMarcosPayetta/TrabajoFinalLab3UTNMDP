@@ -19,8 +19,7 @@ public class MacetaPoliedro extends Maceta {
 	}
 
 	public MacetaPoliedro(String codigo, String nombre, String marca, String clasificacion, double precio, int stock,
-			String descripcion, String material, String forma, double alto, double ancho,
-			double largo) {
+			String descripcion, String material, String forma, double alto, double ancho, double largo) {
 		super(codigo, nombre, marca, clasificacion, precio, stock, descripcion, material, forma);
 		this.alto = alto;
 		this.ancho = ancho;
@@ -35,9 +34,9 @@ public class MacetaPoliedro extends Maceta {
 		this.largo = largo;
 		establecerClasificacion();
 	}
-	
-	public MacetaPoliedro(String nombre, String marca, int stock, String descripcion, String material,
-			String forma, double alto, double ancho, double largo) {
+
+	public MacetaPoliedro(String nombre, String marca, int stock, String descripcion, String material, String forma,
+			double alto, double ancho, double largo) {
 		super(nombre, marca, stock, descripcion, material, forma);
 		this.alto = alto;
 		this.ancho = ancho;
@@ -48,6 +47,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Retorna el alto de la maceta poliedro
+	 * 
 	 * @return double
 	 */
 	public double getAlto() {
@@ -56,6 +56,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Establece el alto de la maceta poliedro, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -71,6 +72,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Devuelve el ancho de la maceta
+	 * 
 	 * @return double
 	 */
 	public double getAncho() {
@@ -79,6 +81,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Setea el valor que indica el ancho de la maceta, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
@@ -94,6 +97,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Devuelve el largo de la maceta
+	 * 
 	 * @return double
 	 */
 	public double getLargo() {
@@ -102,22 +106,24 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Setea el valor que indica el largo de la maceta, validando que sea correcto
+	 * 
 	 * @see #validarValorNumericoLlamada(Number)
 	 * @param double
 	 * @return String
 	 */
-	public String setLargo(double largo) { 
+	public String setLargo(double largo) {
 		String mensaje = validarValorNumericoLlamada(largo);
 
 		if (mensaje == null) {
 
 			this.largo = largo;
 		}
-		return mensaje; 
+		return mensaje;
 	}
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -127,6 +133,7 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Establece la clasificacion del objeto a: "Maceta poliedro"
+	 * 
 	 * @see #setClasificacion(String)
 	 */
 	@Override
@@ -136,57 +143,47 @@ public class MacetaPoliedro extends Maceta {
 
 	/**
 	 * Establece el precio de la maceta
+	 * 
 	 * @see #getForma()
 	 */
 	@Override
 	public void establecerPrecio() {
-		
-		double precioFinal=0;
-		
-		if(getForma().equalsIgnoreCase("cubo"))
-		{
-			double precioAncho=18.75;
-			precioFinal=precioAncho*getAncho();
+
+		double precioFinal = 0;
+
+		if (getForma().equalsIgnoreCase("cubo")) {
+			double precioAncho = 18.75;
+			precioFinal = precioAncho * getAncho();
+		} else if (getForma().equalsIgnoreCase("jardinera")) {
+			double precioLargo = 59;
+			precioFinal = precioLargo * getLargo();
+		} else if (getForma().equalsIgnoreCase("piramidal")) {
+			double precioAlto = 19;
+			precioFinal = precioAlto * getAlto();
 		}
-		else if(getForma().equalsIgnoreCase("jardinera"))
-		{
-			double precioLargo=59;
-			precioFinal=precioLargo*getLargo();
-		}
-		else if(getForma().equalsIgnoreCase("piramidal"))
-		{
-			double precioAlto=19;
-			precioFinal=precioAlto*getAlto();
-		}
-		
+
 		setPrecio(precioFinal);
 	}
 
-	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * 
 	 * @param Producto
 	 * @return int
 	 */
 	@Override
 	public int compareTo(Producto o) {
-		int res=-2;
-		if(o!=null)
-		{
-			if(this.getPrecio()==o.getPrecio())
-			{
-				res=0;
-			}
-			else if (this.getPrecio()>o.getPrecio())
-			{
-				res=1;
-			}
-			else
-			{
-				res=-1;
+		int res = -2;
+		if (o != null) {
+			if (this.getPrecio() == o.getPrecio()) {
+				res = 0;
+			} else if (this.getPrecio() > o.getPrecio()) {
+				res = 1;
+			} else {
+				res = -1;
 			}
 		}
 		return res;
 	}
-	
+
 }

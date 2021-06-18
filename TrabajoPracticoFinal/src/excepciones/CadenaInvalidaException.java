@@ -1,7 +1,7 @@
 package excepciones;
 
 /**
- *Utiliza constantes para enviar los mensajes 
+ * Utiliza constantes para enviar los mensajes
  */
 public class CadenaInvalidaException extends Exception{
 		

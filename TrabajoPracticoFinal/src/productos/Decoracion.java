@@ -1,4 +1,5 @@
 package productos;
+
 /**
  * 
  * Atributos de los productos clasificacion Decoracion
@@ -22,8 +23,8 @@ public class Decoracion extends ProductoDeHogar {
 		this.colorPrimario = colorPrimario;
 	}
 
-	public Decoracion(String nombre, String marca, int stock,
-			String descripcion, String material, boolean exterior, String colorPrimario) {
+	public Decoracion(String nombre, String marca, int stock, String descripcion, String material, boolean exterior,
+			String colorPrimario) {
 		super(nombre, marca, stock, descripcion, material);
 		this.exterior = exterior;
 		this.colorPrimario = colorPrimario;
@@ -33,14 +34,17 @@ public class Decoracion extends ProductoDeHogar {
 
 	/**
 	 * Devuelve si la decoracion es o no de exterior
+	 * 
 	 * @return boolean
 	 */
 	public boolean isExterior() {
 		return exterior;
 	}
-	
+
 	/**
-	 * Setea el valor que indica si la decoracion es de exterior o no, validando que sea correcto
+	 * Setea el valor que indica si la decoracion es de exterior o no, validando que
+	 * sea correcto
+	 * 
 	 * @see #validarBooleanLlamada(Boolean)
 	 * @param boolean
 	 * @return String
@@ -58,6 +62,7 @@ public class Decoracion extends ProductoDeHogar {
 
 	/**
 	 * Devuelve el color primario de la decoracion
+	 * 
 	 * @return String
 	 */
 	public String getColorPrimario() {
@@ -65,7 +70,9 @@ public class Decoracion extends ProductoDeHogar {
 	}
 
 	/**
-	 * Setea el valor que indica el color primario de la decoracion, validando que sea correcto
+	 * Setea el valor que indica el color primario de la decoracion, validando que
+	 * sea correcto
+	 * 
 	 * @see #validarCadenaCaracteresLlamada(String)
 	 * @param String
 	 * @return String
@@ -78,12 +85,13 @@ public class Decoracion extends ProductoDeHogar {
 
 			this.colorPrimario = colorPrimario;
 		}
-		
+
 		return mensaje;
 	}
 
 	/**
 	 * Retorna informacion relevante del objeto
+	 * 
 	 * @return String
 	 */
 	@Override
@@ -93,6 +101,7 @@ public class Decoracion extends ProductoDeHogar {
 
 	/**
 	 * Establece la clasificacion del objeto a "Decoracion"
+	 * 
 	 * @see #setClasificacion(String)
 	 */
 	@Override
@@ -102,52 +111,43 @@ public class Decoracion extends ProductoDeHogar {
 
 	/**
 	 * Establece el precio del producto
+	 * 
 	 * @see #isExterior()
 	 * @see #setPrecio(double)
 	 */
 	@Override
 	public void establecerPrecio() {
-		
-		double precioPorDefecto=0;
-		if(isExterior())
-		{
-			precioPorDefecto=270.5;
+
+		double precioPorDefecto = 0;
+		if (isExterior()) {
+			precioPorDefecto = 270.5;
+		} else {
+			precioPorDefecto = 180;
 		}
-		else
-		{
-			precioPorDefecto=180;
-		}
-		
+
 		setPrecio(precioPorDefecto);
 	}
 
-   
-	
 	/**
 	 * Compara dos objetos, indicando si son iguales, mayor o menor
+	 * 
 	 * @see #getPrecio()
 	 * @param Producto
 	 * @return int
 	 */
 	@Override
 	public int compareTo(Producto o) {
-		int res=-2;
-		if(o!=null)
-		{
-			if(this.getPrecio()==o.getPrecio())
-			{
-				res=0;
-			}
-			else if (this.getPrecio()>o.getPrecio())
-			{
-				res=1;
-			}
-			else
-			{
-				res=-1;
+		int res = -2;
+		if (o != null) {
+			if (this.getPrecio() == o.getPrecio()) {
+				res = 0;
+			} else if (this.getPrecio() > o.getPrecio()) {
+				res = 1;
+			} else {
+				res = -1;
 			}
 		}
 		return res;
 	}
-	
+
 }

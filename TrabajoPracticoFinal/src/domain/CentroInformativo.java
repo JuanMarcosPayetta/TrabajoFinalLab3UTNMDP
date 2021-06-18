@@ -30,8 +30,7 @@ public class CentroInformativo<T extends Producto> {
 
 	private ArrayList<T>datos;
 	
-	public CentroInformativo()
-	{
+	public CentroInformativo() {
 		this.datos=new ArrayList<T>();
 	}
 	
