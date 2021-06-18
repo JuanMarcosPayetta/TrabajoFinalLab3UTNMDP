@@ -1128,8 +1128,12 @@ public class Vivero implements IVivero {
 	 * 
 	 * @return HashMap<String, ArrayList<Producto>>
 	 */
-	public HashMap<String, ArrayList<Producto>> getCatalogoProductos() {
+	private HashMap<String, ArrayList<Producto>> getCatalogoProductos() {
 		return catalogoProductos;
+	}
+	
+	public HashMap<String, ArrayList<Producto>> catalogoProductos2() { 
+		return getCatalogoProductos();
 	}
 
 	/**
@@ -1138,8 +1142,12 @@ public class Vivero implements IVivero {
 	 * 
 	 * @return HashMap<String, Servicio>
 	 */
-	public HashMap<String, Servicio> getCatalogoServicios() {
+	private HashMap<String, Servicio> getCatalogoServicios() {
 		return catalogoServicios;
+	}
+	
+	public HashMap<String, Servicio> catalogoServicios2() {
+		return getCatalogoServicios();
 	}
 
 	/**
@@ -1148,8 +1156,12 @@ public class Vivero implements IVivero {
 	 * 
 	 * @return HashSet
 	 */
-	public HashSet<Cliente> getListaClientes() {
+	private HashSet<Cliente> getListaClientes() {
 		return listaClientes;
+	}
+	
+	public HashSet<Cliente> listaClientes2() {
+		return getListaClientes();
 	}
 
 	/**
@@ -1158,8 +1170,12 @@ public class Vivero implements IVivero {
 	 * 
 	 * @return HashSet
 	 */
-	public HashSet<Empleado> getListaEmpleados() {
+	private HashSet<Empleado> getListaEmpleados() {
 		return listaEmpleados;
+	}
+	
+	public HashSet<Empleado> listaEmpleados2() {
+		return getListaEmpleados();
 	}
 
 	/**
@@ -1168,10 +1184,14 @@ public class Vivero implements IVivero {
 	 * 
 	 * @return LinkedList
 	 */
-	public LinkedList<Pedido> getListaPedidos() {
+	private LinkedList<Pedido> getListaPedidos() {
 		LinkedList<Pedido> listaPedidos = null;
 		listaPedidos = reg.getRegistroPedidos();
 		return listaPedidos;
+	}
+	
+	public LinkedList<Pedido> listaPedidos2() {
+		return getListaPedidos();
 	}
 
 	/**

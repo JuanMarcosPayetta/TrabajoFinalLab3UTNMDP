@@ -249,7 +249,7 @@ public class MuebleJardin extends ProductoDeHogar {
 			} else if (getLargo() > 120 && getLargo() < 180) {
 				precioMueble = 16000;
 			} else if (getLargo() > 180 && getLargo() < 220) {
-				precioMueble = 24.500;
+				precioMueble = 24500;
 			} else {
 				precioMueble = 30000;
 			}
@@ -259,9 +259,9 @@ public class MuebleJardin extends ProductoDeHogar {
 		} else if (getTipo().equalsIgnoreCase("reposera")) {
 			precioMueble = 5200;
 		} else if (getTipo().equalsIgnoreCase("camastro")) {
-			precioMueble = 45.450;
+			precioMueble = 45450;
 		} else if (getTipo().equalsIgnoreCase("hamaca")) {
-			precioMueble = 37.780;
+			precioMueble = 37780;
 		}
 
 		setPrecio(precioMueble);

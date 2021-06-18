@@ -59,6 +59,7 @@ public class Main {
 		acceso.leerArchivoPedidos(vivero);
 
 		while (!validarEmpleado) {
+			System.out.println(vivero.mostrarProductoResumido());
 			System.out.println("Ingrese la opcion deseada por favor:\n");
 			System.out.println("1-Crear un nuevo empleado: \n");
 			System.out.println("2-Ingresar al sistema: \n");

@@ -44,7 +44,7 @@ public class AccesoDatos { // clase para archivos
 			out = new FileOutputStream(file);
 			obj = new ObjectOutputStream(out);
 
-			Iterator<Map.Entry<String, ArrayList<Producto>>> it = vivero.getCatalogoProductos().entrySet().iterator();
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it = vivero.catalogoProductos2().entrySet().iterator();
 			while (it.hasNext()) {
 				Map.Entry<String, ArrayList<Producto>> entry = (Map.Entry<String, ArrayList<Producto>>) it.next();
 				ArrayList<Producto> lista = entry.getValue();
@@ -120,7 +120,7 @@ public class AccesoDatos { // clase para archivos
 			fOutp = new FileOutputStream(file);
 			obj = new ObjectOutputStream(fOutp);
 
-			Iterator<Map.Entry<String, Servicio>> it = vivero.getCatalogoServicios().entrySet().iterator();
+			Iterator<Map.Entry<String, Servicio>> it = vivero.catalogoServicios2().entrySet().iterator();
 			while (it.hasNext()) {
 				Map.Entry<String, Servicio> entrada = (Map.Entry<String, Servicio>) it.next();
 
@@ -216,7 +216,7 @@ public class AccesoDatos { // clase para archivos
 			out = new FileOutputStream(f1);
 			obj = new ObjectOutputStream(out);
 
-			Iterator<Cliente> it = vivero.getListaClientes().iterator();
+			Iterator<Cliente> it = vivero.listaClientes2().iterator();
 			while (it.hasNext()) {
 				Cliente cliente = it.next();
 				obj.writeObject(cliente);
@@ -285,7 +285,7 @@ public class AccesoDatos { // clase para archivos
 			f1 = new File("empleados.dat");
 			out = new FileOutputStream(f1);
 			obj = new ObjectOutputStream(out);
-			Iterator<Empleado> it = vivero.getListaEmpleados().iterator();
+			Iterator<Empleado> it = vivero.listaEmpleados2().iterator();
 			while (it.hasNext()) {
 				Empleado empleado = it.next();
 				obj.writeObject(empleado);
@@ -359,8 +359,8 @@ public class AccesoDatos { // clase para archivos
 			out = new FileOutputStream(f1);
 			obj = new ObjectOutputStream(out);
 
-			for (int i = 0; i < vivero.getListaPedidos().size(); i++) {
-				obj.writeObject(vivero.getListaPedidos().get(i));
+			for (int i = 0; i < vivero.listaPedidos2().size(); i++) {
+				obj.writeObject(vivero.listaPedidos2().get(i));
 			}
 		} catch (IOException e) {
 			mensaje = "Se produjo un error en la escritura del archivo " + e.getMessage();
@@ -434,7 +434,7 @@ public class AccesoDatos { // clase para archivos
 			marcasComercializadas = new JSONArray();
 			servicios = new JSONArray();
 
-			Iterator<Map.Entry<String, ArrayList<Producto>>> it = vivero.getCatalogoProductos().entrySet().iterator();
+			Iterator<Map.Entry<String, ArrayList<Producto>>> it = vivero.catalogoProductos2().entrySet().iterator();
 			while (it.hasNext()) {
 				Map.Entry<String, ArrayList<Producto>> entry = (Map.Entry<String, ArrayList<Producto>>) it.next();
 				ArrayList<Producto> lista = entry.getValue();
@@ -449,7 +449,7 @@ public class AccesoDatos { // clase para archivos
 				}
 			}
 
-			Iterator<Map.Entry<String, Servicio>> it2 = vivero.getCatalogoServicios().entrySet().iterator();
+			Iterator<Map.Entry<String, Servicio>> it2 = vivero.catalogoServicios2().entrySet().iterator();
 			while (it2.hasNext()) {
 				Map.Entry<String, Servicio> entry = (Map.Entry<String, Servicio>) it2.next();
 				servicios.put(entry.getValue().getNombre()); // almaceno el nombre del servicio

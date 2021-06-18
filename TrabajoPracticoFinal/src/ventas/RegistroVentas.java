@@ -397,7 +397,10 @@ public class RegistroVentas implements Serializable {
 	 * @param pedido
 	 */
 	public void agregarPedidoDesdeArchivo(Pedido pedido) {
-		registroPedidos.add(pedido);
+		if(pedido!=null)
+		{
+			registroPedidos.add(pedido);
+		}
 	}
 
 }
