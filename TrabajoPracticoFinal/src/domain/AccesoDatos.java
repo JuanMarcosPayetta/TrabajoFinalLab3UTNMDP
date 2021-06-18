@@ -467,6 +467,58 @@ public class AccesoDatos { // clase para archivos
 	}
 
 	/**
+	 * Permite obtener la informacion almecenada en un objeto Json
+	 * @param String
+	 * @return String
+	 */
+	public String JSONToJava (String json)
+	{
+		JSONObject obj= null;
+		JSONArray clasificaciones=null;
+		JSONArray marcas=null;
+		JSONArray servicios=null;
+		StringBuilder builder= null;
+		try
+		{
+			obj= new JSONObject(json);
+			clasificaciones= new JSONArray();
+			marcas= new JSONArray();
+			servicios= new JSONArray();
+			
+			clasificaciones=obj.getJSONArray("clasificaciones");
+			marcas=obj.getJSONArray("marcas");
+			servicios=obj.getJSONArray("servicios");
+	
+			builder= new StringBuilder();
+			builder.append("Tipos de productos comercializados: \n");
+			for(int i=0; i<clasificaciones.length(); i++)
+			{
+				builder.append(clasificaciones.getString(i)+"\n");
+			}
+			
+			builder.append("Marcas comercializadas: \n");
+			for(int j=0; j<marcas.length(); j++)
+			{
+				builder.append(marcas.getString(j)+"\n");
+			}
+			
+			builder.append("Servicios prestados: \n");
+			for(int x=0; x<servicios.length(); x++)
+			{
+				builder.append(servicios.getString(x)+"\n");
+			}
+
+		}
+		catch(JSONException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return builder.toString();
+	}
+	
+	
+	/**
 	 * Permite grabar un objeto Json en un archivo
 	 * 
 	 * @param JSONObject
