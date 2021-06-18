@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion maceta
+ *
+ */
 public abstract class Maceta extends ProductoDeHogar{
 
 	private String forma;

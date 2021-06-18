@@ -1,7 +1,11 @@
 package productos;
 
 import interfaces.IEstablecerPrecioProductoInerte;
-
+/**
+ * 
+ * Atributos de los productos clasificacion producto Organico
+ *
+ */
 public abstract class ProductoOrganico extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private int gramos;

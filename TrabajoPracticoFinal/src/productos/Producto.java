@@ -9,7 +9,11 @@ import domain.Vivero;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IGenerarCodigo;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Producto
+ *
+ */
 public abstract class Producto implements IGenerarCodigo, Comparable<Producto>, Serializable {
 
 	private String codigo;

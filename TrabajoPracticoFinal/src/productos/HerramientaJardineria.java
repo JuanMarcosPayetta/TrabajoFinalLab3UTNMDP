@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import interfaces.IEstablecerPrecioProductoInerte;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Herramienta jardineria
+ *
+ */
 public abstract class HerramientaJardineria extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String material;

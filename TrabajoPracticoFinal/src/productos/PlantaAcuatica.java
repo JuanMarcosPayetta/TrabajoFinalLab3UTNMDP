@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Planta acuatica
+ *
+ */
 public class PlantaAcuatica extends Planta{
 
 	private String tipoDeAgua; 
@@ -158,10 +162,10 @@ public class PlantaAcuatica extends Planta{
     		throw new NullPointerException("Error");
     	}
     	else if(temperatura<0) {
-            throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + " y debe ser mayor a los 20°C");
+            throw new DatoNumeroException(DatoNumeroException.VALORNEGATIVOEXCEPTION + " y debe ser mayor a los 20ï¿½C");
         }
         else if(temperatura<20 && temperatura>27) {
-            throw new DatoNumeroException(DatoNumeroException.VALORFUERADELRANGOEXCEPTION + ": entre los 20°C y los 27°C");
+            throw new DatoNumeroException(DatoNumeroException.VALORFUERADELRANGOEXCEPTION + ": entre los 20ï¿½C y los 27ï¿½C");
         }
     }
     

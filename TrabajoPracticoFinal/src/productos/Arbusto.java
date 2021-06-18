@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Arbusto
+ *
+ */
 public class Arbusto extends PlantaTerrestre{
 	
 	private String tipoDeHoja;
@@ -233,7 +237,7 @@ public class Arbusto extends PlantaTerrestre{
 	{
 		if(getTipoDeHoja().equalsIgnoreCase("caduca"))
 		{
-			setEpocaDePoda("Fin de Otoño - Inicio del Invierno");
+			setEpocaDePoda("Fin de Otoï¿½o - Inicio del Invierno");
 		}
 		else 
 		{

@@ -1,7 +1,11 @@
 package productos;
 
 import interfaces.IEstablecerPrecioProductoInerte;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Producto de hogar 
+ *
+ */
 public abstract class ProductoDeHogar extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String material;

@@ -1,5 +1,9 @@
 package productos;
-
+/**
+ * 
+ * Atributos de los productos clasificacion maceta redonda
+ *
+ */
 public class MacetaRedonda extends Maceta{
 
 	private double diametroBoca;

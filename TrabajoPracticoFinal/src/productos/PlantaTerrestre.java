@@ -1,5 +1,9 @@
 package productos;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Planta terrestre
+ *
+ */
 public abstract class PlantaTerrestre extends Planta{
 
 	private boolean fruto;

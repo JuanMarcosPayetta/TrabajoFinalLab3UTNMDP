@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Sustrato
+ *
+ */
 public class Sustrato extends ProductoOrganico{
 
 	private boolean abonada;

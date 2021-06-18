@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Lombriz
+ *
+ */
 public class Lombriz extends ProductoOrganico{
 
 	private String especie;

@@ -6,7 +6,11 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Arbol
+ *
+ */
 public class Arbol extends PlantaTerrestre{
 
 	private int diametroDelTronco;

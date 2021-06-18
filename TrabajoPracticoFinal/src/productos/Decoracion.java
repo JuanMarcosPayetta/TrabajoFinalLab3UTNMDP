@@ -1,5 +1,9 @@
 package productos;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Decoracion
+ *
+ */
 public class Decoracion extends ProductoDeHogar {
 
 	private boolean exterior;

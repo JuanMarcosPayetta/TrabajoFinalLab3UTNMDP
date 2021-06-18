@@ -6,7 +6,10 @@ import java.util.InputMismatchException;
 import excepciones.CadenaInvalidaException;
 import excepciones.DatoNumeroException;
 import interfaces.IEstablecerPrecioPlanta;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Planta
+ */
 public abstract class Planta extends Producto implements IEstablecerPrecioPlanta{
 
 	private int mesesDeVida; 
@@ -100,7 +103,7 @@ public abstract class Planta extends Producto implements IEstablecerPrecioPlanta
 	 */
 	public abstract void establecerCantidadFertilizante();
 	
-	//Valida los meses de vida o la altura de la planta
+
 	/**
 	 * Valida que el numero pasado por parametro sea correcto
 	 * @see #validarDatosNumericos(Integer)

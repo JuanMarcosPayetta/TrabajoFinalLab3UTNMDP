@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Herramienta Manual
+ *
+ */
 public class HerramientaManual extends HerramientaJardineria{
 	
 	private String tamanio; 
@@ -77,11 +81,11 @@ public class HerramientaManual extends HerramientaJardineria{
 		ArrayList<String>tamanioValido= new ArrayList<String>();
 		tamanioValido.add("grande");
 		tamanioValido.add("mediano");
-		tamanioValido.add("pequeño");
+		tamanioValido.add("pequeï¿½o");
 		
 		if(tamanio==null)
 		{
-			throw new NullPointerException("Error, ingrese un dato valido (grande, mediano, pequeño)");
+			throw new NullPointerException("Error, ingrese un dato valido (grande, mediano, pequeï¿½o)");
 		}
 		else if(tamanio.isBlank())
 		{
@@ -93,7 +97,7 @@ public class HerramientaManual extends HerramientaJardineria{
 		}
 		else if(!tamanioValido.contains(tamanio.toLowerCase()))
 		{
-			throw new InputMismatchException("Error, ingrese un dato valido (grande, mediano, pequeño)");
+			throw new InputMismatchException("Error, ingrese un dato valido (grande, mediano, pequeï¿½o)");
 		}
 	}
 	

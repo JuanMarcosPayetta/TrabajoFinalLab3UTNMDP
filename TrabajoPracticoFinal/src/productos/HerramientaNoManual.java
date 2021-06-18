@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Herramienta no manual
+ *
+ */
 public class HerramientaNoManual extends HerramientaJardineria {
 	
 	private int potencia;

@@ -1,6 +1,10 @@
 package productos;
 
-
+/**
+ * 
+ * Atributos de los productos clasificacion Maceta Poliedro
+ *
+ */
 public class MacetaPoliedro extends Maceta {
 
 	private double alto;

@@ -5,7 +5,11 @@ import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
 import interfaces.IEstablecerPrecioProductoInerte;
-
+/**
+ * 
+ * Atributos de los productos clasificacion Sanidad Vegetal
+ *
+ */
 public class SanidadVegetal extends Producto implements IEstablecerPrecioProductoInerte{
 
 	private String funcion;

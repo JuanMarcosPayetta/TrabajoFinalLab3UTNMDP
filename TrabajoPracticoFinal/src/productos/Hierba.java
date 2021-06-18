@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import excepciones.CadenaInvalidaException;
-
+/**
+ * 
+ * Atributos de los productos clasificacion hierba
+ *
+ */
 public class Hierba extends PlantaTerrestre{
 
 	private String tipoDeTallo;
