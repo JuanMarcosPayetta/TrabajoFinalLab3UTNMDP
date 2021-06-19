@@ -2982,7 +2982,7 @@ public class Main {
 						System.out.println("Opcion erronea");
 					}
 
-					System.out.println("Si desea elegir otra opcion presione cualquier tecla, caso contrario 'n': ");
+					System.out.println("Si desea elegir otra opcion presione cualquier tecla, caso contrario 'n' para salir del sistema: ");
 					opcion2 = scan.next().charAt(0);
 				}
 
